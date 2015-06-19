@@ -1,0 +1,6 @@
+excerpt_separator: ""
+pygments: true
+markdown: kramdown
+url: http://nmbambo.github.io
+title: nmbambo
+paginate: 5
