@@ -6,7 +6,7 @@
   --pearl-muted: #B4AEA3;
   --gold: #BFB08A;
   --gold-quiet: #7E745C;
-  --crimson: #8A1C2B;
+  --amber: #B8793E;
   --hairline: 1px;
   --display: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
   --script: "Pinyon Script", "Edwardian Script ITC", cursive;
@@ -106,7 +106,7 @@ a.card:hover { background: var(--obsidian-raised); }
 .eras { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); border-top: var(--hairline) solid var(--gold); }
 .eras li { padding: 24px 24px 0 0; position: relative; }
 .eras li::before { content: ""; position: absolute; top: -4px; left: 0; width: 7px; height: 7px; background: var(--obsidian); border: var(--hairline) solid var(--gold); transform: rotate(45deg); }
-.eras li:last-child::before { background: var(--crimson); }
+.eras li:last-child::before { background: var(--amber); }
 .era { display: block; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin: 8px 0 12px; }
 .eras p { margin: 0; color: var(--pearl-muted); font-size: 15px; }
 
@@ -307,3 +307,26 @@ table.spec tbody tr:nth-child(odd) { background: var(--obsidian-raised); }
   .pitch .want { padding-left: 0; }
   .portrait.lg { width: 120px; height: 120px; }
 }
+
+/* Engage and notes pages */
+.grid.four-up { grid-template-columns: repeat(4, 1fr); }
+.givens.wide { max-width: none; }
+.plain-list { list-style: none; margin: 0; padding: 0; }
+.plain-list li { margin: 0 0 10px; font-size: 15px; color: var(--pearl-muted); line-height: 1.55; }
+.plain-list strong { font-weight: 500; color: var(--pearl); }
+.grid article .plain-list li { font-size: 14px; }
+.notes { margin: 32px 0 0 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: var(--hairline) solid var(--gold-quiet); }
+.note-piece { padding: 32px 32px 32px 0; border-bottom: var(--hairline) solid var(--gold-quiet); }
+.note-piece:nth-child(even) { padding-left: 32px; padding-right: 0; border-left: var(--hairline) solid var(--gold-quiet); }
+.note-piece h3 { font-style: italic; font-weight: 400; font-size: 23px; margin: 6px 0 14px; }
+.note-piece p { margin: 0 0 12px; color: var(--pearl-muted); font-size: 16px; }
+.note-piece .try { margin-top: 16px; padding-top: 12px; border-top: var(--hairline) solid var(--gold-quiet); font-size: 15px; color: var(--pearl); }
+.note-piece .try b { display: block; font-weight: 500; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+@media (max-width: 1000px) { .grid.four-up { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 860px) { .notes { grid-template-columns: 1fr; } .note-piece:nth-child(even) { padding-left: 0; border-left: 0; } }
+@media (max-width: 620px) { .grid.four-up { grid-template-columns: 1fr; } .notes { margin-left: 0; } }
+footer { flex-wrap: wrap; }
+footer .foot-links { order: 3; margin-left: auto; font-size: 12px; letter-spacing: 0.08em; }
+footer .foot-links a { color: var(--pearl-muted); border-bottom: var(--hairline) solid var(--gold-quiet); }
+a.inline { color: var(--gold); border-bottom: var(--hairline) solid var(--gold-quiet); white-space: nowrap; }
+@media (max-width: 620px) { footer .foot-links { margin-left: 0; width: 100%; } }

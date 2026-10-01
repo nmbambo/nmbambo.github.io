@@ -128,5 +128,33 @@ window.PROJECTS = [
       "Board reporting"
     ],
     "url": "work/decision-canvas-dgs/"
+  },
+  {
+    "group": "instrument",
+    "plane": "L1 Evidence · L5 Judgement",
+    "name": "The Employer Report",
+    "discipline": "Analyst",
+    "summary": "Turns an employment offer from educated guesswork into a decision with a record, before anyone signs.",
+    "status": "On pilot terms",
+    "stack": [
+      "Employment economics",
+      "Tabular ICL",
+      "Sensitivity and stress tests"
+    ],
+    "url": "work/employer-report/"
+  },
+  {
+    "group": "instrument",
+    "plane": "L0 Strategy Intent · L7 Execution & Feedback",
+    "name": "Intrinsic Coverage Instrument",
+    "discipline": "Scientist",
+    "summary": "Checks whether a decision's design covers what actually moves the people who must carry it out.",
+    "status": "In design",
+    "stack": [
+      "Survey design",
+      "Motivation science",
+      "Decision design"
+    ],
+    "url": "work/intrinsic-coverage-instrument/"
   }
 ];
