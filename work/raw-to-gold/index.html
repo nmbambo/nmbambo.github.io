@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Raw to Gold — Nkosinathi Mbambo</title>
-<meta name="description" content="A governed raw-to-gold data platform build, auditable end to end.">
+<title>Raw to Gold, and Back — Nkosinathi Mbambo</title>
+<meta name="description" content="A two-leg platform: a DuckLake lakehouse for evidence and a Postgres lakebase for action, joined by metadata-driven master data.">
 <meta name="theme-color" content="#0C0A10">
 <link rel="icon" href="../../assets/rose.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,28 +18,28 @@
   <nav aria-label="Sections">
     <a href="../../#practice">Practice</a>
     <a href="../../#work">Work</a>
-    <a href="../../#depth">Depth</a>
+    <a href="../../architecture/">Architecture</a>
     <a href="../../#contact">Contact</a>
   </nav>
 </header>
 <main id="main" class="project">
   <section class="hero project-hero">
     <p class="label"><a href="../../#work">Selected work</a> · Engineer</p>
-    <h1>Raw to Gold</h1>
-    <p class="role">A governed raw-to-gold data platform build, auditable end to end.</p>
+    <h1>Raw to Gold, and Back</h1>
+    <p class="role">A two-leg platform: a DuckLake lakehouse for evidence and a Postgres lakebase for action, joined by metadata-driven master data.</p>
     <dl class="facts">
       <div><dt>Status</dt><dd>Phase 1 in build</dd></div>
       <div><dt>Discipline</dt><dd>Engineer</dd></div>
       <div><dt>Repository</dt><dd>Ingqiqo/raw-to-gold <span class="soon-inline">· opening soon</span></dd></div>
     </dl>
   </section>
-  <section aria-labelledby="p1"><h2 id="p1"><span class="num">I</span> The problem</h2><p class="body">Most data platforms move bytes well and meaning badly. By the gold layer nobody can say which definition a number used, or who changed it.</p></section>
-  <section aria-labelledby="p2"><h2 id="p2"><span class="num">II</span> Approach</h2><ol class="steps"><li>Take one real client dataset from raw landing to a governed gold layer.</li><li>Carry definitions, lineage and quality checks with the data at every stage, not in a separate document.</li><li>Keep personal information in South African regions to satisfy POPIA by design.</li><li>Make every gold table answer three questions: where it came from, what it means, and who may rely on it.</li></ol></section>
-  <section aria-labelledby="p3"><h2 id="p3"><span class="num">III</span> Structure</h2><ol class="layers"><li><span class="layer-name">Raw</span><span class="layer-desc">Landed as received, immutable</span></li><li><span class="layer-name">Bronze</span><span class="layer-desc">Typed and conformed</span></li><li><span class="layer-name">Silver</span><span class="layer-desc">Cleansed, joined, definitions applied</span></li><li><span class="layer-name">Gold</span><span class="layer-desc">Decision-ready, documented, quality-gated</span></li></ol></section>
+  <section aria-labelledby="p1"><h2 id="p1"><span class="num">I</span> The problem</h2><p class="body">Most data platforms move bytes well and meaning badly. By the gold layer nobody can say which definition a number used or who changed it, and the operational systems that act on the numbers disagree about who a customer even is.</p></section>
+  <section aria-labelledby="p2"><h2 id="p2"><span class="num">II</span> Approach</h2><ol class="steps"><li>Run the lakehouse leg on DuckLake as a data mesh: each domain, modelled with domain-driven design, owns its Bronze-to-Gold slice, and a logical data fabric virtualises access across domains.</li><li>Land Bronze raw and immutable; model Silver as Data Vault 2.0; compile Gold into multi-format, poly-database projections from ledger tables: general, relationship, causal and event graphs, time series and dimensional models.</li><li>Ingest with dlt and Airbyte, stream with Arroyo, extract documents with Unstructured.io, transform with dbt on DuckDB, and gate every tier with ODCS data contracts, Soda Core, YData Profiling, Pydantic v2 and pytest.</li><li>Bridge to the lakebase leg, Postgres for applications with Polars on the app side, through multi-domain master data: Zingg matching driven by ontology metadata into AtroCore, with DuckDB, dlt and Airbyte carrying reverse ETL.</li><li>Share one semantic layer between DuckDB and Polars, expose lakehouse metadata to other engines through Apache XTable, and trace every hop in DataHub with OpenLineage.</li></ol></section>
+  <section aria-labelledby="p3"><h2 id="p3"><span class="num">III</span> Structure</h2><ol class="layers"><li><span class="layer-name">Bronze</span><span class="layer-desc">Raw, immutable, enveloped with source, hash, contract and privacy class</span></li><li><span class="layer-name">Silver</span><span class="layer-desc">Data Vault 2.0: hubs, links and satellites, insert-only</span></li><li><span class="layer-name">Gold</span><span class="layer-desc">Poly-DB projections: graphs, time series, dimensional, compiled not hand-written</span></li><li><span class="layer-name">Master data</span><span class="layer-desc">Zingg into AtroCore, metadata-driven, multi-domain</span></li><li><span class="layer-name">Lakebase</span><span class="layer-desc">Postgres for applications, the decision ledger and workflow</span></li></ol></section>
   <section aria-labelledby="p4"><h2 id="p4"><span class="num">IV</span> Craft and next</h2>
-    <p class="stack-line">Databricks · Delta Lake · dbt · Airflow · Polars</p>
-    <p class="body">Completing the Phase 1 pipeline, then publishing a sanitised sample and the pattern.</p>
-    <p class="back"><a href="../../#work">← All work</a></p>
+    <p class="stack-line">DuckLake · DuckDB · Polars · dbt · Data Vault 2.0 · Postgres · Zingg · AtroCore</p>
+    <p class="body">Completing the Phase 1 pipeline on one client dataset, then publishing a sanitised sample. Full design on the architecture page.</p>
+    <p class="back"><a href="../../#work">← All work</a> &nbsp; <a href="../../architecture/">The architecture →</a></p>
   </section>
 </main>
 <footer>

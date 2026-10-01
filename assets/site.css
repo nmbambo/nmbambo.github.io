@@ -171,3 +171,51 @@ a.card .soon { color: var(--gold); }
   .project .body, .steps, .layers, .stack-line, .back { padding-left: 0; }
   .layers li { grid-template-columns: 1fr; gap: 6px; }
 }
+
+/* Architecture page */
+.arch .body.note { margin-top: 24px; color: var(--pearl-muted); font-size: 16px; font-style: italic; }
+.arch .grid { margin-top: 32px; margin-left: 56px; }
+.arch .grid h3 { font-style: italic; font-weight: 400; font-size: 21px; }
+.arch .steps strong { font-weight: 500; color: var(--pearl); }
+.models article p { font-size: 15px; }
+.diagram { margin: 40px 0 0; }
+.diagram svg { width: 100%; height: auto; display: block; }
+.diagram figcaption { margin-top: 14px; font-size: 13px; color: var(--pearl-muted); font-style: italic; }
+.diagram .box { fill: var(--obsidian); stroke: var(--gold-quiet); stroke-width: 1; }
+.diagram .box.raised { fill: var(--obsidian-raised); stroke: var(--gold); }
+.diagram .box.band { fill: var(--obsidian-deep); }
+.diagram .tier { fill: var(--obsidian-raised); stroke: var(--gold-quiet); stroke-width: 1; }
+.diagram .tier.gold { stroke: var(--gold); }
+.diagram .ln { stroke: var(--gold); stroke-width: 1; }
+.diagram .ln.dash { stroke-dasharray: 3 4; }
+.diagram .f-gold { fill: var(--gold); }
+.diagram text { font-family: var(--display); fill: var(--pearl); }
+.diagram .k { font-size: 11px; letter-spacing: 0.18em; fill: var(--gold); text-anchor: middle; }
+.diagram .t { font-size: 15px; text-anchor: middle; }
+.diagram .s { font-size: 13px; fill: var(--pearl-muted); text-anchor: middle; }
+.diagram .i { font-style: italic; }
+.diagram .tl { font-size: 16px; font-style: italic; }
+.diagram .tr { font-size: 13px; fill: var(--pearl-muted); text-anchor: end; }
+.diagram .s2 { font-size: 11px; }
+.tw { margin: 32px 0 0 56px; overflow-x: auto; }
+table.spec { width: 100%; border-collapse: collapse; font-size: 15px; }
+table.spec th { text-align: left; font-weight: 400; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); padding: 12px 16px; border-bottom: var(--hairline) solid var(--gold); }
+table.spec td { padding: 14px 16px; border-bottom: var(--hairline) solid var(--gold-quiet); vertical-align: top; color: var(--pearl-muted); }
+table.spec td:first-child { color: var(--pearl); font-style: italic; width: 34%; }
+table.spec tbody tr:nth-child(odd) { background: var(--obsidian-raised); }
+@media (max-width: 1000px) { .arch .grid.five { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px) {
+  .arch .grid, .tw { margin-left: 0; }
+  .arch .grid.five { grid-template-columns: 1fr; }
+  .diagram { overflow-x: auto; }
+  .diagram svg { min-width: 760px; }
+  table.spec td:first-child { width: auto; }
+}
+
+/* Home: architecture feature */
+.feature { display: block; margin-left: 56px; padding: 40px; border: var(--hairline) solid var(--gold); background: var(--obsidian-raised); transition: background .25s; }
+.feature:hover { background: var(--obsidian-deep); }
+.feature h3 { font-size: clamp(26px, 3.4vw, 38px); font-weight: 400; margin: 12px 0 16px; }
+.feature p { margin: 0; max-width: 64ch; color: var(--pearl-muted); }
+.feature .soon { margin-top: 24px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+@media (max-width: 620px) { .feature { margin-left: 0; padding: 24px; } }

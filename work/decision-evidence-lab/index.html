@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Decision Evidence Lab — Nkosinathi Mbambo</title>
-<meta name="description" content="Testing whether the evidence behind a decision actually supports it.">
+<meta name="description" content="Testing whether the evidence and the AI behind a decision actually support it.">
 <meta name="theme-color" content="#0C0A10">
 <link rel="icon" href="../../assets/rose.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +18,7 @@
   <nav aria-label="Sections">
     <a href="../../#practice">Practice</a>
     <a href="../../#work">Work</a>
-    <a href="../../#depth">Depth</a>
+    <a href="../../architecture/">Architecture</a>
     <a href="../../#contact">Contact</a>
   </nav>
 </header>
@@ -26,20 +26,20 @@
   <section class="hero project-hero">
     <p class="label"><a href="../../#work">Selected work</a> · Scientist</p>
     <h1>Decision Evidence Lab</h1>
-    <p class="role">Testing whether the evidence behind a decision actually supports it.</p>
+    <p class="role">Testing whether the evidence and the AI behind a decision actually support it.</p>
     <dl class="facts">
       <div><dt>Status</dt><dd>In preparation</dd></div>
       <div><dt>Discipline</dt><dd>Scientist</dd></div>
       <div><dt>Repository</dt><dd>Ingqiqo/decision-evidence-lab <span class="soon-inline">· opening soon</span></dd></div>
     </dl>
   </section>
-  <section aria-labelledby="p1"><h2 id="p1"><span class="num">I</span> The problem</h2><p class="body">Many decisions cite evidence that does not bear the weight placed on it. The gap is rarely dishonesty; it is untested inference.</p></section>
-  <section aria-labelledby="p2"><h2 id="p2"><span class="num">II</span> Approach</h2><ol class="steps"><li>State each decision as a claim with the evidence offered for it.</li><li>Rate the evidence on a clear ladder, from anecdote to tested causal finding.</li><li>Run the cheapest test that could prove the claim wrong.</li><li>Record the outcome so the next decision learns from this one.</li></ol></section>
-  <section aria-labelledby="p3"><h2 id="p3"><span class="num">III</span> Structure</h2><ol class="layers"><li><span class="layer-name">Claim</span><span class="layer-desc">What the decision asserts</span></li><li><span class="layer-name">Evidence</span><span class="layer-desc">What is offered, rated on a ladder</span></li><li><span class="layer-name">Test</span><span class="layer-desc">The cheapest falsifying check</span></li><li><span class="layer-name">Learning</span><span class="layer-desc">Outcome recorded against the claim</span></li></ol></section>
+  <section aria-labelledby="p1"><h2 id="p1"><span class="num">I</span> The problem</h2><p class="body">Many decisions cite evidence that does not bear the weight placed on it, and AI estimates now arrive with a confidence they have not earned. The gap is rarely dishonesty; it is untested inference.</p></section>
+  <section aria-labelledby="p2"><h2 id="p2"><span class="num">II</span> Approach</h2><ol class="steps"><li>State each decision as a claim with the evidence offered for it, and rate that evidence on a ladder from anecdote to tested causal finding.</li><li>Use tabular in-context-learning models (TabDPT-Turbo and TabICLv2) for fast, distributional estimates on modest data, while pinning context rows, order and decoding so every estimate replays.</li><li>Hold the causal boundary: these models are correlational, so an estimate may never be bound to a decision variable without causal support.</li><li>Treat external models such as Jev as proposals only, fed masked or synthetic data, and record their influence on the decision explicitly.</li><li>Score process quality at decision time and outcome quality after; good process with a bad outcome updates the forecast, bad process with a good outcome raises a flag.</li></ol></section>
+  <section aria-labelledby="p3"><h2 id="p3"><span class="num">III</span> Structure</h2><ol class="layers"><li><span class="layer-name">Claim</span><span class="layer-desc">What the decision asserts</span></li><li><span class="layer-name">Evidence</span><span class="layer-desc">What is offered, rated on a ladder</span></li><li><span class="layer-name">Estimate</span><span class="layer-desc">Tabular ICL distributions, pinned and replayable</span></li><li><span class="layer-name">Test</span><span class="layer-desc">The cheapest falsifying check</span></li><li><span class="layer-name">Learning</span><span class="layer-desc">Outcome scored apart from process</span></li></ol></section>
   <section aria-labelledby="p4"><h2 id="p4"><span class="num">IV</span> Craft and next</h2>
-    <p class="stack-line">Statistics · Experiment design · Causal inference</p>
+    <p class="stack-line">Statistics · Causal inference · Tabular ICL · Calibration</p>
     <p class="body">Publishing the method and worked examples drawn from the decision cycle.</p>
-    <p class="back"><a href="../../#work">← All work</a></p>
+    <p class="back"><a href="../../#work">← All work</a> &nbsp; <a href="../../architecture/">The architecture →</a></p>
   </section>
 </main>
 <footer>

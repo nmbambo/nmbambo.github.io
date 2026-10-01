@@ -16,21 +16,21 @@ window.PROJECTS = [
     "url": "work/meaning-infrastructure/"
   },
   {
-    "name": "Raw to Gold",
+    "name": "Raw to Gold, and Back",
     "discipline": "Engineer",
-    "summary": "A governed raw-to-gold data platform build, auditable end to end.",
+    "summary": "A two-leg platform: a DuckLake lakehouse for evidence and a Postgres lakebase for action, joined by metadata-driven master data.",
     "status": "Phase 1 in build",
     "stack": [
-      "Databricks",
-      "Delta Lake",
-      "dbt"
+      "DuckLake",
+      "DuckDB",
+      "Polars"
     ],
     "url": "work/raw-to-gold/"
   },
   {
     "name": "Semantic Foundation",
     "discipline": "Modeller",
-    "summary": "Terminology, taxonomy and ontology work that gives a domain one shared language.",
+    "summary": "The shared semantic layer: nineteen models that give data, process and decision one language.",
     "status": "In preparation",
     "stack": [
       "Ontology modelling",
@@ -54,24 +54,24 @@ window.PROJECTS = [
   {
     "name": "Decision Evidence Lab",
     "discipline": "Scientist",
-    "summary": "Testing whether the evidence behind a decision actually supports it.",
+    "summary": "Testing whether the evidence and the AI behind a decision actually support it.",
     "status": "In preparation",
     "stack": [
       "Statistics",
-      "Experiment design",
-      "Causal inference"
+      "Causal inference",
+      "Tabular ICL"
     ],
     "url": "work/decision-evidence-lab/"
   },
   {
-    "name": "Decision IR",
+    "name": "Decision IR and the Warranty",
     "discipline": "Architect",
-    "summary": "Decision representation and accountability, made machine and human readable.",
+    "summary": "Decisions compiled into one typed program, solved by a sovereign logic engine, recorded on a post-quantum ledger and warranted.",
     "status": "Schema defined; ledger in build",
     "stack": [
-      "Schema design",
-      "Event sourcing",
-      "Cryptographic hashing"
+      "Z3",
+      "GoRules",
+      "SHA3-256"
     ],
     "url": "work/decision-ir/"
   }
