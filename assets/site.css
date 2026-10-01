@@ -230,3 +230,10 @@ table.spec tbody tr:nth-child(odd) { background: var(--obsidian-raised); }
 @media (max-width: 620px) { .features, .group-h, #work .grid { margin-left: 0; } }
 #practice .grid, #depth .eras, #contact .links, #contact .place { margin-left: 56px; }
 @media (max-width: 620px) { #practice .grid, #depth .eras, #contact .links, #contact .place { margin-left: 0; } }
+
+/* Solutionist posture */
+.diagram.posture { margin: 0 0 40px 56px; }
+.subroles { list-style: none; margin: 16px 0 0; padding: 14px 0 0; border-top: var(--hairline) solid var(--gold-quiet); }
+.subroles li { font-size: 13px; line-height: 1.5; color: var(--pearl-muted); margin: 0 0 8px; }
+.subroles strong { display: block; font-weight: 400; font-style: italic; color: var(--gold); font-size: 14px; }
+@media (max-width: 620px) { .diagram.posture { margin-left: 0; } }
