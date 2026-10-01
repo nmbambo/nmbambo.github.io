@@ -1,24 +1,145 @@
----
-layout: posts
----
-        {% for post in paginator.posts %}
-        <li>
-            <time>{{ post.date | date_to_string }}</time>
-            <h3>{% if page.link %}<a href="{{ post.link }}">{{ post.title }}</a> *{% else %}<a href="{{ post.url }}">{{ post.title }}</a>{% endif %}</h3>
-            {{ post.content }}
-        </li>
-        {% endfor %}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nkosinathi Mbambo — Meaning Coherence Specialist</title>
+<meta name="description" content="Nkosinathi Mbambo, Meaning Coherence Specialist: scientist, engineer, analyst, modeller and architect of data, AI and decision systems since 2001.">
+<meta property="og:title" content="Nkosinathi Mbambo — Meaning Coherence Specialist">
+<meta property="og:description" content="Scientist, engineer, analyst, modeller and architect of meaning, data and decision systems.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nmbambo.github.io/">
+<meta name="theme-color" content="#0C0A10">
+<link rel="icon" href="assets/rose.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <a class="mark" href="#top" aria-label="Home"><img src="assets/rose.svg" alt="" width="28" height="28"></a>
+  <nav aria-label="Sections">
+    <a href="#practice">Practice</a>
+    <a href="#work">Work</a>
+    <a href="#depth">Depth</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="hero" id="top">
+    <p class="label">Ingqiqo Executables</p>
+    <h1>Nkosinathi Mbambo</h1>
+    <p class="role">Meaning Coherence Specialist</p>
+    <ul class="disciplines" aria-label="Disciplines">
+      <li>Scientist</li><li>Engineer</li><li>Analyst</li><li>Modeller</li><li>Architect</li>
     </ul>
-</article>
+    <p class="lede">I make what an organisation knows, measures and decides mean the same thing everywhere, so its decisions can be trusted, explained and owned.</p>
+    <p class="motto">Meaning, made coherent.</p>
+  </section>
 
-{% if paginator.total_pages > 1 %}
-<div class="paginator">
-  {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="newer">Back</a>
-  {% endif %}
+  <section id="practice" aria-labelledby="practice-h">
+    <h2 id="practice-h"><span class="num">I</span> Practice</h2>
+    <p class="intro">One discipline, five ways of holding it.</p>
+    <div class="grid five">
+      <article>
+        <h3>Scientist</h3>
+        <p>Frames the question before the answer. Tests whether evidence actually supports a decision, and says so when it does not.</p>
+      </article>
+      <article>
+        <h3>Engineer</h3>
+        <p>Builds the pipelines and platforms that carry meaning intact, from raw data to governed, auditable gold.</p>
+      </article>
+      <article>
+        <h3>Analyst</h3>
+        <p>Reads what the numbers are saying, and what they are hiding, then turns it into a choice someone can make.</p>
+      </article>
+      <article>
+        <h3>Modeller</h3>
+        <p>Gives terms, taxonomies and ontologies their shape, and models decisions so they can be represented, compared and reviewed.</p>
+      </article>
+      <article>
+        <h3>Architect</h3>
+        <p>Designs the whole: how data, process and decision fit together, and where accountability sits within them.</p>
+      </article>
+    </div>
+  </section>
 
-  {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next</a>
-  {% endif %}
-</div>
-{% endif %}
+  <section id="work" aria-labelledby="work-h">
+    <h2 id="work-h"><span class="num">II</span> Selected work</h2>
+    <p class="intro">A curated set of repositories. Each opens to its own home.</p>
+    <div class="grid three" id="projects"></div>
+  </section>
+
+  <section id="depth" aria-labelledby="depth-h">
+    <h2 id="depth-h"><span class="num">III</span> Depth</h2>
+    <p class="intro">Twenty-five years across every generation of the data stack.</p>
+    <ol class="eras">
+      <li>
+        <span class="era">Since 2001</span>
+        <h3>Foundations</h3>
+        <p>SSIS, SSAS, SSRS, Pentaho and Talend: warehousing, integration and reporting at enterprise scale.</p>
+      </li>
+      <li>
+        <span class="era">Platform era</span>
+        <h3>Cloud and lakehouse</h3>
+        <p>Microsoft Fabric, Databricks, Azure and AWS, with Delta, Iceberg and Hudi tables, dbt and Airflow orchestration.</p>
+      </li>
+      <li>
+        <span class="era">Streaming and scale</span>
+        <h3>Real time and operating models</h3>
+        <p>Kafka streaming, Polars, MLOps and Data Mesh: data as a product, owned by the domains that know it.</p>
+      </li>
+      <li>
+        <span class="era">Now</span>
+        <h3>Meaning coherence</h3>
+        <p>Semantics, decision representation and institutional accountability: making meaning hold across data, process and decision.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section id="contact" aria-labelledby="contact-h">
+    <h2 id="contact-h"><span class="num">IV</span> Contact</h2>
+    <ul class="links">
+      <li><a href="https://www.linkedin.com/in/nmbambo">LinkedIn</a></li>
+      <li><a href="https://github.com/nmbambo">GitHub</a></li>
+      <li><a href="https://about.me/nmbambo">about.me</a></li>
+    </ul>
+    <p class="place">Gauteng, South Africa</p>
+  </section>
+
+</main>
+
+<footer>
+  <img src="assets/rose.svg" alt="Ingqiqo rose" width="40" height="40">
+  <p>© <span id="year">2026</span> Nkosinathi Mbambo · Ingqiqo Executables (Pty) Ltd</p>
+</footer>
+
+<script src="assets/projects.js"></script>
+<script>
+  (function () {
+    var y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
+    var host = document.getElementById('projects'); if (!host || !window.PROJECTS) return;
+    window.PROJECTS.forEach(function (p) {
+      var el = document.createElement(p.url ? 'a' : 'div');
+      el.className = 'card' + (p.url ? '' : ' pending');
+      if (p.url) el.href = p.url;
+      var tag = document.createElement('p'); tag.className = 'label'; tag.textContent = p.discipline || '';
+      var h = document.createElement('h3'); h.textContent = p.name;
+      var d = document.createElement('p'); d.textContent = p.summary;
+      el.appendChild(tag); el.appendChild(h); el.appendChild(d);
+      if (p.stack && p.stack.length) {
+        var s = document.createElement('p'); s.className = 'stack'; s.textContent = p.stack.join(' · ');
+        el.appendChild(s);
+      }
+      if (!p.url) { var n = document.createElement('p'); n.className = 'soon'; n.textContent = 'In preparation'; el.appendChild(n); }
+      host.appendChild(el);
+    });
+  })();
+</script>
+</body>
+</html>

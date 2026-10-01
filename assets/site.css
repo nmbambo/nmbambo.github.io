@@ -1,0 +1,140 @@
+:root {
+  --obsidian: #0C0A10;
+  --obsidian-raised: #16111D;
+  --obsidian-deep: #07060A;
+  --pearl: #F1EEE7;
+  --pearl-muted: #B4AEA3;
+  --gold: #BFB08A;
+  --gold-quiet: #7E745C;
+  --crimson: #8A1C2B;
+  --hairline: 1px;
+  --display: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+  --script: "Pinyon Script", "Edwardian Script ITC", cursive;
+  --gutter: clamp(16px, 5vw, 48px);
+  --measure: 1120px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--obsidian);
+  color: var(--pearl);
+  font-family: var(--display);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+a:focus-visible, .card:focus-visible { outline: var(--hairline) solid var(--gold); outline-offset: 4px; }
+
+.skip { position: absolute; left: -9999px; }
+.skip:focus { left: var(--gutter); top: 12px; background: var(--obsidian-raised); padding: 8px 12px; border: var(--hairline) solid var(--gold); }
+
+/* Header */
+.top {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px var(--gutter);
+  background: rgba(12, 10, 16, 0.92);
+  border-bottom: var(--hairline) solid var(--gold-quiet);
+}
+.top nav { display: flex; gap: clamp(14px, 3vw, 32px); }
+.top nav a {
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pearl-muted);
+  transition: color .2s;
+}
+.top nav a:hover { color: var(--pearl); }
+.mark img { display: block; }
+
+main { max-width: var(--measure); margin: 0 auto; padding: 0 var(--gutter); }
+
+/* Labels and headings */
+.label { margin: 0; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pearl-muted); }
+
+section { padding: clamp(64px, 10vw, 120px) 0; border-top: var(--hairline) solid var(--gold-quiet); }
+section.hero { border-top: 0; }
+
+h2 {
+  margin: 0 0 8px; font-weight: 400; font-size: clamp(28px, 4vw, 40px); line-height: 1.15;
+  display: flex; align-items: baseline; gap: 20px;
+}
+h2 .num { font-size: 13px; letter-spacing: 0.18em; color: var(--gold); min-width: 2em; }
+.intro { margin: 0 0 48px; color: var(--pearl-muted); max-width: 52ch; padding-left: calc(2em + 20px); }
+h3 { margin: 0 0 8px; font-weight: 500; font-size: 21px; line-height: 1.3; }
+
+/* Hero */
+.hero { min-height: calc(100vh - 64px); display: flex; flex-direction: column; justify-content: center; }
+.hero h1 {
+  margin: 20px 0 0; font-weight: 400; letter-spacing: 0.01em;
+  font-size: clamp(44px, 9vw, 112px); line-height: 0.98;
+}
+.hero .role {
+  margin: 28px 0 0; padding-top: 20px; max-width: 640px;
+  border-top: var(--hairline) solid var(--gold);
+  font-size: clamp(20px, 2.6vw, 28px); font-style: italic;
+}
+.disciplines {
+  list-style: none; margin: 16px 0 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 4px 0;
+  font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--pearl-muted);
+}
+.disciplines li + li::before { content: "·"; color: var(--gold); margin: 0 14px; }
+.lede { margin: 40px 0 0; max-width: 46ch; font-size: clamp(18px, 2vw, 21px); }
+.motto { margin: 28px 0 0; font-family: var(--script); color: var(--gold); font-size: clamp(26px, 3vw, 34px); line-height: 1.2; }
+
+/* Grids */
+.grid { display: grid; gap: 0; border-top: var(--hairline) solid var(--gold-quiet); border-left: var(--hairline) solid var(--gold-quiet); }
+.grid > * { border-right: var(--hairline) solid var(--gold-quiet); border-bottom: var(--hairline) solid var(--gold-quiet); padding: 28px; }
+.grid.five { grid-template-columns: repeat(5, 1fr); }
+.grid.three { grid-template-columns: repeat(3, 1fr); }
+.grid article p, .card p { margin: 0; color: var(--pearl-muted); font-size: 15px; line-height: 1.6; }
+.grid.five article h3 { font-style: italic; font-weight: 400; font-size: 22px; color: var(--pearl); }
+
+/* Cards */
+.card { display: flex; flex-direction: column; gap: 10px; min-height: 220px; background: transparent; transition: background .25s; }
+a.card:hover { background: var(--obsidian-raised); }
+.card h3 { margin: 4px 0 0; }
+.card .stack { margin-top: auto; font-size: 12px; letter-spacing: 0.08em; color: var(--gold); }
+.card .soon { margin-top: auto; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-quiet); }
+.card.pending h3 { color: var(--pearl-muted); font-weight: 400; }
+
+/* Eras */
+.eras { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); border-top: var(--hairline) solid var(--gold); }
+.eras li { padding: 24px 24px 0 0; position: relative; }
+.eras li::before { content: ""; position: absolute; top: -4px; left: 0; width: 7px; height: 7px; background: var(--obsidian); border: var(--hairline) solid var(--gold); transform: rotate(45deg); }
+.eras li:last-child::before { background: var(--crimson); }
+.era { display: block; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin: 8px 0 12px; }
+.eras p { margin: 0; color: var(--pearl-muted); font-size: 15px; }
+
+/* Contact */
+.links { list-style: none; margin: 32px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 12px 48px; }
+.links a { font-size: clamp(22px, 3vw, 30px); border-bottom: var(--hairline) solid var(--gold-quiet); padding-bottom: 4px; transition: border-color .2s; }
+.links a:hover { border-color: var(--gold); }
+.place { margin: 32px 0 0; color: var(--pearl-muted); font-size: 14px; letter-spacing: 0.06em; }
+
+/* Footer */
+footer {
+  max-width: var(--measure); margin: 0 auto; padding: 48px var(--gutter) 64px;
+  border-top: var(--hairline) solid var(--gold); display: flex; align-items: center; gap: 20px;
+}
+footer p { margin: 0; font-size: 12px; letter-spacing: 0.08em; color: var(--pearl-muted); }
+
+/* Responsive */
+@media (max-width: 1000px) {
+  .grid.five { grid-template-columns: repeat(2, 1fr); }
+  .grid.three { grid-template-columns: repeat(2, 1fr); }
+  .eras { grid-template-columns: repeat(2, 1fr); row-gap: 40px; }
+}
+@media (max-width: 620px) {
+  .top nav a:nth-child(3) { display: none; }
+  .grid.five, .grid.three { grid-template-columns: 1fr; }
+  .eras { grid-template-columns: 1fr; border-top: 0; row-gap: 32px; }
+  .eras li { border-top: var(--hairline) solid var(--gold); }
+  .intro { padding-left: 0; }
+  h2 { gap: 12px; }
+  .grid > * { padding: 22px; }
+}
