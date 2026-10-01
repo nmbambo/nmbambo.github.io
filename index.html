@@ -22,7 +22,7 @@
 <header class="top">
   <a class="mark" href="#top" aria-label="Home"><img src="assets/rose.svg" alt="" width="28" height="28"></a>
   <nav aria-label="Sections">
-    <a href="#practice">Practice</a>
+    <a href="method/">Method</a>
     <a href="architecture/">Architecture</a>
     <a href="#work">Work</a>
     <a href="#contact">Contact</a>
@@ -69,21 +69,32 @@
     </div>
   </section>
 
-  <section id="architecture" aria-labelledby="arch-h">
-    <h2 id="arch-h"><span class="num">II</span> Architecture</h2>
-    <p class="intro">Everything here is built on one reference design: the Meaning Operating System.</p>
-    <a class="feature" href="architecture/">
-      <p class="label">Reference architecture</p>
-      <h3>The Meaning Operating System</h3>
-      <p>A DuckLake lakehouse and a Postgres lakebase joined by metadata-driven master data; a semantic layer of nineteen models; a sovereign logic engine on the Decision IR; accountability traced back to the original mover; and a decision warranty evidenced by a post-quantum ledger.</p>
-      <p class="soon">Read the architecture →</p>
-    </a>
+  <section id="foundations" aria-labelledby="found-h">
+    <h2 id="found-h"><span class="num">II</span> Method and architecture</h2>
+    <p class="intro">Two foundations carry all of the work: a method for deciding, and an architecture that runs it.</p>
+    <div class="features">
+      <a class="feature" href="method/">
+        <p class="label">Methodology</p>
+        <h3>The Method</h3>
+        <p>From decision enablement to strategic coherence, execution and feedback, run through the Ingqiqo Disciplined Decision Cycle. Method, not headcount; instruments, not one-off reports; working shown, not hidden.</p>
+        <p class="soon">Read the method →</p>
+      </a>
+      <a class="feature" href="architecture/">
+        <p class="label">Reference architecture</p>
+        <h3>The Ingqiqo Spine</h3>
+        <p>Eight planes from strategy intent to feedback, on a DuckLake lakehouse and a Postgres lakebase joined by metadata-driven master data, with a sovereign logic engine, a post-quantum ledger and a decision warranty.</p>
+        <p class="soon">Read the architecture →</p>
+      </a>
+    </div>
   </section>
 
   <section id="work" aria-labelledby="work-h">
     <h2 id="work-h"><span class="num">III</span> Selected work</h2>
-    <p class="intro">A curated set of repositories. Each opens to its own home.</p>
-    <div class="grid three" id="projects"></div>
+    <p class="intro">Each piece is placed on the Spine and in the method, so it is clear what part of deciding it serves.</p>
+    <h3 class="group-h">Spine builds</h3>
+    <div class="grid three" id="projects-spine"></div>
+    <h3 class="group-h">Instruments of the method</h3>
+    <div class="grid three" id="projects-instrument"></div>
   </section>
 
   <section id="depth" aria-labelledby="depth-h">
@@ -134,12 +145,13 @@
 <script>
   (function () {
     var y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
-    var host = document.getElementById('projects'); if (!host || !window.PROJECTS) return;
+    if (!window.PROJECTS) return;
     window.PROJECTS.forEach(function (p) {
+      var host = document.getElementById('projects-' + (p.group || 'spine')); if (!host) return;
       var el = document.createElement(p.url ? 'a' : 'div');
       el.className = 'card' + (p.url ? '' : ' pending');
       if (p.url) el.href = p.url;
-      var tag = document.createElement('p'); tag.className = 'label'; tag.textContent = p.discipline || '';
+      var tag = document.createElement('p'); tag.className = 'label'; tag.textContent = (p.discipline || '') + (p.plane ? ' · ' + p.plane : '');
       var h = document.createElement('h3'); h.textContent = p.name;
       var d = document.createElement('p'); d.textContent = p.summary;
       el.appendChild(tag); el.appendChild(h); el.appendChild(d);

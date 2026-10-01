@@ -219,3 +219,14 @@ table.spec tbody tr:nth-child(odd) { background: var(--obsidian-raised); }
 .feature p { margin: 0; max-width: 64ch; color: var(--pearl-muted); }
 .feature .soon { margin-top: 24px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
 @media (max-width: 620px) { .feature { margin-left: 0; padding: 24px; } }
+
+/* Home: two features, grouped work */
+.features { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-left: 56px; }
+.features .feature { margin-left: 0; }
+.group-h { margin: 40px 0 16px 56px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 400; color: var(--gold); }
+#work .grid { margin-left: 56px; }
+.facts { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+@media (max-width: 900px) { .features { grid-template-columns: 1fr; } }
+@media (max-width: 620px) { .features, .group-h, #work .grid { margin-left: 0; } }
+#practice .grid, #depth .eras, #contact .links, #contact .place { margin-left: 56px; }
+@media (max-width: 620px) { #practice .grid, #depth .eras, #contact .links, #contact .place { margin-left: 0; } }
