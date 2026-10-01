@@ -4,12 +4,11 @@ Portfolio of Nkosinathi Mbambo, Meaning Coherence Specialist — scientist, engi
 
 Plain HTML and CSS, no build step. Served by GitHub Pages from `main`.
 
-## Featuring a repository
+## Structure
 
-Edit `assets/projects.js`. Each entry becomes one card under Selected work:
+- `index.html` — the portfolio home
+- `work/<slug>/index.html` — one page per project
+- `assets/projects.js` — the cards under Selected work; each `url` points at a project page
+- `assets/site.css`, `assets/rose.svg` — the Ingqiqo identity
 
-```js
-{ name: "Repo name", discipline: "Engineer", summary: "One line.", stack: ["Databricks", "dbt"], url: "https://github.com/nmbambo/repo-name" }
-```
-
-An entry without a `url` shows as "In preparation".
+When a project's public repository opens, add a link to it on that project's page.

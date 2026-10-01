@@ -136,7 +136,9 @@
         var s = document.createElement('p'); s.className = 'stack'; s.textContent = p.stack.join(' · ');
         el.appendChild(s);
       }
-      if (!p.url) { var n = document.createElement('p'); n.className = 'soon'; n.textContent = 'In preparation'; el.appendChild(n); }
+      var n = document.createElement('p'); n.className = 'soon';
+      n.textContent = p.url ? (p.status || '') + '  →' : 'In preparation';
+      el.appendChild(n);
       host.appendChild(el);
     });
   })();

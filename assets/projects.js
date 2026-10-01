@@ -1,50 +1,78 @@
 /*
-  Selected work. Each entry becomes one card on the portfolio.
-  To feature a repository: give it a name, a discipline, a one-line summary,
-  its stack, and its url (https://github.com/nmbambo/<repo>).
-  An entry with no url shows as "In preparation".
+  Selected work. Each entry becomes one card on the portfolio and links to its page under /work/.
+  Generated from the project list; edit here directly for small changes.
 */
 window.PROJECTS = [
   {
-    name: "Placeholder — awaiting confirmation",
-    discipline: "Architect",
-    summary: "A reference architecture for meaning that holds across data, process and decision.",
-    stack: [],
-    url: ""
+    "name": "Meaning Infrastructure",
+    "discipline": "Architect",
+    "summary": "A reference architecture for meaning that holds across data, process and decision.",
+    "status": "Working master architecture",
+    "stack": [
+      "Architecture",
+      "Ontology",
+      "Semantics"
+    ],
+    "url": "work/meaning-infrastructure/"
   },
   {
-    name: "Placeholder — awaiting confirmation",
-    discipline: "Engineer",
-    summary: "A raw-to-gold data platform build, governed and auditable end to end.",
-    stack: [],
-    url: ""
+    "name": "Raw to Gold",
+    "discipline": "Engineer",
+    "summary": "A governed raw-to-gold data platform build, auditable end to end.",
+    "status": "Phase 1 in build",
+    "stack": [
+      "Databricks",
+      "Delta Lake",
+      "dbt"
+    ],
+    "url": "work/raw-to-gold/"
   },
   {
-    name: "Placeholder — awaiting confirmation",
-    discipline: "Modeller",
-    summary: "Terminology, taxonomy and ontology work that gives a domain one shared language.",
-    stack: [],
-    url: ""
+    "name": "Semantic Foundation",
+    "discipline": "Modeller",
+    "summary": "Terminology, taxonomy and ontology work that gives a domain one shared language.",
+    "status": "In preparation",
+    "stack": [
+      "Ontology modelling",
+      "Data modelling",
+      "Knowledge engineering"
+    ],
+    "url": "work/semantic-foundation/"
   },
   {
-    name: "Placeholder — awaiting confirmation",
-    discipline: "Analyst",
-    summary: "Analysis that turns workforce and employment economics into decisions people can defend.",
-    stack: [],
-    url: ""
+    "name": "EETE — Workforce Economics",
+    "discipline": "Analyst",
+    "summary": "Turning workforce and employment economics into decisions people can defend.",
+    "status": "Pilot stage",
+    "stack": [
+      "Decision intelligence",
+      "Labour economics",
+      "Analytics"
+    ],
+    "url": "work/eete-workforce-economics/"
   },
   {
-    name: "Placeholder — awaiting confirmation",
-    discipline: "Scientist",
-    summary: "Testing whether the evidence behind a decision actually supports it.",
-    stack: [],
-    url: ""
+    "name": "Decision Evidence Lab",
+    "discipline": "Scientist",
+    "summary": "Testing whether the evidence behind a decision actually supports it.",
+    "status": "In preparation",
+    "stack": [
+      "Statistics",
+      "Experiment design",
+      "Causal inference"
+    ],
+    "url": "work/decision-evidence-lab/"
   },
   {
-    name: "Placeholder — awaiting confirmation",
-    discipline: "Architect",
-    summary: "Decision representation and accountability, made machine and human readable.",
-    stack: [],
-    url: ""
+    "name": "Decision IR",
+    "discipline": "Architect",
+    "summary": "Decision representation and accountability, made machine and human readable.",
+    "status": "Schema defined; ledger in build",
+    "stack": [
+      "Schema design",
+      "Event sourcing",
+      "Cryptographic hashing"
+    ],
+    "url": "work/decision-ir/"
   }
 ];
