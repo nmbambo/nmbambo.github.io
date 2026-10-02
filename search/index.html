@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Search — Nkosinathi Mbambo</title>
+<meta name="description" content="Boolean search across the portfolio and the public pages of the Ingqiqo booklets, with an agent that proposes the best search algorithm and a person who decides. Built event-sourced, in the browser.">
+<meta name="theme-color" content="#0C0A10">
+<meta property="og:image" content="https://nmbambo.github.io/assets/portrait.jpg">
+<link rel="icon" href="../assets/rose-small.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../" aria-label="Home"><img src="../assets/rose-small.svg" alt="" width="28" height="28"></a>
+  <nav aria-label="Sections">
+    <a href="../method/">Method</a>
+    <a href="../architecture/">Architecture</a>
+    <a href="../#work">Work</a>
+    <a href="../engage/">Engage</a>
+    <a href="./" aria-current="page">Search</a>
+    <a href="../#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="main" class="project arch searchpage">
+
+  <section class="hero project-hero">
+    <p class="byline"><img class="portrait xs" src="../assets/portrait.jpg" alt="" width="40" height="40"><a href="../">Nkosinathi Mbambo</a></p>
+    <p class="label">Search</p>
+    <h1>Ask the portfolio</h1>
+    <p class="role">Boolean search strings across every page here and the public pages of the booklets. An agent proposes the search method; you decide.</p>
+
+    <form id="form" class="searchbar" role="search" autocomplete="off">
+      <label class="visually-hidden" for="q">Search</label>
+      <input id="q" type="search" placeholder='decision AND (warranty OR canvas)' disabled>
+      <label class="visually-hidden" for="mode">Search method</label>
+      <select id="mode" title="Search method">
+        <option value="auto">Agent proposes</option>
+        <option value="boolean">Boolean</option>
+        <option value="bm25">Keyword (BM25)</option>
+        <option value="fuzzy">Fuzzy</option>
+        <option value="prefix">Prefix</option>
+        <option value="phrase">Phrase</option>
+      </select>
+      <button type="submit">Search</button>
+    </form>
+    <p id="status" class="status" aria-live="polite">Loading…</p>
+    <div class="tries">
+      <span class="k">Try</span>
+      <button type="button" class="chip" data-try='decision AND (warranty OR canvas)'>decision AND (warranty OR canvas)</button>
+      <button type="button" class="chip" data-try='"human in the loop"'>"human in the loop"</button>
+      <button type="button" class="chip" data-try='title:spine'>title:spine</button>
+      <button type="button" class="chip" data-try='type:booklet AND pedigree'>type:booklet AND pedigree</button>
+      <button type="button" class="chip" data-try='cohrence warrnaty'>cohrence warrnaty</button>
+      <button type="button" class="chip" data-try='deci'>deci</button>
+      <button type="button" class="chip" data-try='solver -quantum'>solver -quantum</button>
+    </div>
+  </section>
+
+  <section aria-labelledby="r-h" class="results-wrap">
+    <h2 id="r-h" class="visually-hidden">Results</h2>
+    <div class="why" id="why" aria-live="polite"></div>
+    <p class="count" id="count"></p>
+    <ol class="hits" id="results"></ol>
+  </section>
+
+  <section aria-labelledby="s1">
+    <h2 id="s1"><span class="num">I</span> Writing a search string</h2>
+    <div class="tw"><table class="spec">
+      <thead><tr><th scope="col">Write</th><th scope="col">Finds</th></tr></thead>
+      <tbody>
+        <tr><td><code>meaning coherence</code></td><td>Both words (implicit AND), ranked</td></tr>
+        <tr><td><code>warranty OR canvas</code> · <code>a | b</code></td><td>Either word</td></tr>
+        <tr><td><code>solver NOT quantum</code> · <code>-quantum</code> · <code>!quantum</code></td><td>Excludes a word</td></tr>
+        <tr><td><code>+moloto framework</code></td><td>Requires moloto; framework helps ranking</td></tr>
+        <tr><td><code>"human in the loop"</code></td><td>The exact phrase, in order</td></tr>
+        <tr><td><code>decision AND (warranty OR canvas)</code></td><td>Grouping with parentheses</td></tr>
+        <tr><td><code>title:spine</code> · <code>section:"decision ir"</code></td><td>Search one field: title, section, text, tag, type, source</td></tr>
+        <tr><td><code>type:booklet</code> · <code>type:work</code> · <code>type:note</code></td><td>Limit to booklet pages, work pages, notes, method or architecture</td></tr>
+        <tr><td><code>warrant*</code></td><td>Words starting with warrant</td></tr>
+      </tbody>
+    </table></div>
+    <p class="body note">Operators are uppercase. A lowercase “and” is just a word. If a string can't be read, you're told where, and the words are searched plainly instead.</p>
+  </section>
+
+  <section aria-labelledby="s2">
+    <h2 id="s2"><span class="num">II</span> The agent that feels for the method</h2>
+    <p class="body">Every query is read for its shape: operators or fields, quotes, a word that isn't in the vocabulary, a short fragment, or plain words. For each shape the agent keeps a belief about which of five methods serves best, and samples from those beliefs (Thompson sampling) to propose one. It explains why. You can switch.</p>
+    <p class="body">It learns only from what you do: opening a result near the top counts for the method; a search with no results counts against it; switching methods counts against the proposal and for your choice. Those lessons live in your browser's own event log and nowhere else.</p>
+    <div class="tw"><table class="spec" id="stats"></table></div>
+    <p class="body note">Expected usefulness per method and query shape, between 0 and 1. Highlighted cells have learnt from your searches; the rest are starting beliefs.</p>
+  </section>
+
+  <section aria-labelledby="s3">
+    <h2 id="s3"><span class="num">III</span> How this page is built</h2>
+    <p class="body">The page is an event-sourced system in miniature, running entirely in your browser on a static host.</p>
+    <ol class="layers">
+      <li><span class="layer-name">Change data capture</span><span class="layer-desc">On every publish, a build step diffs the site and the booklets' public pages against the last captured state and appends ContentAdded, ContentChanged or ContentRemoved events to an append-only log. Event ids are content hashes, so re-running captures nothing twice.</span></li>
+      <li><span class="layer-name">Event store</span><span class="layer-desc">Your browser keeps an append-only log in IndexedDB. Content events replay into it on each visit; your searches are appended as commands become events. Appending an event that already exists does nothing.</span></li>
+      <li><span class="layer-name">Event bus</span><span class="layer-desc">mitt publishes each newly stored event to whoever is listening.</span></li>
+      <li><span class="layer-name">Idempotent projectors</span><span class="layer-desc">Three projectors fold events into read models: the search index, the agent's beliefs, and your recent searches. Each keeps a checkpoint and ignores anything it has already applied, so replaying the whole log gives the same state.</span></li>
+      <li><span class="layer-name">Queries</span><span class="layer-desc">Search reads only from the read models, never from the log: the CQRS split between writing what happened and reading what it means.</span></li>
+      <li><span class="layer-name">The seam to a real backend</span><span class="layer-desc">Broker and store adapters point at a reference stack: Kafka or Solace PubSub+ as the broker, KurrentDB or Message DB as the event store, and Debezium, Airbyte or OLake for database change capture. They are off on this public page.</span></li>
+    </ol>
+    <div class="cols-log">
+      <div><p class="k">Your event log, live</p><ol class="log" id="log"></ol><p class="muted small" id="positions"></p></div>
+      <div><p class="k">Your recent searches</p><div id="recent" class="recent"></div>
+        <p class="small"><button type="button" class="linkish" id="forget">Forget my searches</button></p></div>
+    </div>
+    <p class="back"><a href="../work/cdc-head-to-head/">The CDC head-to-head →</a> &nbsp; <a href="https://github.com/nmbambo/nmbambo.github.io/tree/master/reference-stack">The reference stack →</a></p>
+  </section>
+
+</main>
+
+<footer>
+  <img src="../assets/rose.svg" alt="Ingqiqo rose" width="40" height="40">
+  <p>© 2026 Nkosinathi Mbambo · Ingqiqo Executables (Pty) Ltd</p>
+</footer>
+<script type="module" src="../assets/search/app.mjs"></script>
+</body>
+</html>

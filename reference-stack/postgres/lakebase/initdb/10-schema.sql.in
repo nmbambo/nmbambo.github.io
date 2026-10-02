@@ -1,0 +1,41 @@
+-- Synthetic lakebase schema. SYNTHETIC DATA ONLY (POPIA): no real people, no real organisations.
+-- Variables supplied by 00-init.sh: :cdc_user, :cdc_password
+
+CREATE TABLE parties (
+  party_id    bigint PRIMARY KEY,
+  label       text        NOT NULL,                       -- 'Synthetic Party 000123'; never a real name
+  kind        text        NOT NULL CHECK (kind IN ('individual','organisation','committee')),
+  region      text        NOT NULL,
+  created_at  timestamptz NOT NULL DEFAULT now(),
+  updated_at  timestamptz NOT NULL DEFAULT now()
+);
+
+CREATE TABLE decisions (
+  decision_id  bigint PRIMARY KEY,
+  party_id     bigint      NOT NULL REFERENCES parties(party_id),
+  title        text        NOT NULL,
+  status       text        NOT NULL CHECK (status IN ('open','deliberating','decided','superseded')),
+  stakes       smallint    NOT NULL CHECK (stakes BETWEEN 1 AND 5),
+  payload      jsonb       NOT NULL DEFAULT '{}'::jsonb,
+  workload_seq bigint,                                    -- set by the CDC harness; NULL for seed rows
+  created_at   timestamptz NOT NULL DEFAULT now(),
+  updated_at   timestamptz NOT NULL DEFAULT now()
+);
+
+CREATE TABLE decision_events (
+  event_id     bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  decision_id  bigint      NOT NULL,                      -- no FK: events outlive deleted decisions
+  event_type   text        NOT NULL,                      -- PascalCase past tense, like the site's envelope
+  payload      jsonb       NOT NULL DEFAULT '{}'::jsonb,
+  occurred_at  timestamptz NOT NULL DEFAULT now()
+);
+CREATE INDEX decision_events_decision_idx ON decision_events (decision_id);
+
+-- Replication role for CDC tools (least privilege: replicate + read the three tables).
+CREATE ROLE :"cdc_user" WITH LOGIN REPLICATION PASSWORD :'cdc_password';
+GRANT CONNECT ON DATABASE lakebase TO :"cdc_user";
+GRANT USAGE ON SCHEMA public TO :"cdc_user";
+GRANT SELECT ON parties, decisions, decision_events TO :"cdc_user";
+
+-- Explicit publication (not FOR ALL TABLES) so projector/other tables never leak into CDC.
+CREATE PUBLICATION ingqiqo_pub FOR TABLE parties, decisions, decision_events;

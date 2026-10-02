@@ -1,0 +1,22 @@
+# Local secrets and runtime state. Never commit these.
+.env
+*.env.local
+__pycache__/
+*.pyc
+.venv/
+venv/
+# Harness output is measured data from YOUR machine; commit deliberately, not by accident.
+results/*.json
+results/*.md
+!results/.gitkeep
+# OLake runtime files (state, generated streams, parquet output)
+cdc/olake/config/source.json
+cdc/olake/config/streams.json
+cdc/olake/config/state.json
+cdc/olake/config/source-*.json
+cdc/olake/config/destination-*.json
+cdc/olake/config/state-*.json
+cdc/olake/config/destination.json
+cdc/olake/out/
+# Airbyte connection ids / tokens kept locally
+cdc/airbyte/airbyte.local.env

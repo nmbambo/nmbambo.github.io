@@ -1,0 +1,6 @@
+{
+  "type": "PARQUET",
+  "writer": {
+    "local_path": "/mnt/out"
+  }
+}

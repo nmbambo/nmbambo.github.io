@@ -88,6 +88,20 @@ window.PROJECTS = [
     "url": "work/decision-ir/"
   },
   {
+    "group": "spine",
+    "plane": "L1 Evidence · L7 Execution & Feedback",
+    "name": "CDC head-to-head: Debezium, Airbyte, OLake",
+    "discipline": "Engineer",
+    "summary": "Three change-data-capture tools, one source, one workload, one harness: a decision record built before the answer is known.",
+    "status": "Harness ready · not yet measured",
+    "stack": [
+      "Debezium",
+      "OLake",
+      "Airbyte"
+    ],
+    "url": "work/cdc-head-to-head/"
+  },
+  {
     "group": "instrument",
     "plane": "L1 Evidence · L7 Feedback",
     "name": "Organisational Debt Diagnostic",

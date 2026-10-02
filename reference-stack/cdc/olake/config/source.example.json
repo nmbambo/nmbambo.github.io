@@ -1,0 +1,16 @@
+{
+  "host": "postgres-lakebase",
+  "port": 5432,
+  "database": "lakebase",
+  "username": "cdc_reader",
+  "password": "REPLACE-WITH-CDC_PASSWORD-from-.env",
+  "schemas": ["public"],
+  "ssl": { "mode": "disable" },
+  "update_method": {
+    "replication_slot": "olake_slot",
+    "publication": "ingqiqo_pub",
+    "initial_wait_time": 20
+  },
+  "max_threads": 4,
+  "retry_count": 3
+}

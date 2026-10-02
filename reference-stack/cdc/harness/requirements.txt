@@ -1,0 +1,4 @@
+# Pinned. Versions resolved from PyPI on 2026-10-02 in a throwaway venv (Python 3.11).
+psycopg[binary]==3.3.6
+confluent-kafka==2.15.1
+pyarrow==25.0.1          # only needed to read OLake's Parquet output

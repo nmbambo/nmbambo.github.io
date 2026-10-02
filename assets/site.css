@@ -334,3 +334,45 @@ a.inline { color: var(--gold); border-bottom: var(--hairline) solid var(--gold-q
 .project .grid h3 { font-style: italic; font-weight: 400; }
 .project .body.note { margin-top: 24px; color: var(--pearl-muted); font-size: 16px; font-style: italic; }
 @media (max-width: 620px) { .project .grid { margin-left: 0; } }
+
+/* Search page */
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.searchbar { display: flex; gap: 0; margin: 36px 0 0; max-width: 860px; border: var(--hairline) solid var(--gold); }
+.searchbar input, .searchbar select, .searchbar button { font-family: var(--display, "Bodoni Moda", Georgia, serif); font-size: 17px; color: var(--pearl); background: var(--obsidian-raised); border: 0; border-radius: 0; padding: 14px 16px; }
+.searchbar input { flex: 1; min-width: 0; }
+.searchbar input::placeholder { color: var(--pearl-muted); opacity: .6; }
+.searchbar select { border-left: var(--hairline) solid var(--gold-quiet); font-size: 14px; }
+.searchbar button { border-left: var(--hairline) solid var(--gold); font-size: 12px; letter-spacing: .2em; text-transform: uppercase; cursor: pointer; }
+.searchbar :focus-visible { outline: var(--hairline) solid var(--gold); outline-offset: -3px; }
+.status { margin: 12px 0 0; font-size: 13px; color: var(--pearl-muted); font-style: italic; }
+.tries { margin: 18px 0 0; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; max-width: 860px; }
+.chip { font-family: inherit; font-size: 13px; color: var(--pearl-muted); background: transparent; border: var(--hairline) solid var(--gold-quiet); border-radius: 0; padding: 5px 10px; cursor: pointer; }
+.chip:hover { color: var(--pearl); border-color: var(--gold); }
+.results-wrap { padding-top: 40px; }
+.why { max-width: 760px; font-size: 15px; color: var(--pearl-muted); line-height: 1.6; }
+.why strong { color: var(--pearl); font-weight: 500; }
+.why .k { display: inline; }
+.count { margin: 10px 0 0; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--gold-quiet); }
+.hits { list-style: none; margin: 18px 0 0; padding: 0; max-width: 860px; border-top: var(--hairline) solid var(--gold-quiet); }
+.hit { padding: 18px 0; border-bottom: var(--hairline) solid var(--gold-quiet); }
+.hit.none { color: var(--pearl-muted); font-style: italic; }
+.hit-meta { margin: 0 0 6px; font-size: 12px; color: var(--pearl-muted); letter-spacing: .04em; }
+.hit-meta .tag { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
+.hit-title { font-size: 20px; color: var(--pearl); }
+a.hit-title { border-bottom: var(--hairline) solid var(--gold-quiet); }
+a.hit-title:hover { border-color: var(--gold); }
+.hit-snip { margin: 8px 0 0; color: var(--pearl-muted); font-size: 15px; line-height: 1.6; }
+.hit-snip mark, .why mark { background: transparent; color: var(--pearl); border-bottom: var(--hairline) solid var(--gold); }
+.searchpage code { font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; font-size: 13px; color: var(--pearl); }
+#stats td.learnt { color: var(--gold); }
+.cols-log { margin: 32px 0 0 56px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; max-width: 860px; }
+.log { list-style: none; margin: 0; padding: 0; font-size: 13px; color: var(--pearl-muted); border-top: var(--hairline) solid var(--gold-quiet); }
+.log li { padding: 6px 0; border-bottom: var(--hairline) solid var(--gold-quiet); }
+.log strong { color: var(--pearl); font-weight: 500; }
+.log .pos { color: var(--gold-quiet); font-variant-numeric: tabular-nums; }
+.recent { display: flex; flex-wrap: wrap; gap: 6px; }
+.muted { color: var(--pearl-muted); }
+.small { font-size: 13px; }
+.linkish { font-family: inherit; font-size: 13px; background: none; border: 0; padding: 0; color: var(--gold); border-bottom: var(--hairline) solid var(--gold-quiet); cursor: pointer; margin-top: 14px; }
+@media (max-width: 760px) { .cols-log { grid-template-columns: 1fr; margin-left: 0; } .searchbar { flex-wrap: wrap; } .searchbar input { flex-basis: 100%; } .searchbar select { border-left: 0; border-top: var(--hairline) solid var(--gold-quiet); flex: 1; } .searchbar button { border-top: var(--hairline) solid var(--gold-quiet); } }
+@media (max-width: 620px) { .top nav a:nth-child(2) { display: none; } }

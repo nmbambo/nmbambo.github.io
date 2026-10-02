@@ -1,0 +1,228 @@
+# Reference stack for the event-sourced search site. Local, single workstation, NOT production.
+# Run:  cp .env.example .env && docker compose up -d
+# Optional profiles:  --profile olake   --profile solace
+# Image tags were checked with `docker manifest inspect` on 2026-10-02; see README "Image tags".
+name: ingqiqo-reference
+
+x-restart: &restart
+  restart: unless-stopped
+
+services:
+  # ---------------------------------------------------------------- CDC source ("lakebase")
+  postgres-lakebase:
+    image: postgres:16.10-bookworm
+    <<: *restart
+    command: >
+      postgres
+      -c wal_level=logical
+      -c max_wal_senders=10
+      -c max_replication_slots=10
+      -c max_slot_wal_keep_size=2GB
+    environment:
+      POSTGRES_USER: ${LAKEBASE_USER:-lakebase}
+      POSTGRES_PASSWORD: ${LAKEBASE_PASSWORD:-change-me-lakebase}
+      POSTGRES_DB: ${LAKEBASE_DB:-lakebase}
+      CDC_USER: ${CDC_USER:-cdc_reader}
+      CDC_PASSWORD: ${CDC_PASSWORD:-change-me-cdc}
+    volumes:
+      - lakebase-data:/var/lib/postgresql/data
+      - ./postgres/lakebase/initdb:/docker-entrypoint-initdb.d:ro
+    ports:
+      - "127.0.0.1:${LAKEBASE_PORT:-15432}:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  # ---------------------------------------------------------------- broker (KRaft, no ZooKeeper)
+  kafka:
+    image: apache/kafka:4.1.2
+    <<: *restart
+    environment:
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@kafka:9093
+      KAFKA_LISTENERS: INTERNAL://:9092,CONTROLLER://:9093,EXTERNAL://:29092
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka:9092,EXTERNAL://localhost:${KAFKA_EXTERNAL_PORT:-29092}
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_NUM_PARTITIONS: 3
+    volumes:
+      - kafka-data:/var/lib/kafka/data
+    ports:
+      - "127.0.0.1:${KAFKA_EXTERNAL_PORT:-29092}:29092"
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/kafka/bin/kafka-broker-api-versions.sh --bootstrap-server localhost:9092 >/dev/null 2>&1"]
+      interval: 10s
+      timeout: 10s
+      retries: 20
+      start_period: 20s
+
+  # Confluent REST Proxy: the browser's KafkaRestBroker posts to /v3/clusters/{id}/topics/{topic}/records
+  kafka-rest:
+    image: confluentinc/cp-kafka-rest:8.0.8
+    <<: *restart
+    depends_on:
+      kafka:
+        condition: service_healthy
+    environment:
+      KAFKA_REST_HOST_NAME: kafka-rest
+      KAFKA_REST_BOOTSTRAP_SERVERS: kafka:9092
+      KAFKA_REST_LISTENERS: http://0.0.0.0:8082
+      # CORS so a page served from ALLOWED_ORIGINS can POST from the browser (Jetty CrossOriginFilter).
+      KAFKA_REST_ACCESS_CONTROL_ALLOW_ORIGIN: ${ALLOWED_ORIGINS:-http://localhost:8000}
+      KAFKA_REST_ACCESS_CONTROL_ALLOW_METHODS: GET,POST,OPTIONS
+    ports:
+      - "127.0.0.1:${KAFKA_REST_PORT:-8082}:8082"
+
+  # ---------------------------------------------------------------- CDC tool 1: Debezium
+  debezium-connect:
+    image: quay.io/debezium/connect:3.7.0.Final
+    <<: *restart
+    depends_on:
+      kafka:
+        condition: service_healthy
+      postgres-lakebase:
+        condition: service_healthy
+    environment:
+      BOOTSTRAP_SERVERS: kafka:9092
+      GROUP_ID: debezium-connect
+      CONFIG_STORAGE_TOPIC: _connect_configs
+      OFFSET_STORAGE_TOPIC: _connect_offsets
+      STATUS_STORAGE_TOPIC: _connect_status
+      CONFIG_STORAGE_REPLICATION_FACTOR: 1
+      OFFSET_STORAGE_REPLICATION_FACTOR: 1
+      STATUS_STORAGE_REPLICATION_FACTOR: 1
+      # Keep the DB password out of the connector JSON: resolve ${env:CDC_PASSWORD} inside Connect.
+      CONNECT_CONFIG_PROVIDERS: env
+      CONNECT_CONFIG_PROVIDERS_ENV_CLASS: org.apache.kafka.common.config.provider.EnvVarConfigProvider
+      CDC_PASSWORD: ${CDC_PASSWORD:-change-me-cdc}
+    ports:
+      - "127.0.0.1:${CONNECT_PORT:-8083}:8083"
+
+  # ---------------------------------------------------------------- event stores
+  kurrentdb:
+    image: docker.kurrent.io/kurrent-latest/kurrentdb:25.1.0
+    <<: *restart
+    environment:
+      KURRENTDB_CLUSTER_SIZE: 1
+      KURRENTDB_RUN_PROJECTIONS: None
+      KURRENTDB_NODE_PORT: 2113
+      KURRENTDB_INSECURE: "true"            # local single node only; never expose this port
+      KURRENTDB_ENABLE_ATOM_PUB_OVER_HTTP: "true"
+    volumes:
+      - kurrentdb-data:/var/lib/kurrentdb
+    ports:
+      - "127.0.0.1:${KURRENTDB_PORT:-2113}:2113"
+    healthcheck:
+      test: ["CMD-SHELL", "curl --fail --silent http://localhost:2113/health/live || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 24
+      start_period: 10s
+
+  messagedb:
+    build: ./messagedb
+    image: ingqiqo-reference/messagedb:1.3.0-pg16
+    <<: *restart
+    environment:
+      POSTGRES_USER: ${MESSAGEDB_USER:-postgres}
+      POSTGRES_PASSWORD: ${MESSAGEDB_PASSWORD:-change-me-messagedb}
+    volumes:
+      - messagedb-data:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:${MESSAGEDB_PORT:-15433}:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d message_store"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 15s
+
+  # ---------------------------------------------------------------- the site's server-side seam
+  gateway:
+    build: ./gateway
+    image: ingqiqo-reference/gateway:0.1.0
+    <<: *restart
+    depends_on:
+      kurrentdb:
+        condition: service_healthy
+      messagedb:
+        condition: service_healthy
+      kafka-rest:
+        condition: service_started
+    environment:
+      STORE: ${STORE:-kurrentdb}
+      KURRENTDB_URI: kurrentdb://kurrentdb:2113?tls=false
+      MESSAGEDB_DSN: postgresql://${MESSAGEDB_USER:-postgres}:${MESSAGEDB_PASSWORD:-change-me-messagedb}@messagedb:5432/message_store
+      KAFKA_REST_URL: http://kafka-rest:8082
+      KAFKA_TOPIC: ingqiqo.events
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-http://localhost:8000}
+      SOLACE_REST_URL: ${SOLACE_REST_URL:-}
+      PORT: 8088
+    ports:
+      - "127.0.0.1:${GATEWAY_PORT:-8088}:8088"
+
+  projector:
+    build: ./projector
+    image: ingqiqo-reference/projector:0.1.0
+    <<: *restart
+    depends_on:
+      kafka:
+        condition: service_healthy
+      postgres-lakebase:
+        condition: service_healthy
+    environment:
+      KAFKA_BOOTSTRAP: kafka:9092
+      KAFKA_TOPIC: ingqiqo.events
+      KAFKA_GROUP: ingqiqo-projector
+      PROJECTIONS_DSN: postgresql://${LAKEBASE_USER:-lakebase}:${LAKEBASE_PASSWORD:-change-me-lakebase}@postgres-lakebase:5432/projections
+
+  # ---------------------------------------------------------------- CDC tool 2: OLake (profile "olake")
+  # OLake's CLI image is a one-shot batch runner (spec | check | discover | sync), not a daemon.
+  # `docker compose --profile olake run --rm olake <args>`; the harness drives it. See cdc/olake/README.md.
+  olake:
+    profiles: ["olake"]
+    image: olakego/source-postgres:v0.11.2
+    restart: "no"
+    depends_on:
+      postgres-lakebase:
+        condition: service_healthy
+    volumes:
+      - ./cdc/olake/config:/mnt/config
+      - ./cdc/olake/out:/mnt/out
+    command: ["sync", "--config", "/mnt/config/source.json", "--streams", "/mnt/config/streams.json",
+              "--destination", "/mnt/config/destination.json", "--state", "/mnt/config/state.json"]
+
+  # ---------------------------------------------------------------- Solace (profile "solace")
+  solace:
+    profiles: ["solace"]
+    image: solace/solace-pubsub-standard:10.26.7
+    <<: *restart
+    shm_size: 1g
+    ulimits:
+      core: 1
+      nofile:
+        soft: 2448
+        hard: 38048
+    environment:
+      username_admin_globalaccesslevel: admin
+      username_admin_password: ${SOLACE_ADMIN_PASSWORD:-change-me-solace}
+      system_scaling_maxconnectioncount: 100
+    ports:
+      - "127.0.0.1:${SOLACE_MGMT_PORT:-18080}:8080"   # PubSub+ Manager / SEMP
+      - "127.0.0.1:${SOLACE_REST_PORT:-9000}:9000"    # REST messaging (POST /TOPIC/{topic})
+      - "127.0.0.1:55555:55555"                       # SMF
+
+volumes:
+  lakebase-data:
+  kafka-data:
+  kurrentdb-data:
+  messagedb-data:

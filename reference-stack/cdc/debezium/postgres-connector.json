@@ -1,0 +1,31 @@
+{
+  "name": "lakebase-postgres",
+  "config": {
+    "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+    "tasks.max": "1",
+
+    "database.hostname": "postgres-lakebase",
+    "database.port": "5432",
+    "database.user": "cdc_reader",
+    "database.password": "${env:CDC_PASSWORD}",
+    "database.dbname": "lakebase",
+
+    "topic.prefix": "lakebase",
+    "table.include.list": "public.parties,public.decisions,public.decision_events",
+
+    "plugin.name": "pgoutput",
+    "slot.name": "debezium_ingqiqo",
+    "publication.name": "ingqiqo_pub",
+    "publication.autocreate.mode": "disabled",
+
+    "snapshot.mode": "initial",
+    "tombstones.on.delete": "true",
+    "decimal.handling.mode": "string",
+    "heartbeat.interval.ms": "10000",
+
+    "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "key.converter.schemas.enable": "false",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter.schemas.enable": "false"
+  }
+}

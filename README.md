@@ -21,3 +21,12 @@ When a project's public repository opens, add a link to it on that project's pag
 - `assets/rose.svg`, `assets/rose-small.svg` — Ingqiqo rose, revision 2 (Isibheqe geometry, amber sigil).
 
 Public-site rule: no prices, rate cards, financials, capacity figures, client data or company particulars.
+
+## Event-sourced search (October 2026)
+
+- `search/` — Boolean search strings over the site and the public pages of four booklets, with an agent that proposes the search method (Thompson sampling over query shapes) and a person who decides.
+- `assets/es/` — CQRS and event sourcing in the browser: append-only IndexedDB event store (idempotent by event id), mitt event bus (`assets/vendor/mitt.mjs`), idempotent projectors with checkpoints, adapters for Kafka REST, Solace PubSub+ REST and the reference-stack gateway (off by default in `config.json`).
+- `assets/search/` — tokenizer, field-aware inverted index, Boolean parser, five algorithms (boolean, BM25, fuzzy, prefix, phrase), the agent.
+- `scripts/build_corpus.py`, `scripts/cdc.py`, `.github/workflows/cdc.yml` — build-time change data capture into `data/events.ndjson` (append-only; ids are content hashes).
+- `reference-stack/` — Docker Compose reference: Postgres lakebase, Kafka, REST proxy, Debezium, KurrentDB, Message DB, OLake, optional Solace PubSub+, an event gateway and an idempotent projector, plus the CDC head-to-head harness. Validated, not yet run.
+- Tests: `node --test "tests/es/*.test.mjs" "tests/search/*.test.mjs"`; `python3 -m unittest discover -s tests/cdc`; `python3 -m unittest` in `reference-stack/{gateway,projector,cdc/harness}`.

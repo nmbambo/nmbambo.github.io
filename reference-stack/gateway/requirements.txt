@@ -1,0 +1,3 @@
+# Pinned. Versions resolved from PyPI on 2026-10-02 in a throwaway venv (Python 3.11).
+kurrentdbclient==1.3.3
+psycopg[binary]==3.3.6
