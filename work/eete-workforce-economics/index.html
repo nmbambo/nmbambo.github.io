@@ -45,9 +45,62 @@
   <section aria-labelledby="p1"><h2 id="p1"><span class="num">I</span> The problem</h2><p class="body">Employment is one of the largest economic agreements most people and firms make, yet it is priced and judged with little transparency on either side.</p></section>
   <section aria-labelledby="p2"><h2 id="p2"><span class="num">II</span> Approach</h2><ol class="steps"><li>Treat the employee as a service provider and the employment contract as a service agreement with measurable terms.</li><li>Analyse the economics of a role from both sides: what it costs, what it returns and how fairly it is priced.</li><li>Start with concierge-style pilots for recruiters and enterprise HR and rewards teams before building the full platform.</li><li>Turn each analysis into a decision a recruiter, employer or employee can explain and defend.</li></ol></section>
   <section aria-labelledby="p3"><h2 id="p3"><span class="num">III</span> Structure</h2><ol class="layers"><li><span class="layer-name">Inputs</span><span class="layer-desc">Role, contract and market data</span></li><li><span class="layer-name">Analysis</span><span class="layer-desc">Cost, value and fairness of the employment agreement</span></li><li><span class="layer-name">Decision</span><span class="layer-desc">A defensible recommendation with its evidence</span></li><li><span class="layer-name">Platform</span><span class="layer-desc">Career economics decision intelligence, after the pilots</span></li></ol></section>
+
+  <section aria-labelledby="x1"><h2 id="x1"><span class="num">·</span> What the engine does</h2>
+    <p class="body">EETE takes the details of a job offer and a candidate's own situation and works out what the offer really costs and really pays: after tax, after commute, after every mandatory cost the job imposes on daily life. It produces a plain signal, shows the numbers and what would change them, and stops there. It is not financial, tax, legal or employment advice.</p>
+    <div class="grid four-up">
+      <article><h3>Gross-to-net position</h3><p>What the offer pays before tax, and what actually lands after PAYE, UIF and retirement and medical deductions.</p></article>
+      <article><h3>Mandatory cost load</h3><p>Costs this specific job imposes: commute, a required wardrobe, self-supplied technology, location-driven housing. Never generic lifestyle spending.</p></article>
+      <article><h3>Effective hourly rate</h3><p>Net pay divided by the real hours the job takes, commute included. Equal salaries can differ sharply here.</p></article>
+      <article><h3>The signal</h3><p>Accept, caution or reject: a plain read of whether the numbers clear the published thresholds, the same for every candidate, every time.</p></article>
+    </div>
+    <div class="givens">
+      <div><p class="k">Cash surplus</p><p>Money in minus money out: the number a bank balance would show.</p></div>
+      <div><p class="k">Economic surplus</p><p>One step further: it also counts the value of the person's own time. A job can be cash-positive every month and still economically negative once you count how much of a life it takes.</p></div>
+    </div>
+  </section>
+  <section aria-labelledby="x2"><h2 id="x2"><span class="num">·</span> One calculation, five readers</h2>
+    <p class="body">Every report comes from the same underlying calculation, rendered for the person reading it. Nobody gets a different number; some readers get less detail.</p>
+    <div class="tw"><table class="spec">
+      <thead><tr><th scope="col">Report</th><th scope="col">For</th><th scope="col">What it shows</th></tr></thead>
+      <tbody>
+        <tr><td>Candidate Report</td><td>The candidate</td><td>Their own economics, resilience, role fit and relocation impact, never the employer's internal assessment of them</td></tr>
+        <tr><td>Offer Defensibility Report</td><td>The recruiter presenting the offer</td><td>The full hiring picture: cost of acceptance, churn risk, market context and business justification, alongside the candidate's economics</td></tr>
+        <tr><td>Total Cost of Employment Audit</td><td>HR, rewards and the hiring manager</td><td>The same internal picture as the recruiter's report</td></tr>
+        <tr><td>Regulatory Compliance Summary</td><td>A regulator or auditor</td><td>Process evidence: decision trace, signal confidence, version and hash integrity, with no granular personal-financial detail</td></tr>
+        <tr><td>Legal Preparation Record</td><td>Legal, for dispute preparation</td><td>Every section: the fullest record available</td></tr>
+      </tbody></table></div>
+    <p class="body note">Every report carries a decision-reasons section drawn only from figures already on the page. If a recruiter or employer decides differently from the signal, the report says so and records the reason they gave, so nobody reads a decision without knowing whether a person overrode the numbers. Each report also carries a right of reply.</p>
+  </section>
+  <section aria-labelledby="x3"><h2 id="x3"><span class="num">·</span> Six standing positions</h2>
+    <p class="body">What the platform does and doesn't do, held in the code rather than in a policy document.</p>
+    <div class="grid three">
+      <article><h3>No protected attributes</h3><p>Race, gender, disability, marital status, religion, health and credit or criminal-record data don't exist in the domain model. That's structural isolation, not a filter applied late.</p></article>
+      <article><h3>A human always decides</h3><p>The single autonomous mechanism only routes a report to a faster or more thorough review. It never issues a decision, and human overrides are disclosed on the report.</p></article>
+      <article><h3>Issued records are immutable</h3><p>Every report carries a cryptographic fingerprint anyone can recompute. A changed input produces a new report linked to the one it supersedes, never a silent edit.</p></article>
+      <article><h3>No bare numbers</h3><p>Every point estimate carries a range, robustness or sensitivity read. No module infers beyond structured input, and each states what it doesn't invent.</p></article>
+      <article><h3>Personal information protected</h3><p>The scanner sees only what it is explicitly given. Pilots run under a written operator agreement under POPIA, with purpose-limited processing and deletion on request.</p></article>
+      <article><h3>Real deletion</h3><p>A delete actually deletes. Only a minimal audit row with no personal information may remain, and nothing is presented as deleted when it isn't.</p></article>
+    </div>
+  </section>
+  <section aria-labelledby="x4"><h2 id="x4"><span class="num">·</span> Built as a data product</h2>
+    <p class="body">The engine's real asset is its contract: a typed calculation request in, a typed result out, exported as versioned JSON Schema. Integrations are built against the schema, never against source code, and input and output hashes give every result its lineage.</p>
+    <ol class="steps">
+      <li><strong>Model the input</strong>, optional with a sensible default, so existing requests keep validating.</li>
+      <li><strong>Model the output</strong>, with a plain statement of what it computed from and what it deliberately did not invent.</li>
+      <li><strong>Write a pure function</strong> that never fabricates a value; a missing signal is reported as missing.</li>
+      <li><strong>Wire it into the pipeline</strong> before the result is hashed.</li>
+      <li><strong>Bump the engine version</strong>, minor for anything additive.</li>
+      <li><strong>Test every load-bearing branch</strong>, not just that it runs.</li>
+      <li><strong>Expose it</strong> in the console if a reader needs to see it.</li>
+      <li><strong>Document it</strong> wherever it touches personal information or compliance.</li>
+      <li><strong>Verify it for real</strong>: tests, lint and schema export, then a live click-through.</li>
+    </ol>
+  </section>
+
   <section aria-labelledby="p4"><h2 id="p4"><span class="num">IV</span> Craft and next</h2>
     <p class="stack-line">Decision intelligence · Labour economics · Analytics</p>
-    <p class="body">Running the first pilots in South Africa, then publishing a sanitised case study.</p>
+    <p class="body">Running the first pilots in South Africa, then publishing a sanitised case study. The calculation methodology is published in plain language, formula by formula, alongside a client guide written for the people who actually read the reports.</p>
     <p class="back"><a href="../../#work">← All work</a> &nbsp; <a href="../../architecture/">The architecture →</a></p>
   </section>
   <section class="engage" aria-labelledby="eg">

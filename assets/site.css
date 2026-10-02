@@ -330,3 +330,7 @@ footer .foot-links { order: 3; margin-left: auto; font-size: 12px; letter-spacin
 footer .foot-links a { color: var(--pearl-muted); border-bottom: var(--hairline) solid var(--gold-quiet); }
 a.inline { color: var(--gold); border-bottom: var(--hairline) solid var(--gold-quiet); white-space: nowrap; }
 @media (max-width: 620px) { footer .foot-links { margin-left: 0; width: 100%; } }
+.project .grid { margin-top: 32px; margin-left: 56px; }
+.project .grid h3 { font-style: italic; font-weight: 400; }
+.project .body.note { margin-top: 24px; color: var(--pearl-muted); font-size: 16px; font-style: italic; }
+@media (max-width: 620px) { .project .grid { margin-left: 0; } }
