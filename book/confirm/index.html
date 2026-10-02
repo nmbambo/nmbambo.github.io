@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Confirm a conversation — Nkosinathi Mbambo</title>
+<meta name="description" content="Organiser page for a conversation request, and the attendee's confirmation. The request is read from the link and never leaves the browser.">
+<meta name="theme-color" content="#0C0A10">
+<link rel="icon" href="../../assets/rose-small.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../../" aria-label="Home"><img src="../../assets/rose-small.svg" alt="" width="28" height="28"></a>
+  <nav aria-label="Sections">
+    <a href="../../method/">Method</a>
+    <a href="../../architecture/">Architecture</a>
+    <a href="../../#work">Work</a>
+    <a href="../../engage/">Engage</a>
+    <a href="../../search/">Search</a>
+    <a href="../" aria-current="page">Book</a>
+    <a href="../../#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="main" class="project book">
+
+  <section class="hero project-hero">
+    <p class="label" id="cf-label">Book</p>
+    <h1 id="cf-title">Confirm a conversation</h1>
+    <p class="role" id="cf-role">Open the link from a request to see it here.</p>
+  </section>
+
+  <section id="cf-error" aria-labelledby="cf-err-h" hidden>
+    <h2 id="cf-err-h"><span class="num">·</span> This link cannot be read</h2>
+    <p class="body" id="cf-err-msg">The request in the link is missing or damaged.</p>
+    <p class="body note">Ask the sender for the link again, or <a class="inline" href="../">make a new request</a>.</p>
+  </section>
+
+  <div id="cf-organiser" hidden>
+    <section aria-labelledby="cf-h1">
+      <h2 id="cf-h1"><span class="num">I</span> The request</h2>
+      <dl class="facts" id="cf-facts"></dl>
+      <p class="k bk-sub">Reason</p>
+      <p class="body bk-reason" id="cf-reason"></p>
+      <p class="k bk-sub">Times asked for</p>
+      <ul class="plain-list" id="cf-asked"></ul>
+    </section>
+
+    <section aria-labelledby="cf-h2">
+      <h2 id="cf-h2"><span class="num">II</span> Choose the time</h2>
+      <fieldset class="bk-set"><legend class="k">Time</legend><div id="cf-choices"></div>
+        <div class="bk-field bk-other"><label class="k" for="cf-other">Another time, in SAST</label>
+          <input type="datetime-local" id="cf-other" step="900"></div></fieldset>
+      <fieldset class="bk-set"><legend class="k">Length</legend><div class="bk-opts" id="cf-durations"></div></fieldset>
+      <p class="status" id="cf-when" aria-live="polite"></p>
+    </section>
+
+    <section aria-labelledby="cf-h3">
+      <h2 id="cf-h3"><span class="num">III</span> Choose the platform</h2>
+      <fieldset class="bk-set"><legend class="k">Platform</legend>
+        <label class="bk-pick"><input type="radio" name="cfplat" value="proton-meet"><span><strong>Proton Meet</strong> End-to-end encrypted video in the browser.</span></label>
+        <label class="bk-pick"><input type="radio" name="cfplat" value="signal"><span><strong>Signal</strong> An encrypted call, by call link or at my number.</span></label>
+      </fieldset>
+      <div id="cf-proton" class="bk-panel">
+        <p class="cta-row"><a class="cta-primary" href="https://calendar.proton.me/" target="_blank" rel="noopener">Create the Meet link in Proton Calendar</a></p>
+        <p class="note-sm">Meet links are made inside a Proton Calendar event. <a class="inline" href="https://proton.me/support/calendar-meet" target="_blank" rel="noopener">How Proton makes them</a>.</p>
+        <div class="bk-field"><label class="k" for="cf-proton-link">Paste the Meet link</label>
+          <input type="url" id="cf-proton-link" placeholder="https://meet.proton.me/join/…" autocomplete="off"></div>
+      </div>
+      <div id="cf-signal" class="bk-panel" hidden>
+        <p class="note-sm">Call links are made in the Signal app. <a class="inline" href="https://support.signal.org/hc/en-us/articles/7860719423002-How-to-create-and-share-call-links" target="_blank" rel="noopener">How to create and share a call link</a>.</p>
+        <div class="bk-field"><label class="k" for="cf-signal-link">Paste the Signal call link</label>
+          <input type="url" id="cf-signal-link" placeholder="https://signal.link/call/#key=…" autocomplete="off"></div>
+        <label class="bk-none"><input type="checkbox" id="cf-signal-number"> <span>Call on Signal at my number +27 81 321 3766</span></label>
+      </div>
+    </section>
+
+    <section aria-labelledby="cf-h4">
+      <h2 id="cf-h4"><span class="num">IV</span> Reply</h2>
+      <ol class="steps bk-actions">
+        <li><strong>Download the invite.</strong> Import invite.ics into Proton Calendar, which can send it.
+          <p class="cta-row"><button type="button" class="cta-primary bk-btn" id="cf-invite">Download invite.ics</button></p></li>
+        <li><strong>Email the confirmation.</strong> Time in both zones, the platform link, and a link that lets them add it to their calendar.
+          <p class="cta-row"><a class="cta-primary" id="cf-confirm" href="#">Email the confirmation</a></p></li>
+        <li><strong>Propose another time.</strong> Choose “Another time” above, then write to them with it.
+          <p class="cta-row"><a class="cta-primary" id="cf-propose" href="#">Propose another time</a></p></li>
+        <li><strong>Decline politely.</strong> A courteous note, ready to send.
+          <p class="cta-row"><a class="cta-primary" id="cf-decline" href="#">Decline politely</a></p></li>
+      </ol>
+      <p class="status" id="cf-hint" aria-live="polite"></p>
+    </section>
+  </div>
+
+  <div id="cf-attendee" hidden>
+    <section aria-labelledby="at-h1">
+      <h2 id="at-h1"><span class="num">I</span> The meeting</h2>
+      <dl class="facts" id="at-facts"></dl>
+      <p class="body bk-reason" id="at-instructions"></p>
+      <p class="cta-row"><button type="button" class="cta-primary bk-btn" id="at-add">Add to calendar</button>
+        <a class="cta-quiet" id="at-join" href="#" hidden target="_blank" rel="noopener">Open the call link →</a></p>
+      <p class="note-sm">If the time stops working, tell me and we will move it.</p>
+    </section>
+    <section aria-labelledby="at-h2">
+      <h2 id="at-h2"><span class="num">II</span> A word of care</h2>
+      <p class="body">This confirmation should have reached you in an email from me. If it did not, do not use the link in it, and write to me at the address on the contact section of the home page.</p>
+    </section>
+  </div>
+
+</main>
+
+<footer>
+  <img src="../../assets/rose.svg" alt="Ingqiqo rose" width="40" height="40">
+  <p>© 2026 Nkosinathi Mbambo · Ingqiqo Executables (Pty) Ltd</p>
+</footer>
+<script type="module" src="../../assets/book/confirm.mjs"></script>
+</body>
+</html>

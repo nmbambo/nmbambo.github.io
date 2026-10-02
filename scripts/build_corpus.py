@@ -198,8 +198,8 @@ def site_docs(repo):
         rel = p.relative_to(repo)
         if any(part in SKIP_DIRS or part.startswith(".") for part in rel.parts[:-1]):
             continue
-        if rel.name == "404.html" or rel.parts[0] == "search":
-            continue  # not content: the error page and the search page itself
+        if rel.name == "404.html" or rel.parts[0] == "search" or rel.parts[:2] == ("book", "confirm"):
+            continue  # not content: the error page, the search page itself, and the organiser's confirm page
         files.append((rel, p))
     docs = []
     for rel, p in files:

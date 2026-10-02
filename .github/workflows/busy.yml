@@ -1,0 +1,41 @@
+name: Busy feed
+# Turns the private calendar feed in the repository secret BUSY_ICS_URL into data/busy.json:
+# start and end times only, no titles. If the secret is not set, this does nothing and writes no file.
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: busy
+  cancel-in-progress: false
+jobs:
+  feed:
+    runs-on: ubuntu-latest
+    env:
+      BUSY_ICS_URL: ${{ secrets.BUSY_ICS_URL }}
+    steps:
+      - name: No feed connected
+        if: env.BUSY_ICS_URL == ''
+        run: echo "BUSY_ICS_URL is not set; nothing to do."
+      - uses: actions/checkout@v4
+        if: env.BUSY_ICS_URL != ''
+      - uses: actions/setup-python@v5
+        if: env.BUSY_ICS_URL != ''
+        with:
+          python-version: "3.11"
+      - name: Build busy.json
+        if: env.BUSY_ICS_URL != ''
+        run: python3 scripts/busy.py
+      - name: Commit when it changed
+        if: env.BUSY_ICS_URL != ''
+        run: |
+          if [ -n "$(git status --porcelain data/busy.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/busy.json
+            git commit -m "Busy feed: update [skip ci]"
+            git pull --rebase
+            git push
+          fi

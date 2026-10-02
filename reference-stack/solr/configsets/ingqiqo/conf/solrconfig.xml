@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Minimal solrconfig for the Ingqiqo search read model (Solr 9.10, standalone core). -->
+<config>
+  <luceneMatchVersion>9.12</luceneMatchVersion>
+  <dataDir>${solr.data.dir:}</dataDir>
+  <directoryFactory name="DirectoryFactory" class="${solr.directoryFactory:solr.NRTCachingDirectoryFactory}"/>
+  <codecFactory class="solr.SchemaCodecFactory"/>
+
+  <!-- Managed schema, locked: no Schema API writes, no field guessing. Changes go through git. -->
+  <schemaFactory class="ManagedIndexSchemaFactory">
+    <bool name="mutable">false</bool>
+    <str name="managedSchemaResourceName">managed-schema.xml</str>
+  </schemaFactory>
+
+  <indexConfig>
+    <lockType>${solr.lock.type:native}</lockType>
+  </indexConfig>
+
+  <!-- The update log is what makes /get (real-time get) and _version_ optimistic concurrency work. -->
+  <updateHandler class="solr.DirectUpdateHandler2">
+    <updateLog>
+      <str name="dir">${solr.ulog.dir:}</str>
+    </updateLog>
+    <autoCommit>
+      <maxTime>15000</maxTime>
+      <openSearcher>false</openSearcher>
+    </autoCommit>
+    <autoSoftCommit>
+      <maxTime>1000</maxTime>
+    </autoSoftCommit>
+  </updateHandler>
+
+  <query>
+    <maxBooleanClauses>1024</maxBooleanClauses>
+    <filterCache size="256" initialSize="64" autowarmCount="0"/>
+    <queryResultCache size="256" initialSize="64" autowarmCount="0"/>
+    <documentCache size="256" initialSize="64" autowarmCount="0"/>
+    <enableLazyFieldLoading>true</enableLazyFieldLoading>
+    <useColdSearcher>false</useColdSearcher>
+  </query>
+
+  <requestDispatcher>
+    <requestParsers enableRemoteStreaming="false" enableStreamBody="false" multipartUploadLimitInKB="-1" formdataUploadLimitInKB="2048"/>
+    <httpCaching never304="true"/>
+  </requestDispatcher>
+
+  <!-- Defence in depth behind the gateway's allowlist: parser, fields, row cap and time cap are fixed here. -->
+  <requestHandler name="/select" class="solr.SearchHandler">
+    <lst name="defaults">
+      <str name="defType">edismax</str>
+      <str name="df">text</str>
+      <str name="q.op">AND</str>
+      <str name="wt">json</str>
+      <str name="fl">id,title,section,type,source,url,tags,score</str>
+      <str name="rows">10</str>
+    </lst>
+    <lst name="appends">
+      <str name="fq">-deleted:true</str>
+    </lst>
+    <lst name="invariants">
+      <str name="uf">title section text tags type source id</str>
+      <str name="timeAllowed">5000</str>
+    </lst>
+  </requestHandler>
+
+  <!-- Operator view for the live tests and for debugging: like /select but WITHOUT hiding tombstones (deleted:true), plain
+       lucene syntax. Never proxied by the gateway; reachable only on 127.0.0.1. -->
+  <requestHandler name="/audit" class="solr.SearchHandler">
+    <lst name="defaults">
+      <str name="defType">lucene</str>
+      <str name="df">text</str>
+      <str name="wt">json</str>
+      <str name="fl">*</str>
+      <str name="rows">1000</str>
+    </lst>
+  </requestHandler>
+
+  <queryResponseWriter name="json" class="solr.JSONResponseWriter">
+    <str name="content-type">application/json; charset=UTF-8</str>
+  </queryResponseWriter>
+</config>

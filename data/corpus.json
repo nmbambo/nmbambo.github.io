@@ -162,7 +162,7 @@
   "tags": [
    "architecture"
   ],
-  "text": "Want this architecture working for you? It is built to run inside your own boundary, on open tooling you own, with people deciding at every point that matters. I will tell you plainly which planes you need first and which you can leave for later. Start a conversation →",
+  "text": "Want this architecture working for you? It is built to run inside your own boundary, on open tooling you own, with people deciding at every point that matters. I will tell you plainly which planes you need first and which you can leave for later. Start a conversation →or book a time →",
   "title": "The Ingqiqo Spine",
   "type": "architecture",
   "url": "/architecture/#eg"
@@ -178,6 +178,90 @@
   "title": "The Ingqiqo Spine",
   "type": "architecture",
   "url": "/architecture/#hero"
+ },
+ {
+  "id": "book#b-call",
+  "section": "The call",
+  "source": "book/index.html",
+  "tags": [
+   "page"
+  ],
+  "text": "The call Platform Proton Meet End-to-end encrypted video, in the browser. Signal An encrypted call, through a call link or your number. Prepare my request",
+  "title": "Book a conversation",
+  "type": "page",
+  "url": "/book/#b-call"
+ },
+ {
+  "id": "book#b-how",
+  "section": "How it works",
+  "source": "book/index.html",
+  "tags": [
+   "page"
+  ],
+  "text": "How it works Choose a preferred time, and if you like an alternative. If none suits, say what would. Tell me who you are and what you are facing. Send the request from your own email, or copy it into Signal. It carries a private link for me. I choose the slot, create the call link and send you a confirmation. This page needs JavaScript to show the diary. You can still write to me directly from the contact section on the home page.",
+  "title": "Book a conversation",
+  "type": "page",
+  "url": "/book/#b-how"
+ },
+ {
+  "id": "book#b-priv",
+  "section": "What stays where",
+  "source": "book/index.html",
+  "tags": [
+   "page"
+  ],
+  "text": "What stays where This page keeps no server and no form service. Your details travel only in the email you send, the text you copy, and a private link inside it. Nothing is stored here, and nothing is sent until you press send in your own email app. The page notes, in your browser only, that a request was made: its length and platform, never your name or words.",
+  "title": "Book a conversation",
+  "type": "page",
+  "url": "/book/#b-priv"
+ },
+ {
+  "id": "book#b-time",
+  "section": "Choose a time",
+  "source": "book/index.html",
+  "tags": [
+   "page"
+  ],
+  "text": "Choose a time Length I am choosing my Preferred time Alternative time (optional) Nothing chosen yet. Loading the diary… None of these suit me A time that would suit you",
+  "title": "Book a conversation",
+  "type": "page",
+  "url": "/book/#b-time"
+ },
+ {
+  "id": "book#b-you",
+  "section": "About you",
+  "source": "book/index.html",
+  "tags": [
+   "page"
+  ],
+  "text": "About you Name Email Organisation (optional) Reason for the call What decision are you facing, and what would make this call worth your time? 0 of 800 characters, 30 at least",
+  "title": "Book a conversation",
+  "type": "page",
+  "url": "/book/#b-you"
+ },
+ {
+  "id": "book#bk-done",
+  "section": "Send the request",
+  "source": "book/index.html",
+  "tags": [
+   "page"
+  ],
+  "text": "Send the request Send the request. Opens your email with the details addressed to me. Send the request Your request is long, so the email carries the essentials and the link carries the rest. If your email app will not open, use Copy request. Copy request. For Signal, or anywhere else. Copy request Show the text Add a tentative hold to my calendar. A file for your own calendar, marked tentative. Download request-hold.ics This is a request, not a booking. You'll hear back with a confirmed time and a Proton Meet or Signal link. ← Change my request",
+  "title": "Book a conversation",
+  "type": "page",
+  "url": "/book/#bk-done"
+ },
+ {
+  "id": "book#hero",
+  "section": "Book a conversation",
+  "source": "book/index.html",
+  "tags": [
+   "page"
+  ],
+  "text": "Nkosinathi Mbambo Book Book a conversation Ask for a time. I confirm it by hand, and we choose the platform together. A request, not a booking. You choose a time and tell me about the decision. I reply with a confirmed time and a Proton Meet or Signal link.",
+  "title": "Book a conversation",
+  "type": "page",
+  "url": "/book/#hero"
  },
  {
   "id": "booklet/company-profile/p10",
@@ -1281,7 +1365,7 @@
   "tags": [
    "page"
   ],
-  "text": "A decision you can't explain is a decision you can't defend, improve or repeat. Bring the one that's costing you now. A first conversation is about that decision, not a sale. Start a conversation →",
+  "text": "A decision you can't explain is a decision you can't defend, improve or repeat. Bring the one that's costing you now. A first conversation is about that decision, not a sale. Start a conversation →or book a time →",
   "title": "Working together",
   "type": "page",
   "url": "/engage/#eg"
@@ -1305,7 +1389,7 @@
   "tags": [
    "page"
   ],
-  "text": "Contact Bring the decision that keeps coming back. A first conversation is about that decision, not a sale: you leave with a clear view of whether this work fits, and what it would take. Email nkosinathi.mbambo@ingqiqo-executables.run nmbambo@pm.me nmbambo@protonmail.com nmbambo@gmail.com Mobile +27 81 321 3766 WhatsAppSignalTelegram +27 67 010 4962 Calls, WhatsApp, Signal and Telegram on the first number. Elsewhere LinkedIn GitHub about.me Save contact card Gauteng, South Africa",
+  "text": "Contact Bring the decision that keeps coming back. A first conversation is about that decision, not a sale: you leave with a clear view of whether this work fits, and what it would take. Book a conversation Email nmbambo@ingqiqo-executables.run nmbambo@gmail.com Mobile +27 81 321 3766 WhatsAppSignalTelegram +27 67 010 4962 Calls, WhatsApp, Signal and Telegram on the first number. Elsewhere LinkedIn GitHub about.me Save contact card Gauteng, South Africa",
   "title": "Nkosinathi Mbambo",
   "type": "page",
   "url": "/#contact"
@@ -1365,7 +1449,7 @@
   "tags": [
    "page"
   ],
-  "text": "Ingqiqo Executables Nkosinathi Mbambo Meaning Coherence Assurer Scientist Engineer Analyst Modeller Architect I make what an organisation knows, measures and decides mean the same thing everywhere, so its decisions can be trusted, explained and owned. AI does the calculating. People keep the thinking. Start a conversationWays to work together → Meaning, made coherent.",
+  "text": "Ingqiqo Executables Nkosinathi Mbambo Meaning Coherence Assurer Scientist Engineer Analyst Modeller Architect I make what an organisation knows, measures and decides mean the same thing everywhere, so its decisions can be trusted, explained and owned. AI does the calculating. People keep the thinking. Start a conversationor book a time →Ways to work together → Meaning, made coherent.",
   "title": "Nkosinathi Mbambo",
   "type": "page",
   "url": "/#top"
@@ -1401,7 +1485,7 @@
   "tags": [
    "method"
   ],
-  "text": "Want your decisions run this way? Start with one decision that matters. You keep the judgement and the authority; the method gives you the evidence, the options and a record that will stand up to scrutiny. Start a conversation →",
+  "text": "Want your decisions run this way? Start with one decision that matters. You keep the judgement and the authority; the method gives you the evidence, the options and a record that will stand up to scrutiny. Start a conversation →or book a time →",
   "title": "The Method",
   "type": "method",
   "url": "/method/#eg"
@@ -1521,7 +1605,7 @@
   "tags": [
    "note"
   ],
-  "text": "Clarity used to be rationed. The instruments make it ordinary: calculated, versioned and open to challenge. Bring the decision that keeps coming back. Start a conversation →",
+  "text": "Clarity used to be rationed. The instruments make it ordinary: calculated, versioned and open to challenge. Bring the decision that keeps coming back. Start a conversation →or book a time →",
   "title": "From the work",
   "type": "note",
   "url": "/notes/#eg"
@@ -1572,7 +1656,7 @@
    "L1 Evidence",
    "L7 Execution & Feedback"
   ],
-  "text": "Want this working in your organisation? Bring the decision that keeps coming back. I will tell you plainly whether this instrument fits, what it would take, and what it would not do. Start a conversation →",
+  "text": "Want this working in your organisation? Bring the decision that keeps coming back. I will tell you plainly whether this instrument fits, what it would take, and what it would not do. Start a conversation →or book a time →",
   "title": "CDC head-to-head: Debezium, Airbyte, OLake",
   "type": "work",
   "url": "/work/cdc-head-to-head/#eg"
@@ -1722,7 +1806,7 @@
    "L5 Judgement",
    "L7 Execution & Feedback"
   ],
-  "text": "Want this working in your organisation? Bring the decision that keeps coming back. I will tell you plainly whether this instrument fits, what it would take, and what it would not do. Start a conversation →",
+  "text": "Want this working in your organisation? Bring the decision that keeps coming back. I will tell you plainly whether this instrument fits, what it would take, and what it would not do. Start a conversation →or book a time →",
   "title": "Decision Canvas and Governance Standard",
   "type": "work",
   "url": "/work/decision-canvas-dgs/#eg"
@@ -1827,7 +1911,7 @@
    "L4 Adaptation",
    "L6 Foresight"
   ],
-  "text": "Want this working in your organisation? Bring the decision that keeps coming back. I will tell you plainly whether this instrument fits, what it would take, and what it would not do. Start a conversation →",
+  "text": "Want this working in your organisation? Bring the decision that keeps coming back. I will tell you plainly whether this instrument fits, what it would take, and what it would not do. Start a conversation →or book a time →",
   "title": "Decision Evidence Lab",
   "type": "work",
   "url": "/work/decision-evidence-lab/#eg"
@@ -1932,7 +2016,7 @@
    "L5 Judgement",
    "L7 Execution & Feedback"
   ],
-  "text": "Want this working in your organisation? Bring the decision that keeps coming back. I will tell you plainly whether this instrument fits, what it would take, and what it would not do. Start a conversation →",
+  "text": "Want this working in your organisation? Bring the decision that keeps coming back. I will tell you plainly whether this instrument fits, what it would take, and what it would not do. Start a conversation →or book a time →",
   "title": "Decision IR and the Warranty",
   "type": "work",
   "url": "/work/decision-ir/#eg"
@@ -2037,7 +2121,7 @@
    "L0 Strategy",
    "L3 Meaning"
   ],
-  "text": "Want this working in your organisation? Bring the decision that keeps coming back. I will tell you plainly whether this instrument fits, what it would take, and what it would not do. Start a conversation →",
+  "text": "Want this working in your organisation? Bring the decision that keeps coming back. I will tell you plainly whether this instrument fits, what it would take, and what it would not do. Start a conversation →or book a time →",
   "title": "Decision Intelligence Maturity Assessment",
   "type": "work",
   "url": "/work/decision-maturity-assessment/#eg"
@@ -2141,7 +2225,7 @@
    "Analyst",
    "L0–L7, one domain end to end"
   ],
-  "text": "Want this working in your organisation? Bring the decision that keeps coming back. I will tell you plainly whether this instrument fits, what it would take, and what it would not do. Start a conversation →",
+  "text": "Want this working in your organisation? Bring the decision that keeps coming back. I will tell you plainly whether this instrument fits, what it would take, and what it would not do. Start a conversation →or book a time →",
   "title": "EETE",
   "type": "work",
   "url": "/work/eete-workforce-economics/#eg"
@@ -2296,7 +2380,7 @@
    "L1 Evidence",
    "L5 Judgement"
   ],
-  "text": "Want this working in your organisation? Bring the decision that keeps coming back. I will tell you plainly whether this instrument fits, what it would take, and what it would not do. Start a conversation →",
+  "text": "Want this working in your organisation? Bring the decision that keeps coming back. I will tell you plainly whether this instrument fits, what it would take, and what it would not do. Start a conversation →or book a time →",
   "title": "The Employer Report",
   "type": "work",
   "url": "/work/employer-report/#eg"
@@ -2401,7 +2485,7 @@
    "L0 Strategy Intent",
    "L7 Execution & Feedback"
   ],
-  "text": "Want this working in your organisation? Bring the decision that keeps coming back. I will tell you plainly whether this instrument fits, what it would take, and what it would not do. Start a conversation →",
+  "text": "Want this working in your organisation? Bring the decision that keeps coming back. I will tell you plainly whether this instrument fits, what it would take, and what it would not do. Start a conversation →or book a time →",
   "title": "Intrinsic Coverage Instrument",
   "type": "work",
   "url": "/work/intrinsic-coverage-instrument/#eg"
@@ -2506,7 +2590,7 @@
    "L3 Meaning",
    "Assurance plane"
   ],
-  "text": "Want this working in your organisation? Bring the decision that keeps coming back. I will tell you plainly whether this instrument fits, what it would take, and what it would not do. Start a conversation →",
+  "text": "Want this working in your organisation? Bring the decision that keeps coming back. I will tell you plainly whether this instrument fits, what it would take, and what it would not do. Start a conversation →or book a time →",
   "title": "Meaning Infrastructure",
   "type": "work",
   "url": "/work/meaning-infrastructure/#eg"
@@ -2611,7 +2695,7 @@
    "L1 Evidence",
    "L7 Feedback"
   ],
-  "text": "Want this working in your organisation? Bring the decision that keeps coming back. I will tell you plainly whether this instrument fits, what it would take, and what it would not do. Start a conversation →",
+  "text": "Want this working in your organisation? Bring the decision that keeps coming back. I will tell you plainly whether this instrument fits, what it would take, and what it would not do. Start a conversation →or book a time →",
   "title": "Organisational Debt Diagnostic",
   "type": "work",
   "url": "/work/organisational-debt-diagnostic/#eg"
@@ -2716,7 +2800,7 @@
    "L1 Evidence",
    "L2 Identity"
   ],
-  "text": "Want this working in your organisation? Bring the decision that keeps coming back. I will tell you plainly whether this instrument fits, what it would take, and what it would not do. Start a conversation →",
+  "text": "Want this working in your organisation? Bring the decision that keeps coming back. I will tell you plainly whether this instrument fits, what it would take, and what it would not do. Start a conversation →or book a time →",
   "title": "Raw to Gold, and Back",
   "type": "work",
   "url": "/work/raw-to-gold/#eg"
@@ -2820,7 +2904,7 @@
    "Modeller",
    "L3 Meaning"
   ],
-  "text": "Want this working in your organisation? Bring the decision that keeps coming back. I will tell you plainly whether this instrument fits, what it would take, and what it would not do. Start a conversation →",
+  "text": "Want this working in your organisation? Bring the decision that keeps coming back. I will tell you plainly whether this instrument fits, what it would take, and what it would not do. Start a conversation →or book a time →",
   "title": "Semantic Foundation",
   "type": "work",
   "url": "/work/semantic-foundation/#eg"

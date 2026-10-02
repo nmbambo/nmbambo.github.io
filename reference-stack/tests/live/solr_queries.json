@@ -1,0 +1,26 @@
+{
+  "fixture": [
+    "decision AND (warranty OR canvas)",
+    "\"human in the loop\"",
+    "title:spine",
+    "solver -quantum",
+    "cohrence warrnaty",
+    "deci",
+    "meaning coherence",
+    "+moloto framework",
+    "warrant*",
+    "type:booklet AND pedigree"
+  ],
+  "own": [
+    "decision warranty",
+    "quantum solver",
+    "\"decision ir\"",
+    "title:decision OR title:warranty",
+    "governance NOT hiring",
+    "coher*",
+    "stakeholder pedigre",
+    "tag:Analyst AND (decision OR cycle)",
+    "human-in-the-loop",
+    "instrument canvas -warranty"
+  ]
+}

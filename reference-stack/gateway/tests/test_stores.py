@@ -1,5 +1,5 @@
 """Store semantics against MemoryStore (reference) and KurrentStore (against an in-process fake client).
-MessageDbStore needs a live Postgres with the message_store schema and is NOT covered here."""
+MessageDbStore: only its connection setup is unit-tested; the SQL paths are covered by tests/live/02_gateway_stores.py."""
 import json
 import types
 import unittest
@@ -25,6 +25,10 @@ class FakeNotFound(Exception):
     pass
 
 
+class FakeInvalidCommitPosition(Exception):
+    pass
+
+
 class Rec:
     def __init__(self, ne, stream, pos, commit):
         self.type, self.data, self.metadata, self.id = ne.type, ne.data, ne.metadata, ne.id
@@ -35,7 +39,8 @@ class FakeKdbModule:
     class StreamState:
         NO_STREAM = "NO_STREAM"
         ANY = "ANY"
-    exceptions = types.SimpleNamespace(WrongCurrentVersionError=FakeWrongVersion, NotFoundError=FakeNotFound)
+    exceptions = types.SimpleNamespace(WrongCurrentVersionError=FakeWrongVersion, NotFoundError=FakeNotFound,
+                                       InvalidCommitPositionError=FakeInvalidCommitPosition)
 
     class NewEvent:
         def __init__(self, type, data, metadata=b"", id=None):
@@ -73,6 +78,9 @@ class FakeClient:
 
     def read_all(self, *, commit_position=None, backwards=False, limit=10**9, **_):
         self.reads_all += 1
+        # Like a real node (seen live): a commit position must be exactly the start of a log record.
+        if commit_position is not None and commit_position not in {r.commit_position for r in self.log}:
+            raise FakeInvalidCommitPosition(f"InvalidPosition at {commit_position}")
         recs = [r for r in self.log if not r.stream_name.startswith("$")]
         recs = [r for r in recs if commit_position is None or r.commit_position >= commit_position]
         return list(reversed(recs))[:limit] if backwards else recs[:limit]
@@ -136,6 +144,19 @@ class StoreContract(unittest.TestCase):
             self.assertEqual(len(s.read(0, limit=2)), 2)
             self.assertEqual(s.last_position(), allv[-1]["position"])
 
+    def test_read_from_a_position_that_is_not_a_record_boundary(self):
+        """Regression (found live): the browser asks for position+1, which KurrentDB rejects; positions are sparse."""
+        for s in self.each():
+            s.append("content-a", [ev(1)])
+            s.append("content-b", [ev(2, stream="content-b")])
+            s.append("content-a", [ev(3)])
+            allv = s.read(0)
+            self.assertEqual([e["data"]["n"] for e in s.read(allv[0]["position"] + 1)], [2, 3])
+            self.assertEqual([e["data"]["n"] for e in s.read(allv[1]["position"] + 1, limit=1)], [3])
+            self.assertEqual(s.read(allv[2]["position"] + 1), [])
+            s.append("content-a", [ev(4)])  # log grew past the cached boundaries
+            self.assertEqual([e["data"]["n"] for e in s.read(allv[2]["position"] + 1)], [4])
+
     def test_empty_store(self):
         for s in self.each():
             self.assertEqual(s.last_position(), -1)
@@ -150,6 +171,50 @@ class StoreContract(unittest.TestCase):
             got = s.get(sha)
             self.assertEqual(got["id"], sha)
             self.assertEqual(got["data"], {"n": 1})
+
+
+class MessageDbConnection(unittest.TestCase):
+    def test_connects_with_message_store_search_path(self):
+        """Regression (found live): write_message() calls acquire_lock() unqualified; without this it fails."""
+        import sys
+        from stores import MessageDbStore, SEARCH_PATH_OPTIONS
+        seen = {}
+        fake = types.SimpleNamespace(connect=lambda dsn, **kw: seen.update(dsn=dsn, **kw) or types.SimpleNamespace(closed=False))
+        old = sys.modules.get("psycopg")
+        sys.modules["psycopg"] = fake
+        try:
+            MessageDbStore("postgresql://x")._db()
+        finally:
+            if old is None:
+                del sys.modules["psycopg"]
+            else:
+                sys.modules["psycopg"] = old
+        self.assertIn("search_path=message_store", seen["options"])
+        self.assertEqual(seen["options"], SEARCH_PATH_OPTIONS)
+
+
+class MessageDbConflict(unittest.TestCase):
+    def test_wrong_expected_version_becomes_concurrency_error_with_actual_version(self):
+        from stores import MessageDbStore
+
+        class Cur:
+            def __enter__(self): return self
+            def __exit__(self, *a): return False
+            def execute(self, sql, params=()):
+                if "write_message" in sql:
+                    raise RuntimeError("Wrong expected version: -1 (Stream: content-a, Stream Version: 2)\nCONTEXT: x")
+            def fetchone(self): return None
+
+        class Conn:
+            closed = False
+            def cursor(self): return Cur()
+            def commit(self): pass
+            def rollback(self): self.rolled = True
+
+        s = MessageDbStore("x", connect=Conn)
+        with self.assertRaises(ConcurrencyError) as cm:
+            s.append("content-a", [ev(1)], expected_version=-1)
+        self.assertEqual((cm.exception.expected, cm.exception.actual), (-1, 2))
 
 
 class KurrentSpecifics(unittest.TestCase):

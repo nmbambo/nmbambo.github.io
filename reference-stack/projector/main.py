@@ -20,6 +20,7 @@ from logic import PROJECTOR, process
 from repo import PgRepo
 
 log = logging.getLogger("projector")
+HEARTBEAT = "/tmp/projector.heartbeat"
 
 
 def main(env=os.environ):
@@ -52,6 +53,7 @@ def main(env=os.environ):
     counts = {"applied": 0, "duplicate": 0, "skipped": 0}
     try:
         while not stop["now"]:
+            pathlib.Path(HEARTBEAT).touch()  # liveness for the compose healthcheck
             msg = consumer.poll(1.0)
             if msg is None:
                 continue

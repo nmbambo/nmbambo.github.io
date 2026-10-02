@@ -149,5 +149,114 @@ class PublisherTests(unittest.TestCase):
         self.assertEqual(p.pending, 1)
 
 
+
+class FakeSolr:
+    """opener= replacement: records the request URL and answers with a canned Solr /select response."""
+
+    def __init__(self, status=200, body=None, boom=None):
+        self.requests, self.status, self.boom = [], status, boom
+        self.body = body if body is not None else {
+            "responseHeader": {"status": 0, "QTime": 3},
+            "response": {"numFound": 2, "start": 0, "docs": [
+                {"id": "a#1", "title": "A", "score": 2.5}, {"id": "b#2", "title": "B", "score": 1.5}]}}
+
+    def __call__(self, req, timeout=None):
+        self.requests.append(req.full_url)
+        if self.boom:
+            raise self.boom
+        if self.status != 200:
+            raise urllib.error.HTTPError(req.full_url, self.status, "x", {}, None)
+
+        class R:
+            status = 200
+
+            def __init__(s, b):
+                s.b = b
+
+            def read(s):
+                return json.dumps(s.b).encode()
+
+            def __enter__(s):
+                return s
+
+            def __exit__(s, *a):
+                return False
+        return R(self.body)
+
+
+class SearchEndpointTests(unittest.TestCase):
+    def start(self, solr_url="http://solr:8983/solr/ingqiqo", **fake):
+        self.solr = FakeSolr(**fake)
+        httpd = serve(MemoryStore(), FakePublisher(), "127.0.0.1", 0, store_name="memory",
+                      allowed_origins=["http://localhost:8000"], solr_url=solr_url, opener=self.solr)
+        self.addCleanup(httpd.server_close)
+        self.addCleanup(httpd.shutdown)
+        threading.Thread(target=httpd.serve_forever, daemon=True).start()
+        self.base = "http://127.0.0.1:%d" % httpd.server_address[1]
+
+    def get(self, path, **kw):
+        return call(self.base, "GET", path, **kw)
+
+    def test_not_configured_is_404(self):
+        self.start(solr_url=None)
+        self.assertEqual(self.get("/search?q=x")[0], 404)
+
+    def test_proxies_translated_params_only(self):
+        self.start()
+        status, body, headers = self.get("/search?q=meaning+coherence&algorithm=bm25&rows=5",
+                                         headers={"Origin": "http://localhost:8000"})
+        self.assertEqual(status, 200)
+        self.assertEqual([r["id"] for r in body["results"]], ["a#1", "b#2"])
+        self.assertEqual((body["total"], body["algorithm"], body["qtimeMs"]), (2, "bm25", 3))
+        self.assertEqual(headers["Access-Control-Allow-Origin"], "http://localhost:8000")
+        from urllib.parse import parse_qs, urlsplit
+        sent = urlsplit(self.solr.requests[0])
+        self.assertEqual(sent.path, "/solr/ingqiqo/select")
+        params = {k: v[0] for k, v in parse_qs(sent.query).items()}
+        self.assertEqual(params["q"], "meaning coherence")
+        self.assertEqual((params["defType"], params["rows"], params["qf"]), ("edismax", "5", "title^3 section^2 tags^2 text"))
+        self.assertEqual(set(params), {"q", "qf", "mm", "defType", "fl", "rows", "start", "sort", "lowercaseOperators", "tie", "wt"})
+
+    def test_default_algorithm_and_each_algorithm_accepted(self):
+        self.start()
+        self.assertEqual(self.get("/search?q=spine")[1]["algorithm"], "bm25")
+        for a in ("boolean", "bm25", "fuzzy", "prefix", "phrase"):
+            self.assertEqual(self.get(f"/search?q=spine&algorithm={a}")[0], 200, a)
+
+    def test_allowlist_rejects_everything_else_without_calling_solr(self):
+        self.start()
+        for bad in ("/search?q=x&fl=*", "/search?q=x&defType=lucene", "/search?q=x&stream.url=http://x", "/search?q=x&wt=xml",
+                    "/search?q=x&shards=evil", "/search?q=x&q=y", "/search?q=x&rows=0", "/search?q=x&rows=101",
+                    "/search?q=x&rows=abc", "/search?q=x&start=-1", "/search?q=x&start=1001", "/search?q=x&algorithm=semantic",
+                    "/search?q=x&json.facet=%7B%7D", "/search?q=x&fq=deleted:true"):
+            status, body, _ = self.get(bad)
+            self.assertEqual(status, 400, bad)
+            self.assertIn("error", body)
+        self.assertEqual(self.solr.requests, [])
+
+    def test_local_params_and_malformed_boolean_are_400_with_position(self):
+        self.start()
+        s, b, _ = self.get("/search?q=%7B!dismax+qf%3Dtext%7Dx&algorithm=bm25")
+        self.assertEqual(s, 400)
+        self.assertIn("local parameters", b["error"])
+        s, b, _ = self.get("/search?q=a+AND&algorithm=boolean")
+        self.assertEqual((s, b["position"]), (400, 2))
+        self.assertEqual(self.solr.requests, [])
+
+    def test_empty_query_answers_without_solr(self):
+        self.start()
+        s, b, _ = self.get("/search?q=&algorithm=bm25")
+        self.assertEqual((s, b["total"], b["results"]), (200, 0, []))
+        self.assertEqual(self.solr.requests, [])
+
+    def test_backend_failures_are_generic(self):
+        self.start(boom=OSError("connection refused: solr:8983"))
+        s, b, _ = self.get("/search?q=x")
+        self.assertEqual(s, 503)
+        self.assertNotIn("solr:8983", json.dumps(b))
+        self.start(status=400)
+        self.assertEqual(self.get("/search?q=x")[0], 502)
+
+
 if __name__ == "__main__":
     unittest.main()

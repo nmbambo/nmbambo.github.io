@@ -1,0 +1,2 @@
+# Pinned. nats-py 2.16.0 resolved from PyPI on 2026-10-02 (Python 3.11). Everything else is the standard library.
+nats-py==2.16.0

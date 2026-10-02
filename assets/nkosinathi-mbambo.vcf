@@ -3,9 +3,7 @@ VERSION:3.0
 N:Mbambo;Nkosinathi;;;
 FN:Nkosinathi Mbambo
 ORG:Ingqiqo Executables (Pty) Ltd
-EMAIL;TYPE=WORK:nkosinathi.mbambo@ingqiqo-executables.run
-EMAIL;TYPE=HOME:nmbambo@pm.me
-EMAIL;TYPE=HOME:nmbambo@protonmail.com
+EMAIL;TYPE=WORK:nmbambo@ingqiqo-executables.run
 EMAIL;TYPE=HOME:nmbambo@gmail.com
 TEL;TYPE=CELL:+27813213766
 TEL;TYPE=CELL:+27670104962

@@ -20,3 +20,4 @@ cdc/olake/config/destination.json
 cdc/olake/out/
 # Airbyte connection ids / tokens kept locally
 cdc/airbyte/airbyte.local.env
+tests/live/out/

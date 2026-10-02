@@ -5,6 +5,7 @@
   GET  /events?from=N&limit=M                                      -> [envelope]   (position >= N)
   GET  /events/last                                                -> {position}
   GET  /events/{id}                                                -> envelope | 404
+  GET  /search?q=&algorithm=&rows=&start=                          -> Solr read model (only when SOLR_URL is set)
   GET  /health                                                     -> status
   POST /TOPIC/{topic...}   optional Solace REST pass-through (adds CORS) when SOLACE_REST_URL is set
 No request bodies or event data are ever logged (no personal data may enter logs).
@@ -14,17 +15,21 @@ import logging
 import urllib.error
 import urllib.request
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
-from urllib.parse import parse_qs, unquote, urlsplit
+from urllib.parse import parse_qs, unquote, urlencode, urlsplit
 
 from envelope import ConcurrencyError, ValidationError, valid_id, validate_append
+from solr_query import ALGORITHMS, QueryError, translate
 
 log = logging.getLogger("gateway")
 MAX_BODY = 1_000_000
 DEFAULT_LIMIT, MAX_LIMIT = 1000, 5000
+SEARCH_PARAMS = ("q", "algorithm", "rows", "start")   # the whole public surface of /search; anything else is a 400
+SEARCH_DEFAULT_ROWS, SEARCH_MAX_ROWS, SEARCH_MAX_START = 10, 100, 1000
+SOLR_TIMEOUT = 6
 CORS_HEADERS = "Content-Type, Accept, Authorization, Solace-Message-ID, Solace-Message-VPN, Solace-Delivery-Mode"
 
 
-def make_handler(store, publisher, *, store_name, allowed_origins, solace_url=None, opener=None):
+def make_handler(store, publisher, *, store_name, allowed_origins, solace_url=None, solr_url=None, opener=None):
     open_url = opener or urllib.request.urlopen
     origins = set(allowed_origins)
 
@@ -73,6 +78,8 @@ def make_handler(store, publisher, *, store_name, allowed_origins, solace_url=No
                     return self._send(200, {"status": "ok", "store": store_name,
                                             "kafkaClusterId": getattr(publisher, "cluster_id", None),
                                             "kafkaPending": publisher.pending})
+                if parts == ["search"]:
+                    return self._search(u.query)
                 if parts == ["events"]:
                     frm = int(q.get("from", ["0"])[0])
                     lim = min(int(q.get("limit", [str(DEFAULT_LIMIT)])[0]), MAX_LIMIT)
@@ -90,6 +97,48 @@ def make_handler(store, publisher, *, store_name, allowed_origins, solace_url=No
             except Exception:  # noqa: BLE001
                 log.exception("GET failed")
                 self._send(500, {"error": "internal error"})
+
+        def _search(self, raw_query):
+            """GET /search: allowlisted parameters -> translator -> Solr /select. Browsers never reach Solr directly."""
+            if not solr_url:
+                return self._send(404, {"error": "search is not configured"})
+            qs = parse_qs(raw_query, keep_blank_values=True)
+            unknown = sorted(set(qs) - set(SEARCH_PARAMS))
+            if unknown:
+                return self._send(400, {"error": f"unknown parameter(s): {', '.join(unknown)[:100]}",
+                                        "allowed": list(SEARCH_PARAMS)})
+            if any(len(v) != 1 for v in qs.values()):
+                return self._send(400, {"error": "each parameter may be given once"})
+            one = {k: v[0] for k, v in qs.items()}
+            try:
+                rows = int(one.get("rows", SEARCH_DEFAULT_ROWS))
+                start = int(one.get("start", 0))
+            except ValueError:
+                return self._send(400, {"error": "rows and start must be integers"})
+            if not 1 <= rows <= SEARCH_MAX_ROWS or not 0 <= start <= SEARCH_MAX_START:
+                return self._send(400, {"error": f"rows must be 1-{SEARCH_MAX_ROWS} and start 0-{SEARCH_MAX_START}"})
+            algorithm = one.get("algorithm", "bm25")
+            try:
+                tr = translate(one.get("q", ""), algorithm, rows, start)
+            except QueryError as exc:
+                return self._send(400, {"error": str(exc), "position": exc.position, "algorithms": list(ALGORITHMS)})
+            base = {"algorithm": algorithm, "rows": rows, "start": start}
+            if tr.empty:
+                return self._send(200, dict(base, total=0, results=[], solrQuery=None))
+            url = solr_url.rstrip("/") + "/select?" + urlencode(tr.params)
+            try:
+                with open_url(urllib.request.Request(url, headers={"Accept": "application/json"}), timeout=SOLR_TIMEOUT) as resp:
+                    body = json.loads(resp.read())
+            except urllib.error.HTTPError as exc:
+                log.warning("solr answered %s", exc.code)
+                return self._send(502, {"error": "search backend rejected the request"})
+            except Exception:  # noqa: BLE001  (down, timeout, bad JSON)
+                log.warning("solr unreachable")
+                return self._send(503, {"error": "search backend unavailable"})
+            docs = (body.get("response") or {}).get("docs") or []
+            return self._send(200, dict(base, total=(body.get("response") or {}).get("numFound", len(docs)),
+                                        qtimeMs=(body.get("responseHeader") or {}).get("QTime"),
+                                        solrQuery=tr.params["q"], results=docs))
 
         def do_POST(self):
             try:

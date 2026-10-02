@@ -14,7 +14,9 @@ Semantics (differ deliberately from the browser MemoryStore in ONE way, see READ
   * `position` is global and strictly increasing but NOT dense for KurrentDB (commit position) or
     Message DB (global_position - 1, gaps after rolled-back transactions). Clients must only compare/advance it.
 """
+import bisect
 import json
+import re
 import threading
 
 from envelope import ConcurrencyError, from_stored, store_uuid, to_stored
@@ -74,6 +76,8 @@ class KurrentStore:
         self._k = kdb
         self._lock = threading.Lock()
         self._index = None  # envelope id -> (stream, version)
+        self._positions = []  # sorted envelope commit positions, rebuilt when the log grows past them
+        self._pos_lock = threading.Lock()
 
     # --- helpers -------------------------------------------------------------------------------
     def _to_envelope(self, rec):
@@ -132,9 +136,9 @@ class KurrentStore:
                     new.append(env)
             return {"appended": len(new), "positions": [n["position"] for n in new], "new": new}
 
-    def read(self, from_position=0, limit=1000):
+    def _read_from(self, commit_position, from_position, limit):
         out = []
-        kwargs = {"commit_position": from_position} if from_position > 0 else {}
+        kwargs = {"commit_position": commit_position} if commit_position > 0 else {}
         for rec in self._c.read_all(**kwargs):
             if rec.commit_position < from_position:
                 continue  # read_all may include the boundary event; positions are inclusive-from
@@ -144,6 +148,28 @@ class KurrentStore:
                 if len(out) >= limit:
                     break
         return out
+
+    def _next_boundary(self, from_position):
+        """Smallest known event position >= from_position, or None. KurrentDB only accepts a commit position that
+        is exactly the start of a log record (found against a live node: any other value, such as last+1 which
+        the browser's Projector.catchUp asks for, is rejected with InvalidCommitPositionError)."""
+        last = self.last_position()
+        if from_position > last:
+            return None
+        with self._pos_lock:
+            if not self._positions or self._positions[-1] < last:
+                self._positions = [e["position"] for e in
+                                   (self._to_envelope(r) for r in self._c.read_all()) if e]
+            i = bisect.bisect_left(self._positions, from_position)
+            return self._positions[i] if i < len(self._positions) else None
+
+    def read(self, from_position=0, limit=1000):
+        try:
+            return self._read_from(from_position, from_position, limit)
+        except self._k.exceptions.InvalidCommitPositionError:
+            pass  # from_position is not a record boundary (positions are not dense): resume at the next one
+        start = self._next_boundary(from_position)
+        return [] if start is None else self._read_from(start, from_position, limit)
 
     def read_stream(self, stream):
         try:
@@ -169,6 +195,9 @@ class KurrentStore:
         return None
 
 
+SEARCH_PATH_OPTIONS = "-c search_path=message_store,public"
+
+
 class MessageDbStore:
     """Message DB (Postgres). Uses message_store.write_message() for writes, as the project intends.
 
@@ -187,7 +216,9 @@ class MessageDbStore:
             import psycopg
 
             def connect():
-                return psycopg.connect(dsn, autocommit=False)
+                # Message DB's functions call each other and `messages` unqualified, so they need
+                # search_path = message_store (its own `message_store` role has it; a superuser DSN does not).
+                return psycopg.connect(dsn, autocommit=False, options=SEARCH_PATH_OPTIONS)
         self._connect = connect
         self._conn = None
         self._lock = threading.Lock()
@@ -226,7 +257,9 @@ class MessageDbStore:
             except Exception as exc:  # noqa: BLE001 - classify then re-raise
                 db.rollback()
                 if "Wrong expected version" in str(exc):
-                    raise ConcurrencyError(str(exc).splitlines()[0], stream, expected_version) from exc
+                    m = re.search(r"Stream Version: (-?\d+)", str(exc))  # same shape as the KurrentDB 409 body
+                    raise ConcurrencyError(str(exc).splitlines()[0], stream, expected_version,
+                                           int(m.group(1)) if m else None) from exc
                 raise
 
     def _query(self, sql, params=()):

@@ -1,7 +1,10 @@
 # Reference stack for the event-sourced search site. Local, single workstation, NOT production.
-# Run:  cp .env.example .env && docker compose up -d
-# Optional profiles:  --profile olake   --profile solace
-# Image tags were checked with `docker manifest inspect` on 2026-10-02; see README "Image tags".
+# Run:  cp .env.example .env && docker compose up -d        -> the LIGHT stack only:
+#         postgres-lakebase, nats (JetStream), debezium-server (NATS JetStream sink), command, query
+# Profiles (see README): heavy (kafka, kafka-rest, debezium-connect, kurrentdb, messagedb, gateway, projector),
+#   messagedb, solr (solr + solr-sink; the sink reads Kafka, so it starts kafka too), olake, solace.
+#   e.g.  docker compose --profile heavy up -d      (light + heavy together)
+# Image tags were checked by pulling them on 2026-10-02; see README "Image tags".
 name: ingqiqo-reference
 
 x-restart: &restart
@@ -35,8 +38,97 @@ services:
       timeout: 5s
       retries: 20
 
+  # ================================================================ LIGHT STACK (default: no profile) ================
+  # NATS JetStream = broker + event store (stream ES) + CDC landing stream (CDC) + checkpoint KV (bucket `checkpoints`).
+  nats:
+    image: nats:2.15.0-alpine
+    <<: *restart
+    command: ["--jetstream", "--store_dir", "/data", "--http_port", "8222", "--server_name", "ingqiqo-nats"]
+    volumes:
+      - nats-data:/data
+    ports:
+      - "127.0.0.1:${NATS_PORT:-4222}:4222"
+      - "127.0.0.1:${NATS_MONITOR_PORT:-8222}:8222"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:8222/healthz >/dev/null || exit 1"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+      start_period: 2s
+
+  # Command side of CQRS: HTTP -> JetStream. Same routes as the heavy gateway (GatewayStore works unchanged). It also
+  # provisions the streams and the KV bucket, so everything that depends on it starts against a ready broker.
+  command:
+    build: ./command
+    image: ingqiqo-reference/command:0.1.0
+    <<: *restart
+    depends_on:
+      nats:
+        condition: service_healthy
+    environment:
+      NATS_URL: nats://nats:4222
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-http://localhost:8000}
+      PORT: 8088
+    ports:
+      - "127.0.0.1:${COMMAND_PORT:-8090}:8088"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://localhost:8088/health', timeout=3).status == 200 else 1)"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+      start_period: 3s
+
+  # CDC: Debezium Server (no Kafka Connect) with the NATS JetStream sink -> stream CDC, subjects lakebase.<schema>.<table>.
+  # Config: cdc/debezium-server/application.properties (no secrets; the password arrives as an environment variable).
+  debezium-server:
+    image: quay.io/debezium/server:3.7.0.Final
+    <<: *restart
+    depends_on:
+      postgres-lakebase:
+        condition: service_healthy
+      command:
+        condition: service_healthy
+    environment:
+      DEBEZIUM_SOURCE_DATABASE_PASSWORD: ${CDC_PASSWORD:-change-me-cdc}
+      JAVA_OPTS: ${DEBEZIUM_SERVER_JAVA_OPTS:--Xmx256m}
+    volumes:
+      - ./cdc/debezium-server/application.properties:/debezium/config/application.properties:ro
+      - debezium-server-data:/debezium/data
+    healthcheck:           # the image has neither curl nor wget; Quarkus serves SmallRye Health on :8080
+      test: ["CMD-SHELL", "bash -c 'exec 3<>/dev/tcp/127.0.0.1/8080 && printf \"GET /q/health/ready HTTP/1.0\\r\\n\\r\\n\" >&3 && head -1 <&3 | grep -q 200'"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 15s
+
+  # Query side of CQRS: JetStream consumers (ES + CDC) -> SQLite FTS5 read model, with GET /search, /events, /stats.
+  query:
+    build: ./query
+    image: ingqiqo-reference/query:0.1.0
+    <<: *restart
+    depends_on:
+      command:
+        condition: service_healthy
+    environment:
+      NATS_URL: nats://nats:4222
+      DB_PATH: /data/query.db
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-http://localhost:8000}
+      PORT: 8089
+    volumes:
+      - query-data:/data
+    ports:
+      - "127.0.0.1:${QUERY_PORT:-8091}:8089"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://localhost:8089/health', timeout=3).status == 200 else 1)"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+      start_period: 3s
+
+  # ================================================================ HEAVY STACK (profile "heavy") ====================
   # ---------------------------------------------------------------- broker (KRaft, no ZooKeeper)
   kafka:
+    profiles: ["heavy", "solr"]
     image: apache/kafka:4.1.2
     <<: *restart
     environment:
@@ -54,6 +146,9 @@ services:
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
       KAFKA_NUM_PARTITIONS: 3
+      # The image's default log.dirs is /tmp/kraft-combined-logs, which is NOT on the kafka-data volume: topics were
+      # silently lost on every `docker compose down`/recreate (found live). Put the log on the volume.
+      KAFKA_LOG_DIRS: /var/lib/kafka/data
     volumes:
       - kafka-data:/var/lib/kafka/data
     ports:
@@ -67,6 +162,7 @@ services:
 
   # Confluent REST Proxy: the browser's KafkaRestBroker posts to /v3/clusters/{id}/topics/{topic}/records
   kafka-rest:
+    profiles: ["heavy"]
     image: confluentinc/cp-kafka-rest:8.0.8
     <<: *restart
     depends_on:
@@ -81,9 +177,16 @@ services:
       KAFKA_REST_ACCESS_CONTROL_ALLOW_METHODS: GET,POST,OPTIONS
     ports:
       - "127.0.0.1:${KAFKA_REST_PORT:-8082}:8082"
+    healthcheck:
+      test: ["CMD-SHELL", "curl --fail --silent http://localhost:8082/v3/clusters >/dev/null || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 15s
 
   # ---------------------------------------------------------------- CDC tool 1: Debezium
   debezium-connect:
+    profiles: ["heavy"]
     image: quay.io/debezium/connect:3.7.0.Final
     <<: *restart
     depends_on:
@@ -106,9 +209,16 @@ services:
       CDC_PASSWORD: ${CDC_PASSWORD:-change-me-cdc}
     ports:
       - "127.0.0.1:${CONNECT_PORT:-8083}:8083"
+    healthcheck:
+      test: ["CMD-SHELL", "curl --fail --silent http://localhost:8083/connectors >/dev/null || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 40s
 
   # ---------------------------------------------------------------- event stores
   kurrentdb:
+    profiles: ["heavy"]
     image: docker.kurrent.io/kurrent-latest/kurrentdb:25.1.0
     <<: *restart
     environment:
@@ -129,6 +239,7 @@ services:
       start_period: 10s
 
   messagedb:
+    profiles: ["heavy", "messagedb"]
     build: ./messagedb
     image: ingqiqo-reference/messagedb:1.3.0-pg16
     <<: *restart
@@ -148,6 +259,7 @@ services:
 
   # ---------------------------------------------------------------- the site's server-side seam
   gateway:
+    profiles: ["heavy"]
     build: ./gateway
     image: ingqiqo-reference/gateway:0.1.0
     <<: *restart
@@ -157,20 +269,28 @@ services:
       messagedb:
         condition: service_healthy
       kafka-rest:
-        condition: service_started
+        condition: service_healthy
     environment:
       STORE: ${STORE:-kurrentdb}
       KURRENTDB_URI: kurrentdb://kurrentdb:2113?tls=false
       MESSAGEDB_DSN: postgresql://${MESSAGEDB_USER:-postgres}:${MESSAGEDB_PASSWORD:-change-me-messagedb}@messagedb:5432/message_store
       KAFKA_REST_URL: http://kafka-rest:8082
-      KAFKA_TOPIC: ingqiqo.events
+      KAFKA_TOPIC: ${KAFKA_TOPIC:-ingqiqo.events}
+      SOLR_URL: http://solr:8983/solr/ingqiqo   # enables GET /search; the browser only ever talks to the gateway
       ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-http://localhost:8000}
       SOLACE_REST_URL: ${SOLACE_REST_URL:-}
       PORT: 8088
     ports:
       - "127.0.0.1:${GATEWAY_PORT:-8088}:8088"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://localhost:8088/health', timeout=3).status == 200 else 1)"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 5s
 
   projector:
+    profiles: ["heavy"]
     build: ./projector
     image: ingqiqo-reference/projector:0.1.0
     <<: *restart
@@ -181,9 +301,65 @@ services:
         condition: service_healthy
     environment:
       KAFKA_BOOTSTRAP: kafka:9092
-      KAFKA_TOPIC: ingqiqo.events
+      KAFKA_TOPIC: ${KAFKA_TOPIC:-ingqiqo.events}
       KAFKA_GROUP: ingqiqo-projector
       PROJECTIONS_DSN: postgresql://${LAKEBASE_USER:-lakebase}:${LAKEBASE_PASSWORD:-change-me-lakebase}@postgres-lakebase:5432/projections
+    healthcheck:   # main.py touches the heartbeat file every poll (at most once a second)
+      test: ["CMD", "python", "-c", "import os,sys,time; sys.exit(0 if time.time()-os.path.getmtime('/tmp/projector.heartbeat') < 30 else 1)"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 15s
+
+  # ---------------------------------------------------------------- search read model: Apache Solr (standalone core)
+  # Core "ingqiqo" is pre-created from the committed configset (managed schema, locked). Bound to 127.0.0.1 only and
+  # never published: browsers search through the gateway (GET /search), which holds the parameter allowlist.
+  # The core is copied into the solr-data volume on first start; after editing solr/configsets, recreate the volume
+  # (docker compose rm -sf solr && docker volume rm ingqiqo-reference_solr-data) or the old copy keeps being served.
+  solr:
+    profiles: ["solr"]
+    image: solr:9.10.1
+    <<: *restart
+    command: ["solr-precreate", "ingqiqo", "/configsets/ingqiqo"]
+    environment:
+      SOLR_HEAP: 512m
+    volumes:
+      - ./solr/configsets:/configsets:ro
+      - solr-data:/var/solr
+    ports:
+      - "127.0.0.1:${SOLR_PORT:-8983}:8983"
+    healthcheck:
+      test: ["CMD-SHELL", "curl --fail --silent 'http://localhost:8983/solr/ingqiqo/select?q=*:*&rows=0' >/dev/null || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 15s
+
+  # Kafka -> Solr, idempotent (see projector/solr_sink.py). Same image as the projector, its own consumer group, so Solr
+  # being down never stalls the Postgres read models. Also consumes Debezium's lakebase.public.decisions / .parties.
+  solr-sink:
+    profiles: ["solr"]
+    build: ./projector
+    image: ingqiqo-reference/projector:0.1.0
+    <<: *restart
+    command: ["python", "solr_sink.py"]
+    depends_on:
+      kafka:
+        condition: service_healthy
+      solr:
+        condition: service_healthy
+    environment:
+      KAFKA_BOOTSTRAP: kafka:9092
+      KAFKA_TOPIC: ${KAFKA_TOPIC:-ingqiqo.events}
+      KAFKA_GROUP: ${SOLR_SINK_GROUP:-ingqiqo-solr-sink}
+      SOLR_URL: http://solr:8983/solr/ingqiqo
+      SOLR_COMMIT_WITHIN_MS: 250
+    healthcheck:
+      test: ["CMD", "python", "-c", "import os,sys,time; sys.exit(0 if time.time()-os.path.getmtime('/tmp/solr-sink.heartbeat') < 30 else 1)"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 15s
 
   # ---------------------------------------------------------------- CDC tool 2: OLake (profile "olake")
   # OLake's CLI image is a one-shot batch runner (spec | check | discover | sync), not a daemon.
@@ -209,9 +385,9 @@ services:
     shm_size: 1g
     ulimits:
       core: 1
-      nofile:
+      nofile:                 # the 10.26.7 start-up self-test (POST) refuses to run with a hard limit below 1048576
         soft: 2448
-        hard: 38048
+        hard: 1048576
     environment:
       username_admin_globalaccesslevel: admin
       username_admin_password: ${SOLACE_ADMIN_PASSWORD:-change-me-solace}
@@ -222,7 +398,11 @@ services:
       - "127.0.0.1:55555:55555"                       # SMF
 
 volumes:
+  nats-data:
+  debezium-server-data:
+  query-data:
   lakebase-data:
   kafka-data:
   kurrentdb-data:
   messagedb-data:
+  solr-data:

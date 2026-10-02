@@ -1,0 +1,18 @@
+{
+  "timezone": "Africa/Johannesburg",
+  "weekly": {
+    "mon": [["09:00", "16:00"]],
+    "tue": [["09:00", "16:00"]],
+    "wed": [["09:00", "16:00"]],
+    "thu": [["09:00", "16:00"]],
+    "fri": [["09:00", "13:00"]]
+  },
+  "durations": [30, 45, 60],
+  "defaultDuration": 30,
+  "slotStep": 15,
+  "minNoticeHours": 24,
+  "horizonDays": 21,
+  "bufferMinutes": 15,
+  "blackout": [],
+  "platforms": ["proton-meet", "signal"]
+}

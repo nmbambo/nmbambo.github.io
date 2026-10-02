@@ -1,14 +1,10 @@
-# Message DB (https://github.com/message-db/message-db) on stock Postgres 16.
-# Version pin: MESSAGE_DB_VERSION below. The tag was confirmed readable on raw.githubusercontent.com
-# (database/VERSION.txt = 1.3.0 on master). Release tarball checksum is NOT pinned (could not fetch the
-# tarball from the build sandbox); add a sha256 check when you first build on your machine.
+# Message DB (https://github.com/message-db/message-db) v1.3.0 on stock Postgres 16.
+# The SQL is vendored in vendor/ (see vendor/SOURCE.txt, vendor/SHA256SUMS, vendor/LICENSE): nothing is
+# downloaded at build time. The SHA256SUMS file is verified during the build.
 FROM postgres:16.10-bookworm
-ARG MESSAGE_DB_VERSION=1.3.0
-RUN apt-get update \
- && apt-get install -y --no-install-recommends ca-certificates curl \
- && rm -rf /var/lib/apt/lists/* \
- && mkdir -p /opt/message-db \
- && curl -fsSL "https://github.com/message-db/message-db/archive/refs/tags/v${MESSAGE_DB_VERSION}.tar.gz" \
-    | tar -xz --strip-components=1 -C /opt/message-db
+COPY vendor/ /opt/message-db-vendor/
+RUN cd /opt/message-db-vendor && sha256sum -c --quiet SHA256SUMS \
+ && mkdir -p /opt/message-db && cp -r database /opt/message-db/database \
+ && chmod +x /opt/message-db/database/*.sh
 COPY install-message-db.sh /docker-entrypoint-initdb.d/10-install-message-db.sh
 RUN chmod +x /docker-entrypoint-initdb.d/10-install-message-db.sh

@@ -1,0 +1,32 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>CORS probe (local test page)</title>
+<p>Local CORS probe. It loads the site's own adapter module and calls the reference stack from this origin.</p>
+<script type="module">
+  import { GatewayStore, KafkaRestBroker } from '/assets/es/adapters.mjs';
+  import { makeEvent } from '/assets/es/events.mjs';
+  import { ConcurrencyError } from '/assets/es/store.mjs';
+
+  // Resolves with what a page script can observe; a CORS block shows up as a rejected fetch (TypeError).
+  window.runCors = async ({ gateway, rest, clusterId, rid }) => {
+    const out = {};
+    const attempt = async (name, fn) => {
+      try { out[name] = { ok: true, value: await fn() }; }
+      catch (e) { out[name] = { ok: false, name: e.name, message: String(e.message).slice(0, 200), status: e.status ?? null }; }
+    };
+    const store = new GatewayStore({ url: gateway });
+    const stream = `content-livecors${rid}`;
+    const ev = makeEvent({ type: 'ContentAdded', stream, data: { id: `live-cors-${rid}#1`, title: 'from a page' }, meta: { source: 'browser-live-test' } });
+    await attempt('gateway_post_append', async () => (await store.append(stream, [ev], { expectedVersion: -1 })).appended);
+    await attempt('gateway_get_read', async () => (await store.read({ fromPosition: 0, limit: 1 })).length);
+    await attempt('gateway_get_last', async () => (await store.lastPosition()) >= 0);
+    await attempt('gateway_409_readable', async () => {
+      try { await store.append(stream, [makeEvent({ type: 'ContentChanged', stream, data: { id: 'x#1' } })], { expectedVersion: -1 }); return 'no error'; }
+      catch (e) { return e instanceof ConcurrencyError ? 'ConcurrencyError' : `${e.name}:${e.message}`; }
+    });
+    const broker = new KafkaRestBroker({ url: rest, clusterId });
+    await attempt('kafka_rest_publish', async () => (await broker.publish('live-cors-test', makeEvent({ type: 'ContentAdded', stream: `content-livecors${rid}k`, data: { id: `live-cors-${rid}#k` }, meta: { source: 'browser-live-test' } }))).error_code);
+    return out;
+  };
+  window.corsReady = true;
+</script>

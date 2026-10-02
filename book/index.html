@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book a conversation — Nkosinathi Mbambo</title>
+<meta name="description" content="Ask for a time. You send a request; Nkosinathi confirms it by hand and chooses the platform with you, Proton Meet or Signal. Nothing is booked automatically and nothing is stored on a server.">
+<meta name="theme-color" content="#0C0A10">
+<meta property="og:image" content="https://nmbambo.github.io/assets/portrait.jpg">
+<link rel="icon" href="../assets/rose-small.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../" aria-label="Home"><img src="../assets/rose-small.svg" alt="" width="28" height="28"></a>
+  <nav aria-label="Sections">
+    <a href="../method/">Method</a>
+    <a href="../architecture/">Architecture</a>
+    <a href="../#work">Work</a>
+    <a href="../engage/">Engage</a>
+    <a href="../search/">Search</a>
+    <a href="./" aria-current="page">Book</a>
+    <a href="../#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="main" class="project book">
+
+  <section class="hero project-hero">
+    <p class="byline"><img class="portrait xs" src="../assets/portrait.jpg" alt="" width="40" height="40"><a href="../">Nkosinathi Mbambo</a></p>
+    <p class="label">Book</p>
+    <h1>Book a conversation</h1>
+    <p class="role">Ask for a time. I confirm it by hand, and we choose the platform together.</p>
+    <p class="bk-lede">A request, not a booking. You choose a time and tell me about the decision. I reply with a confirmed time and a Proton Meet or Signal link.</p>
+  </section>
+
+  <section aria-labelledby="b-how">
+    <h2 id="b-how"><span class="num">I</span> How it works</h2>
+    <ol class="steps">
+      <li>Choose a preferred time, and if you like an alternative. If none suits, say what would.</li>
+      <li>Tell me who you are and what you are facing.</li>
+      <li>Send the request from your own email, or copy it into Signal. It carries a private link for me.</li>
+      <li>I choose the slot, create the call link and send you a confirmation.</li>
+    </ol>
+    <noscript><p class="body note">This page needs JavaScript to show the diary. You can still write to me directly from the contact section on the home page.</p></noscript>
+  </section>
+
+  <div id="bk-flow">
+  <form id="bk-form" novalidate autocomplete="on">
+
+    <section aria-labelledby="b-time">
+      <h2 id="b-time"><span class="num">II</span> Choose a time</h2>
+      <fieldset class="bk-set" id="bk-duration-set">
+        <legend class="k">Length</legend>
+        <div class="bk-opts" id="bk-durations"></div>
+      </fieldset>
+      <p class="bk-tz" id="bk-tz"></p>
+
+      <fieldset class="bk-set" id="bk-role-set">
+        <legend class="k">I am choosing my</legend>
+        <div class="bk-opts">
+          <label class="bk-opt"><input type="radio" name="role" value="preferred" checked><span>Preferred time</span></label>
+          <label class="bk-opt"><input type="radio" name="role" value="alternative"><span>Alternative time (optional)</span></label>
+        </div>
+      </fieldset>
+      <p class="status" id="bk-picks" aria-live="polite">Nothing chosen yet.</p>
+      <div id="bk-days" class="bk-days" aria-label="Available times"><p class="status">Loading the diary…</p></div>
+
+      <label class="bk-none"><input type="checkbox" id="bk-none"> <span>None of these suit me</span></label>
+      <div id="bk-suggest" hidden>
+        <label class="k" for="bk-suggestion">A time that would suit you</label>
+        <textarea id="bk-suggestion" rows="3" maxlength="400" placeholder="For example, Thursday mornings after 8, or the week of 19 October"></textarea>
+        <p class="bk-err" id="bk-suggestion-err" hidden></p>
+      </div>
+      <p class="bk-err" id="bk-time-err" role="alert" hidden></p>
+    </section>
+
+    <section aria-labelledby="b-you">
+      <h2 id="b-you"><span class="num">III</span> About you</h2>
+      <div class="bk-grid">
+        <div class="bk-field"><label class="k" for="bk-name">Name</label>
+          <input id="bk-name" name="name" type="text" autocomplete="name" maxlength="120" required>
+          <p class="bk-err" id="bk-name-err" hidden></p></div>
+        <div class="bk-field"><label class="k" for="bk-email">Email</label>
+          <input id="bk-email" name="email" type="email" autocomplete="email" maxlength="120" required>
+          <p class="bk-err" id="bk-email-err" hidden></p></div>
+        <div class="bk-field wide"><label class="k" for="bk-org">Organisation (optional)</label>
+          <input id="bk-org" name="org" type="text" autocomplete="organization" maxlength="120"></div>
+        <div class="bk-field wide"><label class="k" for="bk-reason">Reason for the call</label>
+          <p class="bk-hint" id="bk-reason-hint">What decision are you facing, and what would make this call worth your time?</p>
+          <textarea id="bk-reason" name="reason" rows="6" maxlength="800" aria-describedby="bk-reason-hint bk-count" required></textarea>
+          <p class="bk-count" id="bk-count" aria-live="off">0 of 800 characters, 30 at least</p>
+          <p class="bk-err" id="bk-reason-err" hidden></p></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="b-call">
+      <h2 id="b-call"><span class="num">IV</span> The call</h2>
+      <fieldset class="bk-set">
+        <legend class="k">Platform</legend>
+        <label class="bk-pick"><input type="radio" name="platform" value="proton-meet" checked>
+          <span><strong>Proton Meet</strong> End-to-end encrypted video, in the browser.</span></label>
+        <label class="bk-pick"><input type="radio" name="platform" value="signal">
+          <span><strong>Signal</strong> An encrypted call, through a call link or your number.</span></label>
+      </fieldset>
+      <p class="cta-row"><button type="submit" class="cta-primary bk-btn" id="bk-submit">Prepare my request</button>
+        <span class="status" id="bk-form-status" aria-live="polite"></span></p>
+    </section>
+  </form>
+
+  <section id="bk-done" aria-labelledby="b-done" hidden>
+    <h2 id="b-done"><span class="num">V</span> Send the request</h2>
+    <p class="bk-lede" id="bk-summary"></p>
+    <ol class="steps bk-actions">
+      <li><strong>Send the request.</strong> Opens your email with the details addressed to me.
+        <p class="cta-row"><a class="cta-primary" id="bk-mailto" href="#">Send the request</a></p>
+        <p class="note-sm" id="bk-long" hidden>Your request is long, so the email carries the essentials and the link carries the rest. If your email app will not open, use Copy request.</p></li>
+      <li><strong>Copy request.</strong> For Signal, or anywhere else.
+        <p class="cta-row"><button type="button" class="cta-primary bk-btn" id="bk-copy">Copy request</button><span class="status" id="bk-copy-status" aria-live="polite"></span></p>
+        <details class="bk-text"><summary class="linkish">Show the text</summary><textarea id="bk-copy-text" rows="8" readonly aria-label="The request text"></textarea></details></li>
+      <li id="bk-hold-li"><strong>Add a tentative hold to my calendar.</strong> A file for your own calendar, marked tentative.
+        <p class="cta-row"><button type="button" class="cta-primary bk-btn" id="bk-hold">Download request-hold.ics</button></p></li>
+    </ol>
+    <p class="hitl-foot">This is a request, not a booking. You'll hear back with a confirmed time and a Proton Meet or Signal link.</p>
+    <p class="back"><button type="button" class="linkish" id="bk-edit">← Change my request</button></p>
+  </section>
+  </div>
+
+  <section aria-labelledby="b-priv">
+    <h2 id="b-priv"><span class="num">VI</span> What stays where</h2>
+    <p class="body">This page keeps no server and no form service. Your details travel only in the email you send, the text you copy, and a private link inside it. Nothing is stored here, and nothing is sent until you press send in your own email app.</p>
+    <p class="body note">The page notes, in your browser only, that a request was made: its length and platform, never your name or words.</p>
+  </section>
+
+</main>
+
+<footer>
+  <img src="../assets/rose.svg" alt="Ingqiqo rose" width="40" height="40">
+  <p>© 2026 Nkosinathi Mbambo · Ingqiqo Executables (Pty) Ltd</p>
+</footer>
+<script type="module" src="../assets/book/book.mjs"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  Ingqiqo search read model: managed schema, locked (mutable=false in solrconfig.xml), committed to git.
+  Similarity: Solr's default BM25 with k1=1.2, b=0.75 (the same constants as assets/search/algorithms.mjs), written out
+  explicitly so the match is visible and does not depend on a default that could change.
+-->
+<schema name="ingqiqo-search" version="1.7">
+  <uniqueKey>id</uniqueKey>
+
+  <fieldType name="string" class="solr.StrField" sortMissingLast="true" docValues="true"/>
+  <fieldType name="boolean" class="solr.BoolField" sortMissingLast="true"/>
+  <fieldType name="plong" class="solr.LongPointField" docValues="true"/>
+
+  <!-- Prose: Standard tokenizer, ASCII folding, English stop words, Porter stemmer. Query analysis is identical,
+       so a term, a phrase and a wildcard-free fuzzy term all go through the same chain. -->
+  <fieldType name="text_en" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.EnglishPossessiveFilterFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.ASCIIFoldingFilterFactory"/>
+      <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_en.txt"/>
+      <filter class="solr.PorterStemFilterFactory"/>
+    </analyzer>
+  </fieldType>
+
+  <!-- Same tokenizer, no stop words and NO stemming: the target of fuzzy (term~N) and prefix (term*) queries. Those queries
+       are not stemmed by Solr, so they must meet the words as written (a fuzzy "cohrence" is 1 edit from "coherence" but
+       3 from its Porter stem "coher"). Written only through copyField below. -->
+  <fieldType name="text_u" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.EnglishPossessiveFilterFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.ASCIIFoldingFilterFactory"/>
+    </analyzer>
+  </fieldType>
+
+  <!-- File names and paths ("architecture/index.html"): split on every non-alphanumeric, fold, lowercase, no stemming. -->
+  <fieldType name="text_path" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.PatternTokenizerFactory" pattern="[^\p{L}\p{N}]+" group="-1"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.ASCIIFoldingFilterFactory"/>
+    </analyzer>
+  </fieldType>
+
+  <field name="id"       type="string"    indexed="true" stored="true" required="true" multiValued="false"/>
+  <field name="title"    type="text_en"   indexed="true" stored="true"/>
+  <field name="section"  type="text_en"   indexed="true" stored="true"/>
+  <field name="text"     type="text_en"   indexed="true" stored="true"/>
+  <field name="tags"     type="text_en"   indexed="true" stored="true" multiValued="true"/>
+  <field name="type"     type="text_en"   indexed="true" stored="true"/>
+  <field name="source"   type="text_path" indexed="true" stored="true"/>
+  <field name="url"      type="string"    indexed="true" stored="true"/>
+
+  <field name="title_u"   type="text_u" indexed="true" stored="false"/>
+  <field name="section_u" type="text_u" indexed="true" stored="false"/>
+  <field name="text_u"    type="text_u" indexed="true" stored="false"/>
+  <field name="tags_u"    type="text_u" indexed="true" stored="false" multiValued="true"/>
+  <copyField source="title"   dest="title_u"/>
+  <copyField source="section" dest="section_u"/>
+  <copyField source="text"    dest="text_u"/>
+  <copyField source="tags"    dest="tags_u"/>
+
+  <!-- Idempotency bookkeeping, written only by projector/solr_sink.py -->
+  <field name="ev_pos"   type="plong"     indexed="true" stored="true" docValues="true"/>   <!-- event position/version of the last applied event -->
+  <field name="ev_id"    type="string"    indexed="false" stored="true" docValues="false"/> <!-- id of that event -->
+  <field name="deleted"  type="boolean"   indexed="true" stored="true" default="false"/>    <!-- tombstone: removed docs stay as a version marker -->
+  <field name="_version_" type="plong"    indexed="false" stored="false" docValues="true"/> <!-- Solr's optimistic-concurrency token -->
+
+  <similarity class="solr.BM25SimilarityFactory">
+    <float name="k1">1.2</float>
+    <float name="b">0.75</float>
+  </similarity>
+</schema>

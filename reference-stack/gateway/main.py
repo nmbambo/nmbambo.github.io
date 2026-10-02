@@ -7,6 +7,7 @@
   KAFKA_TOPIC=ingqiqo.events
   ALLOWED_ORIGINS=http://localhost:8000,...
   SOLACE_REST_URL=                            (optional pass-through)
+  SOLR_URL=http://solr:8983/solr/ingqiqo      (enables GET /search; empty disables)
   HOST=0.0.0.0  PORT=8088
 """
 import logging
@@ -45,7 +46,8 @@ def main(env=os.environ):
                 time.sleep(2)
     origins = [o.strip() for o in env.get("ALLOWED_ORIGINS", "").split(",") if o.strip()]
     httpd = serve(store, pub, env.get("HOST", "0.0.0.0"), int(env.get("PORT", "8088")),
-                  store_name=name, allowed_origins=origins, solace_url=env.get("SOLACE_REST_URL") or None)
+                  store_name=name, allowed_origins=origins, solace_url=env.get("SOLACE_REST_URL") or None,
+                  solr_url=env.get("SOLR_URL") or None)
     logging.getLogger("gateway").info("listening on %s:%s store=%s kafka=%s", *httpd.server_address[:2], name, bool(rest))
     httpd.serve_forever()
 

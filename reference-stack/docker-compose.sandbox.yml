@@ -1,0 +1,23 @@
+# Overlay for a sandbox whose egress proxy re-signs TLS (the build containers would otherwise fail pip's
+# certificate check). Not needed on a normal workstation.
+#   docker compose -f docker-compose.yml -f docker-compose.sandbox.yml up -d --build
+# Set BUILD_CA_FILE to the proxy CA bundle (default /root/.ccr/ca-bundle.crt).
+services:
+  command:
+    build:
+      secrets: [buildca]
+  query:
+    build:
+      secrets: [buildca]
+  gateway:
+    build:
+      secrets: [buildca]
+  projector:
+    build:
+      secrets: [buildca]
+  solr-sink:
+    build:
+      secrets: [buildca]
+secrets:
+  buildca:
+    file: ${BUILD_CA_FILE:-/root/.ccr/ca-bundle.crt}

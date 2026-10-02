@@ -1,0 +1,4 @@
+Message DB v1.3.0 (database/ directory only), vendored unmodified.
+Source: https://github.com/message-db/message-db  tag v1.3.0  commit e6999a6bd95ace6e8d70ec62a00c66b27ce8bf3b
+Licence: MIT (see LICENSE, copyright Scott Bellware). Fetched with: git clone --depth 1 --branch v1.3.0
+Verify with: (cd vendor && sha256sum -c SHA256SUMS)
