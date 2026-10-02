@@ -1,6 +1,6 @@
 # nmbambo.github.io
 
-Portfolio of Nkosinathi Mbambo, Meaning Coherence Specialist — scientist, engineer, analyst, modeller and architect. Built in the Ingqiqo Executables identity.
+Portfolio of Nkosinathi Mbambo, Meaning Coherence Assurer — scientist, engineer, analyst, modeller and architect. Built in the Ingqiqo Executables identity.
 
 Plain HTML and CSS, no build step. Served by GitHub Pages from `main`.
 
