@@ -1,6 +1,7 @@
 // The request payload: JSON, base64url, version 1. It travels only in a URL fragment (#...),
 // which browsers never send to a server, so it never reaches a log. Pure and DOM-free.
 import { isValidTimeZone } from './tz.mjs';
+import { isSource } from '../source.mjs';
 
 export const VERSION = 1;
 export const MAX_ENCODED = 6000;
@@ -102,6 +103,10 @@ export function validate(obj) {
   if (!isValidTimeZone(obj.viewerTz)) throw new PayloadError('viewerTz is not a time zone');
   const out = { v: VERSION, id: obj.id, createdAt, name, email, org, reason, duration: obj.duration,
     platform: obj.platform, preferred, alternative, suggestion, viewerTz: obj.viewerTz };
+  if (obj.source !== undefined && obj.source !== '') {
+    if (!isSource(obj.source)) throw new PayloadError('source is not recognised');
+    out.source = obj.source;
+  }
   if (obj.confirmed !== undefined) out.confirmed = confirmed(obj.confirmed);
   if (obj.view !== undefined) {
     if (obj.view !== 'attendee') throw new PayloadError('view is not recognised');

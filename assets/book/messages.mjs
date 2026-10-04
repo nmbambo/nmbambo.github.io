@@ -62,6 +62,7 @@ function summaryLines(req, reason) {
     `Reason: ${reason}`,
     `Length: ${req.duration} minutes`,
     `Platform: ${PLATFORM_NAME[req.platform]}`,
+    ...(req.source ? [`Came from: ${req.source}`] : []),
   ];
   if (req.preferred) lines.push(`Preferred time: ${describeSlot(req.preferred, req.viewerTz)}`);
   if (req.alternative) lines.push(`Alternative time: ${describeSlot(req.alternative, req.viewerTz)}`);

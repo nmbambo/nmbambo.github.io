@@ -6,6 +6,7 @@ import { validate, isEmail, PayloadError, REASON_MIN, REASON_MAX } from './paylo
 import { requestMessage, describeSlot, PLATFORM_NAME, SAST } from './messages.mjs';
 import { requestHold } from './ics.mjs';
 import { h, $, download, copyText, loadJson, uuid } from './ui.mjs';
+import { readSource } from '../source.mjs';
 
 const state = {
   availability: null, busy: [], duration: 30, role: 'preferred',
@@ -154,6 +155,7 @@ function buildRequest(f) {
     preferred: state.none ? null : asPayloadSlot(pickedSlot('preferred')),
     alternative: state.none ? null : asPayloadSlot(pickedSlot('alternative')),
     suggestion: f.suggestion, viewerTz: state.viewerTz,
+    ...(readSource() ? { source: readSource() } : {}),
   };
 }
 
