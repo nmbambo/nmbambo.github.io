@@ -7,7 +7,7 @@ RUN --mount=type=secret,id=buildca,required=false \
     if [ -f /run/secrets/buildca ]; then export PIP_CERT=/run/secrets/buildca; fi; \
     pip install --no-cache-dir -r requirements.txt
 COPY *.py ./
-RUN useradd --system --no-create-home query
+RUN useradd --system --no-create-home query && mkdir -p /data && chown query /data
 USER query
 EXPOSE 8089
 CMD ["python", "main.py"]

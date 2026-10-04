@@ -80,3 +80,19 @@ test('rejects unknown algorithms before any request and requires a url', async (
   assert.throws(() => new SolrSearch({ fetch: f }), /url is required/);
   assert.deepEqual(SOLR_ALGORITHMS, ['boolean', 'bm25', 'fuzzy', 'prefix', 'phrase']);
 });
+
+test('RemoteSearch: off by default, adds substring, passes the query service ftsQuery through', async () => {
+  const { RemoteSearch, searchFromConfig, REMOTE_ALGORITHMS } = await import('../../assets/search/remote.mjs');
+  const cfg = JSON.parse(readFileSync(new URL('../../assets/es/config.json', import.meta.url), 'utf8'));
+  assert.equal(searchFromConfig(cfg), null);
+  assert.equal(searchFromConfig({ search: { url: 'http://x' } }), null);
+  assert.deepEqual(REMOTE_ALGORITHMS, ['boolean', 'bm25', 'fuzzy', 'prefix', 'phrase', 'substring']);
+  const f = fakeFetch([{ status: 200, body: { algorithm: 'substring', total: 1, qtimeMs: 1, ftsQuery: null, results: [{ id: 'a', score: 1 }] } }]);
+  const r = searchFromConfig({ search: { enabled: true, url: 'http://localhost:8091' } }, { fetch: f });
+  assert.ok(r instanceof RemoteSearch);
+  const out = await r.search('herenc', { algorithm: 'substring' });
+  assert.equal(new URL(f.calls[0].url).pathname, '/search');
+  assert.equal(out.total, 1);
+  assert.ok('ftsQuery' in out);
+  await assert.rejects(() => new SolrSearch({ url: 'http://x', fetch: f }).search('a', { algorithm: 'substring' }), /SolrSearch: unknown algorithm/);
+});

@@ -2,7 +2,7 @@
 # Run:  cp .env.example .env && docker compose up -d        -> the LIGHT stack only:
 #         postgres-lakebase, nats (JetStream), debezium-server (NATS JetStream sink), command, query
 # Profiles (see README): heavy (kafka, kafka-rest, debezium-connect, kurrentdb, messagedb, gateway, projector),
-#   messagedb, solr (solr + solr-sink; the sink reads Kafka, so it starts kafka too), olake, solace.
+#   messagedb, solr (solr + solr-sink, fed from JetStream), olake, solace.
 #   e.g.  docker compose --profile heavy up -d      (light + heavy together)
 # Image tags were checked by pulling them on 2026-10-02; see README "Image tags".
 name: ingqiqo-reference
@@ -128,7 +128,7 @@ services:
   # ================================================================ HEAVY STACK (profile "heavy") ====================
   # ---------------------------------------------------------------- broker (KRaft, no ZooKeeper)
   kafka:
-    profiles: ["heavy", "solr"]
+    profiles: ["heavy"]
     image: apache/kafka:4.1.2
     <<: *restart
     environment:
@@ -335,23 +335,21 @@ services:
       retries: 30
       start_period: 15s
 
-  # Kafka -> Solr, idempotent (see projector/solr_sink.py). Same image as the projector, its own consumer group, so Solr
-  # being down never stalls the Postgres read models. Also consumes Debezium's lakebase.public.decisions / .parties.
+  # JetStream -> Solr, idempotent (see projector/solr_sink.py, `--nats`). Durable consumers of its own on streams ES and CDC,
+  # so Solr being down never stalls the query service. Optional: SQLite FTS5 in `query` is the default read model.
   solr-sink:
     profiles: ["solr"]
     build: ./projector
     image: ingqiqo-reference/projector:0.1.0
     <<: *restart
-    command: ["python", "solr_sink.py"]
+    command: ["python", "solr_sink.py", "--nats"]
     depends_on:
-      kafka:
+      command:
         condition: service_healthy
       solr:
         condition: service_healthy
     environment:
-      KAFKA_BOOTSTRAP: kafka:9092
-      KAFKA_TOPIC: ${KAFKA_TOPIC:-ingqiqo.events}
-      KAFKA_GROUP: ${SOLR_SINK_GROUP:-ingqiqo-solr-sink}
+      NATS_URL: nats://nats:4222
       SOLR_URL: http://solr:8983/solr/ingqiqo
       SOLR_COMMIT_WITHIN_MS: 250
     healthcheck:

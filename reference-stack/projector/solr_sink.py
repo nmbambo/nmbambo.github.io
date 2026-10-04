@@ -297,5 +297,63 @@ def main(env=os.environ):
         consumer.close()
 
 
+# ------------------------------------------------------------------------------------------- JetStream (light stack)
+def nats_to_kafka_shape(subject, data, seq):
+    """A JetStream message -> the (topic, key, raw) the mapping above already understands, so both transports share one
+    mapping. es.<stream> carries a site envelope: its global position (stream sequence - 1) is set as `version`, the
+    order key. lakebase.<schema>.<table> carries a Debezium Server change event, unchanged (order key: source.lsn)."""
+    if subject.startswith("es."):
+        try:
+            ev = json.loads(data)
+        except (TypeError, ValueError):
+            return None
+        if not isinstance(ev, dict):
+            return None
+        ev["version"] = seq - 1
+        return "ingqiqo.events", None, json.dumps(ev).encode()
+    if subject.startswith("lakebase."):
+        return subject, None, data
+    return None
+
+
+def main_nats(env=os.environ):
+    """Durable pull consumers `solr-sink` on streams ES and CDC; ack after the Solr write (at-least-once; the sink is
+    idempotent, so a redelivery is a no-op). Started with `python solr_sink.py --nats`."""
+    import asyncio
+    import nats
+    from nats.errors import TimeoutError as NatsTimeout
+
+    logging.basicConfig(level=env.get("LOG_LEVEL", "INFO"), format="%(asctime)s %(levelname)s %(name)s %(message)s")
+    sink = SolrSink(SolrClient(env.get("SOLR_URL", "http://solr:8983/solr/ingqiqo"),
+                               commit_within_ms=int(env.get("SOLR_COMMIT_WITHIN_MS", "250"))))
+
+    async def run():
+        nc = await nats.connect(env.get("NATS_URL", "nats://nats:4222"), max_reconnect_attempts=-1, name="ingqiqo-solr-sink")
+        js = nc.jetstream()
+        subs = [await js.pull_subscribe(subj, durable=f"solr-sink-{stream.lower()}", stream=stream)
+                for stream, subj in (("ES", "es.>"), ("CDC", "lakebase.>"))]
+        while True:
+            pathlib.Path(HEARTBEAT).touch()
+            for sub in subs:
+                try:
+                    msgs = await sub.fetch(256, timeout=0.5)
+                except NatsTimeout:
+                    continue
+                for m in msgs:
+                    shaped = nats_to_kafka_shape(m.subject, m.data, m.metadata.sequence.stream)
+                    while shaped:
+                        try:
+                            sink.handle(*shaped)
+                            break
+                        except SolrError as exc:
+                            log.warning("%s; retrying in 2 s", exc)
+                            pathlib.Path(HEARTBEAT).touch()
+                            await asyncio.sleep(2)
+                    await m.ack()
+
+    asyncio.run(run())
+
+
 if __name__ == "__main__":
-    main()
+    import sys
+    main_nats() if "--nats" in sys.argv else main()
