@@ -210,7 +210,7 @@
   "tags": [
    "page"
   ],
-  "text": "What stays where This page keeps no server and no form service. Your details travel only in the email you send, the text you copy, and a private link inside it. Nothing is stored here, and nothing is sent until you press send in your own email app. The page notes, in your browser only, that a request was made: its length and platform, never your name or words.",
+  "text": "What stays where This page keeps no server and no form service. Your details travel only in the email you send, the text you copy, and a private link inside it. Nothing is stored here, and nothing is sent until you press send in your own email app. If you followed a link from one of my posts, the request says which post, and nothing else about you. The page notes, in your browser only, that a request was made: its length and platform, never your name or words.",
   "title": "Book a conversation",
   "type": "page",
   "url": "/book/#b-priv"
