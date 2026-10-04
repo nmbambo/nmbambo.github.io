@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Product Engineering — Nkosinathi Mbambo</title>
+<meta name="description" content="Product Engineering: the discipline that produces Decision Instruments, Meaning, Coherence, Data and Assurance Products, delivered as governed Executables. Thinking framework, product principles, layers, and epistemic typing.">
+<meta name="theme-color" content="#0C0A10">
+<meta property="og:image" content="https://nmbambo.github.io/assets/portrait.jpg">
+<link rel="icon" href="../assets/rose-small.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../" aria-label="Home"><img src="../assets/rose-small.svg" alt="" width="28" height="28"></a>
+  <nav aria-label="Sections">
+    <a href="../method/">Method</a>
+    <a href="../architecture/">Architecture</a>
+    <a href="./">Engineering</a>
+    <a href="../#work">Work</a>
+    <a href="../engage/">Engage</a>
+    <a href="../search/">Search</a>
+    <a href="../book/">Book</a>
+    <a href="../#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="main" class="project arch">
+
+  <section class="hero project-hero">
+    <p class="byline"><img class="portrait xs" src="../assets/portrait.jpg" alt="" width="40" height="40"><a href="../">Nkosinathi Mbambo</a></p>
+    <p class="label">Discipline · Meaning Coherence Assurer</p>
+    <h1>Product Engineering</h1>
+    <p class="role">The discipline. What it produces: Decision Instruments, Meaning, Coherence, Data and Assurance Products — delivered as governed Executables.</p>
+    <p class="lede">The method says how an organisation decides, and the architecture says what it runs on. This page is about the thing in between: how I think about building what a client actually receives, and what has to be true of it before anyone is asked to rely on it.</p>
+  </section>
+
+  <section aria-labelledby="p1">
+    <h2 id="p1"><span class="num">I</span> The engineering thinking framework</h2>
+    <p class="body">Four thinking skills sit under everything: decomposition, algorithms, pattern recognition and abstraction. The work then climbs an abstraction layer, descends a logical continuum into something that runs, and is kept alive by life-cycling. Three engineering domains do the building, with support and additional domains behind them.</p>
+    <figure class="diagram">
+      <svg viewBox="0 0 960 700" role="img" aria-labelledby="fw-t fw-d" xmlns="http://www.w3.org/2000/svg">
+        <title id="fw-t">The engineering thinking framework</title>
+        <desc id="fw-d">Top to bottom: four core thinking skills; an abstraction layer held in context with three rows (problem to hypotheses, concept to logical, principles to objectives); a logical continuum from logical through model and mathematical to prototype; life-cycling, where versioning management and optimisation lead to a solution; and the engineering domains, with three engineering domains, three support domains and two additional domains.</desc>
+        <defs><marker id="ar3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="f-gold"/></marker></defs>
+
+        <!-- Thinking skills -->
+        <text x="16" y="18" class="k" style="text-anchor:start">CORE THINKING SKILLS</text>
+        <rect x="16" y="28" width="220" height="48" class="box"/>
+        <text x="126" y="50" class="t">Decomposition</text>
+        <text x="126" y="67" class="s s2">break the whole into parts</text>
+        <rect x="252" y="28" width="220" height="48" class="box"/>
+        <text x="362" y="50" class="t">Algorithms</text>
+        <text x="362" y="67" class="s s2">make the steps explicit</text>
+        <rect x="488" y="28" width="220" height="48" class="box"/>
+        <text x="598" y="50" class="t">Pattern recognition</text>
+        <text x="598" y="67" class="s s2">e.g. CQRS: write model, read models</text>
+        <rect x="724" y="28" width="220" height="48" class="box"/>
+        <text x="834" y="50" class="t">Abstraction</text>
+        <text x="834" y="67" class="s s2">keep what matters, hide the rest</text>
+        <line x1="480" y1="78" x2="480" y2="96" class="ln" marker-end="url(#ar3)"/>
+
+        <!-- Abstraction layer -->
+        <rect x="16" y="100" width="928" height="232" class="box raised"/>
+        <text x="480" y="121" class="k">ABSTRACTION LAYER · ALL HELD IN CONTEXT</text>
+        <text x="32" y="165" class="s i" style="text-anchor:start">Problem space</text>
+        <rect x="150" y="134" width="142" height="52" class="tier"/><text x="221" y="165" class="t">Problem</text>
+        <rect x="309" y="134" width="142" height="52" class="tier"/><text x="380" y="165" class="t">Opportunity</text>
+        <rect x="468" y="134" width="142" height="52" class="tier"/><text x="539" y="165" class="t">Options</text>
+        <rect x="627" y="134" width="142" height="52" class="tier"/><text x="698" y="165" class="t">Choices</text>
+        <rect x="786" y="134" width="142" height="52" class="tier"/><text x="857" y="165" class="t">Hypotheses</text>
+        <text x="32" y="231" class="s i" style="text-anchor:start">Representation</text>
+        <rect x="150" y="200" width="240" height="52" class="tier"/><text x="270" y="231" class="t">Concept</text>
+        <rect x="419" y="200" width="240" height="52" class="tier"/><text x="539" y="231" class="t">Schematic / Visual</text>
+        <rect x="688" y="200" width="240" height="52" class="tier"/><text x="808" y="231" class="t">Logical</text>
+        <text x="32" y="297" class="s i" style="text-anchor:start">Intent</text>
+        <rect x="150" y="266" width="142" height="52" class="tier"/><text x="221" y="297" class="t">Principles</text>
+        <rect x="309" y="266" width="142" height="52" class="tier"/><text x="380" y="288" class="t">KBQ</text><text x="380" y="306" class="s s2">key business questions</text>
+        <rect x="468" y="266" width="142" height="52" class="tier"/><text x="539" y="297" class="t">Purpose</text>
+        <rect x="627" y="266" width="142" height="52" class="tier"/><text x="698" y="297" class="t">Goals</text>
+        <rect x="786" y="266" width="142" height="52" class="tier"/><text x="857" y="297" class="t">Objectives</text>
+        <line x1="480" y1="334" x2="480" y2="356" class="ln" marker-end="url(#ar3)"/>
+
+        <!-- Logical continuum -->
+        <text x="16" y="352" class="k" style="text-anchor:start">LOGICAL CONTINUUM</text>
+        <rect x="16" y="360" width="208" height="52" class="box"/><text x="120" y="391" class="t">Logical</text>
+        <rect x="256" y="360" width="208" height="52" class="box"/><text x="360" y="382" class="t">Model</text><text x="360" y="400" class="s s2">physical</text>
+        <rect x="496" y="360" width="208" height="52" class="box"/><text x="600" y="382" class="t">Mathematical</text><text x="600" y="400" class="s s2">operations research · simulation</text>
+        <rect x="736" y="360" width="208" height="52" class="box raised"/><text x="840" y="391" class="t">Prototype</text>
+        <line x1="224" y1="386" x2="252" y2="386" class="ln" marker-end="url(#ar3)"/>
+        <line x1="464" y1="386" x2="492" y2="386" class="ln" marker-end="url(#ar3)"/>
+        <line x1="704" y1="386" x2="732" y2="386" class="ln" marker-end="url(#ar3)"/>
+        <line x1="840" y1="414" x2="840" y2="424" class="ln"/>
+        <line x1="480" y1="424" x2="840" y2="424" class="ln"/>
+        <line x1="480" y1="424" x2="480" y2="436" class="ln" marker-end="url(#ar3)"/>
+
+        <!-- Life-cycling -->
+        <text x="16" y="436" class="k" style="text-anchor:start">LIFE-CYCLING</text>
+        <rect x="16" y="444" width="290" height="48" class="box"/><text x="161" y="473" class="t">Versioning management</text>
+        <text x="314" y="473" class="t">+</text>
+        <rect x="322" y="444" width="290" height="48" class="box"/><text x="467" y="473" class="t">Optimisation</text>
+        <rect x="654" y="444" width="290" height="48" class="box raised"/><text x="799" y="473" class="t">Solution</text>
+        <line x1="612" y1="468" x2="650" y2="468" class="ln" marker-end="url(#ar3)"/>
+        <line x1="799" y1="494" x2="799" y2="520" class="ln" marker-end="url(#ar3)"/>
+
+        <!-- Domains -->
+        <text x="16" y="532" class="k" style="text-anchor:start">THREE ENGINEERING DOMAINS</text>
+        <rect x="16" y="540" width="296" height="52" class="box raised"/><text x="164" y="571" class="t">Decision Engineering</text>
+        <rect x="332" y="540" width="296" height="52" class="box raised"/><text x="480" y="571" class="t">Coherence Engineering</text>
+        <rect x="648" y="540" width="296" height="52" class="box raised"/><text x="796" y="571" class="t">Meaning Engineering</text>
+
+        <text x="16" y="620" class="k" style="text-anchor:start">SUPPORT DOMAINS</text>
+        <text x="664" y="620" class="k" style="text-anchor:start">ADDITIONAL DOMAINS</text>
+        <rect x="16" y="628" width="200" height="56" class="box"/><text x="116" y="652" class="t">MDSE</text><text x="116" y="672" class="s s2">model-driven software engineering</text>
+        <rect x="228" y="628" width="200" height="56" class="box"/><text x="328" y="652" class="t">Mathematical</text><text x="328" y="672" class="s s2">engineering</text>
+        <rect x="440" y="628" width="200" height="56" class="box"/><text x="540" y="652" class="t">SRE</text><text x="540" y="672" class="s s2">site reliability engineering</text>
+        <rect x="664" y="628" width="140" height="56" class="box"/><text x="734" y="661" class="t">Evidence</text>
+        <rect x="816" y="628" width="128" height="56" class="box"/><text x="880" y="661" class="t">Implementation</text>
+        <line x1="328" y1="626" x2="328" y2="596" class="ln dash" marker-end="url(#ar3)"/>
+        <line x1="652" y1="626" x2="652" y2="596" class="ln dash" marker-end="url(#ar3)"/>
+      </svg>
+      <figcaption>Read top to bottom. The abstraction layer is always held in context; the domains at the foot are where the building is done, with the support and additional domains serving them.</figcaption>
+    </figure>
+    <div class="tw">
+    <table class="spec">
+      <thead><tr><th scope="col">Step</th><th scope="col">What it does</th></tr></thead>
+      <tbody>
+        <tr><td>Abstraction layer</td><td>Moves from problem to opportunity, options, choices and hypotheses; from concept through a schematic or visual to a logical form; and from principles through key business questions (KBQ) to purpose, goals and objectives. All of it is held in context, so that nothing is decided in the abstract.</td></tr>
+        <tr><td>Logical continuum</td><td>The logical form becomes a physical model, then a mathematical, operations research or simulation model, then a prototype that can be tried.</td></tr>
+        <tr><td>Life-cycling</td><td>Versioning management and optimisation turn the prototype into a solution that can be kept, changed and retired in good order.</td></tr>
+        <tr><td>Domains</td><td>Decision, Coherence and Meaning Engineering are the three that carry the work. Model-Driven Software Engineering, Mathematical Engineering and Site Reliability Engineering support them. Evidence and Implementation are additional domains.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="body note">Pattern recognition earns its place by saving effort. CQRS, for instance, keeps the write model apart from the read models, so each can be shaped for its own job.</p>
+  </section>
+
+  <section aria-labelledby="p2">
+    <h2 id="p2"><span class="num">II</span> Product principles</h2>
+    <p class="body">A product here is not a deliverable that happens to work. It is built from four principles, and judged against eight qualities.</p>
+    <div class="grid four-up">
+      <article><h3>Product thinking</h3><p>Think of the thing as something that will be used again, by people, and will have to change. Design for that life, not for the handover.</p></article>
+      <article><h3>Inherent value</h3><p>Meaning by default. The default semantics are right, so the product is correct without configuration, and a user has to work to make it wrong.</p></article>
+      <article><h3>Designed with purpose</h3><p>Every part answers a stated purpose. What cannot be tied to one is removed.</p></article>
+      <article><h3>User-centred</h3><p>The user is the person who must decide, act or answer for the result, and the product is shaped around what that person needs to know.</p></article>
+    </div>
+    <h3 class="group-h">What makes a product good</h3>
+    <div class="tw">
+    <table class="spec">
+      <tbody>
+        <tr><td>Useful</td><td>It serves a decision or task that someone actually has.</td></tr>
+        <tr><td>Usable</td><td>The people it is for can use it without special help.</td></tr>
+        <tr><td>Understandable</td><td>Its logic and its results can be explained in plain terms.</td></tr>
+        <tr><td>Trustworthy</td><td>Honest about its limits: it says what it does not cover and how sure it is.</td></tr>
+        <tr><td>Coherent</td><td>Its parts agree with one another and with the meanings it declares.</td></tr>
+        <tr><td>Maintainable and evolvable</td><td>It can be corrected and extended without breaking what depends on it.</td></tr>
+        <tr><td>Efficient</td><td>It uses no more effort and resource than the purpose warrants.</td></tr>
+        <tr><td>Accountable</td><td>Every output can be traced to its sources, its rules and its owner.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="body note">Two words set the ambition. <em>Better</em> means the product measurably improves the decision it serves. <em>Beyond</em> means it changes which decisions are possible at all.</p>
+  </section>
+
+  <section aria-labelledby="p3">
+    <h2 id="p3"><span class="num">III</span> Requirement categories</h2>
+    <p class="body">Requirements are sorted by kind, because each kind is tested, owned and changed in a different way.</p>
+    <div class="tw">
+    <table class="spec">
+      <thead><tr><th scope="col">Category</th><th scope="col">What it states</th></tr></thead>
+      <tbody>
+        <tr><td>Functional</td><td>What the product does: the behaviour a user can observe.</td></tr>
+        <tr><td>Non-functional</td><td>How well it does it: the quality attributes, such as accuracy, speed, availability, security and explainability.</td></tr>
+        <tr><td>Constraining (specification)</td><td>A limit on how the product may be built or run, set from outside the design: a standard, a platform, a jurisdiction, a format.</td></tr>
+        <tr><td>Business rule</td><td>A rule of the organisation that the product must apply or respect, owned by the business and not by the engineers.</td></tr>
+        <tr><td>Architectural contract</td><td>The interface and the invariant that other parts may rely on. It is promised to the rest of the system, so changing it is a breaking change.</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="p4">
+    <h2 id="p4"><span class="num">IV</span> The offering taxonomy</h2>
+    <p class="body">Every offering has a type, which says what it is for, and a form, which says how it is delivered. Read together they make a grid of five types by four forms.</p>
+    <div class="grid three">
+      <article>
+        <h3>Five types</h3>
+        <p>Decision Instrument. Meaning Product. Coherence Product. Data Product. Assurance Product.</p>
+      </article>
+      <article>
+        <h3>Four forms</h3>
+        <p>Product. Instrument. Offering. Executable: governed, versioned and runnable. The Executable is the form that carries the full set of guarantees.</p>
+      </article>
+      <article>
+        <h3>One contract</h3>
+        <p>Each delivered product carries a Product Contract, so a client can see what was promised without asking.</p>
+      </article>
+    </div>
+    <h3 class="group-h">What a Product Contract states</h3>
+    <div class="tw">
+    <table class="spec">
+      <tbody>
+        <tr><td>Purpose · Users</td><td>What it is for, and who it is for.</td></tr>
+        <tr><td>Inputs · Outputs</td><td>What goes in, and what comes out.</td></tr>
+        <tr><td>Semantics</td><td>What the terms and the results mean.</td></tr>
+        <tr><td>Quality attributes · Invariants</td><td>How well it performs, and what must always hold.</td></tr>
+        <tr><td>Evidence · Limits</td><td>What supports it, and where it stops being reliable.</td></tr>
+        <tr><td>Versioning · Ownership · Retirement</td><td>How it changes, who answers for it, and how it ends.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <h3 class="group-h">The reliance chain</h3>
+    <ol class="layers">
+      <li><span class="layer-name">Claim</span><span class="layer-desc">What the product says is so.</span></li>
+      <li><span class="layer-name">Warrant</span><span class="layer-desc">The grounds on which the claim may be relied on.</span></li>
+      <li><span class="layer-name">Assurance</span><span class="layer-desc">Independent checking that the warrant holds.</span></li>
+      <li><span class="layer-name">Acceptance</span><span class="layer-desc">A named person accepts the claim for use.</span></li>
+      <li><span class="layer-name">Risk transfer</span><span class="layer-desc">Where reliance is wanted, the residual risk is placed with someone able to carry it.</span></li>
+    </ol>
+    <p class="body note">Scores measure maturity. Warrants govern reliance.</p>
+  </section>
+
+  <section aria-labelledby="p5">
+    <h2 id="p5"><span class="num">V</span> Layers</h2>
+    <p class="body">The medallion runs from Bronze to Silver to Gold. Two planes sit alongside it rather than above it, and promotion between layers is by contract.</p>
+    <ol class="layers">
+      <li><span class="layer-name">Bronze</span><span class="layer-desc">Raw and immutable, landed exactly as received.</span></li>
+      <li><span class="layer-name">Silver</span><span class="layer-desc">Integrated, source-aligned history.</span></li>
+      <li><span class="layer-name">Gold</span><span class="layer-desc">Shaped for each consumer, compiled from what lies beneath.</span></li>
+      <li><span class="layer-name">Semantic Platinum</span><span class="layer-desc">A plane of governed meaning: definitions, ontology and metric semantics.</span></li>
+      <li><span class="layer-name">Abstraction Diamond</span><span class="layer-desc">A plane of decision-ready abstractions: the models and instruments that decisions are made on.</span></li>
+    </ol>
+    <p class="body note">The two planes are alongside, not on top, because meaning and abstraction apply at every medallion layer. They are not a fourth and fifth step that data climbs.</p>
+    <h3 class="group-h">Promotion by contract</h3>
+    <p class="body">Data moves between layers only through six promotion gates, P1 to P6. Each gate is a contract check, and each check is held under one of three enforcement classes.</p>
+    <div class="tw">
+    <table class="spec">
+      <thead><tr><th scope="col">Class</th><th scope="col">Meaning</th></tr></thead>
+      <tbody>
+        <tr><td>E · Enforced</td><td>A machine applies the check and blocks promotion if it fails.</td></tr>
+        <tr><td>M · Monitored</td><td>A machine watches and raises a flag, and a person decides what follows.</td></tr>
+        <tr><td>A · Attested</td><td>An accountable person states that it holds, and their name stays on the record.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="body note">This works with a Data Mesh, where domains own their products, and with a Logical Data Fabric or virtual ODS, where data is queried in place. The planes are what keep meaning consistent across domains.</p>
+  </section>
+
+  <section aria-labelledby="p6">
+    <h2 id="p6"><span class="num">VI</span> The tripod</h2>
+    <p class="body">A product stands on three legs. A short leg is not made up for by a long one.</p>
+    <div class="grid three">
+      <article><h3>Effectiveness</h3><p>The right thing: it does what the decision actually needs.</p></article>
+      <article><h3>Efficiency</h3><p>The right cost and effort: no more than the purpose warrants.</p></article>
+      <article><h3>Excellence</h3><p>The right quality and craft: it is made properly and will hold.</p></article>
+    </div>
+    <p class="body note">The Tripod Floor is the rule that keeps this honest: no product ships if any one leg is below its floor, however strong the other two are.</p>
+  </section>
+
+  <section aria-labelledby="p7">
+    <h2 id="p7"><span class="num">VII</span> Mining, as a way of discovering</h2>
+    <p class="body">Mining runs the architecture in reverse. Instead of building from intent toward evidence, it starts from what is there and works out what is actually happening. It has seven disciplines.</p>
+    <div class="tw">
+    <table class="spec">
+      <thead><tr><th scope="col">Discipline</th><th scope="col">What it looks for</th></tr></thead>
+      <tbody>
+        <tr><td>Data mining</td><td>Patterns and structure in the data itself.</td></tr>
+        <tr><td>Decision mining</td><td>The decisions that are really being made, and on what.</td></tr>
+        <tr><td>Process mining</td><td>The process as it runs, against the process as described.</td></tr>
+        <tr><td>Coherence mining</td><td>Where decisions, rules and measures disagree with one another.</td></tr>
+        <tr><td>Meaning mining</td><td>The meanings in use, and where one term carries several.</td></tr>
+        <tr><td>Evidence mining</td><td>What is relied on, and what it rests on.</td></tr>
+        <tr><td>Outcome mining</td><td>What followed, and how it connects to what was decided.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="body note">Findings do not go straight into the design. Each enters as a Discovery Case, which is examined before anything is built on it.</p>
+  </section>
+
+  <section aria-labelledby="p8">
+    <h2 id="p8"><span class="num">VIII</span> Correction and semantic state</h2>
+    <p class="body">Things said in a product will sometimes be wrong. The design makes correcting them visible, and makes meaning behave like state that is managed.</p>
+    <div class="grid three">
+      <article>
+        <h3>The correction plane</h3>
+        <p>A claim can be revised or withdrawn, and the trail stays visible and versioned. Nothing is silently overwritten. I think of it as an &ldquo;unsay&rdquo; pattern: to unsay something, you say so, on the record.</p>
+      </article>
+      <article>
+        <h3>Semantic state</h3>
+        <p>Every term and every claim has a type and a lifecycle. Only legal transitions are allowed, so a term cannot move from draft to retired without passing through the states between.</p>
+      </article>
+      <article>
+        <h3>The constitutional layer</h3>
+        <p>The axioms the product rests on are held in their own layer and declared, not scattered through the rules. Changing one is a constitutional change, handled as such.</p>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="p9">
+    <h2 id="p9"><span class="num">IX</span> Epistemic typing</h2>
+    <p class="body">This is the newest part of the doctrine, and I hold it more tentatively than the rest. It asks a plain question of every claim a product makes: what kind of claim is this, and so what could count against it?</p>
+
+    <h3 class="group-h">Three things that can look alike</h3>
+    <div class="tw">
+    <table class="spec">
+      <thead><tr><th scope="col">Kind</th><th scope="col">What it is</th><th scope="col">Verdict</th></tr></thead>
+      <tbody>
+        <tr><td>Meaningless</td><td>No defined subject, domain or interpretation. It is not even false.</td><td>Cannot be tested, and cannot be relied on.</td></tr>
+        <tr><td>Unfalsifiable by kind</td><td>Values, axioms and constitutive commitments. They are not the sort of thing evidence settles.</td><td>Legitimate, if declared as what they are.</td></tr>
+        <tr><td>Immunised</td><td>Testable in principle, but worded or governed so that nothing may count against it. This can happen by wording, by compression or by capture.</td><td>The pathology.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="body note">The rule: absence of falsification is not truth, and prevention of falsification is evidence against the claim.</p>
+
+    <h3 class="group-h">Every claim is typed</h3>
+    <p class="body">In a product, each claim is given one of eight types: value, belief about reality, empirical hypothesis, assumption, preference, causal claim, warrant or authority. The type decides what evidence is owed. Creed is not fact, and neither is warrant: a creed is declared, a fact is observed, and a warrant is the ground on which reliance is placed.</p>
+
+    <h3 class="group-h">Four forms of institutional belief</h3>
+    <div class="tw">
+    <table class="spec">
+      <thead><tr><th scope="col">Form</th><th scope="col">Where it shows</th></tr></thead>
+      <tbody>
+        <tr><td>Declared</td><td>What the institution says it believes.</td></tr>
+        <tr><td>Embedded</td><td>What its rules and metrics assume.</td></tr>
+        <tr><td>Revealed</td><td>What its repeated, costly choices show.</td></tr>
+        <tr><td>Presupposed</td><td>What must be true for its reasoning to make sense at all.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="body note">Gaps between the four are measurable incoherence. Argyris and Schön called the first gap espoused theory against theory-in-use; organisational studies call a related one decoupling.</p>
+
+    <h3 class="group-h">How a creed defends itself</h3>
+    <p class="body">A creed is not proved. It is declared, and kept contestable. Whether it is healthy shows in how it defends itself, in the sense Lakatos gave to research programmes.</p>
+    <div class="grid three">
+      <article>
+        <h3>Progressive</h3>
+        <p>It absorbs contrary evidence by making new commitments, and those commitments turn out to be right.</p>
+      </article>
+      <article>
+        <h3>Degenerating</h3>
+        <p>It meets contrary evidence with ad hoc reinterpretation, each one protecting the creed and adding nothing.</p>
+      </article>
+      <article>
+        <h3>Single and double loop</h3>
+        <p>Single-loop learning corrects actions. Double-loop learning can revise the creed itself, and it needs a protected, independent and authorised challenge process.</p>
+      </article>
+    </div>
+
+    <h3 class="group-h">Preference laundering</h3>
+    <p class="body">A preference is built into rules or metrics, and the result is then presented as what &ldquo;the process produced&rdquo;. The counter is to require every material outcome to trace to a named decision record, so that a person, not a process, is visibly the one who chose.</p>
+
+    <ol class="layers">
+      <li><span class="layer-name">The principle</span><span class="layer-desc">Institutional belief may govern action; it may not govern whether the belief itself is contestable.</span></li>
+    </ol>
+    <p class="body note">The framework applies this to itself. It declares its own axioms and its own revision path, and it is open to the same challenge it asks of others.</p>
+  </section>
+
+  <section aria-labelledby="p10">
+    <h2 id="p10"><span class="num">X</span> The tools that carry it</h2>
+    <p class="body">Where a light footprint is needed, the engineering runs on a small event-sourced stack. Each tool does one job.</p>
+    <div class="tw">
+    <table class="spec">
+      <thead><tr><th scope="col">Job</th><th scope="col">Tool</th></tr></thead>
+      <tbody>
+        <tr><td>Store of record</td><td>Postgres</td></tr>
+        <tr><td>Event backbone</td><td>NATS JetStream</td></tr>
+        <tr><td>Change data capture</td><td>Debezium Server</td></tr>
+        <tr><td>Read models and search</td><td>SQLite FTS5</td></tr>
+        <tr><td>Edge gateway</td><td>KrakenD, declarative and stateless</td></tr>
+        <tr><td>Plant and IoT telemetry</td><td>OpenDAX, the open-source Data Acquisition and Control tool, as a Bronze source</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="body note">You can try the read side on this site&rsquo;s own pages in <a href="../search/">search</a>, see how the capture options compare in the <a href="../work/cdc-head-to-head/">CDC head-to-head</a>, and read the fuller design in the <a href="../architecture/">architecture</a>.</p>
+    <p class="back"><a href="../method/">The method it serves →</a> &nbsp; <a href="../architecture/">The architecture it runs on →</a> &nbsp; <a href="../#work">The work →</a></p>
+  </section>
+
+  <section class="engage" aria-labelledby="eg">
+    <img class="portrait md" src="../assets/portrait.jpg" alt="Nkosinathi Mbambo" width="88" height="88">
+    <div>
+      <h2 id="eg">Want something built this way?</h2>
+      <p>Start with one decision, or one meaning that needs to hold across systems. I will tell you plainly what kind of product it is, what it must promise, and where it should stop.</p>
+      <p class="cta"><a href="../#contact">Start a conversation →</a><a class="cta-quiet" href="../book/">or book a time →</a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <img src="../assets/rose.svg" alt="Ingqiqo rose" width="40" height="40">
+  <p>© 2026 Nkosinathi Mbambo · Ingqiqo Executables (Pty) Ltd</p>
+</footer>
+</body>
+</html>

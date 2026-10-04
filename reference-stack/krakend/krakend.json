@@ -1,0 +1,151 @@
+{
+  "$schema": "https://www.krakend.io/schema/krakend.json",
+  "version": 3,
+  "name": "ingqiqo-edge",
+  "port": 8080,
+  "timeout": "10s",
+  "cache_ttl": "0s",
+  "output_encoding": "no-op",
+  "extra_config": {
+    "security/cors": {
+      "allow_origins": [
+        "http://localhost:8000",
+        "http://127.0.0.1:8000",
+        "http://localhost:8080"
+      ],
+      "allow_methods": [
+        "GET",
+        "POST",
+        "OPTIONS"
+      ],
+      "allow_headers": [
+        "Content-Type",
+        "Accept"
+      ],
+      "max_age": "12h",
+      "allow_credentials": false
+    }
+  },
+  "endpoints": [
+    {
+      "endpoint": "/streams/{stream}",
+      "method": "POST",
+      "output_encoding": "no-op",
+      "timeout": "10s",
+      "input_query_strings": [],
+      "input_headers": [
+        "Content-Type",
+        "Content-Length"
+      ],
+      "backend": [
+        {
+          "host": [
+            "http://command:8088"
+          ],
+          "url_pattern": "/streams/{stream}",
+          "encoding": "no-op"
+        }
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "max_rate": 20,
+          "client_max_rate": 10,
+          "strategy": "ip"
+        }
+      }
+    },
+    {
+      "endpoint": "/events",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "timeout": "10s",
+      "input_query_strings": [
+        "from",
+        "limit"
+      ],
+      "input_headers": [],
+      "backend": [
+        {
+          "host": [
+            "http://query:8089"
+          ],
+          "url_pattern": "/events",
+          "encoding": "no-op"
+        }
+      ]
+    },
+    {
+      "endpoint": "/search",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "timeout": "10s",
+      "input_query_strings": [
+        "q",
+        "algorithm",
+        "rows",
+        "start"
+      ],
+      "input_headers": [],
+      "backend": [
+        {
+          "host": [
+            "http://query:8089"
+          ],
+          "url_pattern": "/search",
+          "encoding": "no-op"
+        }
+      ]
+    },
+    {
+      "endpoint": "/stats",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "timeout": "10s",
+      "input_query_strings": [],
+      "input_headers": [],
+      "backend": [
+        {
+          "host": [
+            "http://query:8089"
+          ],
+          "url_pattern": "/stats",
+          "encoding": "no-op"
+        }
+      ]
+    },
+    {
+      "endpoint": "/health/command",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "timeout": "10s",
+      "input_query_strings": [],
+      "input_headers": [],
+      "backend": [
+        {
+          "host": [
+            "http://command:8088"
+          ],
+          "url_pattern": "/health",
+          "encoding": "no-op"
+        }
+      ]
+    },
+    {
+      "endpoint": "/health/query",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "timeout": "10s",
+      "input_query_strings": [],
+      "input_headers": [],
+      "backend": [
+        {
+          "host": [
+            "http://query:8089"
+          ],
+          "url_pattern": "/health",
+          "encoding": "no-op"
+        }
+      ]
+    }
+  ]
+}

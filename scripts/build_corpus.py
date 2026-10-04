@@ -161,7 +161,7 @@ def clean_title(t):
 
 def page_type(slug):
     first = slug.split("/")[0]
-    return {"work": "work", "notes": "note", "method": "method", "architecture": "architecture",
+    return {"work": "work", "notes": "note", "method": "method", "architecture": "architecture", "engineering": "engineering",
             "glossary": "glossary"}.get(first, "page")
 
 
