@@ -1731,7 +1731,7 @@
    "L1 Evidence",
    "L7 Execution & Feedback"
   ],
-  "text": "Structure SourcePostgres lakebase, logical replication, synthetic rows WorkloadSeeded inserts, updates, deletes, one schema change ToolsDebezium → Kafka · OLake → Iceberg · Airbyte → Kafka HarnessLatency, ordering, deletes, schema, restart, footprint RecordResults table rendered only from measured files",
+  "text": "Structure SourcePostgres lakebase, logical replication, synthetic rows WorkloadSeeded inserts, updates, deletes, one schema change ToolsDebezium Server → NATS JetStream (default) · Debezium → Kafka · OLake → Iceberg · Airbyte → Kafka HarnessLatency, ordering, deletes, schema, restart, footprint RecordResults table rendered only from measured files",
   "title": "CDC head-to-head: Debezium, Airbyte, OLake",
   "type": "work",
   "url": "/work/cdc-head-to-head/#p3"
@@ -1746,7 +1746,7 @@
    "L1 Evidence",
    "L7 Execution & Feedback"
   ],
-  "text": "Craft and next Debezium · OLake · Airbyte · Kafka · Postgres · Docker Compose The harness, connector configs and compose stack are in the reference stack, validated but not yet run. The table fills when the stack runs on the in-house workstation; until then the position below is provisional and says so. ← All work The architecture →",
+  "text": "Craft and next Debezium Server · NATS JetStream · OLake · Airbyte · Kafka · Postgres · Docker Compose The harness, connector configs and compose stack are in the reference stack, validated but not yet run. The table fills when the stack runs on the in-house workstation; until then the position below is provisional and says so. ← All work The architecture →",
   "title": "CDC head-to-head: Debezium, Airbyte, OLake",
   "type": "work",
   "url": "/work/cdc-head-to-head/#p4"
@@ -1776,7 +1776,7 @@
    "L1 Evidence",
    "L7 Execution & Feedback"
   ],
-  "text": "Design fit, from the documentation What each tool is built to do, read from its own documentation. This is not a measurement, and it is where the measurement will either agree or embarrass it. Debezium Log-based streaming of row changes into Kafka, which is the shape the event leg already has. A delete arrives as a delete plus a tombstone. Delivery is exactly-once in normal running and at-least-once after a crash, which is why the projector deduplicates by event id. Costs: Kafka Connect to operate, and row changes rather than decision events. OLake Built for Postgres to Apache Iceberg, with full refresh plus change capture through pgoutput and an upsert mode that deduplicates. It fits the analytical leg, history in the lakehouse, rather than the event bus: it runs as sync-and-exit batches, so its latency is a batch property. Airbyte An ELT platform with a UI, the broadest connector catalogue and scheduled syncs. It is the heaviest to run, and its Kafka destination appends without deduplicating, so the consumer must dedupe (the projector already does). It needs care with replication-slot retention, or a sync fails until the slot is recreated.",
+  "text": "Design fit, from the documentation What each tool is built to do, read from its own documentation. This is not a measurement, and it is where the measurement will either agree or embarrass it. Debezium Log-based streaming of row changes into Kafka, which is the shape the event leg already has. A delete arrives as a delete plus a tombstone. Delivery is exactly-once in normal running and at-least-once after a crash, which is why the projector deduplicates by event id. Costs: row changes rather than decision events. The reference stack now runs it as Debezium Server, a single process that writes into NATS JetStream with no Kafka Connect cluster to operate; the Kafka Connect form remains for the comparison. OLake Built for Postgres to Apache Iceberg, with full refresh plus change capture through pgoutput and an upsert mode that deduplicates. It fits the analytical leg, history in the lakehouse, rather than the event bus: it runs as sync-and-exit batches, so its latency is a batch property. Airbyte An ELT platform with a UI, the broadest connector catalogue and scheduled syncs. It is the heaviest to run, and its Kafka destination appends without deduplicating, so the consumer must dedupe (the projector already does). It needs care with replication-slot retention, or a sync fails until the slot is recreated.",
   "title": "CDC head-to-head: Debezium, Airbyte, OLake",
   "type": "work",
   "url": "/work/cdc-head-to-head/#x2"
