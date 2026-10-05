@@ -274,7 +274,7 @@
   "text": "One substrate The Meaning Operating System Two storage legs, one identity. A lakehouse holds what happened. A lakebase holds what is being done. Master data is the bridge, so both legs agree on who and what every record is about. Leg one · what happened Lakehouse A DuckLake lakehouse with snapshots and time travel. Each domain owns its slice from raw to gold, as a data mesh. The bridge Master data Metadata-driven, multi-domain: party, employment, location, asset, contract and product. Zingg resolves entities; AtroCore holds the registry. Leg two · what is being done Lakebase Postgres for applications, the decision ledger and workflow state, with row-level security and point-in-time restore. Three tiers, each with one job Bronze is raw and immutable. Replay of any past decision depends on it. Silver is Data Vault 2.0: insert-only, so it can always answer what was known at the time. Gold is built from ledger tables in the shapes each consumer needs: dimensional, graph, time series. Many shapes, one truth. One meaning for every number A shared semantic layer of nineteen models in five families (meaning, structure, mind, decision, accountability) is used by both DuckDB and Polars, so a metric means the same thing in SQL and in code. One rule keeps the legs honest: a live, virtualised read may serve an application, but it may never enter a decision. Anything a decision rests on is first snapshotted and hashed.",
   "title": "Company Profile",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/company-profile.html"
  },
  {
   "id": "booklet/company-profile/p11",
@@ -287,7 +287,7 @@
   "text": "One substrate Judgement, and the cost of the answer Every decision is compiled into one typed program, the Decision IR. Strategy, definitions, identities, business rules and evidence all compile into it, and nothing bypasses it. Rules first. A rules engine (GoRules) decides eligibility, routing and which constraints apply to this case at all, and a domain expert can edit it. Then the Sovereign Logic Engine, a weighted MaxSMT solver on Z3. Hard constraints must hold; soft constraints carry the weights the organisation says it values. The cost of the answer is the product. When soft constraints cannot all be met, the engine returns the minimum-weight set it relaxed. No plan is issued without the commitment it broke to get there. Refusal is a permitted answer Insufficient evidence, constraint unsatisfiable, out of distribution: the platform says so. A system built to always answer will sometimes answer confidently and wrongly. From day one IDDC was written before the first client The method is not a framework assembled from delivered engagements and named afterwards. It was documented first, and every instrument since has been built as a run of it. There is no legacy work that does not carry a pedigree. Consequence for the client Going deeper never means starting over Because the substrate does not change between instruments, the baseline you own after the first engagement is the baseline the next one builds on. No re-collection, no new definitions, no second foundation to buy. Consequence for us The work is consistent because the ground is A practice that builds each engagement on whatever tooling suited it at the time cannot claim its results are comparable. Ours are comparable by construction.",
   "title": "Company Profile",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/company-profile.html"
  },
  {
   "id": "booklet/company-profile/p12",
@@ -300,7 +300,7 @@
   "text": "People decide Human in the loop, by design The machines calculate. People do the thinking. Stays with people Framing. What the decision really is, and whose it is. Judgement. What counts, what is protected, what trade-off is acceptable. Deciding. A named person with the authority makes the choice and signs it. Accountability. Who answers for it, and when it is reviewed. Handed to machines Calculating. Costs, scenarios, ranges and constraints, at speed. Retrieving. The evidence, with its source and its pedigree. Proposing. Options and estimates, each marked as a proposal. Recording. What was proposed, what was accepted, and by whom. No model sets a weight, asserts a constraint or issues a decision. Every AI contribution is logged as a proposal a person accepted or rejected. That is the speed of AI without handing it your judgement, and an audit trail that will stand up to a board or a regulator. The neural proposes; the symbolic disposes. People decide; every machine contribution is a recorded proposal.",
   "title": "Company Profile",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/company-profile.html"
  },
  {
   "id": "booklet/company-profile/p13",
@@ -313,7 +313,7 @@
   "text": "People decide Where the person sits in each stage Stage The person The machine Discover · Connect Names the decision and who owns it Finds and links the evidence, with its source Review · Compare Judges what counts and what is protected Calculates options, ranges and trade-offs Facilitate · Consolidate Weighs, chooses and signs Proposes, explains and records each proposal Publish · Execute Holds the authority and answers for it Watches for deviation within declared bounds Learn Decides what the outcome teaches Scores process and outcome separately The commitment, made operational “People decide” is the fifth of our eight commitments. We name the decision and its owner; we do not take it. No instrument of ours issues an automated rejection of a person. Automated decisions about people keep a human review and a route for representations, as POPIA section 71 requires. How we put the choice We work as a nudger, in the libertarian-paternalist tradition: we shape how choices are presented so better decisions are easier, and leave the choice with its owner. We never nudge a principal toward our own recommendation. Protected values are hard limits, never heavy weights.",
   "title": "Company Profile",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/company-profile.html"
  },
  {
   "id": "booklet/company-profile/p14",
@@ -326,7 +326,7 @@
   "text": "Eight commitments What a client can hold us to These govern every client-facing output. They are testable by the client, which is what distinguishes them from a values statement. 01 One result, many views No stakeholder receives a number the others cannot reproduce. Weightings differ between views; the underlying figures never do. 02 Every figure shows its source Observed, declared, published or estimated, labelled on the page, with a range wherever estimated. 03 Every output shows its version Method, engine and parameter versions printed on the document, so a result can be re-run and checked. 04 Limits are stated Each output says what it deliberately does not measure or decide. An instrument that claims to answer everything answers nothing reliably. 05 People decide We name the decision and its owner. We do not take it. Every machine contribution is a recorded proposal, and no instrument issues an automated rejection of a person. 06 Systems before people Organisational diagnostics measure systems. They never measure, rank or name individuals, and are contractually prohibited from disciplinary or appraisal use. 07 Personal information is minimised Only what a decision needs, under POPIA. Time is sampled anonymously and reported only for groups of five or more. Specimens are stripped. 08 Outcomes are checked Every significant recommendation carries a review date. We would rather be measured and wrong than unmeasurable.",
   "title": "Company Profile",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/company-profile.html"
  },
  {
   "id": "booklet/company-profile/p15",
@@ -339,7 +339,7 @@
   "text": "PART II What we do Instrument families. Each stands on its own: you can stop after any of them and keep everything you have received.",
   "title": "Company Profile",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/company-profile.html"
  },
  {
   "id": "booklet/company-profile/p19",
@@ -352,7 +352,7 @@
   "text": "Instruments · Governance and maturity Decision governance and maturity Most organisations cannot say who is entitled to decide what, on what evidence, accountable to whom. That is not a document problem. It is why the same decision gets taken twice, differently, in two parts of the business. Instrument Decision maturity assessment A structured diagnostic across the dimensions that determine whether a decision system works: who holds authority, what evidence is required, how exceptions are handled, what is recorded, and whether anyone checks the outcome. Scored, so the second run is comparable. Produces a scored profile, a gap list ranked by consequence, and a named owner per gap. Instrument Analytics readiness assessment Whether the organisation's data is in a state where decision instruments can be built on it at all: definitions, coverage, ownership, and whether a derived number is distinguishable from an observed one. “No new system needed” is a valid and common outcome. Instrument Governance review and Decision Canvas A working session that puts a recurring decision on one page: the decision, its owner, the evidence required, the rule in force, the exception path, and the review date. The organisation keeps and maintains the Canvas itself. Produces a Canvas per decision class, and a gap assessment. For boards and public bodies · the audit answer When an audit asks how a decision was reached, the usual answer is a reconstruction. These instruments produce the record at the time of the decision instead: the decision, the evidence in force, the rule applied, the owner, the date. Our governance work supports King IV obligations; it does not replace them, and every output says so. A Canvas with no owner and no review date has failed; every Canvas has both.",
   "title": "Company Profile",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/company-profile.html"
  },
  {
   "id": "booklet/company-profile/p22",
@@ -365,7 +365,7 @@
   "text": "Sector applications Which decision is worth instrumenting first The method does not change by sector. What changes is which decision is worth instrumenting first. Sector The decision worth instrumenting first Starting instrument Municipal and public entities Appointments and procurement recommendations that must survive an audit two years later, where the record was never made at the time Governance review and Canvas Mining and heavy industry Scarce-skill appointments at remote operations, where an offer that does not cover the real cost of living there fails in month four Offer audit, then Employer Report Financial services Remuneration decisions under committee scrutiny, and metric definitions that differ between divisions Pay equity review Manufacturing and logistics Approval queues and undocumented exception handling that nobody owns but everybody works around Organisational Debt Diagnostic Agriculture and co-operatives Seasonal labour and input timing decisions taken annually with no record of what last season's decision actually cost Governance review Professional services and recruiters Placement advice given on instinct, and a client asking why the last one did not hold Employer Report subscription Education and health Staffing and rostering decisions where the human load is obvious to everyone and measured by nobody Organisational Debt Diagnostic What we will not claim. We do not hold delivered engagements in every sector above. The table states where each instrument applies and why, not where it has already been run. Our trading position is on page 37, stated plainly, and a sector where we have no experience will be named as such in any proposal.",
   "title": "Company Profile",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/company-profile.html"
  },
  {
   "id": "booklet/company-profile/p23",
@@ -378,7 +378,7 @@
   "text": "PART III How we work The engagement itself, the capacity behind it, and what happens to your people's data while we hold it.",
   "title": "Company Profile",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/company-profile.html"
  },
  {
   "id": "booklet/company-profile/p25",
@@ -391,7 +391,7 @@
   "text": "An engagement, end to end What we need, and what we will not ask What we need from you A named decision owner with authority. Access to the relevant extracts. Roughly six to ten hours of your people's time across the engagement. Permission to brief staff honestly about what is being measured. What you will not be asked for A data warehouse, a platform purchase, or a full population census. If your data is not ready, a readiness assessment says so, and “not yet worth building” is an outcome we are paid to deliver. What the decision brief states What must be decided, by whom, and by when. The brief is rendered from the same results file as every other view, with the same figures. The second run is the point. Re-running the same instrument against your own baseline a year later is where improvement becomes provable rather than asserted. Because the baseline belongs to you, you can commission that comparison from anyone.",
   "title": "Company Profile",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/company-profile.html"
  },
  {
   "id": "booklet/company-profile/p27",
@@ -404,7 +404,7 @@
   "text": "People, data and protection A stated position, not a privacy clause A diagnostic that measures how an organisation works is measuring people's working lives. That deserves a stated position, not a privacy clause in the annexures. Systems, never individuals Organisational diagnostics measure processes and decision rules. They name no individual and rank no employee. Time is sampled anonymously and reported only for groups of five or more, so no reading can be traced back to a person. Prohibited uses, contractually Diagnostic data may not be used in disciplinary, incapacity, appraisal or retrenchment-selection decisions. This is a clause in the engagement terms, not a statement of intent, and it survives the end of the engagement. Minimisation under POPIA We collect only what the named decision requires. Specimens and samples are stripped of identifying detail. Data is returned or destroyed on the schedule set in the engagement terms, and the sole director is the registered information officer. Where labour is organised We recommend a joint governance body with audit rights over how the data is used, and staff receive their own plain-language view of the findings. A diagnostic that only management ever reads generates resistance the next time, and deservedly so. Every organisational diagnostic produces a view written for the people whose work was measured: what was measured, what was found, what will change, and what the data will never be used for. It is rendered from the same results file as the executive brief, with the same figures, which is the whole point of commitment 01.",
   "title": "Company Profile",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/company-profile.html"
  },
  {
   "id": "booklet/company-profile/p28",
@@ -417,7 +417,7 @@
   "text": "Security and residency Where client data stays, and how it is guarded Residency is an execution guarantee: client personal information stays in South Africa. It is stated separately from the governance guarantee, which is that the number means what it says. The question Where it is answered Where does client data go? Client personal information stays in South Africa. No external model or telemetry calls are made on client data. Where is personal information? Detected at ingestion, before it reaches the analytical tiers (Presidio) Who may do what? One policy language (OPA) projected into every engine; entitlements reviewed quarterly Can identifiers be reversed? Keyed HMAC-SHA3 tokenisation; the crosswalk stays in South Africa Can the network be trusted? Cilium policy between workloads; an egress allowlist Can data be retired? Per-client keys: destroying the key retires the data Quantum readiness The decision ledger is chained with SHA3-256 and signed to the NIST post-quantum standards: ML-DSA (FIPS 204) for entries, SLH-DSA (FIPS 205) for checkpoints, ML-KEM (FIPS 203) in hybrid TLS. Every entry records its algorithms, so successors can be adopted without rewriting history. When an obligation cannot be met, a structured refusal is a permitted answer. Residency attestation is listed among the documents to be attached, on page 37.",
   "title": "Company Profile",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/company-profile.html"
  },
  {
   "id": "booklet/company-profile/p3",
@@ -430,7 +430,7 @@
   "text": "Contents Where to find it I · Who we are The position we hold 05 The method: IDDC 06 The method in practice 07 Calculation first: the model layer 08 One substrate: the Ingqiqo Spine 09 The Meaning Operating System 10 Judgement, and the cost of the answer 11 Human in the loop, by design 12 Where the person sits in each stage 13 Eight commitments 14 II · What we do The instrument set 16 Instrument · Employer Report 17 Instrument · Organisational Debt Diagnostic 18 Decision governance and maturity 19 Instruments · Pay and equity 20 Certification and courseware 21 Sector applications 22 III · How we work An engagement, end to end 24 What we need, and what we will not ask 25 Capacity, and the work we decline 26 People, data and protection 27 Security and residency 28 Compliance and governance 29 Auditable without our cooperation 30 IV · Working with us Where to start 32 Partners and accredited associates 33 Who does the work 34 The Solutionist posture 35 Company particulars 36 Tender pack: inspection and documents 37",
   "title": "Company Profile",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/company-profile.html"
  },
  {
   "id": "booklet/company-profile/p30",
@@ -443,7 +443,7 @@
   "text": "Compliance and governance Auditable without our cooperation Because every output prints its method version, parameter set and the pedigree of each figure, a deliverable can be checked after the engagement closes by someone who was never in the room: an internal auditor, a commissioner, or a successor supplier. That is a deliberate design choice, and it is the strongest safeguard a procuring entity can ask of any supplier. For decisions that matter most, the record goes further. Each warranted decision is written to a hash-chained ledger: what was decided, on what evidence, by what authority, and what was given up to get there. The warranty is on process fidelity, not on outcomes, and it is a contractual warranty on the service, not insurance. A good outcome is not a good decision. What is written at the time The decision, and its owner The evidence in force, snapshotted and hashed The rule applied, and what was relaxed Every machine proposal, and whether a person accepted it The review date Claims are made only as far as the work has earned them. Closing a real decision loop, with proof attached, comes before any claim about track record.",
   "title": "Company Profile",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/company-profile.html"
  },
  {
   "id": "booklet/company-profile/p31",
@@ -456,7 +456,7 @@
   "text": "PART IV Working with us Where to start, how partners work with us, who does the work, and every document an evaluation committee will ask for.",
   "title": "Company Profile",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/company-profile.html"
  },
  {
   "id": "booklet/company-profile/p34",
@@ -469,7 +469,7 @@
   "text": "Who does the work One accountable principal Ingqiqo Executables is founder-operated. One principal holds the method, the client relationships and accountability for every finding. We state this rather than obscure it behind a team page, because a procuring entity is entitled to know exactly who will be on the engagement, and because the alternative, implying depth we do not have, is the first thing that should disqualify a supplier making claims about defensibility. What makes a single principal deliverable is that the method is written down. Quality does not depend on who is in the room; it depends on whether the run followed the documented cycle, and that is checkable by the client. Facilitation and workshop delivery are carried by contracted accredited associates working to the documented method and under review. Nkosinathi Mbambo Meaning Coherence Assurer Scientist · Engineer · Analyst · Modeller · Architect. Twenty-five years across every generation of the data stack, since 2001. Formal qualifications and registrations: to complete Accountable for The method, and every version of it Every finding issued in the company's name Data protection, as registered information officer Scope, capacity and the decision to decline work",
   "title": "Company Profile",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/company-profile.html"
  },
  {
   "id": "booklet/company-profile/p35",
@@ -482,7 +482,7 @@
   "text": "Who does the work The Solutionist posture One posture, five demands: Scientist, Engineer, Analyst, Modeller, Architect. These are not five separate roles. The Solutionist posture holds them together: one practitioner who carries all of them, and calls on each as the effort demands it. You get one accountable person across the whole problem, not five hand-offs. Tools and AI may assist any role; the judgement stays with the person who holds it. Where the work calls for a sub-role, it is mounted for that purpose. Key-person risk, and what is done about it The method is documented, not held in one head. Associates are trained against it from the first year. Our stated milestone for year two is a full diagnostic delivered without the principal present, and reviewed. Key-person and professional indemnity cover are placed before any public-sector award. Demand Sub-roles mounted as the work requires Scientist Frames the question; tests whether evidence supports a decision Engineer Solution Engineer (Agile) · Solution Train / Release Train Engineer · Delivery Engineer Analyst Business · Systems · Quantitative · Subject Matter · Visual Designer Modeller Terms, taxonomies, ontologies; models of decisions Architect Solution Architect · Delivery Architect Contracted capacity Accredited associates under contract to complete Named professional advisors to complete Auditor or accounting officer to complete",
   "title": "Company Profile",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/company-profile.html"
  },
  {
   "id": "booklet/company-profile/p38",
@@ -495,7 +495,7 @@
   "text": "In closing A decision you cannot explain is a decision you cannot defend, improve, or repeat Every instrument in this profile exists to do one thing: leave behind a record of a decision that someone else can check. The figure with its pedigree. The limit, stated. The owner, named. The review date, set. That is the whole product, and it is why the second run matters more than the first. What we offer instead of scale We are a focused practice and we say so. What we offer is work that can be audited without our cooperation: by your internal auditor, by a commissioner, or by whoever comes after us. A supplier who builds that in has already answered the only question that matters. Meaning, made coherent.",
   "title": "Company Profile",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/company-profile.html"
  },
  {
   "id": "booklet/company-profile/p4",
@@ -508,7 +508,7 @@
   "text": "PART I Who we are The position we hold, the method we work to, and the commitments a client can hold us to.",
   "title": "Company Profile",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/company-profile.html"
  },
  {
   "id": "booklet/company-profile/p6",
@@ -521,7 +521,7 @@
   "text": "The method The Ingqiqo Disciplined Decision Cycle Every instrument we deliver is a scripted run of one cycle, IDDC, which turns evidence and meaning into decisions that can be checked, contested and repeated. No stage may be skipped because a client is in a hurry. I Discover Find the decision, the people who hold it, and the evidence that exists. II Connect Tie the evidence to shared meaning: terms, entities and relationships. III Review Test the evidence and the assumptions against a clear standard. IV Facilitate Bring the decision-holders together on the same picture. V Compare Lay out the alternatives, and what each one gives up. VI Consolidate Settle on one decision, recorded with its evidence and authority. VII Publish Release it as a governed record that others can rely on and contest. VIII Execute Carry it out within declared bounds, watching for deviation. IX Learn Score the outcome separately from the process, and feed the difference back. Three commitments hold at every size: method, not headcount; instruments, not one-off reports; working shown, not hidden.",
   "title": "Company Profile",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/company-profile.html"
  },
  {
   "id": "booklet/company-profile/p7",
@@ -534,7 +534,7 @@
   "text": "The method in practice Six disciplines in every run Name the decision, and its owner. Before anything is measured. A diagnostic with no decision attached is a report, and reports do not change anything. Define the unit. What exactly is being counted: one offer, one approval, one hour, one claim. A total built without this step is a number nobody can defend, and it will still print. Measure what is there. The client's own tables and their own people, sampled anonymously. We do not substitute a sector average for a measurement we could have taken. Calculate, and mark every figure. One results file. Each figure carries how it came to be (observed, declared, published or estimated) and a range where estimated. Render for each reader. One results file, several views: finance, operations, technology, employee relations, organised labour, staff, the executive. Different weightings, never different numbers. Set the review date. Every significant recommendation carries the date it will be judged against what actually happened. This is the step that makes the second run worth buying. Why the discipline is written down A method held in one person's head cannot be audited, delegated or improved. IDDC is documented end to end and version-stamped on every output, which is what allows an accredited associate to run an instrument, a client to check it, and a successor supplier to pick it up. The full formal statement (its units, its memory horizons, its treatment of estimates) is set out in The Coherence Architecture, available under NDA where a technical evaluation requires it.",
   "title": "Company Profile",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/company-profile.html"
  },
  {
   "id": "booklet/company-profile/p9",
@@ -547,7 +547,7 @@
   "text": "One substrate The Ingqiqo Spine Plane The question it answers Rate of change L0 Strategy Intent What are we trying to achieve, and what will we not do? Quarterly to annual L1 Evidence What arrived, and what did it become? Continuous append L2 Identity Who and what is this about? Continuous, reversible L3 Meaning What do these things mean, and how are they computed? Slow, by deliberation only L4 Adaptation What applies here, now, to this case, and has the world moved? Fast: the only fast plane L5 Judgement What is the best feasible decision, and what does it cost? Per decision L6 Foresight What might happen, and what if we chose otherwise? Per query L7 Execution & Feedback What was done, within what bounds, and what actually happened? Continuous Every instrument runs on the same architecture, against the same definitions, under the same method. That is why results are comparable between instruments, between departments, and between this year and next. How the planes work Evidence rises and gains identity, then meaning. Intent descends and gains constraint. They meet at Adaptation, which fits both to the present case. Three planes are slow, one is fast, and the fast one is isolated, so change has somewhere legitimate to live. Stated status Phase 1 is in build: one client dataset taken raw to gold under contract validation, then one decision evaluated and written to the evidence ledger. Components are at different stages of maturity, and we say which.",
   "title": "Company Profile",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/company-profile.html"
  },
  {
   "id": "booklet/engagement-pack/p10",
@@ -560,7 +560,7 @@
   "text": "B.2 Your people, your data This page is written to be handed to the people whose work is measured, unedited. If any of it would embarrass us to show them, it should not be here. Systems, never individuals Organisational diagnostics measure processes and decision rules. They name no individual and rank no employee. Time is sampled anonymously and reported only for groups of five or more, so no reading traces back to a person. Minimisation We collect only what the named decision requires, under POPIA. Specimens are stripped of identifying detail. Client personal information stays in South Africa. Data is returned or destroyed on the stated schedule. Our sole director is the registered information officer. Prohibited uses Diagnostic data may not be used in disciplinary, incapacity, appraisal or retrenchment-selection decisions. This is a clause in the terms, not an intention, and it survives the engagement. Distinctions we hold, and will not blur Observed is not inferred A recorded fact and a value our models filled in are different facts, and they are marked differently on every page. A behavioural estimate never silently becomes a measurement. Predicted is not intended An estimate that a pattern is likely is not a statement that anyone chose it, and not a judgement about anyone’s conduct. Where an outcome emerged from how the system is arranged rather than from a decision, we say so. Where labour is organised We recommend a joint body with audit rights over how the data is used, and staff receive their own plain-language view of the findings. A diagnostic only management ever reads earns resistance next time, deservedly.",
   "title": "Engagement Pack",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/engagement-pack.html"
  },
  {
   "id": "booklet/engagement-pack/p11",
@@ -573,7 +573,7 @@
   "text": "B.3 Theory of welfare, for signature Completed at kick-off and countersigned. We redesign the context in which decisions are made: defaults, sequencing, evidence, thresholds, templates. That is an intervention in how people choose, so whose interest it serves is stated rather than assumed. Primary interest [stated, e.g. long-term value of the organisation] Freedom Every default has a clear, low-cost way to choose otherwise. Friction that serves the institution against the chooser is out of scope. Secondary interests [stated, e.g. employees affected by the process; customers or citizens affected by its outcomes] Publicity We will not implement anything we would be unwilling to disclose to those it affects. Each intervention is documented in plain language. Where they conflict We will say so and escalate the trade-off to [named executive] for decision. We will not settle it silently through design. Endorsement We steer only toward choices the affected decision-makers would endorse on reflection, and we check that with them rather than assume it. Capability Each redesign builds your people’s own decision capability, so sustaining it does not depend on us. Measurement Each intervention has a baseline, a stated expected effect and a review date. We report results, including null and negative ones. Contestability Anyone affected may challenge an intervention through [named channel]. Challenges are logged and answered. Reversibility Every intervention has a named owner and can be withdrawn if the evidence or the affected stakeholders do not support it. Register Every intervention is entered in a register held by you: purpose, whose interest it serves, the opt-out path, expected and measured effect, owner, review date, status. An intervention whose assumptions have expired is withdrawn rather than left running. Signed for Ingqiqo Executables Signed for the client Date On the size of the claim. Interventions of this kind, measured honestly in real organisations, move outcomes by low single-digit percentage points, far below what published studies report. We promise measurement, not magnitude. On a large enough flow a small honest percentage is a substantial number; a large dishonest one is a dispute.",
   "title": "Engagement Pack",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/engagement-pack.html"
  },
  {
   "id": "booklet/engagement-pack/p13",
@@ -586,7 +586,7 @@
   "text": "C.1 Questions your executive will ask Our answers, in advance, so your sponsor can answer them without waiting for us to be in the room. “We already have dashboards, BI and AI. What is different?” Dashboards present information. What we produce is a record of the transition from evidence to authorised action: intent, assumptions, evidence and its pedigree, alternatives, constraints, who decided, and what actually followed. The differentiator is not a better chart; it is that the decision itself becomes inspectable afterwards. “Isn’t this just change management?” It overlaps and goes lower. Change management asks how people adopt a change. We ask how this organisation repeatedly produces choices and commitments under uncertainty, and then alter the templates, thresholds and sequencing that produce them. “Our decisions are too unique to standardise.” We do not standardise the judgement. We standardise the scaffolding around it: what evidence is required, how options are structured, who decides, what gets recorded, and how the outcome is checked. Discretion is preserved inside explicit constraints; that is the whole design. “What is the return, in a number I can defend?” We cost the friction in the flow we are given (delay, rework, error rate multiplied by stakes) against a baseline agreed before we start, and report what moved at ninety days. We will not quote you a percentage from someone else’s study. On a flow of any size, a small measured improvement is a large number; an unmeasured large one is a dispute waiting to happen. “Who loses discretion if this works?” The right question, and we will raise it if you do not. Making decision rights explicit exposes who actually decides, on what evidence. Some resistance to this work is not about priorities; it is about that exposure. We will name where we expect it, and we will not pretend the engagement is politically weightless.",
   "title": "Engagement Pack",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/engagement-pack.html"
  },
  {
   "id": "booklet/engagement-pack/p20",
@@ -599,7 +599,7 @@
   "text": "D.1 Handover, and what you keep The test of this engagement is whether you could run it again without us. Everything below is yours, by default, without asking. You keep The baseline and its definitions At the grain agreed in week one, with every pedigree mark intact. The results file, not just the report The thing every view was rendered from, so you can render your own. Method and engine versions Enough to re-run and compare, by us or by anyone else. The log of machine proposals Each one, with who accepted or rejected it. The intervention register Every change, its purpose, whose interest it serves, its opt-out path, its owner and its review date. A trained internal owner Someone on your side who can maintain what we built. Where a redesign is involved this is a deliverable, not a courtesy. We retain The method itself Ours, and licensed to you for your own use of the instrument, not sold with the engagement. Anonymised benchmark contributions Only with your written agreement, stripped, and never in a form that identifies you. You may decline and it changes nothing about the engagement. Nothing else Your data is returned or destroyed on the stated schedule. We keep no working copy, and we will confirm the destruction in writing. Why we hand over this much Because a baseline you cannot take with you was never a baseline, and because the second run is worth more to you than owning you is worth to us. You may commission the comparison from a competitor. We would rather compete for it than hold it by default.",
   "title": "Engagement Pack",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/engagement-pack.html"
  },
  {
   "id": "booklet/engagement-pack/p21",
@@ -612,7 +612,7 @@
   "text": "D.2 The engagement review, run by you Score us against this pack at the ninety-day review. Twelve questions, each answerable yes or no by someone who was there. We will ask for it whether or not you offer it. 01 Was A.1 completed and signed before work began? 02 Was the baseline fixed before any intervention? 03 Were staff briefed honestly, before data was touched? 04 Did every figure show whether it was observed, declared, published or estimated? 05 Did every output print its method and engine versions? 06 Did each deliverable state what it deliberately did not measure? 07 Did every stakeholder view carry the same numbers? 08 Did the workforce receive its own view of the findings? 09 Was scope growth flagged the week it happened, in writing? 10 Was the welfare statement completed, signed and honoured? 11 Did we report where our own estimate was wrong? 12 Could you re-run this next year without us? If the answer to any of these is no Then we failed a commitment we published in advance, and this page is the evidence. Tell us, in writing, and we will record it in the review alongside your words. A supplier who publishes a checklist and then argues with the score has published nothing. Where outcomes are reviewed Where the engagement supports a decision, it is entered in a Decision Record: the frame declared before, the information that was knowable at the time of deciding, and the evaluation made after the outcome. The Progress Record is its companion for judging whether we delivered. This pack is not a contract, and it binds us more tightly than one, because a contract is argued in private and this was published to everyone it affects.",
   "title": "Engagement Pack",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/engagement-pack.html"
  },
  {
   "id": "booklet/engagement-pack/p3",
@@ -625,7 +625,7 @@
   "text": "Contents Four parts, one test A · The engagement What we are doing, and what done means 04 Who decides what 05 The week-by-week shape 07 What we need from you 08 B · The commitments What we warrant, and what we do not 09 Your people, your data 10 Theory of welfare, for signature 11 Money, time and how scope changes 12 C · The answers Questions your executive will ask 13 Questions your staff will ask 14 Questions procurement and audit will ask 15 The platform beneath the work 17 When we disagree 19 D · Close Handover, and what you keep 20 The engagement review, run by you 21 Companion documents Seeing Clearly. The instruments and their limits, in plain language. Company Profile. Capability and compliance position. The Progress Record. How you judge whether we delivered, set up before either of us knows the answer.",
   "title": "Engagement Pack",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/engagement-pack.html"
  },
  {
   "id": "booklet/engagement-pack/p4",
@@ -638,7 +638,7 @@
   "text": "A.1 What we are doing, and what done means Completed for this engagement at kick-off. Nothing below is boilerplate: if a line is blank when work starts, work has not started. The decision this serves [named, in one sentence] Decision owner, named, with authority [one person, not a committee] The kind of work it is [fixing · migrating · building · automating · evaluating · productionalising] The unit being counted [one offer · one approval · one hour · one claim] Deliverables, itemised [listed, each acceptable or not on its own] The acceptance test [what you will check, and against what] Explicitly out of scope [named, so it cannot drift in] Baseline agreed before we start [stated at a named grain, with its pedigree] Review date [when the recommendation gets judged against what happened] Why the type is named Most scope disputes are really disputes about which kind of work was commissioned. A fix is accepted against the fault; a productionalisation against behaviour under failure. Agreeing that now is the cheapest risk reduction available to either of us. Why the baseline comes first A baseline established after an intervention is a negotiating position, not a measurement. Agreed beforehand, it is the only thing that lets either of us say honestly, at the review date, whether anything moved.",
   "title": "Engagement Pack",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/engagement-pack.html"
  },
  {
   "id": "booklet/engagement-pack/p5",
@@ -651,7 +651,7 @@
   "text": "A.2 Who decides what The machines calculate. People do the thinking. We name the decision and its owner; we do not take the decision, and neither does any tool we use. Stays with people Framing. What the decision is, and whose. Judgement. What counts, what is protected, what trade-off is acceptable. Deciding. A named person with authority signs. Accountability. Who answers, and when it is reviewed. Handed to machines Calculating. Retrieving, with source and pedigree. Proposing, each result marked as a proposal. Recording what was proposed, and what was accepted, by whom. AI tools only calculate, retrieve, propose and record. No model sets a weight, asserts a constraint or issues a decision. Every machine contribution is logged as a proposal that a named person accepted or rejected. You get the speed of AI without handing it your judgement, and a record that stands up to a board or a regulator. People decide; every machine contribution is a recorded proposal.",
   "title": "Engagement Pack",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/engagement-pack.html"
  },
  {
   "id": "booklet/engagement-pack/p6",
@@ -664,7 +664,7 @@
   "text": "A.2 · continued Who decides what, matter by matter Matter Decided by Our role What the organisation does about a finding You Name the decision, cost the options, state the trade-off Whose interest the design serves where interests conflict You, at named-executive level Surface the conflict rather than settle it in a template Whether a figure is fit to publish internally You Mark its pedigree and range so you can judge Whether a machine-made proposal is accepted or rejected A named person, on the record Log each proposal with its source and pedigree; never accept one on your behalf Whether the method was followed Either party, against the standard Publish the standard and the version stamps Whether a figure is arithmetically correct Us, and our error to fix at our cost Re-derive on request Whether the work can be delivered in the window Us, before award, in writing Decline or reschedule rather than absorb Whether an intervention is withdrawn Its named owner, on your side Build it to be reversible, and say how A legal, tax, audit or actuarial conclusion A registered professional Name who should give it; we do not The one thing we ask you to hold A single named decision owner with actual authority. Not a committee, not a liaison. An engagement with no owner produces a report instead of a decision, and a report is the most expensive way to change nothing.",
   "title": "Engagement Pack",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/engagement-pack.html"
  },
  {
   "id": "booklet/engagement-pack/p7",
@@ -677,7 +677,7 @@
   "text": "A.3 The week-by-week shape A five-week diagnostic as it actually runs. Shorter instruments compress this; none of them skip a stage, and we will tell you which stage we are in without being asked. Stage What happens You receive Week 1 · Scope A.1 completed and signed off. Decision and owner named. Baseline fixed. Staff and, where present, labour representatives briefed on what is being measured and what it will never be used for, before any data is touched. The completed A.1, and the welfare statement in B.3. Weeks 2–3 · Measure Anonymous time sampling, system extracts, structured interviews. Sampling is voluntary and reported only for groups of five or more. Where something cannot be measured we say so and estimate it with a range, rather than substituting a sector average quietly. A weekly written update, and immediate notice of anything that changes scope. Week 4 · Compute and check One results file. Figures calculated on your own tables, each marked with its pedigree and range, with method and engine versions stamped. Every machine contribution is logged as a proposal. Internal review is against the published standard, not against a colleague’s opinion. Notice of any finding that will be uncomfortable, before it is written up. Week 5 · Render and hand over Views rendered from the one file: finance, operations, technology, employee relations, labour, staff, and an executive decision brief. Different weightings, identical numbers. The brief states what must be decided, by whom, by when. Every view, including the one written for the workforce. At 90 days · Review The outcome review against the Week 1 baseline. Included unless you opt out. We report what moved, what did not, and where our own estimate was wrong, that last one being the part that makes the rest credible. The review, and a continuation proposal you are free to ignore. Nothing renews automatically. Each phase ends at a decision point. A rollover we did not have to earn would contradict every commitment in Part B.",
   "title": "Engagement Pack",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/engagement-pack.html"
  },
  {
   "id": "booklet/engagement-pack/p8",
@@ -690,7 +690,7 @@
   "text": "A.4 What we need from you Short list, deliberately. An engagement that requires heroic effort from your team to keep alive was scoped wrongly. We need A decision owner with authority One person, named in A.1, who can act on the finding. Access to the relevant extracts The tables the instrument actually needs, not a data warehouse. Six to ten hours of your people’s time Across the whole engagement, in scheduled slots, not on demand. Permission to brief staff honestly What is measured, and what it will never be used for. If this is refused, we will not take the work. An answer on whose welfare counts B.3 cannot be completed by us alone. Where interests conflict, that is your call to make and record. We will not ask for A platform purchase We resell nothing and take no commission. If your data is not ready, that is a finding, not an upsell. A full population census Sampling is sufficient and is better for the people sampled. Identified personal records We ask for the minimum the named decision requires, and no more. A reference before we have earned one We will ask at the 90-day review, once there is something to attest to. Exclusivity, or a standing retainer The baseline is yours; you may commission the next run from anyone, including a competitor.",
   "title": "Engagement Pack",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/engagement-pack.html"
  },
  {
   "id": "booklet/engagement-pack/p9",
@@ -703,7 +703,7 @@
   "text": "B.1 What we warrant, and what we do not The Decision Warranty promises process fidelity, not outcomes: that a decision was made as specified, on the evidence recorded, by the authority named. It is a warranty on our service. It is not insurance. The right-hand column is the one that matters; a commitment without stated exclusions is a sales line that gets disclaimed in an annexure nobody read. We stand behind The arithmetic. Every figure re-derivable from the inputs supplied at the stamped versions. Our error is ours to correct at our cost. That the method was followed. Each output meets the published standard item by item, checkable by anyone. That the pedigree is honest. Nothing estimated is shown as observed. Estimates carry ranges. Thin sources are labelled thin. That it reproduces. Same inputs, same versions, same answer. If not, that is a defect and we treat it as one. That the record is complete. Each machine contribution is logged as a proposal, with who accepted or rejected it. That the data is handled as agreed. Minimised, reported only in groups of five or more, returned or destroyed on schedule, never used for a prohibited purpose. We do not stand behind Any commercial outcome. A finding does not guarantee a saving. What happens next is a decision we name but do not take. Inputs we did not measure. A figure you supply is marked declared. We warrant our use of it, not its accuracy. Individual behaviour. An estimate is a probability over a population. No output of ours is evidence about an identified person. Legal, tax, audit or actuarial conclusions. We are not registered to give them. Where one is needed we name who should. Compliance itself. Our governance work supports obligations under King IV and the employment statutes. It does not discharge them. Insurance. The warranty is on our process. It does not transfer your risk to us. Both columns appear in our engagement terms in these words. Nothing on the left is softened there; nothing on the right is added there. Read this page and you have read the commercial substance.",
   "title": "Engagement Pack",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/engagement-pack.html"
  },
  {
   "id": "booklet/progress-record/p11",
@@ -716,7 +716,7 @@
   "text": "2.4 How committed work is tracked Work that has been committed moves through six named states. Each is written into the record, so that what happened to an item can be read rather than remembered. Committed Agreed at kick-off and entered in the tracker, with its owner and target week. In progress Work has started, and sits with the owner the tracker names. Deviated What is happening differs from what was committed. Recorded when it is noticed, not reconstructed later. Contained The deviation has been limited, and its effect on other items is stated. Escalated The deviation is beyond what its owner can contain, and has been taken to a person with authority to decide. Verified The work has been checked against the acceptance test agreed at kick-off. The principle Fidelity is assessed before the outcome is finalised Whether the work was carried out as committed is read from the record first, and written down. Only then is the outcome read. A good outcome is not a good decision, and the record keeps the two apart. These states are kept alongside the Status column, not in place of it. They add no threshold to the measures in Part III.",
   "title": "The Progress Record",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/the-progress-record.html"
  },
  {
   "id": "booklet/progress-record/p12",
@@ -729,7 +729,7 @@
   "text": "PART III The instrument Six standard delivery measures, one arithmetic correction, a worked example — and an honest account of what the same six measures look like when we are the party at fault.",
   "title": "The Progress Record",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/the-progress-record.html"
  },
  {
   "id": "booklet/progress-record/p13",
@@ -742,7 +742,7 @@
   "text": "3.1 Six measures of flow Measure What it is What it exposes Flow efficiency Active work time as a share of total elapsed time; the remainder is wait How much of the window was ever workable, and who imposed each wait Flow velocity Completed items per unit time Throughput — but only honestly when divided by available capacity rather than the calendar Flow predictability Planned against actual completions over time, read per workstream Exactly where plan and reality diverge — usually at an ownership boundary, not a date Flow time Start to completion per item; for open items, aging beyond target Whether overruns are general or confined to one class of owner Flow distribution How the remaining open work is allocated across owners Whether the critical path still runs through the supplier at all Flow load Open work carried per individual role, on both sides Single-point concentration — the structural bottleneck that no additional effort from anyone can relieve Nothing proprietary. These are the metrics any competent delivery organisation uses on its own work, applied to ours — which is the point. An assessment framework invented by the supplier being assessed is worth less than one anybody can look up. On flow load and people When this measure finds that seven of eight open items sit with one person on your side, that is a finding about your operating design and not about them. No role in any delivery system absorbs that load without becoming the constraint. We report it as a structure, and the remedy is to fan the ownership out — never to name an individual as the cause. What these measures cannot tell you Whether the work was any good. Flow metrics count completions, not quality — an item marked done can still be wrong. Quality is judged against the acceptance test agreed at kick-off, and a supplier who scores well here and badly there has gamed a tracker.",
   "title": "The Progress Record",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/the-progress-record.html"
  },
  {
   "id": "booklet/progress-record/p14",
@@ -755,7 +755,7 @@
   "text": "3.2 Tools calculate; named people judge The machines calculate. People do the thinking. Every reading in this booklet is calculated and recorded by a tool, and judged by a named person on each side. Handed to the tools Calculating — the six measures, from the tracker and the register alone. Retrieving — each figure, with its source line in the tracker. Proposing — a reading of each measure, marked as a proposal. Recording — what was proposed, what was accepted, and by whom. Stays with people Framing — what the decision is, and whose. Judgement — what counts, and what trade-off is acceptable. Deciding — a named person with authority signs. Accountability — who answers, and when it is reviewed. Named on both sides Judging the readings for the client: [named] Judging the readings for Ingqiqo: [named] The record can find against either party No tool decides who failed. A reading is a proposal that a named person accepts or rejects, and each acceptance is recorded. The record can find against us, as page 17 sets out. It can find against you too, and reports it as a structure, never as a person. People decide; every machine contribution is a recorded proposal. The Progress workbook keeps the same record digitally.",
   "title": "The Progress Record",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/the-progress-record.html"
  },
  {
   "id": "booklet/progress-record/p15",
@@ -768,7 +768,7 @@
   "text": "3.3 The denominator problem One arithmetic choice decides most progress disputes: what you divide completed work by. Both readings below use the same numerator and the same tracker. Reading one · the calendar Planned 24 activities over 6 weeks Planned rate 4.0 / week Completed 16 Elapsed 6 weeks 2.7 / week 67% of the planned rate. Reads unambiguously as under-delivery, and every level of an organisation will read it that way. Reading two · available capacity Planned 30 working days Less logged impairments 15 days Available 3 weeks Completed 16 5.3 / week 133% of the planned rate through half the planned capacity. Same work, same record, opposite conclusion. Why reading two is not special pleading Because the impairments were logged in the week they occurred, by both parties, with the side recorded before anyone had a position — and because the same subtraction is applied to our own impairments, which reduce the denominator in your favour. Reading two is only honest if the register was kept honestly. That is the whole reason page 10 comes before this page, and why an unlogged impairment is forfeited rather than argued. Where reading two is not available to us On consultant-owned items with no logged impairment against them. There the calendar is the correct denominator and we will not offer another. If sixteen of twenty-four were ours to finish unimpeded and we finished eleven, the honest figure is eleven and the finding is against us.",
   "title": "The Progress Record",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/the-progress-record.html"
  },
  {
   "id": "booklet/progress-record/p16",
@@ -781,7 +781,7 @@
   "text": "3.4 A worked assessment Anonymised from a real engagement in which an adverse progress assessment had been formed. Twenty-four activities, seven workstreams, a six-week window. Read the right-hand column before drawing a conclusion from the middle one. Workstream Planned Done Owner of the remainder Scope and start gate 3 3 — Access and schema 4 4 — Reverse-engineering 3 3 — Data product build 4 4 — Governance and security 3 1 1 client · 1 joint, client-gated Testing and acceptance 4 1 1 client SMEs · 2 client sign-off Close-out and next scope 3 0 2 client · 1 joint, client-gated Total 24 16 8 open · 0 solely consultant-owned Consultant-owned 14 / 14 complete, all within target week Client-gated 2 / 10 complete — where all variance sits Aging of open items 31–59 days past target, none of it ours Flow load 7 / 8 open items on one client role What the divergence point tells you Completions tracked plan almost exactly through week four, then flattened — at precisely the point in the schedule where ownership transferred to client-side roles. The variance the executives saw was real. It simply lived on the other side of the ownership boundary, and the assessment was formed during a further thirty-one days in which nothing moved and nothing awaited us.",
   "title": "The Progress Record",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/the-progress-record.html"
  },
  {
   "id": "booklet/progress-record/p18",
@@ -794,7 +794,7 @@
   "text": "PART IV The finding How a finding is written so it can be contested, what remedy each class of finding actually warrants, and the assumptions every figure rests on.",
   "title": "The Progress Record",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/the-progress-record.html"
  },
  {
   "id": "booklet/progress-record/p19",
@@ -807,7 +807,7 @@
   "text": "4.1 How findings are written Specimen findings, from the worked assessment F1 Capacity. Roughly half the planned window was consumed by wait states, two-thirds of them client-controlled. The efficiency loss was imposed rather than incurred. F2 Velocity. Throughput per available week was 5.3 activities — 133% of the planned rate. The slow-progress reading is an artefact of using the calendar rather than available capacity as the denominator. F3 Predictability. All consultant-owned activities completed to plan. The entire plan-against-actual variance sits in client-gated workstreams, at 20% complete. F4 Flow time. No consultant-owned item overran. All aging, between 31 and 59 days, is on client-owned or client-gated items. F5 Distribution. No open item is solely consultant-owned. The critical path no longer passes through the supplier. F6 Load. Open-work ownership is concentrated on a single client-side role, at seven of eight items — a structural bottleneck that no additional supplier effort can relieve. F7 Timing. The adverse assessment was formed during a 31-day post-window period in which every open item awaited client action. One numbered finding per measure, plus a final one on the timing of the assessment itself. Each states the measure, the figure, the source line in the tracker, and the conclusion — in that order, so the conclusion can be rejected while the figure stands. Why figure and conclusion are separated So you can accept F2’s arithmetic and still reject its inference. A finding that fuses the two forces you to argue with a number in order to disagree with an opinion, which is how reviews turn adversarial. Your dissent goes in the document Where you disagree with a finding, your words are recorded beside it, unedited, over your attribution. We do not issue an assessment that contains only our own reading of a jointly held record.",
   "title": "The Progress Record",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/the-progress-record.html"
  },
  {
   "id": "booklet/progress-record/p2",
@@ -820,7 +820,7 @@
   "text": "Read this first You are entitled to conclude that we failed At some point in an engagement a client looks at what they are paying for and asks whether it was worth it. Sometimes the honest answer is no. That judgement belongs to you, and nothing in this booklet is an attempt to take it away. What this booklet does is make the judgement measurable rather than impressionistic — and it hands you the instrument in advance, at kick-off, before either of us knows which way it will point. That timing is the entire design. An assessment method produced after a dispute has begun is an argument. The same method agreed beforehand is evidence. We have been on the receiving end of an adverse progress assessment. It was formed in good faith, from a reasonable reading of a calendar, and it was wrong — not because the client was careless but because the tracker’s own ownership column had never been read alongside its status column. That experience produced this instrument. It is published because a supplier who only reaches for telemetry once it is accused has produced a defence, not a discipline. The commitment The instrument is symmetrical Every measure here can produce a finding against us, and page 17 states exactly what such a finding looks like and what we owe you when it appears. A fairness assessment that can only exonerate the party who wrote it is not an assessment. The standing Not a legal instrument This creates no obligation and overrides nothing. Where it and a signed agreement differ, the agreement governs. It is a shared method for reading a record you already hold — and your right to terminate on whatever grounds your contract permits is untouched by it. The ambition is narrow and worth stating plainly: that when you decide we failed, you are right — and that when you decide we did not, you can show someone why.",
   "title": "The Progress Record",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/the-progress-record.html"
  },
  {
   "id": "booklet/progress-record/p20",
@@ -833,7 +833,7 @@
   "text": "4.2 Proportionate remedy The measures diagnose; they do not decide. But a diagnosis does narrow the sensible responses, and matching them is what separates a review from a reflex. Where the finding lands Proportionate Ineffective, however satisfying Consultant under-delivery on owned items Completion at our cost, revised dates set by you, or termination — your call, and all three are legitimate Adding scope to recover goodwill Client-side dependency queue A dependency recovery plan: fan ownership out, name dates, escalate the gates Terminating the supplier — the queue survives the change and so does the delay Single-point load, either side Redistribute ownership; add a named deputy for the gating role Pressing the overloaded person harder Wait states on both sides Re-baseline the window against available capacity and re-plan jointly Holding the original date and calling the shortfall a performance issue Scope was wrong from the start Stop, re-scope, and treat the spend as the cost of finding out Pushing on because the budget is committed On termination It is always available to you and we will not contest it. What we ask is narrower: that if it is exercised on progress grounds, the tracker’s ownership column has been read alongside its status column first. A termination that penalises the only party whose work is complete does not recover the programme — it restarts the same queue with a new supplier and a month of onboarding added to it. We would rather be dismissed on an accurate finding than retained on an inaccurate one. The second outcome costs us the next engagement anyway, and costs you the month it takes to discover the queue was never ours.",
   "title": "The Progress Record",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/the-progress-record.html"
  },
  {
   "id": "booklet/progress-record/p22",
@@ -846,7 +846,7 @@
   "text": "In closing Hand a client the instrument before they need it, and a dispute becomes a reading. This booklet exists because we were once assessed adversely on progress, in good faith, from a reasonable reading of a calendar — and had to build the telemetry afterwards to show what the tracker already contained. Building it afterwards works once. Agreeing it at kick-off works every time, and costs the supplier the option of assembling a case later. Every rule here that looks generous to you is a constraint we accepted: the forfeiture of unlogged impairments, ownership taken verbatim, the calendar as the denominator wherever no impairment was logged, your dissent printed unedited beside our findings. That is what makes the assessment worth reading when it happens to favour us. People decide; every machine contribution is a recorded proposal. The record can find against either party.",
   "title": "The Progress Record",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/the-progress-record.html"
  },
  {
   "id": "booklet/progress-record/p3",
@@ -859,7 +859,7 @@
   "text": "Contents Read this first You are entitled to conclude that we failed 02 I · What you are judging Five questions, defined 05 Why impression gets it wrong 06 II · The record One tracker, jointly maintained 08 The ownership column 09 The impairment register 10 How committed work is tracked 11 III · The instrument Six measures of flow 13 Tools calculate; named people judge 14 The denominator problem 15 A worked assessment 16 Where it finds against us 17 IV · The finding How findings are written 19 Proportionate remedy 20 Assumptions and limitations 21 A dispute becomes a reading 22 Where this sits The Engagement Pack sets out how we will work and what we commit to. This booklet is the instrument for checking whether we did. Its review questions and this booklet’s findings format are meant to be used together at the same sitting. The Progress workbook keeps the same record digitally.",
   "title": "The Progress Record",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/the-progress-record.html"
  },
  {
   "id": "booklet/progress-record/p4",
@@ -872,7 +872,7 @@
   "text": "PART I What you are judging Five things a client weighs when deciding whether an engagement was worth it — and why the intuitive way of weighing them is the one most likely to mislead.",
   "title": "The Progress Record",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/the-progress-record.html"
  },
  {
   "id": "booklet/progress-record/p6",
@@ -885,7 +885,7 @@
   "text": "1.2 Why impression gets it wrong Not because executives are careless. Because the three things most visible from a distance are the three least diagnostic, and they all point the same way. Visible The calendar Six weeks were agreed; six weeks have passed; two-thirds of the list is done. That reads as under-delivery at every level of an organisation. It says nothing about how many of those thirty days were actually workable — and wait states do not appear on a calendar, which is precisely why they go unpriced. Visible The open-item count Eight things are not finished. The count is accurate and the inference from it is not: a status column read without the owner column beside it cannot distinguish work nobody did from work nobody could do. Those are opposite findings with opposite remedies. Visible The silence Nothing has moved for a month. Stillness is the most damning signal an executive receives and the least attributable. A stalled programme in which the supplier has nothing left to execute alone looks identical, from above, to a stalled programme in which the supplier stopped working. The consequence Judgement forms in the gap Adverse assessments are most often formed during a stall — the exact period in which the supplier has least ability to change the picture and the record has least new data. Whatever instrument you use must therefore be able to say who the stall was waiting for. If it cannot, it will attribute the delay to whoever is easiest to invoice against. None of this argues that a supplier is usually blameless. It argues that the cheap reading is unreliable in both directions — and that a client who wants to be right, rather than merely decisive, needs three columns rather than one.",
   "title": "The Progress Record",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/the-progress-record.html"
  },
  {
   "id": "booklet/progress-record/p7",
@@ -898,7 +898,7 @@
   "text": "PART II The record Three artefacts, all maintained jointly and all agreed in week one. No assessment in this booklet adds anything to them — that is the point of setting them up first.",
   "title": "The Progress Record",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/the-progress-record.html"
  },
  {
   "id": "booklet/progress-record/p8",
@@ -911,7 +911,7 @@
   "text": "2.1 One tracker, jointly maintained Named at kick-off as the tracker of record. Ideally it is yours, in your systems, under your control — a supplier-held tracker is a supplier’s account of events, however carefully kept. Six columns, and why each one is load-bearing Activity One line per discrete deliverable, small enough to be finished inside a week. An activity that cannot complete in a week hides its own delay. Workstream Groups activities so predictability can be read per stream rather than per programme. This is what reveals that variance is concentrated rather than general. Owner Us, you, or joint — and where joint, which side gates it. The single most consequential column in the file, and the one most often left to drift. Page 9 is about nothing else. Target week Set once at kick-off and not quietly revised. A target that moves with reality measures nothing. Status Not started, in progress, blocked, done. Blocked is a distinct state — collapsing it into in-progress is how wait states become invisible. Blocked by What the item is waiting for and since when. Populated at the time, by whoever notices — not reconstructed later, because reconstruction is where memory becomes advocacy. What we will not do Keep a second, private tracker that tells a better story. If our reading of progress differs from the tracker’s, the tracker is what we bring to the review and our disagreement goes in as a note beside it. What we will do Update it weekly whether or not it flatters us, and flag a blocked item the week it blocks rather than at the review. An impairment raised on the day is a fact; the same impairment raised in a dispute is an excuse, and we know the difference cuts against us. The Progress workbook keeps the same record digitally. It is available on request.",
   "title": "The Progress Record",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/the-progress-record.html"
  },
  {
   "id": "booklet/progress-record/p9",
@@ -924,7 +924,7 @@
   "text": "2.2 The ownership column Almost every unfair progress assessment we have seen or received comes from reading status without ownership. Four values, agreed in week one, and the third is the one that matters. Consultant-owned We can finish it without waiting for anyone. If this is late, that is ours — no denominator argument applies and we will not attempt one. Client-owned Your decision, your sign-off, your subject-matter expert, your access grant. We can chase it, escalate it and re-plan around it. We cannot complete it, and no quantity of additional effort from us moves it. Joint, client-gated The honest category Both parties have work in it, but ours cannot start until yours lands. Most trackers record these simply as “joint”, which reads at review as shared fault and in practice is not. Naming the gate in week one is what stops a structural dependency being remembered later as a mutual failure. Joint, consultant-gated The mirror case, and it exists. Your people cannot proceed until we deliver something. When these age, the finding is against us and page 17 governs what follows. The discipline this imposes on us Ownership is set at kick-off and taken verbatim from the tracker at review — we do not reclassify an item as client-owned once it is late. If we believe an owner is wrong, we raise it that week, in the tracker, where you can see it and contest it. An ownership column edited during a dispute is worth nothing to either of us. A programme can be genuinely behind while its supplier is genuinely complete. Those are not contradictory findings, and an instrument that cannot report both at once will report the wrong one.",
   "title": "The Progress Record",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/the-progress-record.html"
  },
  {
   "id": "booklet/seeing-clearly/p10",
@@ -937,7 +937,7 @@
   "text": "The architecture The six layers in plain words Layer What it is What it gives you The method (IDDC) The Ingqiqo Disciplined Decision Cycle: our documented way of turning evidence and business meaning into decisions you can check, contest and repeat Consistency. Any Ingqiqo output can be traced back to the same steps, sources and assumptions. Assessments and diagnostics Point-in-time instruments such as the Decision Intelligence Maturity Assessment, the Employment Economics Offer Audit and the Organisational Debt Diagnostic A baseline. You learn where your decisions are costly, exposed or undocumented. Decision products Packaged decision logic you install and own, such as the Employment Offer Decision Engine or Compensation Equity Decision Rules Control. The logic runs inside your systems and remains yours. Decision platforms Hosted services that run decisions repeatedly and keep the record, such as CEDIE for employment offers and the Decision Audit and Governance Platform Scale and memory. Every decision is calculated the same way and stored. Decision governance The Decision Canvas and the Decision Governance Standard (DGS) Accountability. Who decided, on what information, under what authority, and when it will be reviewed. Learning and research Courses, practitioner guides, and sector benchmarks built from anonymised, consented data Capability. Your own people learn to work this way without us.",
   "title": "Seeing Clearly",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/seeing-clearly.html"
  },
  {
   "id": "booklet/seeing-clearly/p11",
@@ -950,7 +950,7 @@
   "text": "The architecture Three rules that hold everything together 01 One run, many views Each engagement produces one canonical result. The CFO, the COO, the head of employee relations and organised labour each receive a view shaped for their role, but nobody receives a different number. In our diagnostic sample, eight stakeholder views are rendered from a single results file. 02 Every figure has a pedigree Each number is labelled with where it came from: observed, declared by someone, taken from a published table, or estimated by a model. Estimates carry ranges. You always know how much weight a figure can bear. 03 People decide Our instruments calculate, compare and explain. They do not decide for you. Every output names the decision required and who holds the authority to make it. This is the human-in-the-loop rule, set out on page 13. How the pieces relate over time Most clients meet us through one door, often a free calculator or a single diagnostic. That first instrument produces a baseline. The baseline shows which decisions are costing the most, and that points to the next useful step: a decision product for a recurring decision, a platform for high-volume decisions, or governance for decisions that need a stronger record. You never need to buy a new foundation to go deeper, because every instrument runs on the same platform, against the same definitions, under the same method, so what you own after the first engagement is what the next one builds on. Further out, the same record is what lets us measure coherence across domains rather than one decision at a time. That step past this booklet is the Ingqiqo Spine, our reference architecture, set out at nmbambo.github.io/architecture/.",
   "title": "Seeing Clearly",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/seeing-clearly.html"
  },
  {
   "id": "booklet/seeing-clearly/p13",
@@ -963,7 +963,7 @@
   "text": "The model layer under IDDC The machines calculate. People do the thinking. Every piece of this work keeps the cognitive part of the job with people: framing the question, weighing what matters, choosing, and answering for the choice. AI and automation are used hard, for speed and reach, but only ever to propose. That is the difference you are buying. Stays with people Framing. What the decision really is, and whose it is. Judgement. What counts, what is protected, what trade-off is acceptable. Deciding. The choice is made and signed by a named person with the authority. Accountability. Who answers for it, and when it is reviewed. Handed to machines Calculating. Costs, scenarios, ranges and constraints, at speed. Retrieving. The evidence, with its source and its pedigree. Proposing. Options and estimates, each marked as a proposal. Recording. What was proposed, what was accepted, and by whom. No model sets a weight, asserts a constraint or issues a decision. Every AI contribution is logged as a proposal a person accepted or rejected. You get the speed of AI without handing it your judgement, and an audit trail that stands up to a board or a regulator. People decide; every machine contribution is a recorded proposal.",
   "title": "Seeing Clearly",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/seeing-clearly.html"
  },
  {
   "id": "booklet/seeing-clearly/p14",
@@ -976,7 +976,7 @@
   "text": "The model layer under IDDC What the models are not allowed to do The IDDC discipline binds the model layer as tightly as it binds us. Five rules travel with every calculation the model layer permits. 01 No unlabelled number Every model output carries its pedigree — estimated — and a range. An estimate never appears dressed as an observation. 02 No silent version change Engine and parameter versions are printed on the output. A re-run against a new version is reported as a new run, not a correction. 03 No automated rejection Where an instrument assesses a person, the model calculates and explains. The decision, and the authority for it, stay with the employer. 04 No inferred evidence Components without evidence are excluded, not imputed as neutral. A missing field is reported missing. 05 No prose that originates a figure Narrative is generated from the results file only. If a sentence contains a number, that number came from the calculation, traceable to its row. Stated limit The churn estimate in the Employer Report uses a documented industry heuristic, not yet a South Africa-calibrated model. We label it as such, show its range, and will recalibrate as outcome data accumulates. A tool that hides that is not enabling a decision; it is decorating one.",
   "title": "Seeing Clearly",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/seeing-clearly.html"
  },
  {
   "id": "booklet/seeing-clearly/p15",
@@ -989,7 +989,7 @@
   "text": "THREE The range of offerings Grouped by the question you are asking, not by our internal product lines. Each entry states what it shows, the exposure it brings to light, what you receive, and what it deliberately does not do. Availability. Now: deliverable today. Pilot: offered to early clients on pilot terms. Developing: in build; ask about early access.",
   "title": "Seeing Clearly",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/seeing-clearly.html"
  },
  {
   "id": "booklet/seeing-clearly/p17",
@@ -1002,7 +1002,7 @@
   "text": "The range of offerings · 1, continued Hiring and pay decisions, continued Offering What it shows you Exposure it surfaces What you receive Does not do HR Decision Process Audit Now Every decision in your recruitment process, from requisition to onboarding Undocumented decisions and decisions made without evidence Decision process map; opportunity register Assess individual recruiters Compensation Equity Decision Rules Developing Pay equity rules embedded in your annual salary review Gaps that recur every review cycle Pay equity index; remediation register Fix gaps without your decisions Recruitment Selection Decision Protocol Developing A structured, documented selection panel decision Selection decisions that cannot be defended later Scoring matrices; a POPIA-compliant rationale record Replace panel judgement Employment Offer Decision Engine Developing The CEDIE method running inside your own HR systems Inconsistent offers across managers and sites Installed decision rules, updated quarterly Operate without your data owners Now: deliverable today. Pilot: offered to early clients on pilot terms. Developing: in build; ask about early access.",
   "title": "Seeing Clearly",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/seeing-clearly.html"
  },
  {
   "id": "booklet/seeing-clearly/p18",
@@ -1015,7 +1015,7 @@
   "text": "The range of offerings · 2 “Where is our organisation losing time and money it cannot see?” Offering What it shows you Exposure it surfaces What you receive Does not do Organisational Debt Diagnostic on the Organisational Debt Ledger Now The annual cost of work done to compensate for unfinished past decisions, by cause and role Rework, waiting, knowledge held by one or two people, stalled decisions, unsafe reporting climates Eight stakeholder views from one result; a repayment portfolio; an ExCo decision brief Measure, name or rank individuals Decision Intelligence Maturity Assessment: Quick free Developing A 25-minute self-assessment of how well you make and record decisions Your weakest decision dimension A maturity score and gap map Replace a facilitated diagnostic Decision Intelligence Maturity Assessment: Full Now 48 indicators across five dimensions, facilitated Where decisions lack data, process, technology, governance or coherence Maturity scores, gap map, prioritised recommendations Prescribe technology you do not need Decision Analytics Readiness Assessment Now Whether your data and systems can support decision tooling Integration, data-quality and governance gaps A readiness score and architecture gap register Sell you a platform by default",
   "title": "Seeing Clearly",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/seeing-clearly.html"
  },
  {
   "id": "booklet/seeing-clearly/p2",
@@ -1028,7 +1028,7 @@
   "text": "Contents Nine parts Each stands on its own, and each names the instrument that lights the problem it describes. Part Title Page How to read this booklet 03 One The light that was rationed 04 Two How the architecture fits together 08 Two, continued The model layer under IDDC 12 Three The range of offerings 15 Four The exposure and gap register 21 Five A better view of your resources 24 Six From the work 26 Seven At length 30 Eight Taking full advantage 34 Nine Our commitments & glossary 37",
   "title": "Seeing Clearly",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/seeing-clearly.html"
  },
  {
   "id": "booklet/seeing-clearly/p22",
@@ -1041,7 +1041,7 @@
   "text": "The exposure and gap register, continued The register, continued Blind spot How it usually shows up What it can cost Instrument that lights it Past pay decisions nobody has checked Gaps between similar roles by gender or race Employment Equity Act exposure; reputational risk Employment Economics Offer Audit; Pay Equity Pulse Minimum wage and BCEA drift Allowances or hours that no longer meet thresholds Labour inspection findings; back-pay Employment Economics Offer Audit Performance judged against unwritten standards Poor-performance processes where the rule was never documented Weak position at the CCMA under Schedule 8 of the Labour Relations Act Organisational Debt Diagnostic (ER view); HR Decision Process Audit Silence mistaken for safety Fewer near-miss reports while errors stay flat People stop raising problems before incidents Organisational Debt Diagnostic (reporting-safety indicators) No decision record Nobody can say who approved something, or why Audit, regulator and dispute exposure Decision Canvas; DGS review; Decision Audit and Governance Platform Personal data held without purpose Decision files carry more personal information than needed POPIA exposure DGS review; Decision Audit and Governance Platform",
   "title": "Seeing Clearly",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/seeing-clearly.html"
  },
  {
   "id": "booklet/seeing-clearly/p23",
@@ -1054,7 +1054,7 @@
   "text": "The exposure and gap register The gaps in our own offering We publish our limits, because a view you cannot trust is worse than no view. Benchmarks deepen with use. Market benchmarks grow more precise as more consented, anonymised data joins them. Early benchmarks carry wider ranges, and we show them. Several platforms are still in build. Where an offering is marked Developing, we deliver the method manually or on pilot terms until the platform is ready. We cannot see what is not recorded. If a decision left no trace, our first task is to help you start recording it, not to guess at it. Some estimates are still heuristics. The churn estimate in the Employer Report uses a documented industry heuristic, not yet a South Africa-calibrated model. We label it as such and will recalibrate as outcome data accumulates. We are not lawyers, auditors or tax practitioners. Our instruments show exposure and reasoning. Legal, tax and audit opinions remain with registered professionals.",
   "title": "Seeing Clearly",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/seeing-clearly.html"
  },
  {
   "id": "booklet/seeing-clearly/p25",
@@ -1067,7 +1067,7 @@
   "text": "Part Five Why the view stays useful A one-off report describes a moment. Our instruments are built to be run again, with the same method and the same definitions. That turns each view into a baseline. Next quarter you can see whether the hours came back, whether attrition fell and whether the fixes paid. We also report signals over time, not just totals. In the diagnostic sample, four indicators are tracked on control charts. When they leave their normal range, the agreed share of capacity for fixing root causes rises. When they settle for three months, it steps back down. Decisions reopened Change failure rate Time to a usable answer Near-miss reports Who gains the view The view is not only for the executive team. The same result is rendered for each stakeholder, including staff and organised labour, in their own terms. Staff learn that the friction they feel is attached to systems, rules and decisions, not to their effort. That shared, honest picture is often what makes change possible. 8 views rendered from one results file in the diagnostic sample — CFO, COO, employee relations, organised labour and four more. Nobody receives a different number.",
   "title": "Seeing Clearly",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/seeing-clearly.html"
  },
  {
   "id": "booklet/seeing-clearly/p26",
@@ -1080,7 +1080,7 @@
   "text": "SIX From the work Short pieces for managers, HR practitioners and owners. Each ends with something you can try this week.",
   "title": "Seeing Clearly",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/seeing-clearly.html"
  },
  {
   "id": "booklet/seeing-clearly/p29",
@@ -1093,7 +1093,7 @@
   "text": "Part Six · From the work Why every number should say where it came from A figure in a board pack carries authority whether or not it deserves it. A number someone typed in, a number from a published table and a number from a model all look the same on a slide. We label every figure with its pedigree: observed, declared, taken from a published source, or estimated. Estimates carry ranges. In our Employer Report, the audit trail marks each hiring stage as “explicit” when a recruiter recorded it and “inferred” when the system deduced it. This makes discussion faster. People stop arguing about whether a number is right and start asking how much weight it can bear. Try this. In your next management pack, add one small column to the key table: source. When the CFO and the shop steward read the same page The CFO asks what something costs. The COO asks where the time goes. Employee relations asks whether a decision will stand at the CCMA. Organised labour asks whether workers will carry the burden. All four questions are fair. Most reports answer one of them. Our diagnostics produce one result and render it for each chair. In the sample, five of six stakeholder views ranked the same structural problem first, even though a purely financial ranking would have deferred it. That agreement only became visible once the weights each stakeholder placed on money, risk, human load and structure were written down. When everyone works from the same number, disagreement becomes about priorities, which can be discussed, rather than about facts, which should not need to be. Try this. Before your next contested decision, ask each stakeholder to rank four criteria (cost, risk, people, long-term structure) privately. Compare the rankings before the meeting.",
   "title": "Seeing Clearly",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/seeing-clearly.html"
  },
  {
   "id": "booklet/seeing-clearly/p30",
@@ -1106,7 +1106,7 @@
   "text": "SEVEN At length Three longer pieces for executives, boards and governance committees: on governing decisions as capital, on clarity without surveillance, and on why access is the point.",
   "title": "Seeing Clearly",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/seeing-clearly.html"
  },
  {
   "id": "booklet/seeing-clearly/p32",
@@ -1119,7 +1119,7 @@
   "text": "Two of three Clarity without surveillance There is a fair fear about any tool that measures how work gets done. It can become a way of watching people rather than understanding systems. In South Africa, with its history and its labour law, that fear deserves a direct answer. Our answer is built into the instruments, not left to good intentions. We measure systems, not people. In the Organisational Debt Diagnostic, every finding attaches to a system, a process, a decision or a role. Time is sampled anonymously and reported only for groups of five or more. There are no individual scores, rankings or lists of names. Proposals to add person-level fields are refused by design. We exclude the data from people decisions. Engagement terms prohibit using diagnostic data for disciplinary, incapacity, appraisal or retrenchment-selection purposes. We share governance. Where there is organised labour or a workplace forum, we recommend a joint governance body with audit rights over how the data is used. Staff receive their own plain-language view of the findings. Where an instrument does assess an individual, as a hiring report must, we apply stricter rules. Components without evidence are excluded, not treated as neutral. Background checks never trigger an automated rejection. Psychometric inputs must meet the Employment Equity Act’s requirement that tests be scientifically valid, reliable, fairly applied and not biased. Candidates can respond to the reasoning, and the decision stays with the employer. The reward for this discipline is trust, and trust is what makes measurement accurate. People answer honestly when they know the answer cannot be used against them. The findings are usually a relief: the friction was never their fault, and now there is evidence to say so.",
   "title": "Seeing Clearly",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/seeing-clearly.html"
  },
  {
   "id": "booklet/seeing-clearly/p34",
@@ -1132,7 +1132,7 @@
   "text": "Part Eight Taking full advantage The fastest route to value is to start with one decision that is costing you now, measure it properly, and let that baseline tell you what to do next. Each step stands on its own. You can stop after any of them and keep everything you have received. Nothing is a prerequisite. Every layer uses the same method and the same record, so you never buy a new foundation to go deeper. The baseline is yours. Results, definitions and versions stay with you whether or not there is a next engagement. The second run is the point. Re-running the same instrument against your own baseline is where improvement becomes provable.",
   "title": "Seeing Clearly",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/seeing-clearly.html"
  },
  {
   "id": "booklet/seeing-clearly/p35",
@@ -1145,7 +1145,7 @@
   "text": "Part Eight Where to start, by situation Your situation Start with Why Independent recruiter or small HR team Employer Report pilot Immediate value on live offers; a report you can show clients New hires keep leaving within a year Employer Report on upcoming offers, then an Employment Economics Offer Audit Shows whether offers are survivable, then whether the pattern is historical Preparing an Employment Equity report or facing pay questions Employment Economics Offer Audit Surfaces pay equity and BCEA exposure before an inspector or employee does Teams feel overloaded but nobody can say why Organisational Debt Diagnostic Converts friction into hours, rands and named causes Board or ExCo wants stronger governance DGS review and Decision Canvas Establishes a decision record and a governance baseline Considering decision software Decision Analytics Readiness Assessment Tells you what your data and systems can support before you spend Not sure yet Decision Intelligence Maturity Assessment (Quick) A 25-minute self-check that points to your weakest area",
   "title": "Seeing Clearly",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/seeing-clearly.html"
  },
  {
   "id": "booklet/seeing-clearly/p36",
@@ -1158,7 +1158,7 @@
   "text": "Part Eight How to prepare Name one decision or one pain. “Our senior hires leave” is enough to start. You do not need a transformation programme. Identify the owner. Someone must hold authority for the decision the findings will inform. Gather what exists. Offer letters, policies, process notes, reports and system extracts. Imperfect data is fine; we label its quality. Involve the people affected early. For diagnostics, brief staff and, where present, organised labour before measurement begins. Agree the review date now. Decide when you will re-run the instrument to see whether the change worked. How to get the most from each output Read the ranges, not just the headline. A figure with a wide range is a prompt to gather evidence, not a flaw. Act on the named decisions. Each output lists the decisions required, with owners and dates. Unowned findings do not change anything. Share the stakeholder views. The value multiplies when each function reads its own view of the same result. Re-run it. The second run, against your own baseline, is where improvement becomes provable. Build your own capability. Use the guides and courses so your people can apply the method without us. Questions worth asking us Which figures in this output are observed, which are declared, and which are estimated? What would change the recommendation? What does this instrument deliberately not measure? Who can see our data, for what purpose, and what happens to it when the engagement ends? Will our anonymised data join a benchmark, and can we decline? How will we know, in six months, whether acting on this paid off?",
   "title": "Seeing Clearly",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/seeing-clearly.html"
  },
  {
   "id": "booklet/seeing-clearly/p37",
@@ -1171,7 +1171,7 @@
   "text": "Part Nine Our commitments Every client-facing Ingqiqo output follows our Transparent Solution Standard. In practice, that means eight commitments. 01 One result, many views. No stakeholder receives a number the others cannot reproduce. 02 Every figure shows its source. Observed, declared, published or estimated, with ranges where estimated. 03 Every output shows its version. Method, engine and parameter versions are printed, so a result can be re-run and checked. 04 Limits are stated. Each output says what it deliberately does not measure or decide. 05 People decide. We name the decision and its owner; we do not take it. This is the human-in-the-loop rule: the machines calculate, people do the thinking, and every machine contribution is a recorded proposal. 06 Systems before people. Organisational diagnostics never measure, rank or name individuals. 07 Personal information is minimised. We collect only what a decision needs, under POPIA, and strip it from any specimen or sample. 08 Outcomes are checked. Every significant recommendation carries a review date against which it can be judged.",
   "title": "Seeing Clearly",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/seeing-clearly.html"
  },
  {
   "id": "booklet/seeing-clearly/p4",
@@ -1184,7 +1184,7 @@
   "text": "ONE The light that was rationed For decades, a clear view of how an organisation actually spends its time, money and judgement was something most South African businesses could not buy. It existed. It was simply rationed.",
   "title": "Seeing Clearly",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/seeing-clearly.html"
  },
  {
   "id": "booklet/seeing-clearly/p5",
@@ -1197,7 +1197,7 @@
   "text": "Part One Who could see A listed bank or insurer preparing for a restructure could commission a large advisory firm. Teams of analysts would arrive, interview dozens of people, model costs, and deliver a report. Those reports often told leadership things they had sensed but could never prove: where the rework sat, which approvals were slowing everything down, what staff turnover was really costing. That work was expensive, slow and relationship-driven. It was sold to organisations that already had the budget, the procurement channel and the partner relationships. It was usually delivered once, as a document, and then aged on a shelf. Who could not Everyone else made the same decisions with far less light. A mid-sized manufacturer set salaries from last year’s survey and instinct. A recruiter placed candidates without knowing whether the offer was economically survivable for the person accepting it. An HR team faced a CCMA referral without a record of why a decision had been made. A family business lost a key person and discovered that half the operation lived in that person’s head. These organisations were not less capable. They were less equipped. They carried the same costs, but the costs were invisible, so nobody could manage them.",
   "title": "Seeing Clearly",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/seeing-clearly.html"
  },
  {
   "id": "booklet/seeing-clearly/p7",
@@ -1210,7 +1210,7 @@
   "text": "Part One What changes now Ingqiqo exists to make that kind of view ordinary rather than exclusive. Three things make this possible. Method, not headcount Our work follows one documented method, so it does not depend on large teams of consultants. The method is the product. Instruments, not one-off reports Each offering is a repeatable instrument. It can be run again next quarter, and the numbers can be compared. Working shown, not hidden Every figure traces to its source, its assumptions and its range. You can check it, challenge it and reuse it. The result is that a 50-person business, a municipal entity or an independent recruiter can see its decisions with the kind of clarity that used to arrive only in a boardroom binder.",
   "title": "Seeing Clearly",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/seeing-clearly.html"
  },
  {
   "id": "booklet/seeing-clearly/p8",
@@ -1223,7 +1223,7 @@
   "text": "TWO How the Ingqiqo architecture fits together Everything we offer is built on one method and connected by one record. You can start with any single offering and it will still fit the rest when you are ready.",
   "title": "Seeing Clearly",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/seeing-clearly.html"
  },
  {
   "id": "booklet/seeing-clearly/p9",
@@ -1236,7 +1236,7 @@
   "text": "The architecture One method. One record. Six layers. Read it top to bottom: the method shapes every offering, every offering produces a governed decision record, and what is learned flows back into the method and the benchmarks.",
   "title": "Seeing Clearly",
   "type": "booklet",
-  "url": null
+  "url": "/resources/read/seeing-clearly.html"
  },
  {
   "id": "engage#e1",
@@ -1789,6 +1789,78 @@
   "title": "From the work",
   "type": "note",
   "url": "/notes/#n2"
+ },
+ {
+  "id": "resources#eg",
+  "section": "Meaning, made coherent.",
+  "source": "resources/index.html",
+  "tags": [
+   "page"
+  ],
+  "text": "Meaning, made coherent. The booklets show how the work is done. If one of them describes the decision that keeps coming back to you, bring it. Start a conversation →or book a time →",
+  "title": "Resources",
+  "type": "page",
+  "url": "/resources/#eg"
+ },
+ {
+  "id": "resources#hero",
+  "section": "The Ingqiqo library",
+  "source": "resources/index.html",
+  "tags": [
+   "page"
+  ],
+  "text": "Nkosinathi Mbambo Resources The Ingqiqo library Booklets on how decisions are named, measured, made coherent and told. Read the open ones here in full, with no sign-up. Take a PDF home for whatever it is worth to you. The working tools sit behind a subscription.",
+  "title": "Resources",
+  "type": "page",
+  "url": "/resources/#hero"
+ },
+ {
+  "id": "resources#r1",
+  "section": "Read in full",
+  "source": "resources/index.html",
+  "tags": [
+   "page"
+  ],
+  "text": "Read in full Every page, in the browser. Examples in the booklets are composite or fictitious, and every figure is illustrative. A guide to decision enablement Seeing Clearly The instruments, what they measure and what they will not, in plain language. Where most readers should start. Read onlinePDF, pay what you want → Capability and compliance Company Profile Who we are, the method, the platform beneath the work, and the documents a procurement committee asks for. Read onlineFree PDF → Issued at the start of every engagement Engagement Pack How we work, what we commit to and refuse, who decides what, and the answers you would otherwise ask for one at a time. Read onlineFree PDF → Judging an engagement fairly The Progress Record How progress is tracked and impairments logged, so a sponsor can judge time, effort and results without guesswork. Read onlinePDF coming soon Stories of decision The Casebook Thirteen composite cases: institutional errors, motive depths, paradoxes, board rooms. Each is worked out for the seminar, and the book closes with an ode. Online edition coming soonPDF, pay what you want →",
+  "title": "Resources",
+  "type": "page",
+  "url": "/resources/#r1"
+ },
+ {
+  "id": "resources#r2",
+  "section": "PDF editions",
+  "source": "resources/index.html",
+  "tags": [
+   "page"
+  ],
+  "text": "PDF editions Through Buy Me a Coffee, for whatever you think they are worth. The Casebook Thirteen stories, their lenses, seminar questions and katas, print-ready. Get the PDF The Currency of Craft What the work is worth, how that worth is established, and the warranty with its limits. PDF coming soon The Decision Portfolio The full range of instruments, domain by domain, with the question each one answers. Get the PDF Seeing Clearly The guide to decision enablement, for the desk or the coffee table. Get the PDF The Progress Record For sponsors and audit committees who want it on paper. PDF coming soon How it works Choose an amount on Buy Me a Coffee. The PDF arrives by email and on the confirmation page straight away. The open booklets stay free to read online, whether or not you buy the PDF. Dojo subscribers receive every PDF. Or simply buy a coffee →",
+  "title": "Resources",
+  "type": "page",
+  "url": "/resources/#r2"
+ },
+ {
+  "id": "resources#r3",
+  "section": "The Decision Dojo",
+  "source": "resources/index.html",
+  "tags": [
+   "page"
+  ],
+  "text": "The Decision Dojo Browse it freely. Subscribe to train in it. One kick, ten thousand times. A courseware engine for the craft of deciding. Plug in any material and run it through ten gates. Roll challenges by mode, speed and complexity, climb a quest board, and keep a character sheet, an XP ledger and an insight archive. Search the whole Academy with Boolean strings: six schools, thirty-nine disciplines, seventeen certification families. Browse the Dojo Subscribe → Member sign-in opening soon In the browse Every tab, school, track and credential is readable, so you can judge it before you pay. With a subscription Logging XP, claiming challenges, filing insights, the event log and your own saved progress. You sign in with Google, using the email you subscribed with.",
+  "title": "Resources",
+  "type": "page",
+  "url": "/resources/#r3"
+ },
+ {
+  "id": "resources#r4",
+  "section": "For clients and partners",
+  "source": "resources/index.html",
+  "tags": [
+   "page"
+  ],
+  "text": "For clients and partners Restricted · sign-in required The Coherence Architecture The full method, the semantic model and the platform beneath the work. It is shared under NDA with clients and partners for technical evaluation, and access is granted person by person, through Google sign-in. Sign-in opening soonRequest access →",
+  "title": "Resources",
+  "type": "page",
+  "url": "/resources/#r4"
  },
  {
   "id": "work/cdc-head-to-head#eg",

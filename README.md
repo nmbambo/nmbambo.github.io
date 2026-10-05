@@ -18,6 +18,7 @@ When a project's public repository opens, add a link to it on that project's pag
 
 - `engage/` — Working together: what you receive, where to start, who decides what, warranties, commitments, sectors, data protection, partners.
 - `notes/` — From the work: short pieces and three long arguments (illustrative samples only; no prices).
+- `resources/` — The Ingqiqo library: online readers for four booklets (`resources/read/`, page images built by `scripts/build_readers.py` from the printed PDFs), free public PDF editions (`resources/pdf/`), and the Decision Dojo (`resources/dojo/`, self-contained; progress stays in the visitor's browser). Pages carrying prices, capacity figures, tender particulars, unfinished fields or rand amounts are held back in `build_readers.py`. Member sign-in shows "opening soon" until the member hosts are live. Check: `python3 tests/resources/e2e_resources.py`.
 - `assets/rose.svg`, `assets/rose-small.svg` — Ingqiqo rose, revision 2 (Isibheqe geometry, amber sigil).
 
 Public-site rule: no prices, rate cards, financials, capacity figures, client data or company particulars.

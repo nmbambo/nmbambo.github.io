@@ -1,0 +1,1997 @@
+<!DOCTYPE html>
+<html><head>
+<title>The Decision Dojo — Resources — Nkosinathi Mbambo</title>
+<meta name="description" content="A courseware engine for the craft of deciding: ten gates, challenges, a quest board and an XP ledger. Browse it freely.">
+<meta name="theme-color" content="#0C0A10">
+<link rel="icon" href="../../assets/rose-small.svg" type="image/svg+xml">
+<script>window.__resources = {"https://unpkg.com/react@18.3.1/umd/react.production.min.js": "js/react.production.min.js", "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js": "js/react-dom.production.min.js"};</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="js/dc-runtime.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,300;0,6..96,400;0,6..96,500;1,6..96,400&display=swap">
+<style>/* cyrillic-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("fonts/40ab244c.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("fonts/80763e7a.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("fonts/b55fd731.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("fonts/a821dd6f.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("fonts/20d315f0.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("fonts/80595084.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/40ab244c.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/80763e7a.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/b55fd731.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/a821dd6f.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/20d315f0.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/80595084.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/40ab244c.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/80763e7a.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/b55fd731.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/a821dd6f.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/20d315f0.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/80595084.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/40ab244c.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/80763e7a.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/b55fd731.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/a821dd6f.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/20d315f0.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/80595084.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<style>/* Nocturne — design-system tokens and component classes. This file is the source of truth for the system's look; retune it here and see readme.md. */
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/ec9e1e82.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/23d838aa.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/1558310b.woff2") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/97e1baa3.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/e9714605.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/04150851.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/dcec2d54.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/ec9e1e82.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/23d838aa.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/1558310b.woff2") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/97e1baa3.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/e9714605.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/04150851.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/dcec2d54.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/ec9e1e82.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/23d838aa.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/1558310b.woff2") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/97e1baa3.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/e9714605.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/04150851.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/dcec2d54.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/ec9e1e82.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/23d838aa.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/1558310b.woff2") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/97e1baa3.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/e9714605.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/04150851.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/dcec2d54.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+
+:root {
+  --color-bg: #161826;
+  --color-surface: #232532;
+  --color-text: #e9e9ed;
+  --color-accent: #9184d9; /* review round 7 (Barron): the accent moves to
+     the product's blurple — OKLCH hue 289.2, the hue of the app's own Pro
+     accent (#9a8fe0, --om-accent-pro) — at the same lightness the steel
+     accent held (L 0.660, so the documented ratios survive) and chroma
+     in the product blurple's own range (its token sits at C 0.118; the
+     accent takes 0.125, from the old steel's 0.030):
+     the accent now reads as an accent rather than another neutral. */
+  --color-accent-2: #a7a1db; /* the machine-derived stand-in follows: same
+     hue, same L 0.734, chroma at the same 2:3 proportion it held */
+  --color-divider: color-mix(in srgb, #e9e9ed 16%, transparent);
+
+  /* Tonal ramps — generated in OKLCH on one shared lightness scale, so the
+     same step of any role matches the others in visual value. */
+  --color-neutral-100: #f3f5fe;
+  --color-neutral-200: #e4e7f5;
+  --color-neutral-300: #cfd3e5;
+  --color-neutral-400: #b2b6ca;
+  --color-neutral-500: #9397ab;
+  --color-neutral-600: #75798c;
+  --color-neutral-700: #595d6c;
+  --color-neutral-800: #3f424d;
+  --color-neutral-900: #292b31;
+
+  --color-accent-100: #f5f4ff;
+  --color-accent-200: #e7e5fe;
+  --color-accent-300: #d2cefd;
+  --color-accent-400: #b5abfc;
+  --color-accent-500: #968ae0;
+  --color-accent-600: #796cbf;
+  --color-accent-700: #5d5294;
+  --color-accent-800: #423a6a;
+  --color-accent-900: #2b2741;
+
+  --color-accent-2-100: #f5f4ff;
+  --color-accent-2-200: #e7e5fe;
+  --color-accent-2-300: #d2cefd;
+  --color-accent-2-400: #b5afe8;
+  --color-accent-2-500: #9690c9;
+  --color-accent-2-600: #7972a9;
+  --color-accent-2-700: #5c5783;
+  --color-accent-2-800: #423e5d;
+  --color-accent-2-900: #2b293a;
+
+  /* Deck section-divider ground — review round 3: saturation as presence.
+     Dividers take a saturated deep indigo (hue 277, the neutral ramp's own
+     family; C 0.094 — written when the accent held C 0.030, before the
+     round-7 blurple raised it past the ground's) with a lighter bloom and
+     a ghost tint of the same hue, while the slide grounds stay
+     desaturated. Deck-scale fills only — not interface colors. */
+  --color-section: #262a60;
+  --color-section-glow: #353b80;
+  --color-section-ghost: #4c5397;
+
+  --font-heading: "Inter", system-ui, sans-serif;
+  --font-heading-weight: 500;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  --space-1: 2.8px;
+  --space-2: 5.6px;
+  --space-3: 8.4px;
+  --space-4: 11.2px;
+  --space-6: 16.8px;
+  --space-8: 22.4px;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+
+  /* Elevation — derived from the ground: soft ink-tinted shadows on a
+     light theme, a hairline edge + ambient darkness on a dark one. */
+  --shadow-sm: 0 0 0 1px #3f424d;
+  --shadow-md: 0 0 0 1px #595d6c, 0 6px 18px rgba(0,0,0,0.55);
+  --shadow-lg: 0 0 0 1px #9397ab, 0 16px 40px rgba(0,0,0,0.65);
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: var(--font-heading-weight); }
+
+.lighten{mix-blend-mode:lighten;background-color:transparent}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Components — built with the tokens above. Plain CSS
+   on plain HTML: no JavaScript, no build step. Each class is documented in
+   readme.md and demonstrated in foundations/ and components/.
+   ══════════════════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; font-size: 15px; line-height: 1.55; font-weight: 400; }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  line-height: 1.12; letter-spacing: -0.015em; margin: 0 0 var(--space-2);
+}
+h1 { font-size: 42px; }
+h2 { font-size: 32px; }
+h3 { font-size: 25px; }
+h4 { font-size: 20px; }
+h5 { font-size: 16px; }
+h6 { font-size: 13px; }
+h6 { letter-spacing: 0.08em; text-transform: uppercase; }
+p { margin: 0 0 var(--space-3); }
+a { color: var(--color-accent); text-underline-offset: 3px; }
+img { display: block; max-width: 100%; }
+figure { margin: 0; }
+figcaption {
+  font-size: 11px; margin-top: var(--space-1);
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
+.text-muted { color: color-mix(in srgb, var(--color-text) 55%, transparent); }
+:focus { outline: none; }
+:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+::selection { background: color-mix(in srgb, var(--color-accent) 30%, transparent); }
+
+/* — rules — */
+/* Rules fade to transparent at both ends instead of stopping cleanly — a
+   Nocturne signature. The ramp is 48px an end (one deck baseline unit),
+   painted from the same divider token. Freestanding rules fade; box
+   outlines, in-control separators, and short accent marks stay solid. */
+.hr {
+  height: 1px; border: 0; margin: var(--space-4) 0;
+  background: linear-gradient(to right,
+    transparent, var(--color-divider) 48px,
+    var(--color-divider) calc(100% - 48px), transparent);
+}
+
+/* — buttons — */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  cursor: pointer; text-decoration: none;
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 14px; line-height: 1.2; color: var(--color-text); /* matches the .input's 14px —
+     the pair sits side by side in sign-up rows */
+  background: transparent; border: 1px solid transparent;
+  padding: var(--space-2) calc(var(--space-3) * 1.2);
+  border-radius: var(--radius-md);
+}
+.btn svg { display: block; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn-primary { color: var(--color-accent); border-color: var(--color-accent); }
+.btn-primary:hover { background: color-mix(in srgb, var(--color-accent) 12%, transparent); }
+.btn-primary:active { background: color-mix(in srgb, var(--color-accent) 22%, transparent); }
+.btn-secondary { border-color: var(--color-divider); }
+.btn-secondary:hover { background: color-mix(in srgb, var(--color-text) 7%, transparent); }
+.btn-secondary:active { background: color-mix(in srgb, var(--color-text) 14%, transparent); }
+.btn-ghost { color: var(--color-accent); padding-inline: var(--space-1); }
+.btn-ghost:hover { background: color-mix(in srgb, var(--color-accent) 10%, transparent); }
+.btn-ghost:active { background: color-mix(in srgb, var(--color-accent) 18%, transparent); }
+.btn-icon { width: 36px; height: 36px; padding: 0; }
+.btn-block { width: 100%; margin-top: var(--space-2); }
+
+/* — forms — */
+.field > label {
+  display: block; font-size: 12px; margin-bottom: 5px;
+  color: color-mix(in srgb, var(--color-text) 70%, transparent);
+}
+.input {
+  width: 100%; min-height: 36px; padding: 6px 10px; font: inherit;
+  font-size: 14px; color: var(--color-text); caret-color: var(--color-accent);
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider); border-radius: var(--radius-md);
+}
+.input:hover { border-color: color-mix(in srgb, var(--color-text) 45%, transparent); }
+.input:focus-visible { border-color: var(--color-accent); outline-offset: 0; }
+textarea.input { min-height: 90px; resize: vertical; }
+.radio { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: 14px; }
+.radio input, .seg-opt input {
+  position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none;
+}
+.radio .dot {
+  width: 16px; height: 16px; flex: none; border-radius: 50%;
+  border: 1.5px solid var(--color-divider);
+}
+.radio:hover .dot { border-color: var(--color-accent); }
+.radio input:checked + .dot {
+  border-color: var(--color-accent); background: var(--color-accent);
+  box-shadow: inset 0 0 0 4px var(--color-bg);
+}
+.radio input:focus-visible + .dot { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+.seg {
+  display: inline-flex; overflow: hidden;
+  border: 1px solid var(--color-divider); border-radius: var(--radius-md);
+}
+.seg-opt {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 12px; font-size: 13px; cursor: pointer;
+}
+.seg-opt + .seg-opt { border-left: 1px solid var(--color-divider); }
+.seg-opt:has(input:checked) { color: var(--color-accent); box-shadow: inset 0 0 0 1px var(--color-accent); }
+.seg-opt:not(:has(input:checked)):hover { background: color-mix(in srgb, var(--color-text) 7%, transparent); }
+.seg-opt:has(input:focus-visible) { outline: 2px solid var(--color-accent); outline-offset: -2px; }
+
+/* — cards — */
+.card {
+  display: flex; flex-direction: column; gap: var(--space-2);
+  padding: var(--space-3); border-radius: var(--radius-md); background: var(--color-surface);
+}
+.card-kicker { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent); }
+.card-title {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 17px; line-height: 1.2;
+}
+.card-body { margin: 0; font-size: 13px; opacity: 0.8; flex: 1; }
+.card-meta {
+  display: flex; align-items: center; gap: 6px; font-size: 11px;
+  color: color-mix(in srgb, var(--color-text) 50%, transparent);
+}
+.elev-sm { box-shadow: var(--shadow-sm); }
+.elev-md { box-shadow: var(--shadow-md); }
+.elev-lg { box-shadow: var(--shadow-lg); }
+
+/* — tags — */
+.tag {
+  display: inline-flex; align-items: center; font-size: 11px;
+  letter-spacing: 0.02em; padding: 3px 10px;
+  border-radius: calc(var(--radius-md) * 0.75);
+}
+.tag-accent { background: var(--color-accent-800); color: var(--color-accent-100); }
+.tag-accent-2 { background: var(--color-accent-2-800); color: var(--color-accent-2-100); }
+.tag-neutral { background: var(--color-neutral-800); color: var(--color-neutral-100); }
+.tag-outline { border: 1px solid var(--color-accent); color: var(--color-accent); }
+
+/* — navigation — */
+.nav {
+  display: flex; align-items: center; gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: none;
+}
+.nav-brand {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 18px; margin-right: auto;
+}
+.nav a { color: inherit; text-decoration: none; font-size: 14px; }
+.nav a:hover, .nav a[aria-current='page'] { color: var(--color-accent); }
+
+/* — tables — */
+.table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.table th {
+  text-align: left; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-text) 60%, transparent);
+  padding: var(--space-2); border-bottom: 1px solid transparent; /* keeps layout; the row paints the fading rule */
+}
+.table td {
+  padding: var(--space-2);
+  border-bottom: 1px solid transparent;
+}
+/* Row rules as row-level strips so the end-fade spans the row, not each cell. */
+.table thead tr {
+  background: linear-gradient(to right,
+    transparent, var(--color-divider) 48px,
+    var(--color-divider) calc(100% - 48px), transparent) no-repeat bottom / 100% 1px;
+}
+.table tbody tr {
+  background: linear-gradient(to right,
+    transparent, color-mix(in srgb, var(--color-text) 8%, transparent) 48px,
+    color-mix(in srgb, var(--color-text) 8%, transparent) calc(100% - 48px), transparent) no-repeat bottom / 100% 1px;
+}
+.table tbody tr:hover {
+  /* the hover tint layers over the row rule, which keeps painting */
+  background:
+    linear-gradient(color-mix(in srgb, var(--color-text) 4%, transparent),
+                    color-mix(in srgb, var(--color-text) 4%, transparent)) no-repeat 0 0 / 100% 100%,
+    linear-gradient(to right,
+      transparent, color-mix(in srgb, var(--color-text) 8%, transparent) 48px,
+      color-mix(in srgb, var(--color-text) 8%, transparent) calc(100% - 48px), transparent) no-repeat bottom / 100% 1px;
+}
+
+/* — dialog — */
+.dialog-backdrop {
+  position: fixed; inset: 0; display: grid; place-items: center;
+  padding: var(--space-4);
+  background: color-mix(in srgb, var(--color-neutral-900) 50%, transparent);
+}
+.dialog {
+  width: min(440px, 100%); display: flex; flex-direction: column; gap: var(--space-3);
+  padding: var(--space-4); border-radius: var(--radius-lg);
+  background: var(--color-surface); box-shadow: var(--shadow-lg);
+}
+.dialog-title {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 20px;
+}
+.dialog-body { font-size: 14px; opacity: 0.85; }
+.dialog-actions { display: flex; justify-content: flex-end; gap: var(--space-2); margin-top: var(--space-2); }
+
+</style>
+<script src="js/ds-bundle.js"></script>
+<style>/* cyrillic-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url("fonts/6721455b.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url("fonts/3917b006.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url("fonts/842d2271.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url("fonts/688784c5.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url("fonts/e7084625.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/6721455b.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/3917b006.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/842d2271.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/688784c5.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/e7084625.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("fonts/9c11de0e.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("fonts/7f7683ed.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("fonts/643564ed.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("fonts/9d567e97.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("fonts/65237d2c.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/9c11de0e.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/7f7683ed.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/643564ed.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/9d567e97.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/65237d2c.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/9c11de0e.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/7f7683ed.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/643564ed.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/9d567e97.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/65237d2c.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("fonts/32c0f20d.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("fonts/4328f513.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("fonts/415bba4f.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("fonts/d9cad31a.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("fonts/39e90167.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/bd0f7e6b.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/c65bb729.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/36de3887.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/9cff136a.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/5f299436.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("fonts/40ab244c.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("fonts/80763e7a.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("fonts/b55fd731.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("fonts/a821dd6f.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("fonts/20d315f0.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("fonts/80595084.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/40ab244c.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/80763e7a.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/b55fd731.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/a821dd6f.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/20d315f0.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/80595084.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/40ab244c.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/80763e7a.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/b55fd731.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/a821dd6f.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/20d315f0.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/80595084.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/40ab244c.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/80763e7a.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/b55fd731.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/a821dd6f.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/20d315f0.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/80595084.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<style>
+:root{--color-bg:#0C0A10;--color-surface:#12111A;--color-text:#E3DCCB;--color-divider:#211F2C;--color-accent:#BFB08A;--color-accent-100:#F4EEE0;--color-accent-200:#E6D9B4;--color-accent-300:#D8C79A;--color-accent-400:#BFB08A;--color-accent-500:#A8935A;--color-accent-600:#8F7A40;--color-accent-700:#7F6A2E;--color-accent-800:#4E421F;--color-accent-900:#1B1710;--color-neutral-100:#E3DCCB;--color-neutral-200:#CFC8B8;--color-neutral-300:#B3AC9E;--color-neutral-400:#8E887C;--color-neutral-500:#6F6A60;--color-neutral-600:#5E594F;--color-neutral-700:#3A3744;--color-neutral-800:#262431;--color-neutral-900:#17161F;--color-section:#17140F;--color-section-glow:#3B3220;--font-heading:"Bodoni Moda","Cormorant Garamond",Georgia,serif;--font-body:"Manrope",system-ui,sans-serif;--font-mono:"IBM Plex Mono",ui-monospace,monospace}
+body{background:#0C0A10 !important;font-family:var(--font-body)}
+::selection{background:#4E421F;color:#F4EEE0}
+[style*="text-transform:uppercase"]{font-family:var(--font-mono)}
+section.page[data-screen-label^="01 "] [style*="text-transform:uppercase"],section.page[data-screen-label$="Back cover"] [style*="text-transform:uppercase"]{font-family:var(--font-body)}
+section.page thead th{border-bottom-color:#7F6A2E !important;color:#A8935A !important}
+section.page::before{content:"";position:absolute;top:9mm;left:20mm;right:20mm;height:6mm;pointer-events:none;background:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20200%20200'%3E%3Cg%20fill%3D'none'%20stroke%3D'%23C6B27C'%20stroke-width%3D'6'%20stroke-linecap%3D'round'%3E%3Cpath%20d%3D'M100%2C12%20L162%2C38%20L188%2C100%20L162%2C162%20L100%2C188%20L38%2C162%20L12%2C100%20L38%2C38%20Z'%2F%3E%3Cpath%20d%3D'M138%2C62%20L138%2C138%20L62%2C138%20L62%2C62%20Z'%2F%3E%3Cpath%20d%3D'M100%2C12%20L138%2C62%20M100%2C12%20L62%2C62%20M162%2C38%20L138%2C62%20M188%2C100%20L138%2C62%20M188%2C100%20L138%2C138%20M162%2C162%20L138%2C138%20M100%2C188%20L138%2C138%20M100%2C188%20L62%2C138%20M38%2C162%20L62%2C138%20M12%2C100%20L62%2C138%20M12%2C100%20L62%2C62%20M38%2C38%20L62%2C62'%2F%3E%3C%2Fg%3E%3Cg%20fill%3D'none'%20stroke%3D'%23C6B27C'%20stroke-width%3D'4'%20opacity%3D'0.42'%3E%3Cpath%20d%3D'M62%2C62%20L138%2C138%20M138%2C62%20L62%2C138'%2F%3E%3C%2Fg%3E%3Ccircle%20cx%3D'100'%20cy%3D'100'%20r%3D'6'%20fill%3D'%23C6B27C'%2F%3E%3C%2Fsvg%3E") left center/6mm 6mm no-repeat,linear-gradient(90deg,transparent 0 9mm,rgba(198,178,124,.34) 9mm,rgba(198,178,124,.10) 78%,transparent) left center/100% 1px no-repeat}
+section.page[data-screen-label^="01 "]::before,section.page:has(> div > image-slot)::before,section.page:has(> div > image-slot)::after{display:none}
+section.page[data-screen-label^="01 "]::after{content:"";position:absolute;right:-34mm;top:36mm;width:150mm;height:150mm;pointer-events:none;opacity:.10;background:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20200%20200'%3E%3Cg%20fill%3D'none'%20stroke%3D'%23C6B27C'%20stroke-width%3D'1.2'%20stroke-linecap%3D'round'%3E%3Cpath%20d%3D'M100%2C12%20L162%2C38%20L188%2C100%20L162%2C162%20L100%2C188%20L38%2C162%20L12%2C100%20L38%2C38%20Z'%2F%3E%3Cpath%20d%3D'M138%2C62%20L138%2C138%20L62%2C138%20L62%2C62%20Z'%2F%3E%3Cpath%20d%3D'M100%2C12%20L138%2C62%20M100%2C12%20L62%2C62%20M162%2C38%20L138%2C62%20M188%2C100%20L138%2C62%20M188%2C100%20L138%2C138%20M162%2C162%20L138%2C138%20M100%2C188%20L138%2C138%20M100%2C188%20L62%2C138%20M38%2C162%20L62%2C138%20M12%2C100%20L62%2C138%20M12%2C100%20L62%2C62%20M38%2C38%20L62%2C62'%2F%3E%3C%2Fg%3E%3Cg%20fill%3D'none'%20stroke%3D'%23C6B27C'%20stroke-width%3D'0.8'%20opacity%3D'0.42'%3E%3Cpath%20d%3D'M62%2C62%20L138%2C138%20M138%2C62%20L62%2C138'%2F%3E%3C%2Fg%3E%3Ccircle%20cx%3D'100'%20cy%3D'100'%20r%3D'6'%20fill%3D'%23C6B27C'%2F%3E%3C%2Fsvg%3E") center/contain no-repeat}
+</style>
+
+<style>
+body{margin:0;background:var(--color-bg)}
+a{color:var(--color-accent-300);text-decoration:none}
+a:hover{color:var(--color-accent-200)}
+</style>
+</helmet>
+<div style="min-height:100vh;background:radial-gradient(70% 38% at 88% 0%,color-mix(in srgb,var(--color-accent-900) 62%,transparent) 0%,transparent 70%),var(--color-bg);color:var(--color-text);font-family:var(--font-body)">
+<div style="max-width:1200px;margin:0 auto;padding:28px 28px 72px">
+
+  <div style="display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:flex-end">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px"><svg sc-camel-view-box="0 0 200 200" width="20" height="20" aria-label="Ingqiqo Executables mark" style="flex:none"><circle cx="100" cy="100" r="92" fill="none" stroke="#BFB08A" stroke-width="2.4"/><path d="M90.05 49.98 L100.00 12.00 L109.95 49.98 Z M128.33 57.60 L162.23 37.77 L142.40 71.67 Z M150.02 90.05 L188.00 100.00 L150.02 109.95 Z M142.40 128.33 L162.23 162.23 L128.33 142.40 Z M109.95 150.02 L100.00 188.00 L90.05 150.02 Z M71.67 142.40 L37.77 162.23 L57.60 128.33 Z M49.98 109.95 L12.00 100.00 L49.98 90.05 Z M57.60 71.67 L37.77 37.77 L71.67 57.60 Z" fill="none" stroke="#BFB08A" stroke-width="2.4" stroke-linejoin="miter"/><path d="M81 100 Q100 86.5 119 100 Q100 113.5 81 100 Z" fill="#0C0A10" stroke="#BFB08A" stroke-width="2.50"/><circle cx="100" cy="100" r="6.6" fill="none" stroke="#BFB08A" stroke-width="2.4"/><path d="M100 96 L103.6 100 L100 104 L96.4 100 Z" fill="#B8793E"/></svg><div style="font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--color-accent-300)">Ingqiqo Academy</div></div>
+      <h1 style="margin:10px 0 0;font-family:var(--font-heading);font-weight:300;font-size:34px;letter-spacing:-0.02em">The Decision Dojo</h1>
+      <p style="margin:6px 0 0;font-size:13.5px;color:var(--color-neutral-400);max-width:640px;line-height:1.55">One kick, ten thousand times. A courseware engine you plug any material into — and keep climbing until the material is in your hands, not your notes.</p>
+    </div>
+    <div style="display:flex;gap:16px;align-items:center;padding:12px 16px;border:1px solid var(--color-neutral-800);border-radius:8px;background:var(--color-surface);min-width:280px">
+      <div>
+        <div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-neutral-500)">Rank</div>
+        <div style="margin-top:3px;font-size:15px;font-weight:500">{{ rank }}</div>
+      </div>
+      <div style="flex:1">
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--color-neutral-400)"><span>{{ xpText }}</span><span>{{ nextText }}</span></div>
+        <div style="margin-top:6px;height:4px;border-radius:4px;background:var(--color-neutral-800);overflow:hidden"><div style="height:100%;background:var(--color-accent);width:{{ progressPct }}"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:22px;display:flex;gap:2px;flex-wrap:wrap;border-bottom:1px solid var(--color-divider)">
+    <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="7">
+      <sc-if value="{{ t.active }}" hint-placeholder-val="{{ false }}">
+        <button sc-camel-on-click="{{ t.go }}" style="background:transparent;border:0;border-bottom:2px solid var(--color-accent);color:var(--color-text);padding:10px 13px;font:inherit;font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap">{{ t.label }}</button>
+      </sc-if>
+      <sc-if value="{{ t.inactive }}" hint-placeholder-val="{{ true }}">
+        <button sc-camel-on-click="{{ t.go }}" style="background:transparent;border:0;border-bottom:2px solid transparent;color:var(--color-neutral-400);padding:10px 13px;font:inherit;font-size:13px;cursor:pointer;white-space:nowrap" style-hover="color:var(--color-neutral-200)">{{ t.label }}</button>
+      </sc-if>
+    </sc-for>
+  </div>
+
+  <sc-if value="{{ tWay }}" hint-placeholder-val="{{ true }}">
+    <div style="margin-top:24px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:18px">
+      <div style="padding:22px;border:1px solid var(--color-neutral-800);border-radius:8px;background:var(--color-surface)">
+        <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-accent-400)">The one-kick rule</div>
+        <p style="margin:10px 0 0;font-family:var(--font-heading);font-weight:300;font-size:21px;line-height:1.4;letter-spacing:-0.01em">Fear the person who has practised one kick ten thousand times, not the one who has practised ten thousand kicks once.</p>
+        <p style="margin:12px 0 0;font-size:13px;line-height:1.65;color:var(--color-neutral-300)">So the unit of learning here is not a chapter, a course or a certificate. It is a <span style="color:var(--color-text)">capability</span> — a move you can perform. Every book, paper, tool, dataset and engagement is just new material on which to practise the same fourteen moves: frame, observe, decompose, model, challenge, perturb, compare, construct, destroy, repair, explain, execute, reflect, adapt.</p>
+        <p style="margin:10px 0 0;font-size:13px;line-height:1.65;color:var(--color-neutral-300)">Never study a concept without converting it into a move. Not "I know sensitivity analysis" but "when a decision rests on an assumption, I can find it, perturb it, locate the decision boundary and say how robust the choice is."</p>
+      </div>
+      <div style="padding:22px;border:1px solid var(--color-accent);border-radius:8px;background:var(--color-accent-900)">
+        <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-accent-400)">The victory condition</div>
+        <p style="margin:10px 0 0;font-family:var(--font-heading);font-weight:300;font-size:21px;line-height:1.4;color:var(--color-accent-100)">Become extraordinarily difficult to fool about decisions.</p>
+        <p style="margin:12px 0 0;font-size:13px;line-height:1.65;color:var(--color-accent-200)">Not infallible. Not omniscient. Able to enter an unfamiliar system, find the decision hiding inside it, expose its assumptions, detect where strategy, intent, decision, execution and evidence stop lining up — and make it executable.</p>
+        <div style="margin-top:14px;font-size:12px;line-height:1.7;color:var(--color-accent-200)">Completion gives access. A test gives recall. Building gives competence. Breaking and repairing give understanding. Pressure gives reliability. Teaching gives transfer. Discovery gives insight. <span style="color:var(--color-accent-100)">Never confuse completion with mastery.</span></div>
+      </div>
+    </div>
+    <div style="margin-top:22px;padding:18px 22px;border:1px solid var(--color-neutral-800);border-radius:8px">
+      <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-accent-400)">The centre of the Academy</div>
+      <p style="margin:8px 0 0;font-family:var(--font-heading);font-weight:300;font-size:19px;line-height:1.4">Every discipline contributes a lens; no discipline owns the decision.</p>
+      <p style="margin:8px 0 0;font-size:12.5px;line-height:1.65;color:var(--color-neutral-300)">The spine is one loop — strategy → intent → decision → execution → outcome → evidence → feedback → strategy. Science gives knowledge, analysis understanding, architecture structure, engineering capability, optimisation better choices, adaptation resilience, strategy direction, coherence alignment, execution movement, law legitimate bounds, ethics normative bounds, executive management stewardship, feedback learning. We do not certify that you know Decision Science. We certify that you can make decision capability work.</p>
+    </div>
+    <div style="margin-top:14px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px">
+      <div>
+        <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-neutral-500)">Six kinds of decision situation</div>
+        <div style="margin-top:8px;display:flex;flex-direction:column;gap:6px">
+          <sc-for list="{{ situations }}" as="x" hint-placeholder-count="6"><div style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px;padding:9px 12px;border:1px solid var(--color-neutral-800);border-radius:8px;font-size:12.5px"><span style="font-weight:500">{{ x.name }}</span><span style="color:var(--color-neutral-300)">{{ x.what }} <span style="color:var(--color-accent-300)">{{ x.via }}</span></span></div></sc-for>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-neutral-500)">Eight dimensions of capability · ethics, law, coherence and feedback run through all</div>
+        <div style="margin-top:8px;display:grid;grid-template-columns:1fr 1fr;gap:6px">
+          <sc-for list="{{ dims }}" as="x" hint-placeholder-count="8"><div style="padding:9px 12px;border:1px solid var(--color-neutral-800);border-radius:8px;font-size:12.5px"><div style="font-weight:500">{{ x.name }}</div><div style="margin-top:2px;color:var(--color-neutral-400);font-size:11.5px">{{ x.via }}</div></div></sc-for>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:22px;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-neutral-500)">The ten gates every material passes through</div>
+    <div style="margin-top:10px;display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px">
+      <sc-for list="{{ gates }}" as="g" hint-placeholder-count="10">
+        <div style="padding:14px 16px;border:1px solid var(--color-neutral-800);border-radius:8px;background:var(--color-surface)">
+          <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:var(--font-heading);font-weight:300;font-size:20px;color:var(--color-accent-500)">{{ g.n }}</span><span style="font-size:11px;color:var(--color-neutral-500)">{{ g.xp }} XP</span></div>
+          <div style="margin-top:6px;font-size:14px;font-weight:500">{{ g.name }}</div>
+          <div style="margin-top:3px;font-size:12px;color:var(--color-accent-200)">{{ g.q }}</div>
+          <div style="margin-top:6px;font-size:12px;line-height:1.5;color:var(--color-neutral-400)">{{ g.trains }}</div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="margin-top:22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px">
+      <div style="padding:16px 18px;border:1px solid var(--color-neutral-800);border-radius:8px">
+        <div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-400)">Daily dojo · 90 min</div>
+        <div style="margin-top:8px;font-size:12.5px;line-height:1.75;color:var(--color-neutral-300)">10 recall, no notes · 15 perception · 20 construction · 15 destruction · 15 variation · 10 teaching aloud · 5 journal: what surprised me, what is weak, what I attack next.</div>
+      </div>
+      <div style="padding:16px 18px;border:1px solid var(--color-neutral-800);border-radius:8px">
+        <div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-400)">Weekly fight · 2–4 h</div>
+        <div style="margin-top:8px;font-size:12.5px;line-height:1.75;color:var(--color-neutral-300)">A case with no textbook, tutorial or solution. Output a decision brief: context, decision, owner, objective, alternatives, evidence, uncertainty, constraints, model, recommendation, sensitivity, failure modes, execution, feedback.</div>
+      </div>
+      <div style="padding:16px 18px;border:1px solid var(--color-neutral-800);border-radius:8px">
+        <div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-400)">Monthly unknown</div>
+        <div style="margin-top:8px;font-size:12.5px;line-height:1.75;color:var(--color-neutral-300)">One field outside the curriculum — ecology, counterpoint, military logistics, liturgy, aviation. One question only: what structure here sharpens how I see decisions?</div>
+      </div>
+      <div style="padding:16px 18px;border:1px solid var(--color-neutral-800);border-radius:8px">
+        <div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-400)">Every rating has three dials</div>
+        <div style="margin-top:8px;font-size:12.5px;line-height:1.75;color:var(--color-neutral-300)">Complexity · uncertainty · pressure. 1/1/1 is a tutorial. 8/7/6 is professional practice. 10/10/10 is a boss fight. Reading earns almost nothing; demonstration earns everything.</div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ tTracks }}" hint-placeholder-val="{{ false }}">
+    <div style="margin-top:24px">
+      <p style="margin:0;font-size:13px;line-height:1.6;color:var(--color-neutral-300);max-width:780px">Seven tracks, one engine. Each audience trains a single signature kick until it is reflex, walks the gates that matter for its role, and faces its own guardian, boss and second boss. Everyone shares the same vocabulary — IDDC, pedigree, owner, grain — so a finding travels between rooms without translation.</p>
+      <div style="margin-top:14px;display:flex;gap:6px;flex-wrap:wrap">
+        <sc-for list="{{ trackTabs }}" as="k" hint-placeholder-count="7">
+          <sc-if value="{{ k.active }}" hint-placeholder-val="{{ false }}"><button sc-camel-on-click="{{ k.go }}" class="btn btn-primary" style="white-space:nowrap">{{ k.name }}</button></sc-if>
+          <sc-if value="{{ k.inactive }}" hint-placeholder-val="{{ true }}"><button sc-camel-on-click="{{ k.go }}" class="btn btn-ghost" style="white-space:nowrap">{{ k.name }}</button></sc-if>
+        </sc-for>
+      </div>
+      <div style="margin-top:16px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:14px">
+        <div style="padding:20px;border:1px solid var(--color-accent);border-radius:8px;background:var(--color-accent-900)">
+          <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-accent-400)">{{ tr.who }}</div>
+          <div style="margin-top:8px;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-accent-300)">The one kick</div>
+          <p style="margin:6px 0 0;font-family:var(--font-heading);font-weight:300;font-size:19px;line-height:1.42;color:var(--color-accent-100)">{{ tr.kick }}</p>
+          <div style="margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:12.5px;line-height:1.55;color:var(--color-accent-200)">
+            <div><div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-400)">Gates walked</div><div style="margin-top:4px">{{ tr.gates }}</div></div>
+            <div><div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-400)">Cadence</div><div style="margin-top:4px">{{ tr.cadence }}</div></div>
+          </div>
+        </div>
+        <div style="padding:20px;border:1px solid var(--color-neutral-800);border-radius:8px;background:var(--color-surface)">
+          <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-accent-400)">Signature katas</div>
+          <div style="margin-top:8px;display:flex;flex-direction:column;gap:8px">
+            <sc-for list="{{ tr.katas }}" as="ka" hint-placeholder-count="4">
+              <div style="font-size:12.5px;line-height:1.5;color:var(--color-neutral-300)"><span style="color:var(--color-text);font-weight:500">{{ ka.name }}.</span> {{ ka.drill }}</div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px">
+        <div style="padding:16px 18px;border:1px solid var(--color-neutral-800);border-radius:8px"><div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-400)">Guardian</div><div style="margin-top:6px;font-size:12.5px;line-height:1.55;color:var(--color-neutral-300)">{{ tr.guardian }}</div></div>
+        <div style="padding:16px 18px;border:1px solid var(--color-neutral-800);border-radius:8px"><div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-400)">Boss</div><div style="margin-top:6px;font-size:12.5px;line-height:1.55;color:var(--color-neutral-300)">{{ tr.boss }}</div></div>
+        <div style="padding:16px 18px;border:1px solid var(--color-neutral-800);border-radius:8px"><div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-400)">Second boss</div><div style="margin-top:6px;font-size:12.5px;line-height:1.55;color:var(--color-neutral-300)">{{ tr.second }}</div></div>
+        <div style="padding:16px 18px;border:1px solid var(--color-accent-800);border-radius:8px;background:var(--color-accent-900)"><div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-400)">Unfair skill in reach</div><div style="margin-top:6px;font-size:13px;font-weight:500;color:var(--color-accent-100)">{{ tr.legend }}</div><div style="margin-top:4px;font-size:12px;line-height:1.5;color:var(--color-accent-200)">{{ tr.legendWhy }}</div></div>
+      </div>
+      <div style="margin-top:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px">
+        <div style="padding:14px 18px;border:1px solid var(--color-neutral-800);border-radius:8px;font-size:12.5px;line-height:1.6;color:var(--color-neutral-400)"><span style="color:var(--color-neutral-100)">Finishing condition:</span> {{ tr.done }}</div>
+        <div style="padding:14px 18px;border:1px solid var(--color-accent-800);border-radius:8px;font-size:12.5px;line-height:1.6;color:var(--color-accent-200)"><span style="color:var(--color-accent-100)">Credential path:</span> {{ trackPath }}</div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ tEngine }}" hint-placeholder-val="{{ false }}">
+    <div style="margin-top:24px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px">
+        <label style="display:flex;flex-direction:column;gap:5px;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-neutral-500)">Plug in any material<input value="{{ material }}" sc-camel-on-change="{{ onMaterial }}" placeholder="e.g. Linear programming" style="background:var(--color-surface);border:1px solid var(--color-neutral-800);border-radius:8px;color:var(--color-text);padding:9px 11px;font:inherit;font-size:13.5px;letter-spacing:0;text-transform:none"></label>
+        <label style="display:flex;flex-direction:column;gap:5px;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-neutral-500)">Track<sc-raw-select value="{{ trackIdx }}" sc-camel-on-change="{{ onTrack }}" style="background:var(--color-surface);border:1px solid var(--color-neutral-800);border-radius:8px;color:var(--color-text);padding:9px 11px;font:inherit;font-size:13px;letter-spacing:0;text-transform:none"><sc-for list="{{ trackOpts }}" as="o" hint-placeholder-count="7"><option value="{{ o.v }}">{{ o.name }}</option></sc-for></sc-raw-select></label>
+      </div>
+      <p style="margin:14px 0 0;font-size:13px;line-height:1.6;color:var(--color-neutral-300);max-width:800px">Below, the material is run through all ten gates. Each gate has three drills and a pass test. A gate is passed when the test is met without notes — log it on the character sheet and move up. Gates outside your track are shown dimmed; walk them anyway when you want the harder road.</p>
+      <div style="margin-top:14px;display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:10px">
+        <sc-for list="{{ drills }}" as="d" hint-placeholder-count="10">
+          <div style="padding:16px 18px;border:1px solid var(--color-neutral-800);border-radius:8px;background:var(--color-surface);opacity:{{ d.op }}">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px"><div style="font-size:14px;font-weight:500"><span style="color:var(--color-accent-500);margin-right:8px">{{ d.n }}</span>{{ d.name }}</div><span class="tag tag-outline">{{ d.xp }} XP</span></div>
+            <div style="margin-top:8px;display:flex;flex-direction:column;gap:6px">
+              <sc-for list="{{ d.prompts }}" as="p" hint-placeholder-count="3"><div style="font-size:12.5px;line-height:1.5;color:var(--color-neutral-300);padding-left:10px;border-left:2px solid var(--color-accent-800)">{{ p }}</div></sc-for>
+            </div>
+            <div style="margin-top:10px;font-size:12px;line-height:1.5;color:var(--color-accent-200)"><span style="color:var(--color-accent-100)">Pass:</span> {{ d.pass }}</div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="margin-top:28px;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-neutral-500)">Challenge generator</div>
+      <div style="margin-top:10px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:14px">
+        <div style="padding:18px;border:1px solid var(--color-neutral-800);border-radius:8px;background:var(--color-surface);display:flex;flex-direction:column;gap:10px">
+          <label style="display:flex;flex-direction:column;gap:5px;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-neutral-500)">Challenge class<sc-raw-select value="{{ gen.cls }}" sc-camel-on-change="{{ onCls }}" style="background:var(--color-bg);border:1px solid var(--color-neutral-800);border-radius:8px;color:var(--color-text);padding:8px 10px;font:inherit;font-size:13px;letter-spacing:0;text-transform:none"><sc-for list="{{ clsOpts }}" as="o" hint-placeholder-count="8"><option value="{{ o.v }}">{{ o.label }}</option></sc-for></sc-raw-select></label>
+          <label style="display:flex;flex-direction:column;gap:5px;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-neutral-500)">Mode<sc-raw-select value="{{ gen.mode }}" sc-camel-on-change="{{ onMode }}" style="background:var(--color-bg);border:1px solid var(--color-neutral-800);border-radius:8px;color:var(--color-text);padding:8px 10px;font:inherit;font-size:13px;letter-spacing:0;text-transform:none"><sc-for list="{{ modeOpts }}" as="o" hint-placeholder-count="4"><option value="{{ o.v }}">{{ o.label }}</option></sc-for></sc-raw-select></label>
+          <label style="display:flex;flex-direction:column;gap:5px;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-neutral-500)">Speed<sc-raw-select value="{{ gen.speed }}" sc-camel-on-change="{{ onSpeed }}" style="background:var(--color-bg);border:1px solid var(--color-neutral-800);border-radius:8px;color:var(--color-text);padding:8px 10px;font:inherit;font-size:13px;letter-spacing:0;text-transform:none"><sc-for list="{{ speedOpts }}" as="o" hint-placeholder-count="6"><option value="{{ o.v }}">{{ o.label }}</option></sc-for></sc-raw-select></label>
+          <label style="display:flex;flex-direction:column;gap:5px;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-neutral-500)">Complexity · {{ cxLabel }}<input type="range" min="1" max="10" value="{{ gen.cx }}" sc-camel-on-change="{{ onCx }}" style="accent-color:var(--color-accent)"></label>
+          <label style="display:flex;flex-direction:column;gap:5px;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-neutral-500)">Information quality<sc-raw-select value="{{ gen.info }}" sc-camel-on-change="{{ onInfo }}" style="background:var(--color-bg);border:1px solid var(--color-neutral-800);border-radius:8px;color:var(--color-text);padding:8px 10px;font:inherit;font-size:13px;letter-spacing:0;text-transform:none"><sc-for list="{{ infoOpts }}" as="o" hint-placeholder-count="6"><option value="{{ o }}">{{ o }}</option></sc-for></sc-raw-select></label>
+          <label style="display:flex;flex-direction:column;gap:5px;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-neutral-500)">Novelty<sc-raw-select value="{{ gen.nov }}" sc-camel-on-change="{{ onNov }}" style="background:var(--color-bg);border:1px solid var(--color-neutral-800);border-radius:8px;color:var(--color-text);padding:8px 10px;font:inherit;font-size:13px;letter-spacing:0;text-transform:none"><sc-for list="{{ novOpts }}" as="o" hint-placeholder-count="5"><option value="{{ o }}">{{ o }}</option></sc-for></sc-raw-select></label>
+          <button class="btn btn-primary" sc-camel-on-click="{{ roll }}">Roll the domain and the intrusion</button>
+        </div>
+        <div style="padding:20px;border:1px solid var(--color-accent);border-radius:8px;background:var(--color-accent-900);display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap"><div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-accent-400)">{{ card.kicker }}</div><span class="tag tag-accent">{{ card.xp }} XP</span></div>
+          <div style="font-family:var(--font-heading);font-weight:300;font-size:22px;line-height:1.3;color:var(--color-accent-100)">{{ card.title }}</div>
+          <div style="font-size:12.5px;line-height:1.6;color:var(--color-accent-200)">{{ card.setting }}</div>
+          <div style="font-size:13px;line-height:1.6;color:var(--color-accent-100)"><span style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-400);display:block;margin-bottom:3px">Your task</span>{{ card.task }}</div>
+          <div style="font-size:12.5px;line-height:1.6;color:var(--color-accent-200)"><span style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-400);display:block;margin-bottom:3px">Mode demands</span>{{ card.mode }}</div>
+          <div style="font-size:12.5px;line-height:1.6;color:var(--color-accent-200)"><span style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-400);display:block;margin-bottom:3px">Intrusion</span>{{ card.intrusion }}</div>
+          <div style="font-size:12.5px;line-height:1.6;color:var(--color-accent-200)"><span style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-400);display:block;margin-bottom:3px">Pass when</span>{{ card.pass }}</div>
+          <sc-if value="{{ card.locked }}" hint-placeholder-val="{{ false }}"><div style="padding:10px 12px;border:1px solid var(--color-accent-700);border-radius:8px;font-size:12px;line-height:1.5;color:var(--color-accent-200)">{{ card.lockText }}</div></sc-if>
+          <sc-if value="{{ card.open }}" hint-placeholder-val="{{ true }}"><button class="btn btn-secondary" sc-camel-on-click="{{ claim }}" style="align-self:flex-start">Passed — log {{ card.xp }} XP</button></sc-if>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ tQuests }}" hint-placeholder-val="{{ false }}">
+    <div style="margin-top:24px">
+      <p style="margin:0;font-size:13px;line-height:1.6;color:var(--color-neutral-300);max-width:800px">Challenges are earned, not chosen. Each class opens at a threshold of demonstrated XP, and a Guardian appears uninvited whenever your XP runs ahead of your Diagnosis — the system's guard against false mastery.</p>
+      <sc-if value="{{ guardian }}" hint-placeholder-val="{{ false }}"><div style="margin-top:12px;padding:14px 18px;border:1px solid var(--color-accent);border-radius:8px;background:var(--color-accent-900);font-size:13px;line-height:1.55;color:var(--color-accent-100)"><span style="font-weight:500">A Guardian has been summoned.</span> Your XP is high and your Diagnosis attribute is below 4. Before any new class opens, diagnose someone else's finished work and find what it got wrong.</div></sc-if>
+      <div style="margin-top:14px;display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:10px">
+        <sc-for list="{{ quests }}" as="q" hint-placeholder-count="12">
+          <div style="padding:16px 18px;border:1px solid var(--color-neutral-800);border-radius:8px;background:var(--color-surface);opacity:{{ q.op }}">
+            <div style="display:flex;justify-content:space-between;gap:8px;align-items:baseline"><div style="font-size:14px;font-weight:500">{{ q.name }}</div><span style="font-size:11px;color:var(--color-neutral-500);white-space:nowrap">{{ q.xpText }}</span></div>
+            <div style="margin-top:4px;font-size:12px;color:var(--color-accent-200)">{{ q.purpose }}</div>
+            <div style="margin-top:8px;font-size:12.5px;line-height:1.5;color:var(--color-neutral-300)">{{ q.example }}</div>
+            <div style="margin-top:10px;font-size:11px;letter-spacing:0.08em;color:var(--color-neutral-500)">{{ q.state }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="margin-top:22px;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-neutral-500)">Writing and speaking ladders</div>
+      <div style="margin-top:10px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px">
+        <sc-for list="{{ ladders }}" as="l" hint-placeholder-count="4">
+          <div style="padding:16px 18px;border:1px solid var(--color-neutral-800);border-radius:8px">
+            <div style="font-size:14px;font-weight:500">{{ l.name }}</div>
+            <div style="margin-top:8px;display:flex;flex-direction:column;gap:4px">
+              <sc-for list="{{ l.steps }}" as="st" hint-placeholder-count="6"><div style="font-size:12.5px;line-height:1.45;color:var(--color-neutral-300)"><span style="color:var(--color-accent-500);margin-right:6px">→</span>{{ st }}</div></sc-for>
+            </div>
+            <div style="margin-top:8px;font-size:12px;line-height:1.5;color:var(--color-accent-200)">{{ l.boss }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ tSheet }}" hint-placeholder-val="{{ false }}">
+    <div style="margin-top:24px;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:16px;align-items:start">
+      <div style="padding:18px 20px;border:1px solid var(--color-neutral-800);border-radius:8px;background:var(--color-surface)">
+        <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-accent-400)">Character sheet · never averaged</div>
+        <p style="margin:6px 0 0;font-size:12px;line-height:1.5;color:var(--color-neutral-400)">A person can be 10 in recall and 2 in diagnosis. That is useful information, so there is no overall score. Wisdom is on the sheet and deliberately earns no XP.</p>
+        <div style="margin-top:12px;display:flex;flex-direction:column;gap:9px">
+          <sc-for list="{{ attrs }}" as="a" hint-placeholder-count="16">
+            <div style="display:grid;grid-template-columns:118px minmax(0,1fr) 150px;gap:10px;align-items:center">
+              <div><div style="font-size:13px;font-weight:500">{{ a.name }}</div><div style="font-size:11px;color:var(--color-neutral-500)">{{ a.q }}</div></div>
+              <input type="range" min="0" max="10" value="{{ a.v }}" sc-camel-on-change="{{ a.set }}" style="accent-color:var(--color-accent);width:100%">
+              <div style="font-size:11.5px;color:var(--color-accent-200)">{{ a.v }} · {{ a.level }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="padding:18px 20px;border:1px solid var(--color-neutral-800);border-radius:8px;background:var(--color-surface)">
+          <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-accent-400)">XP ledger · demonstration only</div>
+          <div style="margin-top:10px;display:flex;flex-direction:column;gap:8px">
+            <sc-raw-select value="{{ logAction }}" sc-camel-on-change="{{ onLogAction }}" style="background:var(--color-bg);border:1px solid var(--color-neutral-800);border-radius:8px;color:var(--color-text);padding:8px 10px;font:inherit;font-size:13px"><sc-for list="{{ actionOpts }}" as="o" hint-placeholder-count="17"><option value="{{ o.v }}">{{ o.label }}</option></sc-for></sc-raw-select>
+            <div style="display:flex;gap:8px"><input value="{{ logNote }}" sc-camel-on-change="{{ onLogNote }}" placeholder="material · evidence of the demonstration" style="flex:1;background:var(--color-bg);border:1px solid var(--color-neutral-800);border-radius:8px;color:var(--color-text);padding:8px 10px;font:inherit;font-size:13px"><button class="btn btn-primary" sc-camel-on-click="{{ addLog }}">Log</button></div>
+          </div>
+          <div style="margin-top:12px;display:flex;flex-direction:column;gap:0;max-height:300px;overflow:auto">
+            <sc-for list="{{ ledger }}" as="e" hint-placeholder-count="3">
+              <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;padding:8px 0;border-top:1px solid var(--color-divider);font-size:12.5px"><div><div style="color:var(--color-text)">{{ e.action }}</div><div style="color:var(--color-neutral-500);font-size:11.5px">{{ e.note }} · {{ e.date }}</div></div><div style="color:var(--color-accent-200)">+{{ e.xp }}</div></div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="padding:18px 20px;border:1px solid var(--color-accent-800);border-radius:8px;background:var(--color-accent-900)">
+          <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-accent-400)">The infinite stairway</div>
+          <div style="margin-top:10px;display:flex;flex-direction:column;gap:3px">
+            <sc-for list="{{ stairs }}" as="s" hint-placeholder-count="15">
+              <div style="display:flex;justify-content:space-between;font-size:12.5px;padding:3px 0;color:{{ s.col }}"><span>{{ s.name }}</span><span>{{ s.at }}</span></div>
+            </sc-for>
+          </div>
+          <div style="margin-top:10px;font-size:12px;line-height:1.55;color:var(--color-accent-200)">There is no 100% complete. Past the question mark each rung asks half as much again — and at the top you stop mastering someone else's game and start building new levels of it.</div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ tInsight }}" hint-placeholder-val="{{ false }}">
+    <div style="margin-top:24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:16px;align-items:start">
+      <div style="padding:18px 20px;border:1px solid var(--color-neutral-800);border-radius:8px;background:var(--color-surface)">
+        <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-accent-400)">Distil an aha</div>
+        <p style="margin:6px 0 0;font-size:12px;line-height:1.5;color:var(--color-neutral-400)">A fact says X. An insight says why X suddenly matters. Only what you learned by interacting with the material belongs here.</p>
+        <div style="margin-top:10px;display:flex;flex-direction:column;gap:8px">
+          <sc-for list="{{ draftFields }}" as="df" hint-placeholder-count="9">
+            <label style="display:flex;flex-direction:column;gap:4px;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-neutral-500)">{{ df.label }}<input value="{{ df.v }}" sc-camel-on-change="{{ df.set }}" placeholder="{{ df.ph }}" style="background:var(--color-bg);border:1px solid var(--color-neutral-800);border-radius:8px;color:var(--color-text);padding:7px 10px;font:inherit;font-size:12.5px;letter-spacing:0;text-transform:none"></label>
+          </sc-for>
+          <button class="btn btn-primary" sc-camel-on-click="{{ addInsight }}" style="align-self:flex-start">File in the archive · +100 XP</button>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="padding:18px 20px;border:1px solid var(--color-accent);border-radius:8px;background:var(--color-accent-900)">
+          <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-accent-400)">I cannot unsee this · expert lenses</div>
+          <div style="margin-top:10px;display:flex;flex-direction:column;gap:8px">
+            <sc-for list="{{ lenses }}" as="ln" hint-placeholder-count="7"><div style="font-size:13px;line-height:1.5;color:var(--color-accent-100);padding-left:10px;border-left:2px solid var(--color-accent-600)">{{ ln }}</div></sc-for>
+          </div>
+        </div>
+        <sc-for list="{{ insights }}" as="ins" hint-placeholder-count="1">
+          <div style="padding:16px 18px;border:1px solid var(--color-neutral-800);border-radius:8px;background:var(--color-surface)">
+            <div style="display:flex;justify-content:space-between;gap:10px"><div style="font-size:14px;font-weight:500">{{ ins.principle }}</div><button sc-camel-on-click="{{ ins.remove }}" style="background:transparent;border:0;color:var(--color-neutral-500);cursor:pointer;font:inherit;font-size:12px" style-hover="color:var(--color-accent-300)">Remove</button></div>
+            <div style="margin-top:6px;font-size:12.5px;line-height:1.55;color:var(--color-neutral-300)"><span style="color:var(--color-neutral-500)">Discovery</span> {{ ins.discovery }} · <span style="color:var(--color-neutral-500)">Before</span> {{ ins.before }} · <span style="color:var(--color-neutral-500)">Trigger</span> {{ ins.trigger }}</div>
+            <div style="margin-top:4px;font-size:12.5px;line-height:1.55;color:var(--color-neutral-300)"><span style="color:var(--color-neutral-500)">Mechanism</span> {{ ins.mechanism }} · <span style="color:var(--color-neutral-500)">Consequence</span> {{ ins.consequence }}</div>
+            <div style="margin-top:4px;font-size:12.5px;line-height:1.55;color:var(--color-accent-200)"><span style="color:var(--color-neutral-500)">Transfer</span> {{ ins.transfer }} · <span style="color:var(--color-neutral-500)">Stops applying</span> {{ ins.counter }} · <span style="color:var(--color-neutral-500)">Kata</span> {{ ins.kata }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ tSkills }}" hint-placeholder-val="{{ false }}">
+    <div style="margin-top:24px">
+      <p style="margin:0;font-size:13px;line-height:1.6;color:var(--color-neutral-300);max-width:800px">Unfair skills are expensive on purpose. Each needs a combination of attributes and total XP that cannot be reached by grinding one gate. They unlock from the character sheet — you cannot claim them, only become them.</p>
+      <div style="margin-top:14px;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px">
+        <sc-for list="{{ skills }}" as="sk" hint-placeholder-count="10">
+          <div style="padding:16px 18px;border:1px solid var(--color-neutral-800);border-radius:8px;background:var(--color-surface);opacity:{{ sk.op }}">
+            <div style="display:flex;justify-content:space-between;gap:8px;align-items:baseline"><div style="font-size:14.5px;font-weight:500">{{ sk.name }}</div><sc-if value="{{ sk.have }}" hint-placeholder-val="{{ false }}"><span class="tag tag-accent">Earned</span></sc-if></div>
+            <div style="margin-top:6px;font-size:12.5px;line-height:1.55;color:var(--color-neutral-300)">{{ sk.what }}</div>
+            <div style="margin-top:8px;font-size:12px;line-height:1.5;color:var(--color-accent-200)">{{ sk.cost }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ tSchools }}" hint-placeholder-val="{{ false }}">
+    <div style="margin-top:24px">
+      <p style="margin:0;font-size:13px;line-height:1.6;color:var(--color-neutral-300);max-width:820px">The body of practice: six schools, thirty-nine disciplines. Philosophy asks what a decision is; science how it works; economics and choice dynamics why agents choose; modelling represents it; design shapes it; architecture structures it; engineering runs it; optimisation searches it; adaptation changes it; coherence checks it; execution acts on it; feedback returns reality to it. Any discipline can be sent straight to the plug-in engine.</p>
+      <div style="margin-top:14px;display:flex;gap:6px;flex-wrap:wrap">
+        <sc-for list="{{ schoolChips }}" as="c" hint-placeholder-count="6">
+          <sc-if value="{{ c.active }}" hint-placeholder-val="{{ false }}"><button sc-camel-on-click="{{ c.go }}" class="btn btn-primary" style="white-space:nowrap">{{ c.label }}</button></sc-if>
+          <sc-if value="{{ c.inactive }}" hint-placeholder-val="{{ true }}"><button sc-camel-on-click="{{ c.go }}" class="btn btn-ghost" style="white-space:nowrap">{{ c.label }}</button></sc-if>
+        </sc-for>
+      </div>
+      <div style="margin-top:14px;padding:16px 20px;border:1px solid var(--color-accent);border-radius:8px;background:var(--color-accent-900)">
+        <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-accent-400)">School {{ schoolNow.n }} · {{ schoolNow.count }} disciplines</div>
+        <div style="margin-top:6px;font-family:var(--font-heading);font-weight:300;font-size:22px;color:var(--color-accent-100)">{{ schoolNow.name }}</div>
+        <div style="margin-top:4px;font-size:13px;line-height:1.55;color:var(--color-accent-200)">{{ schoolNow.q }}</div>
+      </div>
+      <div style="margin-top:12px;display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:10px">
+        <sc-for list="{{ discs }}" as="d" hint-placeholder-count="6">
+          <div style="padding:16px 18px;border:1px solid var(--color-neutral-800);border-radius:8px;background:var(--color-surface);display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;justify-content:space-between;gap:8px;align-items:baseline"><div style="font-size:14.5px;font-weight:500">{{ d.name }}</div><span class="tag tag-outline">{{ d.object }}</span></div>
+            <div style="font-size:12.5px;line-height:1.5;color:var(--color-accent-200)">{{ d.q }}</div>
+            <div style="font-size:12.5px;line-height:1.5;color:var(--color-neutral-300)"><span style="color:var(--color-neutral-500)">Signature capability ·</span> {{ d.cap }}</div>
+            <div style="font-size:11.5px;line-height:1.55;color:var(--color-neutral-400)">{{ d.topics }}</div>
+            <button sc-camel-on-click="{{ d.train }}" class="btn btn-secondary" style="align-self:flex-start;margin-top:2px">Train this in the engine</button>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ tCreds }}" hint-placeholder-val="{{ false }}">
+    <div style="margin-top:24px">
+      <p style="margin:0;font-size:13px;line-height:1.6;color:var(--color-neutral-300);max-width:820px">The badges are not the product; the body of practice is. Badges evidence parts of it, certifications evidence professional operation, the Architect evidences the whole, and the Fellowship evidences that someone has extended it. Positioned alongside established analytics credentials, not against them: they show broad professionalism; these show decision capability across disciplines.</p>
+      <div style="margin-top:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px">
+        <div style="padding:16px 18px;border:1px solid var(--color-neutral-800);border-radius:8px"><div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-400)">Knowledge badges</div><div style="margin-top:6px;font-size:12.5px;line-height:1.55;color:var(--color-neutral-300)">Conceptual understanding — probability for decisions, optimisation foundations, causal inference foundations. Gates 1–3.</div></div>
+        <div style="padding:16px 18px;border:1px solid var(--color-neutral-800);border-radius:8px"><div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-400)">Capability badges</div><div style="margin-top:6px;font-size:12.5px;line-height:1.55;color:var(--color-neutral-300)">Something you can do — framing, modelling, scenario analysis, simulation, experimentation, governance. Gates 4–7, much harder.</div></div>
+        <div style="padding:16px 18px;border:1px solid var(--color-neutral-800);border-radius:8px"><div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-400)">Mastery badges</div><div style="margin-top:6px;font-size:12.5px;line-height:1.55;color:var(--color-neutral-300)">Integration across a discipline, evidenced by a substantial portfolio. Gates 8–10.</div></div>
+      </div>
+      <div style="margin-top:18px;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-neutral-500)">Certification families · every one leaves a master artifact</div>
+      <div style="margin-top:8px;overflow-x:auto;border:1px solid var(--color-neutral-800);border-radius:8px">
+        <sc-raw-table style="width:100%;border-collapse:collapse;font-size:12.5px;min-width:820px">
+          <sc-raw-thead><sc-raw-tr style="background:var(--color-surface)"><sc-raw-th style="text-align:left;padding:10px;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;font-weight:500;color:var(--color-neutral-500)">Family</sc-raw-th><sc-raw-th style="text-align:left;padding:10px;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;font-weight:500;color:var(--color-neutral-500)">Credential</sc-raw-th><sc-raw-th style="text-align:left;padding:10px;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;font-weight:500;color:var(--color-neutral-500)">Covers</sc-raw-th><sc-raw-th style="text-align:left;padding:10px;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;font-weight:500;color:var(--color-neutral-500)">Master artifact</sc-raw-th></sc-raw-tr></sc-raw-thead>
+          <sc-raw-tbody>
+            <sc-for list="{{ certs }}" as="c" hint-placeholder-count="10">
+              <sc-raw-tr style="border-top:1px solid var(--color-divider)"><sc-raw-td style="padding:9px 10px;color:var(--color-neutral-500);vertical-align:top">{{ c.fam }}</sc-raw-td><sc-raw-td style="padding:9px 10px;vertical-align:top"><div style="font-weight:500;color:var(--color-accent-200)">{{ c.code }}</div><div style="color:var(--color-neutral-300)">{{ c.name }}</div></sc-raw-td><sc-raw-td style="padding:9px 10px;color:var(--color-neutral-300);line-height:1.45;vertical-align:top">{{ c.covers }}</sc-raw-td><sc-raw-td style="padding:9px 10px;color:var(--color-neutral-400);line-height:1.45;vertical-align:top">{{ c.artifact }}</sc-raw-td></sc-raw-tr>
+            </sc-for>
+          </sc-raw-tbody>
+        </sc-raw-table>
+      </div>
+      <div style="margin-top:18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px">
+        <sc-for list="{{ masters }}" as="m" hint-placeholder-count="3">
+          <div style="padding:16px 18px;border:1px solid var(--color-neutral-800);border-radius:8px;background:var(--color-surface)"><div style="font-size:14px;font-weight:500">{{ m.name }}</div><div style="margin-top:3px;font-size:12px;color:var(--color-accent-200)">{{ m.aim }}</div><div style="margin-top:8px;font-size:12px;line-height:1.55;color:var(--color-neutral-400)">{{ m.path }}</div></div>
+        </sc-for>
+      </div>
+      <div style="margin-top:14px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:14px">
+        <div style="padding:20px;border:1px solid var(--color-accent);border-radius:8px;background:var(--color-accent-900)">
+          <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-accent-400)">The black belt · CDEA</div>
+          <div style="margin-top:6px;font-family:var(--font-heading);font-weight:300;font-size:22px;color:var(--color-accent-100)">Certified Decision Enablement Architect</div>
+          <div style="margin-top:6px;font-size:12.5px;line-height:1.6;color:var(--color-accent-200)">Requires all three master paths. Five gates — understand, analyse, engineer, integrate, defend before a hostile panel — then the 72-hour challenge: an unfamiliar organisation, incomplete evidence, fifteen things to deliver. And after submission, reality changes. The candidate must adapt the solution.</div>
+          <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:4px 14px">
+            <sc-for list="{{ cdeaSteps }}" as="st" hint-placeholder-count="15"><div style="font-size:12px;line-height:1.5;color:var(--color-accent-200)"><span style="color:var(--color-accent-400);margin-right:6px">{{ st.n }}</span>{{ st.t }}</div></sc-for>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="padding:16px 18px;border:1px solid var(--color-neutral-800);border-radius:8px;background:var(--color-surface)">
+            <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-accent-400)">How every credential is evidenced</div>
+            <div style="margin-top:8px;display:flex;flex-direction:column;gap:6px">
+              <sc-for list="{{ evidence }}" as="e" hint-placeholder-count="6"><div style="display:grid;grid-template-columns:104px 44px minmax(0,1fr);gap:8px;font-size:12.5px"><span style="font-weight:500">{{ e.name }}</span><span style="color:var(--color-accent-200)">{{ e.pct }}</span><span style="color:var(--color-neutral-400)">{{ e.how }}</span></div></sc-for>
+            </div>
+            <div style="margin-top:8px;font-size:11.5px;line-height:1.5;color:var(--color-neutral-500)">Plus reflection on assumptions and limits, and an oral defence for every senior credential. No multiple-choice route to anything above foundation.</div>
+          </div>
+          <div style="padding:16px 18px;border:1px solid var(--color-neutral-800);border-radius:8px">
+            <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-accent-400)">Fellow of Decision Enablement · FDE</div>
+            <div style="margin-top:6px;font-size:12.5px;line-height:1.6;color:var(--color-neutral-300)">Not enrolled for — earned. Several certifications, substantial real decision work, published research, an original framework, teaching, peer review, contribution to the community, a passed integrated challenge and an oral defence. The Fellow extends the body of practice and shows the extension survives reality.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ tRadar }}" hint-placeholder-val="{{ false }}">
+    <div style="margin-top:24px">
+      <p style="margin:0;font-size:13px;line-height:1.6;color:var(--color-neutral-300);max-width:820px">The Academy sits between university, professional society and practice: theory flows in, integration and practice happen here, real problems test it, research produces new knowledge, and that returns to the university. The curriculum must keep mutating — but a paper is not automatically curriculum.</p>
+      <div style="margin-top:14px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px">
+        <div style="padding:18px 20px;border:1px solid var(--color-neutral-800);border-radius:8px;background:var(--color-surface)">
+          <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-accent-400)">The quarterly radar</div>
+          <div style="margin-top:10px;display:flex;flex-direction:column;gap:6px">
+            <sc-for list="{{ radarSteps }}" as="r" hint-placeholder-count="10"><div style="font-size:12.5px;line-height:1.5;color:var(--color-neutral-300)"><span style="color:var(--color-accent-500);margin-right:8px">{{ r.n }}</span>{{ r.t }}</div></sc-for>
+          </div>
+          <div style="margin-top:10px;font-size:11.5px;line-height:1.55;color:var(--color-neutral-500)">Scanned across decision analysis, management science, operations research, data science, computing, optimisation, organisation and strategy journals, and behavioural and neuroscience research.</div>
+        </div>
+        <div style="padding:18px 20px;border:1px solid var(--color-accent);border-radius:8px;background:var(--color-accent-900)">
+          <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-accent-400)">The usability gate · a finding must pass all ten</div>
+          <div style="margin-top:10px;display:grid;grid-template-columns:1fr 1fr;gap:6px 14px">
+            <sc-for list="{{ ugate }}" as="u" hint-placeholder-count="10"><div style="font-size:12.5px;line-height:1.5;color:var(--color-accent-200)"><span style="color:var(--color-accent-100);font-weight:500;margin-right:6px">{{ u.id }}</span>{{ u.q }}</div></sc-for>
+          </div>
+          <div style="margin-top:10px;font-size:12px;line-height:1.55;color:var(--color-accent-200)">What passes becomes a kata or a special mission. What fails is logged with the reason — a rejected paper is part of the record too. Your own research quests go through the same gate.</div>
+        </div>
+      </div>
+      <div style="margin-top:14px;padding:16px 20px;border:1px solid var(--color-neutral-800);border-radius:8px;font-size:12.5px;line-height:1.65;color:var(--color-neutral-300)"><span style="color:var(--color-text);font-weight:500">The living loop.</span> Practice produces cases → cases expose gaps → research fills them → the gate admits what survives → it becomes katas and missions → certification assesses them → practice produces new evidence. The Academy is a professional society, a graduate school, a research lab and a dojo at once.</div>
+    </div>
+  </sc-if>
+
+  <div style="margin-top:30px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-neutral-600)"><span>Saved in this browser · {{ saved }}</span><button sc-camel-on-click="{{ resetAll }}" style="background:transparent;border:0;color:var(--color-neutral-600);cursor:pointer;font:inherit;letter-spacing:inherit;text-transform:inherit" style-hover="color:var(--color-accent-300)">Reset progress</button></div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="">
+const KEY = 'ingqiqo-decision-dojo-v1';
+const GATES = [
+  ['Know', 'What is it?', 'Recall without notes', 10, M => [`Close ${M}. Write its vocabulary, components, assumptions and limits from memory.`, `Define the five terms in ${M} you would be most embarrassed to get wrong.`, `State what ${M} cannot do.`], 'Retrieval without notes, checked line by line against the source.'],
+  ['See', 'Can I recognise it?', 'Structural vision', 20, M => [`Find ${M} in three situations where nobody calls it that.`, `In each, name the decision, the variables, the objective and the constraints hiding there.`, `Find one case that looks like ${M} and is not — and say why.`], 'You spot it cold in a scenario you were not warned about.'],
+  ['Dissect', 'What is it made of?', 'The autopsy', 25, M => [`Strip a worked example of ${M} into assumptions, inputs, rules, constraints, objective, intermediate states, output and interpretation.`, `Remove each part in turn. What breaks?`, `Mark which dependencies are mathematical and which are only organisational convention.`], 'A dependency map where every link is labelled necessary or conventional.'],
+  ['Reconstruct', 'Can I build it back?', 'Copy → modify → rebuild → invent', 50, M => [`Reproduce the author's ${M}; then change the data, the objective, and add and remove a constraint.`, `Rebuild it by a second method and explain why the answers differ.`, `Given only the problem, build ${M} without being shown the model.`], 'You build it from the problem alone, and it survives a check against the original.'],
+  ['Transform', 'Can I make it different?', 'The six transformations', 75, M => [`Scale ${M} tenfold, shrink it to trivial, then reverse its assumptions.`, `Delete a component, substitute another, and combine ${M} with an outside discipline.`, `Write what changed in the answer and why — the space around the solution.`], 'Six variants, each with a stated effect on the answer.'],
+  ['Perturb', 'What happens if I interfere?', 'Model ecology', 75, (M, x) => [`Introduce ${x} into ${M}. What survives, what breaks, what new variable appears?`, `Name the assumption that was invisible until the intrusion arrived.`, `Rank three intrusions by the damage they do, and say what that ranking reveals.`], 'You predicted at least one break before you ran it.'],
+  ['Discover', 'What emerges when I interact?', 'Predict → manipulate → observe → explain', 100, M => [`Predict the effect of relaxing one constraint in ${M}. Then run it.`, `Log the gap in the anomaly ledger: prediction, actual, difference, explanation, new principle.`, `Distil the surprise into an insight card in the Insight World.`], 'One anomaly explained and one insight filed that no source told you.'],
+  ['Teach', 'Can I make someone else see it?', 'Ten doors in', 100, M => [`Teach ${M} to a child, an executive, an engineer and an operator — same truth, four forms.`, `Teach it as a story, an analogy, a diagram and a live demonstration.`, `Argue against ${M} as its fiercest adversary, and survive your own argument.`], 'A learner can do something afterwards that they could not do before.'],
+  ['Repair & maintain', 'Can I diagnose and restore it?', 'The mechanic', 150, M => [`Break a working ${M} on purpose: wrong units, contradictory constraints, missing data, a bad join, a misleading chart.`, `Diagnose a broken ${M} someone else prepared, blind to what they changed.`, `Return to what you built ninety days ago: do its assumptions still hold, and does the build still match the concept?`], 'Every planted fault found and repaired, with the symptom that betrayed it.'],
+  ['Perform', 'Can I use it in reality?', 'The practicum', 250, M => [`Enter a messy case where nobody names a framework. Decide whether ${M} is even the right tool.`, `Produce the full decision brief — context to feedback — under the clock.`, `State precisely when not to use ${M}.`], 'A brief an executive could act on, and a stated boundary of the method.']
+];
+const INTRUSIONS = ['unreliable suppliers', 'a human planner who overrides the model', 'fraud', 'seasonality', 'political intervention', 'bad master data', 'delayed information', 'a behavioural incentive pointing the other way', 'an adversarial actor', 'a regulatory restriction', 'a sudden demand shock', 'two teams using one metric name for different things', 'a protected value that cannot be traded'];
+const DOMAINS = ['logistics', 'finance', 'strategy', 'operations', 'public systems', 'HR and reward', 'mining', 'agriculture', 'health', 'data platforms', 'procurement', 'governance'];
+const OPS = ['recognise', 'decompose', 'model', 'infer', 'compare', 'optimise', 'simulate', 'critique', 'construct', 'repair', 'teach', 'discover'];
+const CX = ['', 'isolated concept', 'two interacting concepts', 'multi-concept', 'multi-disciplinary', 'organisational system', 'socio-technical system', 'adaptive system', 'strategic system', 'meta-system', 'unknown system'];
+const MODES = { Normal: [1, 0, 'Clear objectives, enough information, known tools, a familiar domain. The aim is competence.'], Hard: [1.5, 1000, 'Incomplete and conflicting information, hidden assumptions, several plausible approaches. The aim is independent reasoning.'], Nightmare: [2.5, 5000, 'Ambiguous objectives, contradictory stakeholders, adversarial evidence, shifting requirements. Nobody tells you what the problem is. The aim is coherence under uncertainty.'], Impossible: [4, 10000, 'The problem cannot be solved as stated. Find the contradiction, the minimal conflicting set of assumptions, the feasible relaxation and the trade-off the organisation must choose.'] };
+const SPEEDS = { 'Deliberate · 4 h': 1, 'Standard · 2 h': 1.2, 'Accelerated · 45 min': 1.5, 'Blitz · 15 min': 2, 'Extreme · 5 min': 2.6, 'Reflex · 90 s': 3.2 };
+const INFO = ['Clean', 'Incomplete', 'Noisy', 'Contradictory', 'Adversarial', 'Deceptive'];
+const NOV = ['Familiar', 'Slight variation', 'Unfamiliar', 'Foreign domain', 'First principles only'];
+const QUESTS = [
+  ['Tutorial', 'Learn a move', 0, 20, 'Observe, attempt, get feedback, retry, explain. Ends with a tutorial boss: one scenario where the constraint is never stated.'],
+  ['Kata', 'Repeat a move until it is reflex', 0, 30, 'Hidden Constraint · Objective Ambiguity · Broken Evidence · Semantic Drift · Constraint Collision · Counterfactual · Decision Debt · Executive Compression · Operator Expansion.'],
+  ['Normal quest', 'Apply the material', 0, 50, 'A bounded case with clean data and a known tool.'],
+  ['Side quest', 'Transfer across domains', 500, 75, 'Analyse a cathedral, a fugue or an ecosystem for constraints, redundancies and failure modes — then carry one structure back into decisions.'],
+  ['Hard quest', 'Apply without help', 1000, 100, 'Same case, conflicting evidence, one assumption hidden.'],
+  ['Special mission', 'Break the normal rules', 1000, 100, 'No internet · no code · no maths · no words · one page · one minute · argue against yourself · predict what becomes obsolete.'],
+  ['Essay quest', 'Think in prose', 1000, 150, 'Explain → compare → critique → synthesise → apply → theorise → argue → destroy your argument → propose what does not yet exist.'],
+  ['Repair quest', 'Diagnose and restore', 1500, 150, 'A working model with five planted faults. Find them from the symptoms before you open the internals.'],
+  ['Presentation quest', 'Make others see it', 1500, 200, '5 min → 15 → 30 → 60 → executive briefing → technical defence → masterclass → adversarial panel → no slides → teach from questions only.'],
+  ['Guardian', 'Prevent false mastery', 2000, 250, 'Summoned when XP outruns Diagnosis. Real question, messy data, three competing claims: produce a defensible analysis, not terminology.'],
+  ['Speed run', 'Decision velocity', 2000, 150, 'The same case at 4 h, 2 h, 45 min, 15 min, 5 min, 90 s. What must be solved, what approximated, what safely ignored?'],
+  ['Boss', 'Integrate a domain', 3000, 300, 'Build, solve, test and explain a full model from a problem statement, under the clock.'],
+  ['Complexity run', 'Systems reasoning', 4000, 250, 'One decision → several → interdependent → sequential → many decision-makers → adversarial → a system that modifies itself.'],
+  ['Nightmare quest', 'Coherence under uncertainty', 5000, 200, 'Discover what the problem actually is before you solve anything.'],
+  ['Creative quest', 'Make what was not there', 5000, 300, 'Invent a visual language for coherence, a decision board game, a new diagnostic, a metric, an ontology, a decision contract standard.'],
+  ['Second boss', 'Transcend the material', 6000, 400, 'The model is already built. Decide whether it deserves to exist and whether the organisation should trust it.'],
+  ['Research quest', 'Generate knowledge', 8000, 500, 'Review → compare → replicate → critique → extend → new experiment → new theory → multi-year research programme.'],
+  ['Impossible quest', 'Diagnose impossibility', 10000, 400, 'Full utilisation, zero idle, zero overtime, fixed fleet, arbitrary demand. Prove it does not exist, then give the organisation its real choice.'],
+  ['First-principles quest', 'Derive without frameworks', 10000, 600, 'A company keeps making expensive decisions despite excellent data. Build a theory from scratch; only then read the literature and compare.'],
+  ['Integrated boss', 'Combine domains', 15000, 800, 'Decision theory, statistics, optimisation, simulation, behavioural economics, data engineering and strategy — one network, six hours.'],
+  ['Thesis quest', 'Original scholarship', 25000, 1500, 'Question → literature → gap → proposition → model → method → evidence → contradiction → revision → contribution → hostile defence.'],
+  ['Book forge', 'A coherent intellectual system', 60000, 5000, '100 insights → 50 frameworks → 20 essays → 10 research projects → 5 cases → thesis → manuscript → adversarial review → rewrite → teach → defend → apply.'],
+  ['World event', 'Respond to reality', 100000, 0, 'Challenges stop being assigned and start arriving: a new architecture, a published algorithm, a real decision failure. Your work becomes the game.']
+];
+const LADDERS = [
+  ['Essays', ['Explain', 'Compare', 'Critique', 'Synthesise', 'Apply', 'Theorise', 'Argue, then destroy the argument', 'Original contribution'], 'Boss: an essay a hostile expert cannot dismiss.'],
+  ['Presentations', ['5 min', 'Executive briefing', 'Technical defence', 'Masterclass', 'Adversarial panel', 'Teach from questions only'], 'Boss: answer a question you have never considered, building the model live, without bluffing.'],
+  ['Research', ['Literature review', 'Replication', 'Critique', 'Extension', 'New experiment', 'Research programme'], 'Boss: a result someone else reproduces.'],
+  ['Thesis and book', ['Question and gap', 'Model and method', 'Evidence and contradiction', 'Manuscript', 'Adversarial review', 'Teach and apply'], 'Boss: not writing it — defending its integrity, then living inside it.']
+];
+const TRACKS = [
+  { name: 'Principal and staff', who: 'Ingqiqo practitioners', kick: 'Enter a poorly specified decision environment and discover what the decision actually is.', gates: 'All ten, every material, at every mode.', cadence: 'Daily 90-min dojo · weekly fight · monthly unknown', katas: [['Hidden Constraint', 'Find the constraint nobody stated.'], ['Semantic Drift', 'Two teams, one metric name — do they mean the same?'], ['Constraint Collision', 'Find the smallest set of requirements that cannot all hold.'], ['Decision Debt', 'Name what stops the decision being made reliably.']], guardian: 'Diagnose another practitioner\u2019s finished engagement and find what it got wrong.', boss: 'Six-hour fleet case: incomplete history, inconsistent definitions, uncertain demand, competing executives.', second: 'The model is already built. Decide whether the organisation should trust it.', legend: 'Coherence Sense', legendWhy: 'Feel strategy, intent, decision, execution and evidence fall out of line before proving it.', done: 'None. Staff re-enter the ladder with every new material, and the method review each quarter adds harder levels.' },
+  { name: 'Client technical', who: 'Engineers, data and platform teams', kick: 'Turn a stated decision into a contract the platform can compute — objective, constraints, evidence, and the conditions under which it must refuse.', gates: 'Know → Perturb, then Repair and Perform.', cadence: 'Three 45-min sessions a week during an engagement', katas: [['Constraint Collision', 'Produce the unsatisfiable core and translate it into business language.'], ['Observed ≠ inferred', 'Tag every model-filled cell; prove nothing inherits the standing of a measurement.'], ['Broken Evidence', 'Does the pipeline\u2019s output actually support the decision drawn from it?'], ['Productionalise', 'Make a one-off result behave the same way every time.']], guardian: 'Your pipeline passes every test. Prove its figures mean what the business thinks they mean.', boss: 'Formulate, solve and version a decision contract with a declared refusal path, and re-run it on a swapped engine.', second: 'Find the generated veto function whose predicate is empty.', legend: 'Model Smell', legendWhy: 'Sense that a model is wrong before you know where.', done: 'Your team runs the instrument unaided, and a second run against the baseline reproduces.' },
+  { name: 'Client business', who: 'Operations, HR, finance and line managers', kick: 'Name the decision, its owner, and the evidence that would change your mind — before you ask anyone for analysis.', gates: 'Know, See, Transform, Teach, Perform.', cadence: '30 minutes a week, one half-day each month', katas: [['Objective Ambiguity', 'Three objectives that sound alike — show how each changes the decision.'], ['Operator Expansion', 'Turn an executive decision into the actions someone does tomorrow.'], ['Counterfactual', 'Change one assumption. Does the decision change?'], ['Hidden Constraint', 'Hear "we can\u2019t do that" and ask what kind of constraint it is.']], guardian: 'Your team\u2019s favourite metric — does the next department mean the same thing by it?', boss: 'Put your recurring decision on a Decision Canvas and defend it to your auditor.', second: 'The canvas is agreed. Find the default in your templates that quietly contradicts it.', legend: 'Constraint Hearing', legendWhy: 'Hear a sentence and know whether the constraint is physical, legal, economic, technical, political or only habit.', done: 'Your recurring decision has an owner, a written rule, a recorded reason and a review date you keep.' },
+  { name: 'Legal and governance', who: 'Counsel, company secretaries, compliance', kick: 'Distinguish what a decision record proves from what it merely asserts.', gates: 'Know, See, Dissect, Perturb, Repair.', cadence: 'Fortnightly 60 minutes', katas: [['Assumption Extraction', 'Reconstruct the assumptions a signed decision relied on but never stated.'], ['Semantic Drift', 'The same defined term used two ways across a contract set.'], ['Publicity Test', 'Would this intervention survive disclosure to the people it affects?'], ['Protected ≠ weighted', 'Show where a non-negotiable was quietly turned into a heavy weight.']], guardian: 'An intervention register looks complete. Which entry fails the publicity test?', boss: 'Reconstruct an appointment decision two years later from the record alone, and say what it can defend.', second: 'Find where a compliance claim was supported but never discharged.', legend: 'Boundary Detection', legendWhy: 'Know exactly where an instrument, a finding or a warranty stops being valid.', done: 'You can read any Ingqiqo output and say what it warrants, what it does not, and who else must opine.' },
+  { name: 'Executives', who: 'ExCo, boards, sponsors', kick: 'Ask the one question that separates a decided decision from a reported one.', gates: 'See, Transform, Teach, Perform — at speed.', cadence: '20 minutes a week, a boss each quarter', katas: [['Executive Compression', 'Fifty pages to the three things you must decide.'], ['Counterfactual', 'What assumption, if wrong, reverses this?'], ['Decision Debt', 'Which decision keeps coming back, and why?'], ['Coherence check', 'Strategy says X, KPIs reward Y, budget funds Z — spot it.']], guardian: 'Three executives want incompatible outcomes. Expose the structure without choosing.', boss: 'Ten minutes: a 50-page analysis, three things to decide, one thing to refuse.', second: 'Your own strategy, KPIs, budget and board pack — find the break.', legend: 'Decision Compression', legendWhy: 'Reduce a vast analytical landscape to the few variables that actually govern the choice.', done: 'You stop asking for more analysis and start asking what evidence would change the decision.' },
+  { name: 'Architects', who: 'Enterprise, solution and data architects', kick: 'Design the place where each meaning is defined once and applied many times.', gates: 'Know → Discover, Repair, Perform.', cadence: 'Two 60-min sessions a week', katas: [['Grain skip', 'Find the rollup built on source rows with no decision-class in between.'], ['Layer placement', 'Put each definition in the one layer it belongs.'], ['Decay policy', 'Which horizon does this TTL silently delete?'], ['Semantic Drift', 'Five query dialects over one table — five meanings?']], guardian: 'A medallion stack is live. Show where the decision-class grain was skipped.', boss: 'Map six entities and seven edges onto a real substrate, with lineage to the attribute.', second: 'Prove the architecture survives an engine swap without a rebuild.', legend: 'Structural Vision', legendWhy: 'See the structure of a problem before anyone describes it formally.', done: 'Every attribute in scope has lineage, provenance and two named owners — of meaning and of value.' },
+  { name: 'Analysts', who: 'Business, data and HR analysts', kick: 'Put a pedigree, a range and an honest denominator on every number before anyone reads it.', gates: 'Know → Discover, Teach, Repair, Perform.', cadence: '45 minutes a day', katas: [['Broken Evidence', 'A dashboard, a decision — does the first support the second?'], ['Denominator', 'Same numerator, two denominators, opposite conclusions. Which is honest?'], ['Counterfactual', 'Perturb one input; find the decision boundary.'], ['Anomaly ledger', 'Predict, run, log the gap, explain it.']], guardian: 'Your dashboard is accurate. Is the decision it supports?', boss: 'Assess a stalled programme from its tracker: who was the stall waiting for?', second: 'Find the figure in your own last report that was estimated but reads as observed.', legend: 'Semantic Hearing', legendWhy: 'Hear two people use one word and know they mean different things.', done: 'No figure you publish can be mistaken for something it is not.' }
+];
+const TRACK_GATES = [[1,2,3,4,5,6,7,8,9,10],[1,2,3,4,5,6,9,10],[1,2,5,8,10],[1,2,3,6,9],[2,5,8,10],[1,2,3,4,5,6,7,9,10],[1,2,3,4,5,6,7,8,9,10]];
+const ATTRS = [['Perception', 'Can I see the structure?'], ['Comprehension', 'Do I understand it?'], ['Decomposition', 'Can I take it apart?'], ['Construction', 'Can I build it?'], ['Manipulation', 'Can I change it?'], ['Prediction', 'Can I anticipate consequences?'], ['Diagnosis', 'Can I find what went wrong?'], ['Repair', 'Can I restore it?'], ['Integration', 'Can I combine systems?'], ['Transfer', 'Can I carry it elsewhere?'], ['Communication', 'Can I make others see?'], ['Execution', 'Can I make it work?'], ['Judgment', 'Should it be done?'], ['Timing', 'What matters now?'], ['Intuition', 'Can I sense it first?'], ['Originality', 'Can I make what was not there?'], ['Wisdom', 'Do I understand the consequences?']];
+const LEVELS = ['unaware', 'exposed', 'recalled', 'understood', 'reproduced', 'adapted', 'independently solved', 'diagnosed', 'taught', 'performed under pressure', 'instinctive and creative'];
+const ACTIONS = [['Recall without notes', 10], ['Explain a concept', 10], ['Identify it in an unfamiliar situation', 20], ['Reconstruct an example', 25], ['Modify an example', 25], ['Solve a novel problem', 50], ['Find a hidden assumption', 50], ['Break a model', 50], ['Repair a model', 75], ['Combine with another discipline', 75], ['Discover emergent behaviour', 100], ['Teach someone', 100], ['Build a working implementation', 150], ['Solve a realistic case', 250], ['Solve under time pressure', 300], ['Diagnose someone else\u2019s solution', 300], ['Produce a reusable decision pattern', 500]];
+const STAIRS = [['Novice', 0], ['Apprentice', 500], ['Practitioner', 2000], ['Specialist', 5000], ['Advanced practitioner', 10000], ['Expert', 20000], ['Master', 40000], ['Cross-domain master', 70000], ['Systems master', 110000], ['Researcher', 160000], ['Originator', 230000], ['Field builder', 320000], ['School founder', 450000], ['Discipline shaper', 650000]];
+const SKILLS = [
+  ['Structural Vision', 'Infer the structure of a problem before it is formally described.', { Perception: 9, Decomposition: 8 }, 40000],
+  ['Constraint Hearing', 'Hear "we can\u2019t" and classify the constraint — physical, legal, economic, technical, organisational, political or psychological.', { Perception: 8, Judgment: 7 }, 20000],
+  ['Model Smell', 'Sense that a model is wrong before knowing where, then find it.', { Intuition: 8, Diagnosis: 9 }, 40000],
+  ['Semantic Hearing', 'Detect that two people using one word mean different things.', { Perception: 8, Communication: 7 }, 20000],
+  ['Decision Compression', 'Reduce a vast analysis to the few variables that govern the decision.', { Judgment: 8, Timing: 8 }, 40000],
+  ['Decision Expansion', 'Reveal the hidden system beneath a decision that looks simple.', { Decomposition: 8, Integration: 8 }, 40000],
+  ['Assumption Extraction', 'Reconstruct assumptions that were never stated.', { Diagnosis: 8, Comprehension: 8 }, 20000],
+  ['Boundary Detection', 'Know exactly where a model stops being valid.', { Prediction: 8, Judgment: 8 }, 40000],
+  ['Cross-Domain Transfer', 'Enter a foreign discipline and quickly carry its structures back.', { Transfer: 9, Originality: 7 }, 70000],
+  ['Coherence Sense', 'Feel strategy, intent, decision, execution and evidence fall out of line.', { Integration: 9, Intuition: 9, Wisdom: 7 }, 110000]
+];
+const LENSES = ['Every KPI is an implicit theory of what the organisation values.', 'A database schema is an argument about what the organisation believes exists.', 'A constraint is often a decision someone already made.', 'Every metric has a semantic contract, documented or not.', 'A forecast is not a prediction until someone says what uncertainty means.', 'Optimisation does not remove trade-offs; it makes them visible.', 'A template decides what counts as a good idea long after its author has left.'];
+const DRAFT = [['discovery', 'Discovery', 'What did I realise?'], ['before', 'Before', 'What did I believe?'], ['trigger', 'Trigger', 'What caused it?'], ['mechanism', 'Mechanism', 'Why is it true?'], ['consequence', 'Consequence', 'What does it change?'], ['transfer', 'Transfer', 'Where else does it apply?'], ['counter', 'Counterexample', 'Where does it stop?'], ['kata', 'Kata', 'What drill trains it?'], ['principle', 'Principle', 'One sentence']];
+const SCHOOLS = [
+  ['I', 'The Nature of Decision', 'What is a decision, who decides, why does it matter, and what makes deciding legitimate?'],
+  ['II', 'The Economics and Dynamics of Choice', 'Why do people and systems choose what they choose — and how does choosing change the environment?'],
+  ['III', 'The Representation and Design of Decision', 'How should the decision be represented, and its environment constructed?'],
+  ['IV', 'The Computational Decision System', 'How does decision knowledge become a working, reliable capability?'],
+  ['V', 'The Strategic Decision System', 'How does an organisation turn decisions into coherent strategy, execution and learning?'],
+  ['VI', 'The Dojo', 'How is the whole craft of deciding acquired, practised and mastered?']
+];
+const DISC = [
+  ['I', 'Decision Philosophy', 'What is a decision — an act, a commitment, an intervention, an information state?', 'Meaning', 'Say what kind of thing is being decided before anyone models it.', 'ontology of decision · epistemology of enough · agency · freedom · responsibility · temporality and future selves · identity · paradoxes: no-decision as decision, the decider inside the system'],
+  ['I', 'Decision Science', 'What is known about how decisions work?', 'Knowledge', 'Explain why a decision system behaves as it does.', 'normative, descriptive, prescriptive theory · bounded rationality · probability and utility · risk and ambiguity · forecasting · causal inference · complexity and networks'],
+  ['I', 'Decision Consciousness', 'Was the decider aware of deciding?', 'Awareness', 'Move from deciding X, to deciding how to decide X, to deciding what kind of decider you are becoming.', 'attention · metacognition · intentionality · automatic vs deliberate processing · assumption, influence and power awareness · irreversibility awareness · second- and third-order consciousness'],
+  ['I', 'Decision Vocation', 'What is mine to decide, to steward, and to refuse?', 'Purpose', 'Name what a role is entrusted to decide, and what it must decline even when it could.', 'calling and stewardship · authority and duty · fiduciary responsibility · responsibility for process and omission · discernment · sacrifice · freedom with responsibility'],
+  ['I', 'Decision Ethics', 'What ought we permit, prohibit or require regardless of optimisation?', 'Moral boundary', 'Identify where optimisation must stop because a value is non-negotiable.', 'consequentialism, deontology, virtue, care · justice and fairness · dignity and autonomy · distributive effects · moral uncertainty · value-sensitive design · human-machine authority'],
+  ['I', 'Decision Law', 'What may, must or may not be decided — and is it reviewable?', 'Legitimacy', 'Determine whether a technically possible decision is legally executable. Taught with qualified legal practitioners.', 'authority and jurisdiction · delegation · fiduciary duty · procedural fairness · standards of review · automated decisions · explainability and contestability · records and auditability'],
+  ['II', 'Decision Economics', 'How do scarcity, incentives and institutions shape decisions — and decisions reshape economies?', 'Value', 'Read the firm as a system that allocates scarce resources through distributed decisions.', 'opportunity cost · marginal analysis · principal-agent · transaction costs · information asymmetry · mechanism design · institutions · real options · externalities and commons'],
+  ['II', 'Behavioural Decision Science', 'How do people actually decide?', 'Judgement', 'Predict where real judgement departs from the model, and design for it.', 'prospect theory · framing · anchoring · availability · temporal discounting · overconfidence · escalation · social preferences · field experiments · debiasing'],
+  ['II', 'Decision Psychology and Thought', 'What happens inside the decider before, during and after?', 'Mind', 'Trace thought → belief → interpretation → judgement → intention → decision → experience.', 'perception and attention · memory · emotion · mental simulation · counterfactual thinking · intuition · doubt and conviction · regret · stress and fatigue · expertise'],
+  ['II', 'NeuroDecision Science', 'What can neuroscience legitimately say about decision mechanisms?', 'Mechanism', 'Use biological evidence without overclaiming it. Specialist track.', 'valuation and reward · prediction error · drift-diffusion models · reinforcement-learning models · neuroeconomics · EEG and eye tracking · what the evidence cannot show'],
+  ['II', 'Choice Dynamics', 'How do choices evolve through time, context and feedback?', 'Choice behaviour', 'Model a choice as a trajectory, not a point.', 'preference formation and reversal · habit · exploration vs exploitation · path dependence · lock-in · choice overload · social influence · endogenous preferences · regime change'],
+  ['II', 'Libertarian Paternalist Economy', 'When does shaping a choice environment improve welfare while keeping choice real?', 'Choice environment', 'Examine both the benefit and the risk of intervening — never presuppose intervention is good.', 'defaults and autonomy · who chooses the architect · heterogeneous preferences · manipulation · transparency · meaningful exit · empirical evaluation · AI-mediated and institutional choice architecture'],
+  ['II', 'Decisions of Influence', 'How does one actor intentionally affect another\u2019s decision?', 'Influence', 'Know exactly where influence becomes manipulation, and manipulation becomes coercion.', 'persuasion · rhetoric · negotiation · signalling · framing · social proof · coalition formation · propaganda analysis · influence measurement and countermeasures'],
+  ['II', 'Competitive Decisions', 'What changes when another intelligent actor responds to you?', 'Strategic interaction', 'Decide knowing the world will not react as the model assumes.', 'game theory · signalling and commitment · deterrence · bargaining · auctions · repeated and dynamic games · strategic deception · ecosystem competition'],
+  ['II', 'Emergent and Non-Intentional Decisions', 'Who is accountable for a decision nobody made?', 'Emergence', 'Recognise a decision that exists without a decider, and trace its mechanism.', 'self-organisation · complex adaptive systems · agent-based modelling · stigmergy · collective intelligence · phase transitions · institutional and algorithmic emergence · emergent authority'],
+  ['III', 'Decision Mathematics', 'Which representation fits this decision — and what does the mathematics conceal?', 'Structure', 'Choose the formalism, and say what it hides.', 'logic · linear algebra · graph theory · probability · stochastic processes · convex analysis · integer and dynamic programming · information theory · control theory · formal verification'],
+  ['III', 'Decision Modelling', 'What must be represented, and what omission would change the decision?', 'Model', 'Set a model boundary you can defend.', 'decision statements · actors · objectives · alternatives · states of nature · causal and temporal structure · model boundaries and error · validation · hybrid and neurosymbolic models'],
+  ['III', 'Decision Analysis', 'Given what we know, what follows?', 'Insight', 'Produce a defensible analytical model of an ambiguous decision.', 'problem structuring · decision trees · influence diagrams · Bayesian analysis · MCDA · value of information · real options · sensitivity and robustness · group decisions'],
+  ['III', 'Decision Design', 'What should the experience and mechanism of deciding be like?', 'Designed situation', 'Build several environments for one decision and test how each alters behaviour.', 'choice-set design · defaults · sequencing · friction and sludge · salience · cognitive load · contestability · reversibility · pre-mortems · red teams · forcing functions'],
+  ['III', 'Decision Architecture', 'How should decisions, rights, information and dependencies be structured?', 'Structure', 'Design a decision operating model for a whole organisation.', 'decision classes and portfolios · dependencies · decision rights · escalation and veto · centralised vs federated · evidence and semantic architecture · decision registries'],
+  ['III', 'Decision Coherence', 'Do the parts of the decision system tell the same story?', 'Alignment', 'Run a coherence audit across strategy, budget, incentives, KPIs, process and behaviour.', 'semantic, objective, constraint, temporal, causal, financial, incentive and evidence coherence'],
+  ['IV', 'Decision Engineering', 'How do we make the decision capability work reliably?', 'Working system', 'Ship a decision system with versioning, audit and rollback.', 'decision services and contracts · data contracts · rules, solver and simulation engines · human-in-the-loop · observability · testing · reproducibility · refusal as an output'],
+  ['IV', 'Decision Optimization', 'Within this space, what best satisfies the objective and constraints?', 'Solution', 'Know when optimisation is the wrong instrument.', 'LP, MILP, NLP · stochastic and robust optimisation · routing and scheduling · multi-objective and Pareto · decomposition · duality and shadow prices · infeasibility and conflict analysis · solver validation'],
+  ['IV', 'Decision Adaptation', 'What happens when the world changes faster than the model?', 'Adaptation', 'Build a system that detects its own assumptions expiring and changes.', 'sequential decisions · bandits · reinforcement learning · concept and model drift · change detection · real options · resilience · policy revision'],
+  ['IV', 'AI and Decision Intelligence', 'When does AI actually improve a decision?', 'Prediction', 'Place a learned component as evidence, never as the decision.', 'forecasting · anomaly detection · causal ML · probabilistic ML · ML + optimisation · ML + simulation · LLMs in decision processes · agent governance'],
+  ['IV', 'Data-to-Decision Engineering', 'Can the evidence reliably reach the computation?', 'Evidence', 'Carry data → evidence → decision, not data → dashboard.', 'semantic modelling · lineage and provenance · data quality · temporal data · uncertainty representation · evidence chains · decision registries'],
+  ['IV', 'Decision Infrastructure', 'What infrastructure makes reliable decisions possible?', 'Substrate', 'Specify the substrate a decision depends on — including what must be owned.', 'CPU/GPU · distributed systems · private cloud and sovereignty · HPC for solvers · edge decisioning · latency and availability · security and identity · disaster recovery'],
+  ['V', 'Decision Strategy', 'Which decisions must the organisation be exceptionally good at?', 'Portfolio', 'Build a strategic decision portfolio.', 'strategic decision identification · strategic uncertainty · options and sequencing · timing · trade-offs · scenario planning · decision advantage'],
+  ['V', 'Strategic Coherence', 'Does the whole decision system express the strategy?', 'Enterprise alignment', 'Show where coherence holds, where it breaks, and which decision relationships break it.', 'strategic intent · capability, portfolio, resource and incentive coherence · measurement coherence · the coherence index as an evidence model, not a score'],
+  ['V', 'Strategic Execution', 'Can coherent intent become coordinated action?', 'Execution', 'Measure execution decision density — how many decisions must go right for a strategy to succeed.', 'operating models · sequencing and dependencies · execution risk · cadence · accountability · exception management · adaptive execution'],
+  ['V', 'Decision Executive Management', 'How does leadership govern through decisions?', 'Governance', 'Design an enterprise decision operating model and run its cadence.', 'decision cadence and reviews · escalation and delegation · capital allocation · crisis decisions · board decision systems · organisational memory'],
+  ['V', 'Feedback Loops', 'How does evidence change future decisions?', 'Learning', 'Design a decision system that improves because it operates.', 'control theory and cybernetics · reinforcing and balancing loops · delays and oscillation · Bayesian updating · Goodhart and Campbell effects · metric gaming'],
+  ['V', 'Decision Environment', 'What surrounds the decision, and how does the decision reshape it?', 'Context', 'Trace environment → decision → environmental change → new environment.', 'institutional, economic, informational, regulatory, political and temporal environments · power and network structures · resource constraints'],
+  ['V', 'Investigative Decisions', 'What actually happened, which decisions produced it, and what remains unknown?', 'Reconstruction', 'Reconstruct a decision from evidence alone, with uncertainty stated.', 'hypothesis and counter-hypothesis · provenance and chain of custody · timeline reconstruction · competing hypotheses · forensic analytics · attribution'],
+  ['V', 'Decision Integrity and Anti-Crime', 'How is decision-related wrongdoing prevented, detected and investigated?', 'Integrity', 'Detect decision laundering — responsibility dissolved through layers until nobody decided.', 'fraud · corruption · conflicts of interest · procurement manipulation · evidence and model manipulation · metric gaming · collusion · governance circumvention'],
+  ['V', 'Pioneering Decisions', 'How do you decide when the option does not yet exist?', 'Possibility', 'Create a decision space rather than search one.', 'first-principles reasoning · opportunity discovery · experimentation · optionality · asymmetric bets · weak signals · category creation · institution building'],
+  ['VI', 'Decision Training', 'How does a person or organisation acquire decision capability?', 'Mastery', 'Train acquisition, recognition, discrimination, construction, perturbation, adversarial, transfer, pressure, adaptive and reflective modes.', 'the ten gates · deliberate practice · feedback on performance · spaced retrieval · difficulty modes · assessment by demonstration'],
+  ['VI', 'Decision Craftsmanship', 'Can you perform well when the textbook method does not quite fit?', 'Craft', 'Technique → fluency → reliability → adaptability → judgement → mastery.', 'framing and questioning · estimation and approximation · prioritisation · verification · debugging · after-action review · decision journaling · repertoire'],
+  ['VI', 'Decision Art', 'What does this situation need that the formal model cannot express?', 'Judgement', 'Judge timing, proportion and restraint under high ambiguity and novelty.', 'intuition · timing · proportion · framing and narrative · improvisation · sense-making · tacit knowledge · elegance · restraint']
+];
+const CERTS = [
+  ['Foundation', 'CDEP', 'Certified Decision Enablement Practitioner', 'The foundation identity. Framing, evidence, basic analytics, behaviour, modelling, communication, execution.', 'A framed decision brief for a real, ambiguous situation'],
+  ['Science', 'CDS', 'Certified Decision Scientist', 'Science, behaviour, quantitative methods, research design.', 'A replicated and critiqued study'],
+  ['Science', 'CDA', 'Certified Decision Analyst', 'Decision theory, Bayesian analysis, trees, influence diagrams, value of information.', 'A complete decision analysis'],
+  ['Design', 'CDAx', 'Certified Decision Architect', 'Decision rights, classes, dependencies, registries, operating models.', 'A decision operating model'],
+  ['Behaviour', 'CBDA', 'Certified Behavioural Decision Architect', 'Judgement, choice architecture, ethical intervention, experimentation.', 'A behavioural intervention with its welfare statement and measured effect'],
+  ['Engineering', 'CDE', 'Certified Decision Engineer', 'Decision services, contracts, engines, observability, reproducibility.', 'A deployed decision system with audit trail and rollback'],
+  ['Optimisation', 'CDO', 'Certified Decision Optimisation Professional', 'Mathematical programming, simulation, scheduling, solver engineering — solver-neutral.', 'A production-quality optimisation model with its assurance pack'],
+  ['Adaptation', 'CDAp', 'Certified Decision Adaptation Professional', 'Sequential decisions, drift, change detection, policy revision.', 'A system that detects and responds to its own expiring assumptions'],
+  ['Systems', 'CCDS', 'Certified Computational Decision Scientist', 'Data, statistics, programming, ML, optimisation, simulation, deployment.', 'An end-to-end computational decision pipeline'],
+  ['Systems', 'CDSE', 'Certified Decision Systems Engineer', 'Infrastructure, sovereignty, latency, reliability for decision workloads.', 'A specified and tested decision substrate'],
+  ['Strategy', 'CDSt', 'Certified Decision Strategist', 'Strategic decision portfolios, options, sequencing, timing.', 'A strategic decision portfolio'],
+  ['Coherence', 'CDCo', 'Certified Decision Coherence Professional', 'Coherence audits across strategy, budget, incentives, KPIs and behaviour.', 'A coherence audit with its evidence model'],
+  ['Execution', 'CSE', 'Certified Strategic Execution Professional', 'Execution architecture, dependencies, cadence, adaptive execution.', 'An execution model with decision density mapped'],
+  ['Governance', 'CDL', 'Certified Decision Law and Governance Professional', 'Authority, delegation, reviewability, automated decisions. Co-assessed by legal practitioners.', 'A reviewability assessment of a live decision process'],
+  ['Governance', 'CDEth', 'Certified Decision Ethics Professional', 'Normative boundaries, protected values, moral uncertainty.', 'An ethics trail and publicity-test review'],
+  ['Executive', 'CDEM', 'Certified Decision Executive Manager', 'Running an organisation through a coherent portfolio of decisions.', 'An enterprise decision operating model in use'],
+  ['Emergence', 'EDSS', 'Emergent Decision Systems Specialist', 'Non-intentional decisions, agent-based modelling, accountability for emergence.', 'An agent-based model of a decision nobody made']
+];
+const MASTERS = [
+  ['Decision Science Master', 'Understand and research decisions', 'Science → Analysis → Behaviour → Quantitative → Research'],
+  ['Decision Engineering Master', 'Build decision systems', 'Architecture → Engineering → Data → AI → Optimisation → Adaptation → Infrastructure'],
+  ['Decision Executive Master', 'Govern decision systems strategically', 'Strategy → Coherence → Execution → Governance → Executive management → Feedback']
+];
+const EVIDENCE = [['Knowledge', 20, 'written and oral'], ['Analysis', 20, 'novel cases'], ['Construction', 20, 'build something'], ['Destruction', 15, 'critique and break'], ['Application', 15, 'realistic project'], ['Communication', 10, 'present and teach']];
+const CDEA_STEPS = ['Discover the strategic context', 'Identify the decision problems', 'Construct the decision ontology', 'Establish the evidence', 'Diagnose the behavioural dynamics', 'Formulate the quantitative models', 'Optimise and simulate where it fits', 'Assess uncertainty', 'Build the decision tooling', 'Identify emergent effects', 'Design the governance', 'Establish feedback', 'Present to executives', 'Defend the architecture', 'State what you still do not know'];
+const RADAR = ['Scan the major journals', 'Select the papers that matter', 'Classify each by discipline', 'Note methodological advances', 'Flag contradictory findings', 'Track methods moving into practice', 'Track methods failing in practice', 'Turn significant findings into katas', 'Turn important findings into special missions', 'Retire what has become obsolete'];
+const UGATE = [['U1', 'What is the claim?'], ['U2', 'What evidence supports it?'], ['U3', 'What assumptions does it need?'], ['U4', 'Can it be reproduced?'], ['U5', 'Can it be implemented?'], ['U6', 'Which decisions does it change?'], ['U7', 'Where does it fail?'], ['U8', 'What does it replace or augment?'], ['U9', 'Can a kata be built from it?'], ['U10', 'Does it deserve inclusion?']];
+const SITUATIONS = [['Choosing', 'The decision space is known.', 'Analysis · optimisation'], ['Designing', 'The decision space can be changed.', 'Design · choice architecture'], ['Adapting', 'The space changes with reality.', 'Adaptation · feedback'], ['Discovering', 'The space is partly unknown.', 'Investigation · science'], ['Creating', 'The decider makes a new space.', 'Art · pioneering · strategy'], ['Emerging', 'Nobody intends the space at all.', 'Non-intentional decisions']];
+const DIMS = [['Existence', 'Philosophy · consciousness · vocation'], ['Mind', 'Psychology · thought · neurodecision'], ['Knowledge', 'Science · analysis · investigation'], ['Mathematics', 'Mathematics · statistics · optimisation'], ['Choice', 'Economics · choice dynamics · influence · behaviour'], ['Construction', 'Modelling · design · architecture · engineering'], ['Action', 'Strategy · competition · execution · adaptation'], ['Mastery', 'Art · craftsmanship · training · pioneering']];
+const TRACK_PATHS = ['CDEP → all three master paths → CDEA → Fellow', 'CDEP → CDE · CDO · CCDS → Decision Engineering Master', 'CDEP → CBDA · CDCo', 'CDEP → CDL · CDEth', 'CDEP → CDSt · CSE · CDEM → Decision Executive Master', 'CDEP → CDAx · CDSE → Decision Engineering Master', 'CDEP → CDA · CDS · CCDS → Decision Science Master'];
+const blankDraft = () => Object.fromEntries(DRAFT.map(d => [d[0], '']));
+const INIT = () => ({ tab: 'way', trackIdx: 0, material: 'Linear programming', gen: { cls: 'Kata', mode: 'Normal', speed: 'Standard · 2 h', cx: 3, info: 'Incomplete', nov: 'Slight variation', roll: 1 }, attrs: Object.fromEntries(ATTRS.map(a => [a[0], 0])), ledger: [], insights: [], draft: blankDraft(), logAction: '0', logNote: '' });
+
+class Component extends DCLogic {
+  state = { ...INIT(), saved: 'new' };
+  componentDidMount() { try { const d = JSON.parse(localStorage.getItem(KEY) || 'null'); if (d) this.setState({ ...d, saved: 'restored' }); } catch (e) {} }
+  commit(p) {
+    this.setState(s => {
+      const n = { ...s, ...(typeof p === 'function' ? p(s) : p) };
+      const { saved, ...keep } = n;
+      try { localStorage.setItem(KEY, JSON.stringify(keep)); } catch (e) {}
+      return { ...n, saved: 'saved ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) };
+    });
+  }
+  setGen(k, num) { return e => { const v = num ? Number(e.target.value) : e.target.value; this.commit(s => ({ gen: { ...s.gen, [k]: v } })); }; }
+
+  renderVals() {
+    const s = this.state, M = (s.material || 'the material').trim();
+    const xp = s.ledger.reduce((t, e) => t + e.xp, 0);
+    let idx = 0; STAIRS.forEach((r, i) => { if (xp >= r[1]) idx = i; });
+    let rank = STAIRS[idx][0], next = STAIRS[idx + 1] ? STAIRS[idx + 1][1] : null, prev = STAIRS[idx][1];
+    if (!next) { let t = 650000, k = 0; while (xp >= t * 1.5) { t *= 1.5; k++; } prev = t; next = Math.round(t * 1.5); rank = k ? `? · rung ${k}` : 'Discipline shaper'; }
+    const pctv = Math.min(100, Math.max(0, ((xp - prev) / (next - prev)) * 100));
+    const g = s.gen, roll = g.roll || 1;
+    const dom = DOMAINS[(roll * 7) % DOMAINS.length], op = OPS[(roll * 5) % OPS.length], intr = INTRUSIONS[(roll * 3) % INTRUSIONS.length];
+    const q = QUESTS.find(x => x[0] === g.cls) || QUESTS[1];
+    const md = MODES[g.mode] || MODES.Normal;
+    const gain = Math.round((q[3] || 50) * md[0] * (SPEEDS[g.speed] || 1) * (1 + g.cx / 10));
+    const clsLocked = xp < q[2], modeLocked = xp < md[1], locked = clsLocked || modeLocked;
+    const tr = TRACKS[s.trackIdx] || TRACKS[0], tg = TRACK_GATES[s.trackIdx] || TRACK_GATES[0];
+    const diag = s.attrs.Diagnosis || 0;
+    const school = s.school || 'I';
+    const tabDefs = [['way', 'The way'], ['schools', 'Schools'], ['tracks', 'Tracks'], ['creds', 'Credentials'], ['engine', 'Plug-in engine'], ['quests', 'Quest board'], ['sheet', 'Character sheet'], ['insight', 'Insight world'], ['skills', 'Unfair skills'], ['radar', 'Research radar']];
+    return {
+      tabs: tabDefs.map(([k, l]) => ({ label: l, active: s.tab === k, inactive: s.tab !== k, go: () => this.setState({ tab: k }) })),
+      tSchools: s.tab === 'schools', tCreds: s.tab === 'creds', tRadar: s.tab === 'radar',
+      schoolChips: SCHOOLS.map(sc => ({ label: `${sc[0]} · ${sc[1]}`, active: sc[0] === school, inactive: sc[0] !== school, go: () => this.commit({ school: sc[0] }) })),
+      schoolNow: (() => { const sc = SCHOOLS.find(x => x[0] === school); return { n: sc[0], name: sc[1], q: sc[2], count: DISC.filter(d => d[0] === school).length }; })(),
+      discs: DISC.filter(d => d[0] === school).map(d => ({ name: d[1], q: d[2], object: d[3], cap: d[4], topics: d[5], train: () => this.commit({ material: d[1], tab: 'engine' }) })),
+      situations: SITUATIONS.map(x => ({ name: x[0], what: x[1], via: x[2] })),
+      dims: DIMS.map(x => ({ name: x[0], via: x[1] })),
+      certs: CERTS.map(c => ({ fam: c[0], code: c[1], name: c[2], covers: c[3], artifact: c[4] })),
+      masters: MASTERS.map(m => ({ name: m[0], aim: m[1], path: m[2] })),
+      evidence: EVIDENCE.map(e => ({ name: e[0], pct: e[1] + '%', how: e[2] })),
+      cdeaSteps: CDEA_STEPS.map((t, i) => ({ n: String(i + 1).padStart(2, '0'), t })),
+      radarSteps: RADAR.map((t, i) => ({ n: i + 1, t })), ugate: UGATE.map(u => ({ id: u[0], q: u[1] })),
+      trackPath: TRACK_PATHS[s.trackIdx] || TRACK_PATHS[0],
+      tWay: s.tab === 'way', tTracks: s.tab === 'tracks', tEngine: s.tab === 'engine', tQuests: s.tab === 'quests', tSheet: s.tab === 'sheet', tInsight: s.tab === 'insight', tSkills: s.tab === 'skills',
+      rank, xpText: `${xp.toLocaleString()} XP`, nextText: `next at ${next.toLocaleString()}`, progressPct: pctv.toFixed(1) + '%', saved: s.saved,
+      gates: GATES.map((x, i) => ({ n: String(i + 1).padStart(2, '0'), name: x[0], q: x[1], trains: x[2], xp: x[3] })),
+      trackTabs: TRACKS.map((t, i) => ({ name: t.name, active: i === s.trackIdx, inactive: i !== s.trackIdx, go: () => this.commit({ trackIdx: i }) })),
+      tr: { ...tr, katas: tr.katas.map(k => ({ name: k[0], drill: k[1] })) },
+      material: s.material, trackIdx: String(s.trackIdx),
+      onMaterial: e => this.commit({ material: e.target.value }), onTrack: e => this.commit({ trackIdx: Number(e.target.value) }),
+      trackOpts: TRACKS.map((t, i) => ({ v: String(i), name: t.name })),
+      drills: GATES.map((x, i) => ({ n: String(i + 1).padStart(2, '0'), name: x[0], xp: x[3], prompts: x[4](M, intr), pass: x[5], op: tg.includes(i + 1) ? 1 : 0.45 })),
+      gen: g, cxLabel: `${g.cx} · ${CX[g.cx]}`,
+      clsOpts: QUESTS.filter(x => x[3] > 0).map(x => ({ v: x[0], label: xp >= x[2] ? x[0] : `${x[0]} · opens at ${x[2].toLocaleString()} XP` })),
+      modeOpts: Object.keys(MODES).map(k => ({ v: k, label: xp >= MODES[k][1] ? k : `${k} · opens at ${MODES[k][1].toLocaleString()} XP` })),
+      speedOpts: Object.keys(SPEEDS).map(k => ({ v: k, label: k })), infoOpts: INFO, novOpts: NOV,
+      onCls: this.setGen('cls'), onMode: this.setGen('mode'), onSpeed: this.setGen('speed'), onCx: this.setGen('cx', true), onInfo: this.setGen('info'), onNov: this.setGen('nov'),
+      roll: () => this.commit(st => ({ gen: { ...st.gen, roll: (st.gen.roll || 1) + 1 + Math.floor(Math.random() * 11) } })),
+      card: {
+        kicker: `${g.cls} · ${g.mode} · ${g.speed}`, xp: gain,
+        title: `${M}, in ${dom}`,
+        setting: `Operation: ${op}. Complexity ${g.cx} — ${CX[g.cx]}. Information: ${g.info.toLowerCase()}. Novelty: ${g.nov.toLowerCase()}. Track lens: ${tr.name.toLowerCase()}.`,
+        task: `${q[4]} Work it through ${M} applied to a ${dom} decision, with the operation "${op}" as the centre of gravity.`,
+        mode: md[2],
+        intrusion: g.mode === 'Normal' ? 'None at Normal. Raise the mode to invite one.' : `Mid-way through, ${intr} arrives. Say what survives, what breaks, and which assumption was invisible.`,
+        pass: `You meet the test for the gate this stresses, in the time allowed, and can state what you still do not know. ${g.nov === 'First principles only' ? 'No framework may be named until your own theory is written down.' : ''}`,
+        locked, open: !locked,
+        lockText: clsLocked ? `${g.cls} opens at ${q[2].toLocaleString()} XP. Earn your way in — you have ${xp.toLocaleString()}.` : `${g.mode} mode opens at ${md[1].toLocaleString()} XP. You have ${xp.toLocaleString()}.`
+      },
+      claim: () => this.commit(st => ({ ledger: [{ action: `${g.cls} · ${g.mode} · ${M}`, note: `${dom}, ${g.speed}`, xp: gain, date: new Date().toLocaleDateString() }, ...st.ledger] })),
+      guardian: xp >= 2000 && diag < 4,
+      quests: QUESTS.map(x => ({ name: x[0], purpose: x[1], example: x[4], xpText: x[3] ? `${x[3]} XP base` : 'emerges', op: xp >= x[2] ? 1 : 0.5, state: xp >= x[2] ? 'Open' : `Opens at ${x[2].toLocaleString()} XP` })),
+      ladders: LADDERS.map(l => ({ name: l[0], steps: l[1], boss: l[2] })),
+      attrs: ATTRS.map(a => ({ name: a[0], q: a[1], v: s.attrs[a[0]] || 0, level: LEVELS[s.attrs[a[0]] || 0], set: e => { const v = Number(e.target.value); this.commit(st => ({ attrs: { ...st.attrs, [a[0]]: v } })); } })),
+      actionOpts: ACTIONS.map((a, i) => ({ v: String(i), label: `${a[0]} · ${a[1]} XP` })),
+      logAction: s.logAction, logNote: s.logNote,
+      onLogAction: e => this.setState({ logAction: e.target.value }), onLogNote: e => this.setState({ logNote: e.target.value }),
+      addLog: () => { const a = ACTIONS[Number(s.logAction)] || ACTIONS[0]; this.commit(st => ({ logNote: '', ledger: [{ action: a[0], note: st.logNote || M, xp: a[1], date: new Date().toLocaleDateString() }, ...st.ledger] })); },
+      ledger: s.ledger.slice(0, 60),
+      stairs: STAIRS.map((r, i) => ({ name: r[0], at: r[1].toLocaleString(), col: i === idx ? 'var(--color-accent-100)' : i < idx ? 'var(--color-accent-300)' : 'var(--color-accent-500)' })).concat([{ name: '?', at: 'beyond', col: 'var(--color-accent-500)' }]),
+      draftFields: DRAFT.map(d => ({ label: d[1], ph: d[2], v: s.draft[d[0]], set: e => { const v = e.target.value; this.commit(st => ({ draft: { ...st.draft, [d[0]]: v } })); } })),
+      addInsight: () => { if (!s.draft.principle && !s.draft.discovery) return; this.commit(st => ({ insights: [{ ...st.draft, principle: st.draft.principle || st.draft.discovery }, ...st.insights], draft: blankDraft(), ledger: [{ action: 'Insight distilled', note: st.draft.principle || st.draft.discovery, xp: 100, date: new Date().toLocaleDateString() }, ...st.ledger] })); },
+      lenses: LENSES,
+      insights: s.insights.map((ins, i) => ({ ...ins, remove: () => this.commit(st => ({ insights: st.insights.filter((_, j) => j !== i) })) })),
+      skills: SKILLS.map(k => { const have = xp >= k[3] && Object.entries(k[2]).every(([a, v]) => (s.attrs[a] || 0) >= v); return { name: k[0], what: k[1], have, op: have ? 1 : 0.72, cost: 'Requires ' + Object.entries(k[2]).map(([a, v]) => `${a} ${v}`).join(' · ') + ` · ${k[3].toLocaleString()} XP` }; }),
+      resetAll: () => { if (confirm('Reset all progress, insights and the XP ledger?')) this.commit({ ...INIT(), tab: 'way' }); }
+    };
+  }
+}
+</script>
+
+
+<a class="dojo-back" href="../">← Resources</a>
+<style>.dojo-back{position:absolute;right:16px;top:12px;z-index:50;font:11px/1 "Bodoni Moda",Georgia,serif;letter-spacing:.18em;text-transform:uppercase;color:#BFB08A;background:rgba(12,10,16,.92);border:1px solid #7E745C;padding:8px 10px;text-decoration:none}.dojo-back:hover{color:#F1EEE7;border-color:#BFB08A}</style>
+<script type="module" src="/assets/source.mjs"></script>
+</body></html>

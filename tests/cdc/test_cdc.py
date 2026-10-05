@@ -94,7 +94,8 @@ class TestCorpus(Env):
         b = {d["id"]: d for d in docs if d["type"] == "booklet"}
         self.assertEqual(sorted(b), ["booklet/seeing-clearly/p2", "booklet/seeing-clearly/p4"])
         self.assertEqual(stats["seeing-clearly"]["dropped_pages"], [3])
-        self.assertIsNone(b["booklet/seeing-clearly/p2"]["url"])
+        # A booklet hit links to its online reader in the Resources library.
+        self.assertEqual(b["booklet/seeing-clearly/p2"]["url"], "/resources/read/seeing-clearly.html")
         self.assertEqual(b["booklet/seeing-clearly/p2"]["source"], "Seeing Clearly, 2nd, p2")
         t = b["booklet/seeing-clearly/p4"]["text"]
         self.assertNotIn("@", t)

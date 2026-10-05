@@ -21,6 +21,13 @@ BOOKLETS = {
     "engagement-pack": "Engagement Pack",
     "progress-record": "The Progress Record",
 }
+# Where each booklet can be read online (resources/read/), so a booklet hit links somewhere.
+READER = {
+    "seeing-clearly": "/resources/read/seeing-clearly.html",
+    "company-profile": "/resources/read/company-profile.html",
+    "engagement-pack": "/resources/read/engagement-pack.html",
+    "progress-record": "/resources/read/the-progress-record.html",
+}
 SKIP_DIRS = {".git", "stack", "reference-stack", "node_modules", "assets", "data", "tests", "scripts"}
 
 # Contract section 6: any booklet page matching one of these (case-insensitive) is dropped whole.
@@ -200,6 +207,8 @@ def site_docs(repo):
             continue
         if rel.name == "404.html" or rel.parts[0] == "search" or rel.parts[:2] == ("book", "confirm"):
             continue  # not content: the error page, the search page itself, and the organiser's confirm page
+        if rel.parts[:2] in (("resources", "read"), ("resources", "dojo")):
+            continue  # page images and an app: the booklet text enters as booklet docs, linked to these readers
         files.append((rel, p))
     docs = []
     for rel, p in files:
@@ -276,7 +285,7 @@ def booklet_docs(booklet_dir, slug, stats):
         text = scrub_contacts(text)
         kept += 1
         src = f"{title}, {edition + ', ' if edition else ''}p{num}"
-        docs.append({"id": f"booklet/{slug}/p{num}", "url": None, "title": title, "section": heading,
+        docs.append({"id": f"booklet/{slug}/p{num}", "url": READER.get(slug), "title": title, "section": heading,
                      "type": "booklet", "source": src, "text": text, "tags": ["booklet", slug]})
     stats[slug] = {"kept": kept, "dropped": len(dropped), "dropped_pages": dropped, "carried": False}
     return docs
@@ -301,6 +310,8 @@ def build(repo=ROOT, booklet_dir=BOOKLET_DIR, out=None):
             docs += booklet_docs(booklet_dir, slug, stats)
         else:  # CI runner: carry forward unchanged
             old = [d for d in existing if d.get("type") == "booklet" and d.get("id", "").startswith(f"booklet/{slug}/")]
+            for d in old:
+                d["url"] = READER.get(slug)
             docs += old
             stats[slug] = {"kept": len(old), "dropped": 0, "dropped_pages": [], "carried": True}
     ids = [d["id"] for d in docs]

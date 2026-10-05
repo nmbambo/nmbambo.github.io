@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resources — Nkosinathi Mbambo</title>
+<meta name="description" content="The Ingqiqo library: booklets on how decisions are named, measured, made coherent and told. Read the open ones in full; take a PDF home for whatever it is worth to you.">
+<meta name="theme-color" content="#0C0A10">
+<meta property="og:image" content="https://nmbambo.github.io/assets/portrait.jpg">
+<link rel="icon" href="../assets/rose-small.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+  .shelf { margin: 32px 0 0 56px; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); border-top: var(--hairline) solid var(--gold-quiet); border-left: var(--hairline) solid var(--gold-quiet); }
+  .volume { display: flex; flex-direction: column; border-right: var(--hairline) solid var(--gold-quiet); border-bottom: var(--hairline) solid var(--gold-quiet); }
+  .volume .cover { position: relative; aspect-ratio: 1.414; padding: 18px 20px; display: flex; flex-direction: column; justify-content: flex-end; background: radial-gradient(70% 80% at 82% 38%, rgba(191,176,138,0.10), transparent 70%), var(--obsidian-deep); border-bottom: var(--hairline) solid var(--gold-quiet); }
+  .volume .cover img { position: absolute; top: 16px; right: 18px; width: 22px; height: 22px; opacity: 0.8; }
+  .volume .cover .label { position: absolute; top: 18px; left: 20px; right: 52px; line-height: 1.5; color: var(--gold-quiet); }
+  .volume .cover h3 { margin: 0; font-style: italic; font-weight: 400; font-size: 25px; line-height: 1.1; color: var(--pearl); }
+  .volume .inside { padding: 16px 20px 20px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+  .volume .inside p { margin: 0; font-size: 15px; color: var(--pearl-muted); flex: 1; }
+  .volume .acts { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; }
+  .act { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--pearl); border: var(--hairline) solid var(--gold); padding: 10px 14px; }
+  .act:hover { background: var(--obsidian-raised); }
+  .act-quiet { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+  .ledger { margin: 32px 0 0 56px; display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 40px; align-items: start; }
+  .ledger ol { list-style: none; margin: 0; padding: 0; border-top: var(--hairline) solid var(--gold-quiet); }
+  .ledger li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 20px; align-items: center; padding: 18px 0; border-bottom: var(--hairline) solid var(--gold-quiet); }
+  .ledger li h3 { margin: 0; font-style: italic; font-weight: 400; font-size: 22px; }
+  .ledger li p { margin: 4px 0 0; font-size: 15px; color: var(--pearl-muted); }
+  .aside { padding: 22px 24px; border: var(--hairline) solid var(--gold); background: var(--obsidian-raised); }
+  .aside p { margin: 10px 0 0; font-size: 15px; color: var(--pearl-muted); }
+  .aside p:first-of-type { margin-top: 12px; }
+  .dojo { margin: 32px 0 0 56px; display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); border-top: var(--hairline) solid var(--gold-quiet); }
+  .dojo > div { padding: 28px 32px 28px 0; }
+  .dojo > div + div { padding-left: 32px; padding-right: 0; border-left: var(--hairline) solid var(--gold-quiet); }
+  .dojo .big { margin: 0; font-style: italic; font-size: 26px; line-height: 1.3; color: var(--pearl); }
+  .dojo p { margin: 12px 0 0; color: var(--pearl-muted); font-size: 16px; }
+  .dojo dl { margin: 0; }
+  .dojo dt { margin: 0 0 6px; }
+  .dojo dd { margin: 0 0 20px; color: var(--pearl-muted); font-size: 15px; }
+  .restricted { margin: 32px 0 0 56px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 28px; align-items: center; padding: 26px 0; border-top: var(--hairline) solid var(--gold-quiet); border-bottom: var(--hairline) solid var(--gold-quiet); }
+  .restricted h3 { margin: 0; font-style: italic; font-weight: 400; font-size: 24px; }
+  .restricted p { margin: 8px 0 0; max-width: 62ch; font-size: 15px; color: var(--pearl-muted); }
+  .restricted .acts { display: flex; flex-wrap: wrap; gap: 10px 22px; align-items: center; }
+  @media (max-width: 760px) {
+    .shelf, .ledger, .dojo, .restricted { margin-left: 0; }
+    .ledger, .dojo, .restricted { grid-template-columns: 1fr; }
+    .dojo > div + div { padding-left: 0; border-left: 0; border-top: var(--hairline) solid var(--gold-quiet); }
+    .ledger li { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../" aria-label="Home"><img src="../assets/rose-small.svg" alt="" width="28" height="28"></a>
+  <nav aria-label="Sections">
+    <a href="../method/">Method</a>
+    <a href="../architecture/">Architecture</a>
+    <a href="../#work">Work</a>
+    <a href="../engage/">Engage</a>
+    <a href="./" aria-current="page">Resources</a>
+    <a href="../search/">Search</a>
+    <a href="../book/">Book</a>
+    <a href="../#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="main" class="project arch">
+
+  <section class="hero project-hero">
+    <p class="byline"><img class="portrait xs" src="../assets/portrait.jpg" alt="" width="40" height="40"><a href="../">Nkosinathi Mbambo</a></p>
+    <p class="label">Resources</p>
+    <h1>The Ingqiqo library</h1>
+    <p class="role">Booklets on how decisions are named, measured, made coherent and told.</p>
+    <p class="lede">Read the open ones here in full, with no sign-up. Take a PDF home for whatever it is worth to you. The working tools sit behind a subscription.</p>
+  </section>
+
+  <section aria-labelledby="r1">
+    <h2 id="r1"><span class="num">I</span> Read in full</h2>
+    <p class="body">Every page, in the browser. Examples in the booklets are composite or fictitious, and every figure is illustrative.</p>
+    <div class="shelf">
+      <article class="volume">
+        <div class="cover"><p class="label">A guide to decision enablement</p><img src="../assets/rose-small.svg" alt=""><h3>Seeing Clearly</h3></div>
+        <div class="inside"><p>The instruments, what they measure and what they will not, in plain language. Where most readers should start.</p>
+          <div class="acts"><a class="act" href="read/seeing-clearly.html">Read online</a><a class="act-quiet" href="https://buymeacoffee.com/idealilk/extras" target="_blank" rel="noopener">PDF, pay what you want →</a></div></div>
+      </article>
+      <article class="volume">
+        <div class="cover"><p class="label">Capability and compliance</p><img src="../assets/rose-small.svg" alt=""><h3>Company Profile</h3></div>
+        <div class="inside"><p>Who we are, the method, the platform beneath the work, and the documents a procurement committee asks for.</p>
+          <div class="acts"><a class="act" href="read/company-profile.html">Read online</a><a class="act-quiet" href="pdf/company-profile.pdf">Free PDF →</a></div></div>
+      </article>
+      <article class="volume">
+        <div class="cover"><p class="label">Issued at the start of every engagement</p><img src="../assets/rose-small.svg" alt=""><h3>Engagement Pack</h3></div>
+        <div class="inside"><p>How we work, what we commit to and refuse, who decides what, and the answers you would otherwise ask for one at a time.</p>
+          <div class="acts"><a class="act" href="read/engagement-pack.html">Read online</a><a class="act-quiet" href="pdf/engagement-pack.pdf">Free PDF →</a></div></div>
+      </article>
+      <article class="volume">
+        <div class="cover"><p class="label">Judging an engagement fairly</p><img src="../assets/rose-small.svg" alt=""><h3>The Progress Record</h3></div>
+        <div class="inside"><p>How progress is tracked and impairments logged, so a sponsor can judge time, effort and results without guesswork.</p>
+          <div class="acts"><a class="act" href="read/the-progress-record.html">Read online</a><span class="act-quiet" style="color:var(--gold-quiet)">PDF coming soon</span></div></div>
+      </article>
+      <article class="volume">
+        <div class="cover"><p class="label">Stories of decision</p><img src="../assets/rose-small.svg" alt=""><h3>The Casebook</h3></div>
+        <div class="inside"><p>Thirteen composite cases: institutional errors, motive depths, paradoxes, board rooms. Each is worked out for the seminar, and the book closes with an ode.</p>
+          <div class="acts"><span class="act-quiet" style="color:var(--gold-quiet)">Online edition coming soon</span><a class="act-quiet" href="https://buymeacoffee.com/idealilk/extras" target="_blank" rel="noopener">PDF, pay what you want →</a></div></div>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="r2">
+    <h2 id="r2"><span class="num">II</span> PDF editions</h2>
+    <p class="body">Through Buy Me a Coffee, for whatever you think they are worth.</p>
+    <div class="ledger">
+      <ol>
+        <li><div><h3>The Casebook</h3><p>Thirteen stories, their lenses, seminar questions and katas, print-ready.</p></div><a class="act" href="https://buymeacoffee.com/idealilk/extras" target="_blank" rel="noopener">Get the PDF</a></li>
+        <li><div><h3>The Currency of Craft</h3><p>What the work is worth, how that worth is established, and the warranty with its limits.</p></div><span class="act-quiet" style="color:var(--gold-quiet)">PDF coming soon</span></li>
+        <li><div><h3>The Decision Portfolio</h3><p>The full range of instruments, domain by domain, with the question each one answers.</p></div><a class="act" href="https://buymeacoffee.com/idealilk/extras" target="_blank" rel="noopener">Get the PDF</a></li>
+        <li><div><h3>Seeing Clearly</h3><p>The guide to decision enablement, for the desk or the coffee table.</p></div><a class="act" href="https://buymeacoffee.com/idealilk/extras" target="_blank" rel="noopener">Get the PDF</a></li>
+        <li><div><h3>The Progress Record</h3><p>For sponsors and audit committees who want it on paper.</p></div><span class="act-quiet" style="color:var(--gold-quiet)">PDF coming soon</span></li>
+      </ol>
+      <div class="aside">
+        <p class="label" style="color:var(--gold)">How it works</p>
+        <p>Choose an amount on Buy Me a Coffee. The PDF arrives by email and on the confirmation page straight away.</p>
+        <p>The open booklets stay free to read online, whether or not you buy the PDF.</p>
+        <p>Dojo subscribers receive every PDF.</p>
+        <p><a class="act-quiet" href="https://buymeacoffee.com/idealilk" target="_blank" rel="noopener">Or simply buy a coffee →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="r3">
+    <h2 id="r3"><span class="num">III</span> The Decision Dojo</h2>
+    <p class="body">Browse it freely. Subscribe to train in it.</p>
+    <div class="dojo">
+      <div>
+        <p class="big">One kick, ten thousand times.</p>
+        <p>A courseware engine for the craft of deciding. Plug in any material and run it through ten gates. Roll challenges by mode, speed and complexity, climb a quest board, and keep a character sheet, an XP ledger and an insight archive. Search the whole Academy with Boolean strings: six schools, thirty-nine disciplines, seventeen certification families.</p>
+        <div class="cta-row">
+          <a class="cta-primary" href="dojo/">Browse the Dojo</a>
+          <a class="cta-quiet" href="https://buymeacoffee.com/idealilk/membership" target="_blank" rel="noopener">Subscribe →</a>
+          <span class="cta-quiet" style="color:var(--gold-quiet)" data-member-host="https://academy.ingqiqo-executables.run/dojo/">Member sign-in opening soon</span>
+        </div>
+      </div>
+      <div>
+        <dl>
+          <dt class="label">In the browse</dt><dd>Every tab, school, track and credential is readable, so you can judge it before you pay.</dd>
+          <dt class="label" style="color:var(--gold)">With a subscription</dt><dd>Logging XP, claiming challenges, filing insights, the event log and your own saved progress. You sign in with Google, using the email you subscribed with.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="r4">
+    <h2 id="r4"><span class="num">IV</span> For clients and partners</h2>
+    <div class="restricted">
+      <div>
+        <p class="label">Restricted · sign-in required</p>
+        <h3>The Coherence Architecture</h3>
+        <p>The full method, the semantic model and the platform beneath the work. It is shared under NDA with clients and partners for technical evaluation, and access is granted person by person, through Google sign-in.</p>
+      </div>
+      <div class="acts"><span class="act-quiet" style="color:var(--gold-quiet)" data-member-host="https://library.ingqiqo-executables.run/coherence-architecture/">Sign-in opening soon</span><a class="act-quiet" href="../#contact">Request access →</a></div>
+    </div>
+  </section>
+
+  <section class="engage" aria-labelledby="eg">
+    <img class="portrait md" src="../assets/portrait.jpg" alt="Nkosinathi Mbambo" width="88" height="88">
+    <div>
+      <h2 id="eg">Meaning, made coherent.</h2>
+      <p>The booklets show how the work is done. If one of them describes the decision that keeps coming back to you, bring it.</p>
+      <p class="cta"><a href="../#contact">Start a conversation →</a><a class="cta-quiet" href="../book/">or book a time →</a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <img src="../assets/rose.svg" alt="Ingqiqo rose" width="40" height="40">
+  <p>© 2026 Nkosinathi Mbambo · Ingqiqo Executables (Pty) Ltd</p>
+</footer>
+<script type="module" src="/assets/source.mjs"></script>
+</body>
+</html>
