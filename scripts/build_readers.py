@@ -7,9 +7,13 @@ Pages listed in OMIT never leave this script: they carry prices, capacity figure
 particulars, unfinished "to complete" fields or rand amounts, none of which go on a public surface.
 Where a free PDF is offered, the public edition is the same page set (qpdf).
 
+A booklet with "preview": N is sold as a PDF edition: only its first N pages (the outline and the
+opening part) are rendered, and nothing after page N leaves this script.
+
 Usage:
   python3 scripts/build_readers.py --seeing-clearly A.pdf --company-profile B.pdf \
-      --engagement-pack C.pdf --progress-record D.pdf
+      --engagement-pack C.pdf --progress-record D.pdf --price-of-better E.pdf
+Pass any subset; booklets without a PDF argument are left as they are.
 Needs poppler (pdftoppm), qpdf and Pillow with WebP.
 """
 import argparse
@@ -52,6 +56,25 @@ BOOKLETS = {
         "lede": "How progress is tracked and impairments logged, so a sponsor can judge time, effort and results without guesswork.",
         "rotate": 0, "omit": set(), "pdf": None,
     },
+    "the-price-of-better": {
+        "title": "The Price of Better", "label": "Decision failures, seen from every seat",
+        "lede": "Why organisations choose what looks better and end up worse off: the Braess paradox, the Beer Game and the system archetypes, the same decision seen from ten seats, what each failure costs, and how the method closes the way in.",
+        "rotate": 0, "omit": set(), "pdf": None,
+        # Sold as a PDF edition. The free reader is the cover, how to read it, the contents and Part One.
+        "preview": 10,
+        "bmac": "https://buymeacoffee.com/idealilk/extras",
+        "outline": [
+            ("The paradox of better", "The road that made traffic worse, the game that is simple until it is played, and the parity premium."),
+            ("A register of failure", "Twelve patterns, eight system archetypes and Senge's eleven laws."),
+            ("Every seat at the table", "One decision, seen by the ten people it touches, then read as a system."),
+            ("The ledger of cost", "Eight kinds of cost, who carries each, and one worked year."),
+            ("Eight cases", "Composite stories for the seminar room, with questions and katas."),
+            ("Where these decisions enter", "The planes of the Spine and the steps of IDDC, loops and delays included."),
+            ("How Ingqiqo closes it", "Eight mechanisms, and which failure or archetype each one stops."),
+            ("Once and for all", "What that promise can honestly mean, and what it cannot."),
+            ("Where to start", "Twelve questions to ask before you adopt anything, and a glossary."),
+        ],
+    },
 }
 
 DPI = 150
@@ -86,7 +109,7 @@ def render(slug, spec, pdf):
         subprocess.run(["pdftoppm", "-r", str(DPI), "-png", str(pdf), f"{tmp}/p"], check=True)
         for png in sorted(Path(tmp).glob("p-*.png")):
             n = int(png.stem.split("-")[-1])
-            if n in spec["omit"]:
+            if n in spec["omit"] or n > spec.get("preview", n):
                 continue
             im = Image.open(png).convert("RGB")
             if spec["rotate"]:
@@ -116,7 +139,28 @@ def reader_html(slug, spec, pages, total):
     note = ("The full booklet, page by page." if not omitted else
             f"The public edition: {omitted} of {total} pages are held back because they carry prices, capacity "
             "figures, tender particulars or worked rand amounts. Ask for the full edition in a conversation.")
+    if spec.get("preview"):
+        note = (f"The opening: the outline and Part One, {len(pages)} of {total} pages. The whole book is in the PDF "
+                "edition, for whatever you think it is worth.")
     pdf_link = (f'<a class="act-quiet" href="../pdf/{spec["pdf"]}">Free PDF of this edition →</a>' if spec["pdf"] else "")
+    if spec.get("bmac"):
+        # Shown as "coming soon" until the Buy Me a Coffee extra is published; then make it a link.
+        pdf_link = (f'<span class="act-quiet" style="color:var(--gold-quiet)" data-bmac="{spec["bmac"]}">'
+                    'PDF edition coming soon</span>')
+    outline = ""
+    if spec.get("outline"):
+        romans = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"]
+        rows = "\n".join(
+            f'      <li{" class=\"open\"" if i == 0 else ""}><span class="num">{romans[i]}</span><div><h3>{html.escape(t_)}</h3>'
+            f'<p>{html.escape(d)}</p><p class="state">{"Read below" if i == 0 else "In the PDF edition"}</p></div></li>'
+            for i, (t_, d) in enumerate(spec["outline"]))
+        outline = f"""
+  <section class="outline" aria-labelledby="outline">
+    <h2 id="outline">The outline</h2>
+    <ol>
+{rows}
+    </ol>
+  </section>"""
     figs = "\n".join(
         f'    <figure class="leaf" id="p{n}"><img src="img/{slug}/{name}" width="{w}" height="{h}" '
         f'alt="{t}, page {n}" loading="{"eager" if i < 2 else "lazy"}" decoding="async">'
@@ -145,6 +189,15 @@ def reader_html(slug, spec, pages, total):
   .reader .acts {{ display: flex; flex-wrap: wrap; gap: 10px 22px; align-items: center; margin: 28px 0 0; }}
   .act-quiet {{ font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }}
   .reader .note {{ margin: 18px 0 0; max-width: 62ch; color: var(--pearl-muted); font-size: 15px; font-style: italic; }}
+  .outline {{ padding: 0 0 clamp(40px, 6vw, 64px); }}
+  .outline h2 {{ font-size: clamp(22px, 3vw, 28px); margin: 0 0 18px; }}
+  .outline ol {{ list-style: none; margin: 0; padding: 0; border-top: var(--hairline) solid var(--gold-quiet); }}
+  .outline li {{ display: grid; grid-template-columns: 48px 1fr; gap: 0 12px; padding: 14px 0; border-bottom: var(--hairline) dashed var(--gold-quiet); }}
+  .outline li .num {{ font-size: 12px; letter-spacing: .18em; color: var(--pearl-muted); padding-top: 4px; }}
+  .outline li h3 {{ margin: 0 0 2px; font-size: 18px; font-weight: 400; }}
+  .outline li p {{ margin: 0; color: var(--pearl-muted); font-size: 15px; }}
+  .outline li .state {{ margin-top: 4px; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--gold-quiet); }}
+  .outline li.open .state {{ color: var(--gold); }}
 </style>
 </head>
 <body>
@@ -169,7 +222,7 @@ def reader_html(slug, spec, pages, total):
     <p class="role">{html.escape(spec['lede'])}</p>
     <p class="note">{note} Examples are composite or fictitious, and every figure is illustrative.</p>
     <p class="acts"><a class="act-quiet" href="../">← The library</a>{pdf_link}</p>
-  </section>
+  </section>{outline}
   <div class="leaves">
 {figs}
   </div>
@@ -187,10 +240,13 @@ def reader_html(slug, spec, pages, total):
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     for slug in BOOKLETS:
-        ap.add_argument(f"--{slug.replace('the-', '')}", dest=slug.replace("-", "_"), required=True)
+        ap.add_argument(f"--{slug.replace('the-', '')}", dest=slug.replace("-", "_"))
     a = ap.parse_args(argv)
     for slug, spec in BOOKLETS.items():
-        pdf = Path(getattr(a, slug.replace("-", "_")))
+        arg = getattr(a, slug.replace("-", "_"))
+        if not arg:
+            continue
+        pdf = Path(arg)
         total = page_count(pdf)
         pages = render(slug, spec, pdf)
         (OUT / "read" / f"{slug}.html").write_text(reader_html(slug, spec, pages, total))
