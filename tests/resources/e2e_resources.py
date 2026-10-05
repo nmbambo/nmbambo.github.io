@@ -93,6 +93,12 @@ def main():
             c.ok(not re.search(r"R\s?\d", text), "no rand amounts on the library")
             hosts = page.eval_on_selector_all("a[href]", "els => els.map(e => e.href)")
             c.ok(not any("ingqiqo-executables.run" in h for h in hosts), "no links to member hosts that are not live yet")
+            c.ok(not any(re.search(r"buymeacoffee\.com/idealilk/(extras|membership)", h) for h in hosts),
+                 "no links to Buy Me a Coffee pages that are not published yet")
+            for title in ("The Decision Portfolio", "The Currency of Craft"):
+                row = page.locator(".ledger li", has_text=title)
+                c.ok(row.locator("a").count() == 0 and "For members" in row.text_content(),
+                     f"{title}: members only, no public link")
             if shots:
                 page.screenshot(path=str(shots / "resources.png"), full_page=True)
 
@@ -128,6 +134,20 @@ def main():
             c.ok(not errors, f"dojo renders with no script errors {errors[:2]}")
             c.ok(not cdn, "dojo loads React from its own files, not a CDN")
             c.ok(page.locator("a.dojo-back[href='../']").count() == 1, "dojo keeps a way back to the library")
+            # View-only: browsing works, nothing is recorded.
+            c.ok(page.locator(".dojo-viewonly").is_visible(), "dojo says it is the view-only edition")
+            page.get_by_text("Plug-in engine", exact=True).first.click()
+            page.get_by_text("Passed — log").first.click()
+            page.get_by_text("Character sheet", exact=True).first.click()
+            log = page.locator("button", has_text=re.compile(r"^\s*Log\s*$"))
+            if log.count():
+                log.first.click()
+            page.wait_for_timeout(300)
+            c.ok("0 XP" in page.inner_text("body"), "dojo: claiming and logging add no XP")
+            stored = page.evaluate("Object.keys(localStorage)")
+            c.ok(not stored, f"dojo: nothing is saved in the browser {stored}")
+            page.get_by_text("Schools", exact=True).first.click()
+            c.ok(page.get_by_text("Back to the library").count() == 1, "dojo: tabs still browse in view-only")
             c.ok("Made with Claude Design" not in page.content(), "dojo has no editor badge")
             if shots:
                 page.screenshot(path=str(shots / "dojo.png"))

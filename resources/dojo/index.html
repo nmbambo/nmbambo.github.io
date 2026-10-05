@@ -1730,12 +1730,15 @@ a:hover{color:var(--color-accent-200)}
     </div>
   </sc-if>
 
-  <div style="margin-top:30px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-neutral-600)"><span>Saved in this browser · {{ saved }}</span><button sc-camel-on-click="{{ resetAll }}" style="background:transparent;border:0;color:var(--color-neutral-600);cursor:pointer;font:inherit;letter-spacing:inherit;text-transform:inherit" style-hover="color:var(--color-accent-300)">Reset progress</button></div>
+  <div style="margin-top:30px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-neutral-600)"><span>{{ saved }}</span><button sc-camel-on-click="{{ resetAll }}" style="background:transparent;border:0;color:var(--color-neutral-600);cursor:pointer;font:inherit;letter-spacing:inherit;text-transform:inherit" style-hover="color:var(--color-accent-300)">Reset progress</button></div>
 </div>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script="">
 const KEY = 'ingqiqo-decision-dojo-v1';
+// View-only edition: browse everything, record nothing. Training (XP, challenges, insights) is for subscribers.
+const VIEW_ONLY = true;
+const viewOnlyNote = () => { const n = document.querySelector('.dojo-viewonly'); if (n) { n.classList.remove('flash'); void n.offsetWidth; n.classList.add('flash'); } };
 const GATES = [
   ['Know', 'What is it?', 'Recall without notes', 10, M => [`Close ${M}. Write its vocabulary, components, assumptions and limits from memory.`, `Define the five terms in ${M} you would be most embarrassed to get wrong.`, `State what ${M} cannot do.`], 'Retrieval without notes, checked line by line against the source.'],
   ['See', 'Can I recognise it?', 'Structural vision', 20, M => [`Find ${M} in three situations where nobody calls it that.`, `In each, name the decision, the variables, the objective and the constraints hiding there.`, `Find one case that looks like ${M} and is not — and say why.`], 'You spot it cold in a scenario you were not warned about.'],
@@ -1899,9 +1902,10 @@ const blankDraft = () => Object.fromEntries(DRAFT.map(d => [d[0], '']));
 const INIT = () => ({ tab: 'way', trackIdx: 0, material: 'Linear programming', gen: { cls: 'Kata', mode: 'Normal', speed: 'Standard · 2 h', cx: 3, info: 'Incomplete', nov: 'Slight variation', roll: 1 }, attrs: Object.fromEntries(ATTRS.map(a => [a[0], 0])), ledger: [], insights: [], draft: blankDraft(), logAction: '0', logNote: '' });
 
 class Component extends DCLogic {
-  state = { ...INIT(), saved: 'new' };
-  componentDidMount() { try { const d = JSON.parse(localStorage.getItem(KEY) || 'null'); if (d) this.setState({ ...d, saved: 'restored' }); } catch (e) {} }
+  state = { ...INIT(), saved: VIEW_ONLY ? 'View-only edition · nothing is recorded' : 'new' };
+  componentDidMount() { if (VIEW_ONLY) return; try { const d = JSON.parse(localStorage.getItem(KEY) || 'null'); if (d) this.setState({ ...d, saved: 'restored' }); } catch (e) {} }
   commit(p) {
+    if (VIEW_ONLY) { this.setState(s => ({ ...s, ...(typeof p === 'function' ? p(s) : p) })); return; }
     this.setState(s => {
       const n = { ...s, ...(typeof p === 'function' ? p(s) : p) };
       const { saved, ...keep } = n;
@@ -1968,23 +1972,23 @@ class Component extends DCLogic {
         locked, open: !locked,
         lockText: clsLocked ? `${g.cls} opens at ${q[2].toLocaleString()} XP. Earn your way in — you have ${xp.toLocaleString()}.` : `${g.mode} mode opens at ${md[1].toLocaleString()} XP. You have ${xp.toLocaleString()}.`
       },
-      claim: () => this.commit(st => ({ ledger: [{ action: `${g.cls} · ${g.mode} · ${M}`, note: `${dom}, ${g.speed}`, xp: gain, date: new Date().toLocaleDateString() }, ...st.ledger] })),
+      claim: VIEW_ONLY ? viewOnlyNote : () => this.commit(st => ({ ledger: [{ action: `${g.cls} · ${g.mode} · ${M}`, note: `${dom}, ${g.speed}`, xp: gain, date: new Date().toLocaleDateString() }, ...st.ledger] })),
       guardian: xp >= 2000 && diag < 4,
       quests: QUESTS.map(x => ({ name: x[0], purpose: x[1], example: x[4], xpText: x[3] ? `${x[3]} XP base` : 'emerges', op: xp >= x[2] ? 1 : 0.5, state: xp >= x[2] ? 'Open' : `Opens at ${x[2].toLocaleString()} XP` })),
       ladders: LADDERS.map(l => ({ name: l[0], steps: l[1], boss: l[2] })),
-      attrs: ATTRS.map(a => ({ name: a[0], q: a[1], v: s.attrs[a[0]] || 0, level: LEVELS[s.attrs[a[0]] || 0], set: e => { const v = Number(e.target.value); this.commit(st => ({ attrs: { ...st.attrs, [a[0]]: v } })); } })),
+      attrs: ATTRS.map(a => ({ name: a[0], q: a[1], v: s.attrs[a[0]] || 0, level: LEVELS[s.attrs[a[0]] || 0], set: VIEW_ONLY ? viewOnlyNote : e => { const v = Number(e.target.value); this.commit(st => ({ attrs: { ...st.attrs, [a[0]]: v } })); } })),
       actionOpts: ACTIONS.map((a, i) => ({ v: String(i), label: `${a[0]} · ${a[1]} XP` })),
       logAction: s.logAction, logNote: s.logNote,
       onLogAction: e => this.setState({ logAction: e.target.value }), onLogNote: e => this.setState({ logNote: e.target.value }),
-      addLog: () => { const a = ACTIONS[Number(s.logAction)] || ACTIONS[0]; this.commit(st => ({ logNote: '', ledger: [{ action: a[0], note: st.logNote || M, xp: a[1], date: new Date().toLocaleDateString() }, ...st.ledger] })); },
+      addLog: VIEW_ONLY ? viewOnlyNote : () => { const a = ACTIONS[Number(s.logAction)] || ACTIONS[0]; this.commit(st => ({ logNote: '', ledger: [{ action: a[0], note: st.logNote || M, xp: a[1], date: new Date().toLocaleDateString() }, ...st.ledger] })); },
       ledger: s.ledger.slice(0, 60),
       stairs: STAIRS.map((r, i) => ({ name: r[0], at: r[1].toLocaleString(), col: i === idx ? 'var(--color-accent-100)' : i < idx ? 'var(--color-accent-300)' : 'var(--color-accent-500)' })).concat([{ name: '?', at: 'beyond', col: 'var(--color-accent-500)' }]),
-      draftFields: DRAFT.map(d => ({ label: d[1], ph: d[2], v: s.draft[d[0]], set: e => { const v = e.target.value; this.commit(st => ({ draft: { ...st.draft, [d[0]]: v } })); } })),
-      addInsight: () => { if (!s.draft.principle && !s.draft.discovery) return; this.commit(st => ({ insights: [{ ...st.draft, principle: st.draft.principle || st.draft.discovery }, ...st.insights], draft: blankDraft(), ledger: [{ action: 'Insight distilled', note: st.draft.principle || st.draft.discovery, xp: 100, date: new Date().toLocaleDateString() }, ...st.ledger] })); },
+      draftFields: DRAFT.map(d => ({ label: d[1], ph: d[2], v: s.draft[d[0]], set: VIEW_ONLY ? viewOnlyNote : e => { const v = e.target.value; this.commit(st => ({ draft: { ...st.draft, [d[0]]: v } })); } })),
+      addInsight: VIEW_ONLY ? viewOnlyNote : () => { if (!s.draft.principle && !s.draft.discovery) return; this.commit(st => ({ insights: [{ ...st.draft, principle: st.draft.principle || st.draft.discovery }, ...st.insights], draft: blankDraft(), ledger: [{ action: 'Insight distilled', note: st.draft.principle || st.draft.discovery, xp: 100, date: new Date().toLocaleDateString() }, ...st.ledger] })); },
       lenses: LENSES,
-      insights: s.insights.map((ins, i) => ({ ...ins, remove: () => this.commit(st => ({ insights: st.insights.filter((_, j) => j !== i) })) })),
+      insights: s.insights.map((ins, i) => ({ ...ins, remove: VIEW_ONLY ? viewOnlyNote : () => this.commit(st => ({ insights: st.insights.filter((_, j) => j !== i) })) })),
       skills: SKILLS.map(k => { const have = xp >= k[3] && Object.entries(k[2]).every(([a, v]) => (s.attrs[a] || 0) >= v); return { name: k[0], what: k[1], have, op: have ? 1 : 0.72, cost: 'Requires ' + Object.entries(k[2]).map(([a, v]) => `${a} ${v}`).join(' · ') + ` · ${k[3].toLocaleString()} XP` }; }),
-      resetAll: () => { if (confirm('Reset all progress, insights and the XP ledger?')) this.commit({ ...INIT(), tab: 'way' }); }
+      resetAll: VIEW_ONLY ? viewOnlyNote : () => { if (confirm('Reset all progress, insights and the XP ledger?')) this.commit({ ...INIT(), tab: 'way' }); }
     };
   }
 }
@@ -1992,6 +1996,8 @@ class Component extends DCLogic {
 
 
 <a class="dojo-back" href="../">← Resources</a>
+<p class="dojo-viewonly" role="note">View-only edition. Logging XP, claiming challenges and filing insights open to subscribers. <a href="../">Back to the library</a></p>
+<style>.dojo-viewonly{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:50;margin:0;max-width:calc(100% - 28px);box-sizing:border-box;font:13px/1.45 "Bodoni Moda",Georgia,serif;color:#B4AEA3;background:rgba(12,10,16,.94);border:1px solid #7E745C;padding:10px 14px;text-align:center}.dojo-viewonly a{color:#BFB08A}.dojo-viewonly.flash{animation:dvo 1.2s ease}@keyframes dvo{0%,40%{border-color:#BFB08A;color:#F1EEE7}100%{border-color:#7E745C;color:#B4AEA3}}@media (prefers-reduced-motion:reduce){.dojo-viewonly.flash{animation:none;border-color:#BFB08A}}body{padding-bottom:72px}</style>
 <style>.dojo-back{position:absolute;right:16px;top:12px;z-index:50;font:11px/1 "Bodoni Moda",Georgia,serif;letter-spacing:.18em;text-transform:uppercase;color:#BFB08A;background:rgba(12,10,16,.92);border:1px solid #7E745C;padding:8px 10px;text-decoration:none}.dojo-back:hover{color:#F1EEE7;border-color:#BFB08A}</style>
 <script type="module" src="/assets/source.mjs"></script>
 </body></html>
