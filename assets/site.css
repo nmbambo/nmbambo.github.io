@@ -436,3 +436,14 @@ a.hit-title:hover { border-color: var(--gold); }
   #contact > .cta-row { margin-left: 0; }
   .engage .cta .cta-quiet { display: inline-block; padding-left: 0; }
 }
+/* The nav keeps its full set only where it fits. Engineering, Work and Method stay reachable from the home page and footer. */
+@media (max-width: 940px) { .top nav a[href$="engineering/"] { display: none; } }
+@media (max-width: 800px) { .top nav a[href$="#work"] { display: none; } .top nav { gap: 14px; } .top nav a { letter-spacing: .12em; } }
+/* Narrow phones: eight nav items do not fit; Method and Engage stay reachable from the footer and the home page. */
+@media (max-width: 480px) {
+  .top nav a[href$="method/"] { display: none; }
+  .top { padding-left: 14px; padding-right: 14px; }
+  .top nav { gap: 10px; }
+  .top nav a { letter-spacing: .06em; font-size: 10.5px; }
+}
+@media (max-width: 340px) { .top nav a[href$="engage/"] { display: none; } .top nav { gap: 8px; } .top nav a { letter-spacing: .03em; } }

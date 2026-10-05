@@ -402,7 +402,7 @@ def main():
             page = ctx.new_page()
             watch(page, "mobile")
             for path in ("/", "/book/", "/engage/", "/method/", "/search/", "/work/decision-ir/", "/resources/",
-                         "/resources/read/seeing-clearly.html"):
+                         "/resources/read/seeing-clearly.html", "/record/"):
                 page.goto(f"{base}{path}")
                 page.wait_for_load_state("networkidle")
                 c.ok(overflow(page) <= 0, f"390px: no horizontal scroll on {path} (overflow {overflow(page)}px)")

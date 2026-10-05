@@ -1545,7 +1545,7 @@
   "tags": [
    "page"
   ],
-  "text": "Depth Twenty-five years across every generation of the data stack. Since 2001 Foundations SSIS, SSAS, SSRS, Pentaho and Talend: warehousing, integration and reporting at enterprise scale. Platform era Cloud and lakehouse Microsoft Fabric, Databricks, Azure and AWS, with Delta, Iceberg and Hudi tables, dbt and Airflow orchestration. Streaming and scale Real time and operating models Kafka streaming, Polars, MLOps and Data Mesh: data as a product, owned by the domains that know it. Now Meaning coherence Semantics, decision representation and institutional accountability: making meaning hold across data, process and decision.",
+  "text": "Depth Twenty-five years across every generation of the data stack. Since 2001 Foundations SSIS, SSAS, SSRS, Pentaho and Talend: warehousing, integration and reporting at enterprise scale. Platform era Cloud and lakehouse Microsoft Fabric, Databricks, Azure and AWS, with Delta, Iceberg and Hudi tables, dbt and Airflow orchestration. Streaming and scale Real time and operating models Kafka streaming, Polars, MLOps and Data Mesh: data as a product, owned by the domains that know it. Now Meaning coherence Semantics, decision representation and institutional accountability: making meaning hold across data, process and decision. The full recordTwenty years of delivery, every role and why it ended, skills, education and languages",
   "title": "Nkosinathi Mbambo",
   "type": "page",
   "url": "/#depth"
@@ -1789,6 +1789,126 @@
   "title": "From the work",
   "type": "note",
   "url": "/notes/#n2"
+ },
+ {
+  "id": "record#eg",
+  "section": "The full CV set is on request.",
+  "source": "record/index.html",
+  "tags": [
+   "page"
+  ],
+  "text": "The full CV set is on request. An infographic CV for people, role-specific CVs for application systems, and a companion that explains every career move and the measurement behind every figure on this page. Ask for the CV set →or book a time →",
+  "title": "The record",
+  "type": "page",
+  "url": "/record/#eg"
+ },
+ {
+  "id": "record#hero",
+  "section": "The record behind the work",
+  "source": "record/index.html",
+  "tags": [
+   "page"
+  ],
+  "text": "Nkosinathi Mbambo The record The record behind the work Data and AI engineering, solutions architecture and decision enablement, carried by one accountable person. The claim is that a decision can explain itself later. This page is the evidence for the person making it: what was delivered, where, with what, and why each chapter ended. Nothing in the stack was traded away to add the next layer. Professional delivery Since December 2006 Industries Six, in South Africa and the EU Practice Ingqiqo Executables, since 2020 Base Gauteng, South Africa",
+  "title": "The record",
+  "type": "page",
+  "url": "/record/#hero"
+ },
+ {
+  "id": "record#r1",
+  "section": "What comes into an engagement",
+  "source": "record/index.html",
+  "tags": [
+   "page"
+  ],
+  "text": "What comes into an engagement Read on the FORCE frame: focus, outcomes, range, competencies and evolution. F Focus Decision intelligence, agentic and neurosymbolic AI, data and AI governance, carried through to execution. O Outcomes Twenty and more enterprise projects delivered, with accuracy, latency and integrity measured rather than asserted. R Range Twenty years of professional delivery across six industries, in South Africa and the EU, from executive room to engineering floor. C Competencies BI, data engineering, AI and machine learning, agentic AI, decision architecture, data and AI governance. E Evolution BI solutionist to AI solutionist to decision solutionist, heading toward strategic execution.",
+  "title": "The record",
+  "type": "page",
+  "url": "/record/#r1"
+ },
+ {
+  "id": "record#r2",
+  "section": "Capability, accumulated",
+  "source": "record/index.html",
+  "tags": [
+   "page"
+  ],
+  "text": "Capability, accumulated Each capability was added and then kept, from 2001 to 2026. 2001 and 2005 were student roles held alongside full-time study. Professional delivery begins at Datacentrix in December 2006.",
+  "title": "The record",
+  "type": "page",
+  "url": "/record/#r2"
+ },
+ {
+  "id": "record#r3",
+  "section": "Outcomes",
+  "source": "record/index.html",
+  "tags": [
+   "page"
+  ],
+  "text": "Outcomes Standard Bank CIB, Transaction Banking, March to August 2026. +22% Model accuracy against the prior production baseline −35% Inference latency with cloud spend held flat 99.97% Feature data integrity Great Expectations pass rate 99.9% Decision system uptime customer-facing services Pedigree: declared, from the engagement’s delivery records. The measurement behind each figure is set out in the CV companion, available on request. The client’s internal systems are not named here. Data and AI Engineer, Decision Enablement Standard Bank CIB Transaction Banking · Johannesburg · through the practice · concluded August 2026 Built the Python medallion pipeline behind a transaction banking intelligence platform on AWS S3 with Apache Iceberg, including a quality-control zone that stopped failures reaching gold tables. Rebuilt three mainframe relationship-manager reports in SQL and reconciled each to source at record level. Engineered training and serving pipelines for propensity, fraud and next-best-action models, and ran their MLOps deployments. Turned executive KPI definitions into ODCS/Bitol data contracts, so service-level breaches surfaced automatically rather than at month-end. Built the retrieval and agent layer on LangChain and LangGraph, with Weaviate vector storage and Langfuse tracing, so every generated answer carried an evidence trail back to its source records. Designed a neurosymbolic approach to AI determinism: LLM inference constrained by GoRules decision models and OpenSpec contracts, so identical inputs produce identical, explainable outputs. Stood up the data and AI governance layer: model and prompt registries, evaluation and drift monitoring, human sign-off gates and a decision audit trail, alongside architecture board retrofit analysis and the service-account architecture for an assistant on Amazon Bedrock. Engineering was done with Claude Code, Cursor and Kilo Code under human review.",
+  "title": "The record",
+  "type": "page",
+  "url": "/record/#r3"
+ },
+ {
+  "id": "record#r4",
+  "section": "The practice",
+  "source": "record/index.html",
+  "tags": [
+   "page"
+  ],
+  "text": "The practice Ingqiqo Executables (Pty) Ltd, formerly Elev8 Business Excellence. Founder, principal and lead solutionist, September 2020 to the present. More than twenty enterprise engagements won, contracted and delivered across banking, telecommunications, chemicals, capital markets and government, each held to an ODCS/Bitol data contract standard, so producer service levels are tested in CI rather than asserted in a document. MTN BayobabJun 2025 – ongoing Data mesh and governance on Microsoft Fabric with Purview, dbt and Kafka: bronze, silver and gold domains and platform pipelines; a retrieval and agent layer on LangChain, LangGraph, RAGFlow and Weaviate with Langfuse evaluation; and the AI governance framework around it. Bancon-IT GmbH (EU)Jun 2025 – ongoing A digital bank finance platform on Kafka, Iceberg, Trino and OPA: streaming pipelines for central bank, end-of-day, stamp duty and profit-and-loss reporting through GitLab CI/CD, and neurosymbolic regulatory classification that bounds LLM inference with GoRules and OpenSpec, for deterministic, auditable output under the EU AI Act. SasolMar – May 2025 Databricks Hive Metastore to Unity Catalog migration: lineage restored, fine-grained access control for AI and ML teams, Airflow orchestration. JSE EIM DataCoNov 2022 – Feb 2024 Azure data warehouse and self-service data products: metadata-driven Synapse pipelines, Power BI marts and a Purview governance framework. ABSA Economic CrimeJul 2022 – Aug 2023 A Denodo logical data fabric and anti-money-laundering analytics: cross-source customer targeting and Azure ML feature engineering over Redshift, Athena and Glue. Multi-clientSep 2020 – Jun 2022 Vodacom DLS, Coca-Cola, Liberty, Nedbank, Capitec, Alexander Forbes and ABSA: Data Vault 2.0, data mesh, lakehouse and Azure ML feature engineering.",
+  "title": "The record",
+  "type": "page",
+  "url": "/record/#r4"
+ },
+ {
+  "id": "record#r5",
+  "section": "Before the practice",
+  "source": "record/index.html",
+  "tags": [
+   "page"
+  ],
+  "text": "Before the practice Every entry, with the reason it ended. Period Role and organisation Focus Jan – Sep 2020 Data Mining AnalystXpertek Contact at Vodacom DLS End-to-end BI modernisation: ConnectU ETL, Salesforce, HDFS automation, Tableau to Qlik Sense migration.Vodacom restructured the DLS function. Jun 2018 – Jan 2020 BI AnalystFNB iDigi Tech iDnA, FirstRand A product recommender on Amazon Lex and Lambda; group data policy gap analysis across FNB, RMB, WesBank and Ashburton.Fixed-term contract concluded. Jul 2017 – May 2018 BI SpecialistCyberPro at HomeChoice Group Warehouse modernisation across HomeChoice, FinChoice and FoneChoice; retention and retail store analytics; a hybrid cloud business case.Engagement concluded. Jul 2016 – Jun 2017 BI Analyst DeveloperEOH MC at the Western Cape Department of the Premier Clinical and financial BI for Western Cape Health; healthcare MDM on SSIS, DQS and MDS; a hybrid cloud BI merge.Government contract cycle concluded. Feb – Jun 2016 BI Analyst DeveloperKanimambo at the Western Cape Department of the Premier The same client and programme; BI environment virtualisation and BIML metadata capture.Intermediary replaced for the next phase. Apr 2012 – Feb 2016 Principal Lead, BI and MDMArlogenix, Cape Town Multi-domain MDM and Weka mining; operational reporting on Pentaho and Talend; 360-degree views for mobile and telecoms clients.Arlogenix restructured its consulting model. Sep 2011 – Apr 2012 BI and MDM Solutions ArchitectSanlam Personal Finance, Bellville Re-architected a loyalty programme across a 45-person team; EDW creation and Solvency II enforcement; deployment architectures documented.Contract scope concluded. 2007 – Aug 2011 Principal Consultant and FounderExBSol Technologies, Johannesburg BI as a service for small and medium enterprises; an integrated information framework; open-source health BI for an NGO; a municipal MDM roadmap.The practice evolved into Arlogenix. Jun – Oct 2007 ConsultantHarvey Jones, Johannesburg Benchmarking BI with XMLA cube processing; project portfolio BI on ProClarity and SSAS.Left to run his own practice full-time. Dec 2006 – Mar 2007 ConsultantDatacentrix, Johannesburg MultiChoice EDW redesign as QA and test lead; HR and workflow analysis; city parks reporting.Contract concluded. Jul – Nov 2005 Instructional DesignerVaal University of Technology Virtual university design in Java, JSP, MySQL and Struts; student governance analysis with a 35-person team.Student contract; graduated into professional work. Jan – Dec 2001 Assistant Systems AdministratorUniversity of Pretoria, Informatorium Computer lab administration on DOS, NetWare and Windows NT; fault tracking and machine health reporting.Student role; studies continued.",
+  "title": "The record",
+  "type": "page",
+  "url": "/record/#r5"
+ },
+ {
+  "id": "record#r6",
+  "section": "Skills, in four layers",
+  "source": "record/index.html",
+  "tags": [
+   "page"
+  ],
+  "text": "Skills, in four layers Thirty-five capabilities, arranged by where they act. Interface · soft skills Strategic communicationExecutive engagementAnalytical storytellingAutodidactic learningCross-cultural intelligenceTechnical writingStakeholder managementConsultative problem-solving Processing · power skills Decision intelligenceStrategic architectureData and AI governanceAI/ML engineeringNeurosymbolic AI designAI determinismData quality assuranceFeature engineeringMLOps and AI production Infrastructure · technical skills Python / PySpark / SQLFabric / DatabricksAzure and AWSKafka / streamingdbt / Airflow / MLOpsIceberg / Delta / HudiLangGraph / LangChainWeaviate / RAGFlowGoRules / OpenSpecClaude Code / CursorTerraform / KubernetesData contracts Governance · meta skills Systems thinkingPolymathic synthesisBusiness–data translationPattern recognitionArchitectural abstractionStrategic coherence mapping",
+  "title": "The record",
+  "type": "page",
+  "url": "/record/#r6"
+ },
+ {
+  "id": "record#r7",
+  "section": "Technical proficiency",
+  "source": "record/index.html",
+  "tags": [
+   "page"
+  ],
+  "text": "Technical proficiency The stack is evidence, never the offer. Cloud and fabric Microsoft Fabric · Databricks · Azure AI Foundry · Azure Synapse · Azure Data Factory · ADLS Gen2 · Amazon Bedrock · SageMaker · Glue · Athena · Redshift · Lambda · Textract Open tables Apache Iceberg · Delta Lake · Apache Hudi · Apache XTable · Trino · Polaris · Nessie · Gravitino · ClickHouse · Polars Agentic AI LangGraph · LangChain · Langfuse · RAGFlow · Weaviate · pgvector · Amazon Bedrock · Azure AI Foundry · retrieval-augmented generation · agent orchestration and evaluation Determinism Neurosymbolic architecture · GoRules (ZEN) decision models · OpenSpec contracts · symbolic rule layers · guardrails and evaluation harnesses · reproducible AI output · decision traceability AI-assisted build Claude Code · Cursor · Kilo Code · GitHub Copilot · OpenSpec specification-driven development · agentic code review and test generation under human sign-off Governance Microsoft Purview · DataHub · Apache Atlas · OpenLineage · Open Policy Agent · Unity Catalog · Microsoft Presidio · model and prompt registries · drift monitoring · POPIA · GDPR · EU AI Act Orchestration Apache Airflow · dbt · SQLMesh · Great Expectations · Pydantic · Soda Core · ODCS / Bitol data contracts Streaming Apache Kafka · Azure Event Hubs · Debezium · Airbyte · dltHub · change data capture Modelling Kimball dimensional · Data Vault 2.0 · Inmon 3NF · master data management · semantic layer · graph · time series Frameworks TOGAF · Zachman · Data Mesh · CRISP-DM · SAFe · COBIT · DGI · MIKE 2.0 · OSIMM Legacy stack SSIS · SSAS · SSRS · Denodo · Talend · Pentaho · JasperReports · Mondrian · Qlik Sense · Tableau · ProClarity",
+  "title": "The record",
+  "type": "page",
+  "url": "/record/#r7"
+ },
+ {
+  "id": "record#r8",
+  "section": "Education, certification and languages",
+  "source": "record/index.html",
+  "tags": [
+   "page"
+  ],
+  "text": "Education, certification and languages Education and certification MCSE: Data Management and Analytics · Microsoft, 2017 MCSA: Business Intelligence Development · Microsoft Microsoft 70-767 Implementing a Data Warehouse · 70-775 Data Engineering on Azure HDInsight · 70-768 Developing SQL Data Models · 2017 TOGAF Foundation and Practitioner · The Open Group N.D. Computer Systems Engineering (S4) · Vaal University of Technology, NQF 7 equivalent ProClarity End-User, Technical and Advanced · 2007 Languages Full professional · English, isiXhosa, isiZulu, Sesotho, Setswana, Sepedi Working · Afrikaans, isiNdebele, siSwati Limited working · Xitsonga, Tshivenda, Hebrew Three professional references, covering corporate and investment banking, data platform and architecture delivery, and independent practice, are available on request. Their contact details are shared only on a verified request.",
+  "title": "The record",
+  "type": "page",
+  "url": "/record/#r8"
  },
  {
   "id": "resources#eg",
