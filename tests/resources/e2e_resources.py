@@ -18,7 +18,9 @@ from urllib.parse import urljoin, urlparse
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[2]
-READERS = ["seeing-clearly", "company-profile", "engagement-pack", "the-progress-record"]
+READERS = ["seeing-clearly", "company-profile", "engagement-pack", "the-progress-record", "the-price-of-better"]
+# Sold as a PDF edition: only the outline and Part One (pages 1-10) may be published.
+PREVIEW = {"the-price-of-better": 10}
 HELD_BACK = {"seeing-clearly": {6, 23, 26}, "company-profile": {11, 15, 16, 20, 24, 26, 27}}
 
 
@@ -95,6 +97,9 @@ def main():
             c.ok(not any("ingqiqo-executables.run" in h for h in hosts), "no links to member hosts that are not live yet")
             c.ok(not any(re.search(r"buymeacoffee\.com/idealilk/(extras|membership)", h) for h in hosts),
                  "no links to Buy Me a Coffee pages that are not published yet")
+            pob = page.locator(".volume", has_text="The Price of Better")
+            c.ok(pob.locator("a[href='read/the-price-of-better.html']").count() == 1
+                 and "PDF coming soon" in pob.text_content(), "The Price of Better: opening online, PDF not yet linked")
             for title in ("The Decision Portfolio", "The Currency of Craft"):
                 row = page.locator(".ledger li", has_text=title)
                 c.ok(row.locator("a").count() == 0 and "For members" in row.text_content(),
@@ -113,6 +118,10 @@ def main():
                 c.ok(not (nums & HELD_BACK.get(slug, set())), f"{slug}: held-back pages are not shown")
                 on_disk = {int(p.stem) for p in (ROOT / "resources/read/img" / slug).glob("*.webp")}
                 c.ok(not (on_disk & HELD_BACK.get(slug, set())), f"{slug}: held-back pages are not published at all")
+                if slug in PREVIEW:
+                    c.ok(max(on_disk) <= PREVIEW[slug] and max(nums) <= PREVIEW[slug],
+                         f"{slug}: only the opening {PREVIEW[slug]} pages are published")
+                    c.ok(page.locator(".outline li").count() == 9, f"{slug}: the outline lists all nine parts")
                 alts = page.eval_on_selector_all(".leaf img", "els => els.every(e => e.alt && e.width > 0)")
                 c.ok(alts, f"{slug}: every page image has alt text and dimensions")
                 if slug == "seeing-clearly":
