@@ -47,6 +47,20 @@ window.PROJECTS = [
   },
   {
     "group": "spine",
+    "plane": "L3 Meaning · L5 Judgement",
+    "name": "Decision Intelligence Platform",
+    "discipline": "Engineer",
+    "summary": "A checkable map of what terms, metrics and decisions mean, where they disagree, and what depends on what.",
+    "status": "Kernel built; web layer in build",
+    "stack": [
+      "Python",
+      "Rails + HTMX",
+      "Claude"
+    ],
+    "url": "work/decision-intelligence-platform/"
+  },
+  {
+    "group": "spine",
     "plane": "L0–L7, one domain end to end",
     "name": "EETE — Workforce Economics",
     "discipline": "Analyst",
