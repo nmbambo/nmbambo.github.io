@@ -2343,6 +2343,111 @@
   "url": "/work/decision-evidence-lab/#p4"
  },
  {
+  "id": "work/decision-intelligence-platform#eg",
+  "section": "Want this working in your organisation?",
+  "source": "work/decision-intelligence-platform/index.html",
+  "tags": [
+   "work",
+   "Engineer",
+   "L3 Meaning",
+   "L5 Judgement"
+  ],
+  "text": "Want this working in your organisation? Bring the decision that keeps coming back. I will tell you plainly whether this instrument fits, what it would take, and what it would not do. Start a conversation →or book a time →",
+  "title": "Decision Intelligence Platform",
+  "type": "work",
+  "url": "/work/decision-intelligence-platform/#eg"
+ },
+ {
+  "id": "work/decision-intelligence-platform#hero",
+  "section": "Decision Intelligence Platform",
+  "source": "work/decision-intelligence-platform/index.html",
+  "tags": [
+   "work",
+   "Engineer",
+   "L3 Meaning",
+   "L5 Judgement"
+  ],
+  "text": "Nkosinathi Mbambo Spine build · Engineer Decision Intelligence Platform A checkable map of what an organisation's terms, metrics and decisions mean, and where they disagree. Status Kernel built and tested; web layer in build Lead demand Engineer · Solutionist posture Spine plane L3 Meaning · L5 Judgement Repository Not yet public",
+  "title": "Decision Intelligence Platform",
+  "type": "work",
+  "url": "/work/decision-intelligence-platform/#hero"
+ },
+ {
+  "id": "work/decision-intelligence-platform#p0",
+  "section": "What it gives you",
+  "source": "work/decision-intelligence-platform/index.html",
+  "tags": [
+   "work",
+   "Engineer",
+   "L3 Meaning",
+   "L5 Judgement"
+  ],
+  "text": "What it gives you If you want to know where your organisation's numbers disagree, and which decisions rest on them, A registry of meaning that checks itself: every term, metric and decision is recorded with an owner, and ordinary code, not a model, reports where definitions conflict and what would break if one changed.",
+  "title": "Decision Intelligence Platform",
+  "type": "work",
+  "url": "/work/decision-intelligence-platform/#p0"
+ },
+ {
+  "id": "work/decision-intelligence-platform#p1",
+  "section": "The problem",
+  "source": "work/decision-intelligence-platform/index.html",
+  "tags": [
+   "work",
+   "Engineer",
+   "L3 Meaning",
+   "L5 Judgement"
+  ],
+  "text": "The problem Finance, operations and the board hold different numbers for the same thing. Nobody can say which decisions were made on which meaning, or what a redefinition would invalidate. Reports and models are now written faster than anyone can read them.",
+  "title": "Decision Intelligence Platform",
+  "type": "work",
+  "url": "/work/decision-intelligence-platform/#p1"
+ },
+ {
+  "id": "work/decision-intelligence-platform#p2",
+  "section": "Approach",
+  "source": "work/decision-intelligence-platform/index.html",
+  "tags": [
+   "work",
+   "Engineer",
+   "L3 Meaning",
+   "L5 Judgement"
+  ],
+  "text": "Approach Register terms, definitions, metrics and decisions with an owner, a unit and a grain. Adapters read dbt semantic models and metrics, data dictionaries and Decision Language contracts, and say exactly what they could and could not read. Check with deterministic code: conflicting definitions, undefined or unowned terms, broken references, and decisions resting on a term whose meaning conflicts. Two names are one term only where an owner has said so, never because they look alike. Walk the graph. Select a term and see what depends on it, and what it depends on. Record each decision with a named owner and the conditions under which it would change, on a hash-chained ledger that can be verified without the platform. Let AI explain only what the code has already proved. Every reference an explanation makes is checked against what it was shown; an invented one is flagged, not kept.",
+  "title": "Decision Intelligence Platform",
+  "type": "work",
+  "url": "/work/decision-intelligence-platform/#p2"
+ },
+ {
+  "id": "work/decision-intelligence-platform#p3",
+  "section": "Structure",
+  "source": "work/decision-intelligence-platform/index.html",
+  "tags": [
+   "work",
+   "Engineer",
+   "L3 Meaning",
+   "L5 Judgement"
+  ],
+  "text": "Structure KernelRegistry, coherence rules, dependency graph, ledger Adaptersdbt, data dictionary, Decision Language; each reports what was found, mapped, skipped or failed ExplanationClaude explains and answers questions by calling the kernel, scoped to one analysis WebRails and HTMX, Clerk sign-in, Postgres with row-level isolation",
+  "title": "Decision Intelligence Platform",
+  "type": "work",
+  "url": "/work/decision-intelligence-platform/#p3"
+ },
+ {
+  "id": "work/decision-intelligence-platform#p4",
+  "section": "Craft and next",
+  "source": "work/decision-intelligence-platform/index.html",
+  "tags": [
+   "work",
+   "Engineer",
+   "L3 Meaning",
+   "L5 Judgement"
+  ],
+  "text": "Craft and next Python · Rails · HTMX · Postgres · Clerk · Claude The kernel, adapters and ledger are built and tested. The web layer and database isolation are written but not yet run end to end, and the AI layer has not yet run against live models. Delivery runs through the Ingqiqo factory: each change is specified, built in isolation, gated by tests, reviewed for security, code and meaning coherence, and approved by a named person, with every step recorded. The factory itself is tested but has not yet taken a live job. An effort estimator sits beside it and calls itself a prior until real outcomes replace it. ← All work The architecture →",
+  "title": "Decision Intelligence Platform",
+  "type": "work",
+  "url": "/work/decision-intelligence-platform/#p4"
+ },
+ {
   "id": "work/decision-ir#eg",
   "section": "Want this working in your organisation?",
   "source": "work/decision-ir/index.html",
