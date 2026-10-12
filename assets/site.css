@@ -178,6 +178,7 @@ a.card .soon { color: var(--gold); }
 .arch .body.note { margin-top: 24px; color: var(--pearl-muted); font-size: 16px; font-style: italic; }
 .arch .grid { margin-top: 32px; margin-left: 56px; }
 .arch .grid h3 { font-style: italic; font-weight: 400; font-size: 21px; }
+.arch h3.sub { margin: 48px 0 12px; font-style: italic; font-weight: 400; font-size: 26px; }
 .arch .steps strong { font-weight: 500; color: var(--pearl); }
 .models article p { font-size: 15px; }
 .diagram { margin: 40px 0 0; }

@@ -51,7 +51,7 @@
     <figure class="diagram">
       <svg viewBox="0 0 960 620" role="img" aria-labelledby="dg-t dg-d" xmlns="http://www.w3.org/2000/svg">
         <title id="dg-t">The Meaning Operating System</title>
-        <desc id="dg-d">A lakehouse leg on the left and a lakebase leg on the right, joined by master data management in the centre. Above them sit the semantic layer, judgement and estimators, and accountability with the decision warranty. A governance and security band runs beneath everything.</desc>
+        <desc id="dg-d">A lakehouse leg on the left and a lakebase leg on the right, joined by master data management in the centre. Above them sit the semantic layer, judgement and estimators, and accountability with the decision warranty. An estimators box beside judgement holds TabDPT-Turbo, TabICLv2, Laya and an energy model, which propose only. A governance and security band runs beneath everything.</desc>
         <defs>
           <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="f-gold"/></marker>
         </defs>
@@ -69,7 +69,8 @@
         <text x="894" y="156" class="s">TabDPT-Turbo</text>
         <text x="894" y="176" class="s">TabICLv2</text>
         <text x="894" y="196" class="s">Laya</text>
-        <text x="894" y="226" class="s i">propose only</text>
+        <text x="894" y="216" class="s">Energy (EBM)</text>
+        <text x="894" y="240" class="s i">propose only</text>
         <line x1="844" y1="136" x2="824" y2="136" class="ln" marker-end="url(#ar)"/>
         <!-- Semantic layer -->
         <rect x="140" y="188" width="680" height="64" class="box"/>
@@ -227,7 +228,7 @@
 
   <section aria-labelledby="a7">
     <h2 id="a7"><span class="num">VIII</span> Estimators and AI influence</h2>
-    <p class="body">Tabular in-context-learning models (TabDPT-Turbo and TabICLv2) and Laya, an open-source model, make the platform useful from week one on a client's modest data. They also change what the data, the AI and the decisions owe each other.</p>
+    <p class="body">Tabular in-context-learning models (TabDPT-Turbo and TabICLv2) and Laya, an open-source model, make the platform useful from week one on a client's modest data. They also change what the data, the AI and the decisions owe each other. They estimate; they do not search. Where the question is a structured plan that must satisfy many constraints at once, an energy-based model (EBM) takes over the proposing.</p>
     <div class="grid three">
       <article>
         <h3>On the data</h3>
@@ -243,6 +244,37 @@
       </article>
     </div>
     <p class="body note">For sweeps that would fire thousands of predictions, the ICL model teaches a cheap deterministic surrogate that runs the inner loop, which also restores determinism where the solver needs it. Model versions named here are checked against current published benchmarks before any design is frozen.</p>
+
+    <h3 class="sub">Where the tabular models stop, the energy model starts</h3>
+    <p class="body">An energy-based model learns one scalar score, an energy, for a whole candidate state: low when the state is consistent with the constraints, high when something is broken. Because the score can be read on a partial plan, it says where the plan is going wrong, not only that it did.</p>
+    <div class="tw">
+    <table class="spec">
+      <thead><tr><th scope="col">What the case needs</th><th scope="col">Tabular ICL (TabDPT-Turbo, TabICLv2, Laya)</th><th scope="col">Energy model (EBM)</th></tr></thead>
+      <tbody>
+        <tr><td>The shape of the answer</td><td>A distribution over a column, predicted row by row</td><td>A whole candidate plan, scored as one object</td></tr>
+        <tr><td>Hard structure: allocations, schedules, rosters</td><td>Each cell is predicted without the others, so feasibility is not part of the score</td><td>The constraints enter one score jointly, so feasibility is what is optimised</td></tr>
+        <tr><td>Feedback before the end</td><td>None until the answer arrives</td><td>An energy on partial plans, so the part that raises it can be located</td></tr>
+        <tr><td>A case far from the context rows</td><td>Returns an estimate regardless, with no signal that it is out of support</td><td>Energy rises with distance from what was learned, which is the signal</td></tr>
+        <tr><td>Where it sits</td><td>L4 Adaptation: estimates</td><td>L4 Adaptation: proposals and a support check; L5 Judgement: warm starts</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="grid three">
+      <article>
+        <h3>It proposes plans</h3>
+        <p>For allocation, scheduling and roster decisions it searches for low-energy candidates in a continuous latent space and hands them to the Sovereign Logic Engine as warm starts and phase hints. A candidate counts only if it satisfies every hard constraint, and the engine still returns the minimum-weight relaxation set.</p>
+      </article>
+      <article>
+        <h3>It locates what is broken</h3>
+        <p>Read on a partial plan, the energy points at the step or constraint driving it up. That is passed to the person as a hint to look there. The solver&rsquo;s proof stays the authority on what is infeasible and why.</p>
+      </article>
+      <article>
+        <h3>It guards the estimators</h3>
+        <p>Beside every ICL estimate sits a support score. When a case sits far from the context rows, the estimate is marked unsupported and may be refused, which the canons already permit as an answer.</p>
+      </article>
+    </div>
+    <p class="body note">The same rules apply to it as to the other estimators. It is correlational, so binding its output to a decision variable without causal support is a compile-time error. It is trained and queried only on rows the caller is entitled to see. Seeds, chain initialisation, step count, temperature schedule and the checkpoint hash are pinned in the evidence manifest so a run replays. An energy is a score, not a probability, and is calibrated before it is shown as one.</p>
+    <p class="body note">What is known, and what is not. The reference recipe is open: a joint-embedding energy trained on partly filled solutions and read out by Langevin dynamics. An open replication of Logical Intelligence&rsquo;s Kona reached 96.6% puzzle accuracy on Sudoku, against 96.2% reported for Kona on hard puzzles, on different evaluation sets. That shows the method learns constraint structure. It does not show it works on a client&rsquo;s data. Kona is proprietary and is a reference, not a dependency. This estimator is designed and bound in the Abstraction Model Layer but not yet built. Its first gate is plain: on the client-zero allocation case it must reach a feasible plan faster than the solver alone, or it does not ship.</p>
   </section>
 
   <section aria-labelledby="a8">
