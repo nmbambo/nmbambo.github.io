@@ -335,8 +335,44 @@
     <p class="body note">Where this stops. The test checks marginal coverage and the groups that are declared, not every case. Calibrated uncertainty is still correlational, so it cannot be bound to an intervention without causal support. Classification, non-Gaussian predictives and joint multi-step forecasts are not yet covered by the test, and estimates in those families are not warranted until it is extended. The gate is built and tested on synthetic predictions; it has not yet run on a client&rsquo;s held-out data, and the Gaussian-process fitting layer that feeds it is not yet built.</p>
   </section>
 
+  <section aria-labelledby="a9b">
+    <h2 id="a9b"><span class="num">XI</span> Integrity, assurance, warranty</h2>
+    <p class="body">Three words that are easy to blur, and must not be. Decision integrity is a property: the decision was formed as recorded, from the inputs recorded, and has not changed since. Decision assurance is an opinion: an independent examination finds enough evidence, to a stated level, that the decision meets the four disciplines. The Decision Warranty is a promise: the decision will hold within the conditions declared, with a remedy if it does not.</p>
+    <div class="tw">
+    <table class="spec">
+      <thead><tr><th scope="col"></th><th scope="col">Integrity</th><th scope="col">Assurance</th><th scope="col">Warranty</th></tr></thead>
+      <tbody>
+        <tr><td>What it is</td><td>A property of the decision record</td><td>An opinion formed on evidence</td><td>A promise, with consequences</td></tr>
+        <tr><td>It looks</td><td>Back: was it formed as recorded?</td><td>At now: is it fit?</td><td>Forward: will it hold?</td></tr>
+        <tr><td>Who stands behind it</td><td>The system, checked mechanically</td><td>An assurer, independent of the decider</td><td>A warrantor who accepts liability</td></tr>
+        <tr><td>How it fails</td><td>Tampering, gaps, broken lineage</td><td>Comfort without enough evidence</td><td>A promise beyond what was assured</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="body note">They nest, and the order cannot be reversed: nothing is assured that lacks integrity, and nothing is honestly warranted that was not assured.</p>
+
+    <h3 class="sub">What each means at every solution layer</h3>
+    <p class="body">The eight solution layers sit across the planes of the Spine. At each one the three words ask a different question.</p>
+    <div class="tw">
+    <table class="spec">
+      <thead><tr><th scope="col">Layer</th><th scope="col">Integrity means</th><th scope="col">Assurance tests</th><th scope="col">The warranty draws</th></tr></thead>
+      <tbody>
+        <tr><td>Abstraction Model<br><small>L3 Meaning</small></td><td>One versioned, consistent definition per term; the Decision IR conforms to its schema</td><td>Whether the model fits the domain and the intent, and whether each proxy for an intent is declared and justified</td><td>Its scope. A warranty speaks only in these terms; what is not modelled is excluded</td></tr>
+        <tr><td>Bronze<br><small>L1 Evidence</small></td><td>Landed exactly as received, hashed on arrival, with source, time, authority and lawful basis</td><td>Chain of custody and control totals against the source, not the truth of the content</td><td>Custody, not truth: we relied on exactly what the source sent, when it sent it</td></tr>
+        <tr><td>Silver<br><small>L1 Evidence · L2 Identity</small></td><td>Deterministic transforms traced to the model; every row kept or quarantined, none lost</td><td>Matching and conformance, with measured error rates</td><td>Disclosed interpretation: the rule version and error rates become conditions</td></tr>
+        <tr><td>Gold<br><small>L1 Evidence</small></td><td>Grain respected, no double counting, reconciled to Silver, history preserved</td><td>Fitness for this decision&rsquo;s question, and that the state on the day can be rebuilt</td><td>The pinned evidence snapshot, cited by hash and version</td></tr>
+        <tr><td>Semantic Analytic<br><small>L3 Meaning</small></td><td>One definition per metric, the same number on every surface</td><td>Whether the metric measures what the decision intends</td><td>The defined metric, not its everyday reading; any gap is disclosed</td></tr>
+        <tr><td>Estimate Intelligence<br><small>L4 Adaptation · L6 Foresight</small></td><td>Model, estimand, seed and context pinned to a Gold snapshot</td><td>Calibration on unseen rows, support checks, stated causal assumptions</td><td>The process and its bounds, never a point; void outside the model&rsquo;s domain</td></tr>
+        <tr><td>Confidence<br><small>L5 Judgement</small></td><td>Confidence computed from upstream evidence, never asserted</td><td>Whether stated confidence comes true at its stated rate, in every declared segment</td><td>Its terms: cap, validity window and exclusions are set here</td></tr>
+        <tr><td>Control Explorative<br><small>L6 Foresight · L7 Execution</small></td><td>Every option explored, override and rejection logged; authority checked; the sandbox kept apart from the commit</td><td>Whether the options were really explored, discretion stayed within authority, and the decision matches its premises at commit</td><td>Its issue and its watch: issued at commitment, premises monitored afterwards</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="body note">Integrity is checked one layer at a time. The failures that matter for assurance sit between layers: intent against proxy, from Abstraction to Semantic; decision against premise, from Control back to Gold, Estimate and Confidence. A warranty is no stronger than the weakest assured layer on its path. Bronze to Gold is evidence about what is, where integrity carries the weight; the layers above make claims about meaning and the future, where validity carries it, and so does the warranty&rsquo;s exposure.</p>
+  </section>
+
   <section aria-labelledby="a10">
-    <h2 id="a10"><span class="num">XI</span> Security and entitlements</h2>
+    <h2 id="a10"><span class="num">XII</span> Security and entitlements</h2>
     <p class="body">One policy language, one decision point, many enforcement points. Policy is written once in OPA and projected into every engine, because hand-granting access in five places is how the fifth goes wrong.</p>
     <div class="tw">
     <table class="spec">
@@ -357,7 +393,7 @@
   </section>
 
   <section aria-labelledby="a11">
-    <h2 id="a11"><span class="num">XII</span> Quantum readiness</h2>
+    <h2 id="a11"><span class="num">XIII</span> Quantum readiness</h2>
     <p class="body">Quantum computing threatens today's signatures, not the hash chain. The ledger is built to the NIST post-quantum standards now, and keeps a seam open for quantum solvers later.</p>
     <ol class="layers">
       <li><span class="layer-name">Hashing</span><span class="layer-desc">SHA3-256 (FIPS 202) chains the ledger; BLAKE3 serves only as a fast content digest.</span></li>
@@ -369,7 +405,7 @@
   </section>
 
   <section aria-labelledby="a12">
-    <h2 id="a12"><span class="num">XIII</span> Canons</h2>
+    <h2 id="a12"><span class="num">XIV</span> Canons</h2>
     <p class="body">Rules that hold regardless of vendor, client or phase. A design that breaks one is wrong even when it works.</p>
     <ol class="steps">
       <li>The Decision IR is the single decidable truth.</li>

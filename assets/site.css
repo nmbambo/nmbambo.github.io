@@ -206,6 +206,7 @@ table.spec th { text-align: left; font-weight: 400; font-size: 11px; letter-spac
 table.spec td { padding: 14px 16px; border-bottom: var(--hairline) solid var(--gold-quiet); vertical-align: top; color: var(--pearl-muted); }
 table.spec td:first-child { color: var(--pearl); font-style: italic; width: 34%; }
 table.spec tbody tr:nth-child(odd) { background: var(--obsidian-raised); }
+table.spec td small { font-style: normal; font-size: 12px; letter-spacing: 0.04em; color: var(--pearl-muted); }
 @media (max-width: 1000px) { .arch .grid.five { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 620px) {
   .arch .grid, .tw { margin-left: 0; }
