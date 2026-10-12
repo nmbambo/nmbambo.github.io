@@ -467,3 +467,14 @@ a.hit-title:hover { border-color: var(--gold); }
 .project-hero .body { padding-left: 0; margin-top: 20px; color: var(--pearl-muted); }
 .project .givens.wide + .body { margin-top: 28px; }
 .project .givens { margin-bottom: 0; }
+/* Worked decision record */
+.record-doc { max-width: 900px; }
+.record-doc > p, .record-doc > ul, .record-doc > blockquote { max-width: 66ch; font-size: 17px; margin: 0 0 16px; }
+.record-doc > ul { padding-left: 20px; color: var(--pearl-muted); }
+.record-doc h2 { margin: 56px 0 16px; }
+.record-doc h2:first-child { margin-top: 0; }
+.record-doc blockquote { margin: 0 0 20px; padding-left: 20px; border-left: var(--hairline) solid var(--gold); font-style: italic; font-size: 19px; color: var(--pearl); }
+.record-doc strong { font-weight: 500; color: var(--pearl); }
+.record-doc .table-wrap { overflow-x: auto; margin: 8px 0 24px; }
+.record-doc table.spec td:first-child { width: auto; white-space: nowrap; }
+.record-doc table.spec { min-width: 560px; }
