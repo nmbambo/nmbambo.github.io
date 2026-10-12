@@ -132,9 +132,9 @@ window.PROJECTS = [
   {
     "group": "instrument",
     "plane": "L0 Strategy · L3 Meaning",
-    "name": "Decision Intelligence Maturity Assessment",
+    "name": "Decision Maturity Assessment",
     "discipline": "Scientist",
-    "summary": "Measures how well an organisation makes and records its decisions, across five dimensions.",
+    "summary": "A bounded, evidence-based examination of how an organisation frames, records, executes and reviews its important decisions.",
     "status": "Available now",
     "stack": [
       "Assessment design",
