@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Decision Maturity Self-Check — Ingqiqo Executables</title>
+<meta name="description" content="Fifteen questions about one important decision, scored against the Decision Maturity Assessment rubric. You receive a certified, verifiable report, and every rerun is kept as a new version that shows what changed.">
+<meta name="theme-color" content="#0C0A10">
+<meta property="og:image" content="https://nmbambo.github.io/assets/portrait.jpg">
+<link rel="icon" href="../../assets/rose-small.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/assess/assess.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../../" aria-label="Home"><img src="../../assets/rose-small.svg" alt="" width="28" height="28"></a>
+  <nav aria-label="Sections">
+    <a href="../../method/">Method</a>
+    <a href="../../#work">Work</a>
+    <a href="../../architecture/">Architecture</a>
+    <a href="../../engage/">Engage</a>
+    <a href="../../resources/">Resources</a>
+    <a href="../../search/">Search</a>
+    <a href="../../book/">Book</a>
+    <a href="../../#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="main" class="project book assess">
+  <section class="hero project-hero">
+    <p class="byline"><img class="portrait xs" src="../../assets/portrait.jpg" alt="" width="40" height="40"><a href="../../">Nkosinathi Mbambo</a></p>
+    <p class="label"><a href="../../work/decision-maturity-assessment/">Decision Maturity Assessment</a> · Free self-check</p>
+    <h1>Decision Maturity Self-Check</h1>
+    <p class="role">Fifteen questions about one important decision. A certified report you can verify, and a record of what changes each time you run it again.</p>
+    <dl class="facts">
+      <div><dt>Time</dt><dd>About ten minutes</dd></div>
+      <div><dt>About</dt><dd>One decision from the last year</dd></div>
+      <div><dt>You receive</dt><dd>A certified report, as PDF and as a verifiable file</dd></div>
+      <div><dt>Reruns</dt><dd>Kept as versions, never overwritten</dd></div>
+    </dl>
+  </section>
+
+  <section aria-labelledby="s-how">
+    <h2 id="s-how"><span class="num">I</span> How it works</h2>
+    <ol class="steps">
+      <li>Choose one important decision your organisation made in the last year, and name it.</li>
+      <li>For each of fifteen criteria, say what happened for that decision and what you could actually show for it. A record from the decision counts fully; a rule that requires it counts up to 2; what people would say counts up to 1. This is the rubric used in the full assessment.</li>
+      <li>If you do not know, say so. An unknown is recorded as a limitation, not as a failure.</li>
+      <li>You receive a report with a certificate ID that anyone can check at <a href="../../verify/">nmbambo.github.io/verify</a>. Run it again later and the new version shows what changed in your answers and what each change implies.</li>
+    </ol>
+    <p class="body as-note">A self-check is your own account of one decision. It is not the Decision Maturity Assessment, in which the evidence is examined across four to six decisions.</p>
+  </section>
+
+  <div class="as-banner" id="as-rerun" hidden></div>
+  <div class="as-banner as-offer" id="as-offer" hidden></div>
+
+  <form id="as-form" novalidate autocomplete="on">
+    <section aria-labelledby="s-decision">
+      <h2 id="s-decision"><span class="num">II</span> The decision</h2>
+      <div class="bk-grid">
+        <div class="bk-field wide"><label class="k" for="as-decision">Name the decision</label>
+          <p class="bk-hint" id="as-decision-hint">A few words you will recognise later, for example "2026 credit limit policy change". It appears on your certificate, so leave out anything confidential.</p>
+          <input id="as-decision" name="decision" type="text" maxlength="200" required aria-describedby="as-decision-hint">
+          <p class="bk-err" id="as-decision-err" hidden></p></div>
+      </div>
+    </section>
+
+    <div id="as-stages"></div>
+
+    <section aria-labelledby="s-you">
+      <h2 id="s-you"><span class="num">VIII</span> Your details</h2>
+      <p class="body">Your report is issued to you and stored by Ingqiqo Executables so it can be verified and rerun. Your name and email do not appear on the certificate; your organisation and the decision name do.</p>
+      <div class="bk-grid">
+        <div class="bk-field"><label class="k" for="as-name">Name</label>
+          <input id="as-name" name="name" type="text" autocomplete="name" maxlength="120" required>
+          <p class="bk-err" id="as-name-err" hidden></p></div>
+        <div class="bk-field"><label class="k" for="as-email">Work email</label>
+          <input id="as-email" name="email" type="email" autocomplete="email" maxlength="160" required>
+          <p class="bk-err" id="as-email-err" hidden></p></div>
+        <div class="bk-field"><label class="k" for="as-org">Organisation</label>
+          <input id="as-org" name="organisation" type="text" autocomplete="organization" maxlength="160" required>
+          <p class="bk-err" id="as-org-err" hidden></p></div>
+        <div class="bk-field"><label class="k" for="as-role">Role (optional)</label>
+          <input id="as-role" name="role" type="text" autocomplete="organization-title" maxlength="120"></div>
+        <div class="as-hp" aria-hidden="true"><label for="as-website">Leave this empty</label><input id="as-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+      </div>
+
+      <fieldset class="bk-set as-consent">
+        <legend class="k">Consent under POPIA</legend>
+        <label class="bk-pick"><input type="checkbox" id="as-consent-processing" required>
+          <span><strong>Process my answers and issue my report (required)</strong> Ingqiqo Executables may store my details and answers to score them, issue and keep my certified report and its later versions, and let anyone I give the certificate ID to verify it.</span></label>
+        <label class="bk-pick"><input type="checkbox" id="as-consent-contact">
+          <span><strong>Contact me about my results (optional)</strong> Ingqiqo Executables may contact me about my results and related services. I can withdraw this at any time.</span></label>
+        <p class="bk-err" id="as-consent-err" hidden></p>
+      </fieldset>
+      <p class="bk-hint">Responsible party: Ingqiqo Executables (Pty) Ltd, South Africa. Data is held with Supabase in the EU (Frankfurt). To see, correct or erase your data, write to <a href="mailto:nmbambo@ingqiqo-executables.run?subject=POPIA%20request%3A%20self-check">nmbambo@ingqiqo-executables.run</a>. Erased certificates show as withdrawn on the verify page.</p>
+
+      <p class="cta-row"><button type="submit" class="cta-primary bk-btn" id="as-submit">Score and issue my report</button>
+        <span class="status" id="as-status" aria-live="polite"></span></p>
+      <p class="bk-err" id="as-form-err" role="alert" hidden></p>
+    </section>
+  </form>
+
+  <section class="engage" aria-labelledby="eg">
+    <img class="portrait md" src="../../assets/portrait.jpg" alt="Nkosinathi Mbambo" width="88" height="88">
+    <div>
+      <h2 id="eg">Want the evidence examined, not reported?</h2>
+      <p>The Decision Maturity Assessment examines four to six decisions against their records, over two to four weeks, and tells you where decision integrity holds and where it depends on memory.</p>
+      <p class="cta"><a href="../../work/decision-maturity-assessment/">About the assessment →</a><a class="cta-quiet" href="../../book/">or book a time →</a></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <img src="../../assets/rose.svg" alt="Ingqiqo rose" width="40" height="40">
+  <p>© 2026 Nkosinathi Mbambo · Ingqiqo Executables (Pty) Ltd</p>
+</footer>
+<script type="module" src="../../assets/assess/self-check.mjs"></script>
+<script type="module" src="/assets/source.mjs"></script>
+</body>
+</html>
