@@ -16,7 +16,8 @@
 --   erase_assessment_series(code, reason)  POPIA erasure that leaves a withdrawal notice behind
 --
 -- Signing: payload_text is the exact text that is hashed (SHA-256, public) and signed
--- (HMAC-SHA-256 with a secret held in Supabase Vault as 'ingqiqo_certificate_hmac').
+-- (HMAC-SHA-256 with a secret held in Supabase Vault as 'ingqiqo_certificate_hmac', read only by
+-- ingqiqo_private.hmac, which the API cannot reach).
 -- Anyone can recompute the hash; only this database can confirm the signature.
 
 create extension if not exists pgcrypto;
@@ -129,7 +130,10 @@ language sql volatile as $$
   from (select gen_random_bytes(p_len) b) r, generate_series(0, p_len - 1) i
 $$;
 
-create or replace function public.assessment_hmac(p_text text) returns text
+-- Functions the API must never reach live in a schema PostgREST does not expose.
+create schema if not exists ingqiqo_private;
+
+create or replace function ingqiqo_private.hmac(p_text text) returns text
 language plpgsql stable security definer set search_path = public, vault as $$
 declare v_secret text;
 begin
@@ -312,7 +316,7 @@ end $$;
 
 -- ---------------------------------------------------------------- issuing
 
-create or replace function public.assessment_issue(
+create or replace function ingqiqo_private.issue(
   p_series public.assessment_series, p_instrument_version text, p_basis text,
   p_subject jsonb, p_answers jsonb, p_scores jsonb, p_consent jsonb
 ) returns public.assessment_runs
@@ -359,12 +363,12 @@ begin
       subject, answers, scores, diff, consent, payload_text, payload_sha256, signature, issued_at)
   values (p_series.id, v_version, v_cert, p_series.instrument, p_instrument_version, p_basis,
       p_subject, p_answers, p_scores, v_diff, p_consent, v_text,
-      encode(digest(convert_to(v_text, 'UTF8'), 'sha256'), 'hex'), public.assessment_hmac(v_text), v_now)
+      encode(digest(convert_to(v_text, 'UTF8'), 'sha256'), 'hex'), ingqiqo_private.hmac(v_text), v_now)
   returning * into v_run;
   return v_run;
 end $$;
 
-create or replace function public.assessment_run_json(r public.assessment_runs) returns jsonb
+create or replace function ingqiqo_private.run_json(r public.assessment_runs) returns jsonb
 language sql stable as $$
   select jsonb_build_object('cert_id', r.cert_id, 'version', r.version, 'issued_at', r.issued_at,
     'payload', r.payload_text, 'sha256', r.payload_sha256, 'signature', r.signature)
@@ -438,11 +442,11 @@ begin
     'text_version', left(p -> 'consent' ->> 'text_version', 60),
     'given_at', now(), 'lead_id', v_lead);
 
-  v_run := public.assessment_issue(v_series, 'DMA rubric 1.0 · self-check 1.0', 'self-reported',
+  v_run := ingqiqo_private.issue(v_series, 'DMA rubric 1.0 · self-check 1.0', 'self-reported',
     jsonb_build_object('organisation', v_org, 'role', nullif(v_role, ''), 'decision', v_decision),
     v_answers, v_scores, v_consent);
 
-  return public.assessment_run_json(v_run) || jsonb_build_object('key', v_new_key, 'series', v_series.code);
+  return ingqiqo_private.run_json(v_run) || jsonb_build_object('key', v_new_key, 'series', v_series.code);
 end $$;
 
 create or replace function public.get_assessment_series(p_key text) returns jsonb
@@ -452,7 +456,7 @@ begin
   select * into v_series from public.assessment_series
    where access_key_sha256 = encode(digest(btrim(coalesce(p_key, '')), 'sha256'), 'hex');
   if v_series.id is null then return null; end if;
-  select coalesce(jsonb_agg(public.assessment_run_json(r) order by r.version), '[]') into v_runs
+  select coalesce(jsonb_agg(ingqiqo_private.run_json(r) order by r.version), '[]') into v_runs
     from public.assessment_runs r where r.series_id = v_series.id;
   return jsonb_build_object('series', v_series.code, 'instrument', v_series.instrument,
                             'organisation', v_series.organisation, 'runs', v_runs);
@@ -474,7 +478,7 @@ begin
   return jsonb_build_object(
     'status', 'valid',
     'cert_id', r.cert_id,
-    'signature_valid', public.assessment_hmac(r.payload_text) = r.signature,
+    'signature_valid', ingqiqo_private.hmac(r.payload_text) = r.signature,
     'sha256', r.payload_sha256,
     'issued_at', r.issued_at,
     'instrument', r.payload_text::jsonb -> 'certificate' -> 'instrument',
@@ -495,6 +499,10 @@ create or replace function public.issue_engagement_certificate(p jsonb) returns 
 language plpgsql security definer set search_path = public as $$
 declare v_series public.assessment_series; v_run public.assessment_runs; v_lead uuid; v_key text;
 begin
+  -- Only the service-role key (certify.py) or the database itself may certify an engagement.
+  if coalesce(nullif(current_setting('request.jwt.claims', true), '')::jsonb ->> 'role', 'service_role') <> 'service_role' then
+    raise exception 'not permitted';
+  end if;
   if nullif(p ->> 'series', '') is not null then
     select * into v_series from public.assessment_series where code = upper(p ->> 'series') and instrument = 'dma';
     if v_series.id is null then raise exception 'unknown engagement series %', p ->> 'series'; end if;
@@ -506,12 +514,12 @@ begin
     values (public.assessment_code(8), 'dma', v_lead, p ->> 'organisation', encode(digest(v_key, 'sha256'), 'hex'))
     returning * into v_series;
   end if;
-  v_run := public.assessment_issue(v_series, 'DMA rubric 1.0', 'assessor-scored',
+  v_run := ingqiqo_private.issue(v_series, 'DMA rubric 1.0', 'assessor-scored',
     jsonb_build_object('organisation', p ->> 'organisation', 'engagement', p ->> 'engagement',
       'period', p ->> 'period', 'decisions_sampled', (p ->> 'decisions_sampled')::int, 'assessor', p ->> 'assessor'),
     p -> 'answers', p -> 'scores',
     jsonb_build_object('basis', 'contract', 'note', 'Processed under the engagement scope letter.', 'given_at', now()));
-  return public.assessment_run_json(v_run) || jsonb_build_object('key', v_key, 'series', v_series.code);
+  return ingqiqo_private.run_json(v_run) || jsonb_build_object('key', v_key, 'series', v_series.code);
 end $$;
 
 create or replace function public.erase_assessment_series(p_code text, p_reason text default null) returns int
@@ -526,12 +534,13 @@ begin
 end $$;
 
 -- ---------------------------------------------------------------- grants
-
+-- ingqiqo_private is not exposed by the API and grants nothing to anon or authenticated.
+revoke all on schema ingqiqo_private from public, anon, authenticated;
+revoke all on all functions in schema ingqiqo_private from public, anon, authenticated;
 revoke all on function public.submit_self_check(jsonb), public.get_assessment_series(text),
   public.verify_certificate(text), public.issue_engagement_certificate(jsonb),
-  public.erase_assessment_series(text, text), public.assessment_issue(public.assessment_series, text, text, jsonb, jsonb, jsonb, jsonb),
-  public.assessment_hmac(text), public.assessment_note_withdrawal(), public.score_self_check(jsonb),
-  public.assessment_diff(text, jsonb, jsonb), public.assessment_run_json(public.assessment_runs)
+  public.erase_assessment_series(text, text), public.assessment_note_withdrawal(),
+  public.score_self_check(jsonb), public.assessment_diff(text, jsonb, jsonb)
   from public, anon, authenticated;
 grant execute on function public.submit_self_check(jsonb), public.get_assessment_series(text),
   public.verify_certificate(text) to anon, authenticated, service_role;
