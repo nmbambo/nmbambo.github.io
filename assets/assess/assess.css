@@ -1,0 +1,88 @@
+/* Self-check, certified report, verify page and interest capture. Builds on the .book form styles in site.css. */
+.assess .as-note { font-style: italic; color: var(--pearl-muted); }
+.as-lede { margin-top: 12px; color: var(--pearl-muted); font-style: italic; }
+.as-banner { margin: 40px var(--gutter) 0; padding: 20px 24px; border: var(--hairline) solid var(--gold); background: var(--obsidian-raised); max-width: 820px; }
+.as-banner p { margin: 6px 0 0; }
+.as-banner a { border-bottom: var(--hairline) solid var(--gold-quiet); }
+
+.as-q { margin: 40px 0 0; padding: 28px 0 0; border: 0; border-top: var(--hairline) solid var(--gold-quiet); max-width: 820px; min-width: 0; }
+.as-q legend { padding: 0; display: block; width: 100%; }
+.as-id { font-size: 11px; letter-spacing: .18em; color: var(--gold); font-style: normal; }
+.as-label { font-size: 20px; font-style: italic; }
+.as-question { display: block; margin: 6px 0 14px; color: var(--pearl-muted); font-size: 16px; }
+.as-levels { display: grid; gap: 0; }
+.as-level { margin: 0 0 6px; max-width: none; }
+.as-level strong { display: inline; font-size: 15px; margin-right: 6px; }
+.as-k { margin: 18px 0 8px; }
+.as-evidence .bk-opt span { font-size: 15px; }
+.as-evidence em { font-style: italic; font-size: 12px; color: var(--gold-quiet); margin-left: 4px; }
+.as-unknown { margin-top: 14px; }
+.as-q.is-unknown .as-levels, .as-q.is-unknown .as-evidence { opacity: .35; }
+.as-q[aria-invalid] { border-top-color: var(--amber); }
+.assess input[type=radio], .assess input[type=checkbox] { accent-color: var(--gold); margin: 0; flex: none; }
+.assess input[type=file] { font: inherit; color: var(--pearl-muted); }
+.as-consent .bk-pick { max-width: 820px; }
+.as-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.as-table { margin-top: 24px; max-width: 980px; }
+.as-table td.num { font-size: 20px; color: var(--pearl); text-align: center; width: 1%; white-space: nowrap; }
+.as-table tr.weak td:first-child { color: var(--gold); }
+.as-table .tag { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--amber); font-style: normal; margin-left: 6px; }
+.as-criteria td:first-child { width: 28%; }
+.as-tw { margin-left: 0; }
+.as-summary { margin: 20px 0 0; padding-left: 20px; max-width: 70ch; }
+.as-summary li { margin: 0 0 8px; }
+.as-dl { margin: 24px 0 0; display: grid; gap: 0; max-width: 820px; border-top: var(--hairline) solid var(--gold-quiet); }
+.as-dl > div { display: grid; grid-template-columns: 220px 1fr; gap: 16px; padding: 12px 0; border-bottom: var(--hairline) solid var(--gold-quiet); }
+.as-dl dt { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); }
+.as-dl dd { margin: 0; color: var(--pearl); }
+.as-mono { font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; font-size: 13px; letter-spacing: .02em; }
+.as-break { word-break: break-all; }
+.as-versions { list-style: none; margin: 0; padding: 0; max-width: 820px; border-top: var(--hairline) solid var(--gold-quiet); }
+.as-versions li { padding: 10px 0; border-bottom: var(--hairline) solid var(--gold-quiet); color: var(--pearl-muted); font-size: 15px; }
+.as-versions a { color: var(--pearl); border-bottom: var(--hairline) solid var(--gold-quiet); }
+.as-actions .cta-row { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; }
+button.cta-quiet { background: transparent; border: 0; padding: 0; cursor: pointer; font-family: inherit; }
+.as-verdict { margin: 28px 0 0; padding: 16px 20px; max-width: 820px; border: var(--hairline) solid var(--gold-quiet); font-size: 18px; }
+.as-verdict.ok { border-color: var(--gold); background: var(--obsidian-raised); }
+.as-verdict.bad { border-color: var(--amber); color: var(--pearl); }
+.as-print-head { display: none; }
+
+.as-capture { margin: 28px 0 0; padding: 24px 0 0; border-top: var(--hairline) solid var(--gold-quiet); max-width: 820px; }
+.as-capture .bk-grid { margin-top: 12px; padding-left: 0; }
+.as-capture .bk-pick { margin-top: 12px; }
+.as-capture input[type=text], .as-capture input[type=email], .as-capture textarea,
+.assess input[type=text], .assess input[type=email] {
+  width: 100%; font: inherit; font-size: 17px; color: var(--pearl); background: var(--obsidian-raised);
+  border: var(--hairline) solid var(--gold-quiet); border-radius: 0; padding: 12px 14px; color-scheme: dark; }
+.as-capture input:focus-visible, .as-capture textarea:focus-visible, .as-capture button:focus-visible { outline: var(--hairline) solid var(--gold); outline-offset: 3px; }
+.as-capture .bk-field .k { display: block; margin: 0 0 6px; }
+.as-capture.done .body { padding-left: 0; }
+
+@media (max-width: 620px) {
+  .as-dl > div { grid-template-columns: 1fr; gap: 4px; }
+  .as-banner { margin-left: 16px; margin-right: 16px; }
+  .as-criteria td:first-child { width: auto; }
+}
+
+/* The report prints as a calm, light, compact document, with its certificate ID on every page. */
+@media print {
+  :root { --obsidian: #fff; --obsidian-raised: #f6f3ec; --obsidian-deep: #fff; --pearl: #111; --pearl-muted: #444; --gold: #6d6142; --gold-quiet: #b9ae92; --amber: #8a4f1c; }
+  body { background: #fff; color: #111; font-size: 11pt; }
+  header.top, footer, .as-actions, .skip, .byline, .as-cert .label { display: none !important; }
+  main { max-width: none; padding: 0; }
+  .as-print-head { display: flex; gap: 10px; align-items: center; font-size: 9pt; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin: 0 0 6mm; }
+  .as-report section { padding: 7mm 0 0; margin: 0; }
+  .as-report h2 { font-size: 16pt; margin: 0 0 3mm; }
+  .project-hero { padding-top: 0; }
+  .project-hero h1 { font-size: 26pt; }
+  .project .body, .as-summary { max-width: none; font-size: 10.5pt; }
+  .as-table, .as-dl { max-width: none; font-size: 9.5pt; margin-top: 3mm; }
+  table.spec td, table.spec th { padding: 4px 8px; }
+  .as-table td.num { font-size: 13pt; }
+  .as-table tr, .as-dl > div, .as-summary li { break-inside: avoid; }
+  .as-certblock { break-inside: avoid; }
+  table.spec tbody tr:nth-child(odd) { background: #f6f3ec; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  a { color: inherit; text-decoration: none; }
+  @page { margin: 14mm 14mm 18mm; @bottom-right { content: counter(page) " / " counter(pages); font: 8pt Georgia, serif; color: #666; } }
+}

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verify a certificate — Ingqiqo Executables</title>
+<meta name="description" content="Check that an Ingqiqo Executables certified report is genuine, current and unaltered, from its certificate ID or its certified file.">
+<meta name="theme-color" content="#0C0A10">
+<meta property="og:image" content="https://nmbambo.github.io/assets/portrait.jpg">
+<link rel="icon" href="../assets/rose-small.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/assess/assess.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="mark" href="../" aria-label="Home"><img src="../assets/rose-small.svg" alt="" width="28" height="28"></a>
+  <nav aria-label="Sections">
+    <a href="../method/">Method</a>
+    <a href="../#work">Work</a>
+    <a href="../architecture/">Architecture</a>
+    <a href="../engage/">Engage</a>
+    <a href="../resources/">Resources</a>
+    <a href="../search/">Search</a>
+    <a href="../book/">Book</a>
+    <a href="../#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="main" class="project book assess">
+  <section class="hero project-hero">
+    <p class="byline"><img class="portrait xs" src="../assets/portrait.jpg" alt="" width="40" height="40"><a href="../">Nkosinathi Mbambo</a></p>
+    <p class="label">Ingqiqo Executables · Register of certificates</p>
+    <h1>Verify a certificate</h1>
+    <p class="role">Check that a report is genuine, whether it is the latest version, and, with its certified file, that nothing in it was changed.</p>
+  </section>
+
+  <section aria-labelledby="v-check">
+    <h2 id="v-check"><span class="num">I</span> Check</h2>
+    <form id="v-form" novalidate>
+      <div class="bk-grid">
+        <div class="bk-field wide"><label class="k" for="v-id">Certificate ID</label>
+          <p class="bk-hint" id="v-id-hint">For example IQX-DMSC-7K3M9QPA-V2. It is printed on every page of the report.</p>
+          <input id="v-id" name="id" type="text" maxlength="40" autocomplete="off" spellcheck="false" aria-describedby="v-id-hint"></div>
+        <div class="bk-field wide"><label class="k" for="v-file">Certified file (optional)</label>
+          <p class="bk-hint" id="v-file-hint">The .ingqiqo.json file downloaded with the report. It is checked in your browser and is not uploaded.</p>
+          <input id="v-file" name="file" type="file" accept=".json,application/json" aria-describedby="v-file-hint"></div>
+      </div>
+      <p class="cta-row"><button type="submit" class="cta-primary bk-btn" id="v-submit">Verify</button>
+        <span class="status" id="v-status" aria-live="polite"></span></p>
+    </form>
+    <div id="v-result" aria-live="polite"></div>
+  </section>
+
+  <section aria-labelledby="v-what">
+    <h2 id="v-what"><span class="num">II</span> What a valid result means</h2>
+    <ol class="steps">
+      <li>The certificate ID is in Ingqiqo's register, and the register's copy still carries a signature only Ingqiqo can produce.</li>
+      <li>With the file: the content you hold is byte for byte the content that was certified.</li>
+      <li>It does not mean Ingqiqo has verified the answers in a self-check. Each report states its basis: self-reported, or scored by an assessor from evidence.</li>
+      <li>A certificate whose holder asked for their data to be erased shows as withdrawn.</li>
+    </ol>
+  </section>
+</main>
+
+<footer>
+  <img src="../assets/rose.svg" alt="Ingqiqo rose" width="40" height="40">
+  <p>© 2026 Nkosinathi Mbambo · Ingqiqo Executables (Pty) Ltd</p>
+</footer>
+<script type="module" src="../assets/assess/verify.mjs"></script>
+</body>
+</html>
