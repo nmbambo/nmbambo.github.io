@@ -68,7 +68,7 @@ revoke all on public.assessment_series, public.assessment_runs, public.certifica
 
 -- A result is never edited. A rerun is a new version. Erasure deletes and leaves a withdrawal notice.
 create or replace function public.assessment_immutable() returns trigger
-language plpgsql as $$
+language plpgsql set search_path = public as $$
 begin
   raise exception 'assessment results are immutable; submit a new version instead';
 end $$;
@@ -98,7 +98,7 @@ create trigger assessment_runs_withdrawal after delete on public.assessment_runs
 -- The fifteen criteria of scoring-rubric.md v1.0, in order.
 create or replace function public.dma_criteria()
 returns table (id text, stage text, stage_name text, label text, ord int)
-language sql immutable as $$
+language sql immutable set search_path = public as $$
   values
     ('F1','F','Framing','Answerable question',1), ('F2','F','Framing','Scope and out-of-scope',2),
     ('F3','F','Framing','Stakes and reversibility',3),
@@ -114,18 +114,18 @@ $$;
 
 create or replace function public.dma_stages()
 returns table (stage text, stage_name text, ord int)
-language sql immutable as $$
+language sql immutable set search_path = public as $$
   values ('F','Framing',1), ('E','Evidence',2), ('J','Judgement',3), ('X','Execution',4), ('R','Review',5)
 $$;
 
 create or replace function public.dma_evidence_cap(p_evidence text) returns int
-language sql immutable as $$
+language sql immutable set search_path = public as $$
   select case p_evidence when 'artefact' then 3 when 'policy' then 2 when 'testimony' then 1 else 0 end
 $$;
 
 -- Crockford base32, no I L O U.
 create or replace function public.assessment_code(p_len int) returns text
-language sql volatile as $$
+language sql volatile set search_path = public, extensions as $$
   select string_agg(substr('0123456789ABCDEFGHJKMNPQRSTVWXYZ', (get_byte(b, i) % 32) + 1, 1), '' order by i)
   from (select gen_random_bytes(p_len) b) r, generate_series(0, p_len - 1) i
 $$;
@@ -134,7 +134,7 @@ $$;
 create schema if not exists ingqiqo_private;
 
 create or replace function ingqiqo_private.hmac(p_text text) returns text
-language plpgsql stable security definer set search_path = public, vault as $$
+language plpgsql stable security definer set search_path = public, extensions, vault as $$
 declare v_secret text;
 begin
   select decrypted_secret into v_secret from vault.decrypted_secrets where name = 'ingqiqo_certificate_hmac';
@@ -147,7 +147,7 @@ end $$;
 -- answers: {"F1": {"level": 0..3, "evidence": "artefact|policy|testimony|none", "unknown": false}, ...}
 -- Returns {"criteria": {...}, "stages": {...}, "weakest": [...], "profile": "..."}.
 create or replace function public.score_self_check(p_answers jsonb) returns jsonb
-language plpgsql immutable as $$
+language plpgsql immutable set search_path = public as $$
 declare
   c record; s record;
   v_level int; v_ev text; v_unknown boolean; v_score int;
@@ -203,7 +203,7 @@ end $$;
 
 -- p_prev / p_cur: {"scores": ..., "subject": ..., "issued_at": ..., "cert_id": ..., "version": n}
 create or replace function public.assessment_diff(p_instrument text, p_prev jsonb, p_cur jsonb)
-returns jsonb language plpgsql immutable as $$
+returns jsonb language plpgsql immutable set search_path = public as $$
 declare
   c record; s record;
   pc jsonb; cc jsonb; ps jsonb; cs jsonb;
@@ -320,7 +320,7 @@ create or replace function ingqiqo_private.issue(
   p_series public.assessment_series, p_instrument_version text, p_basis text,
   p_subject jsonb, p_answers jsonb, p_scores jsonb, p_consent jsonb
 ) returns public.assessment_runs
-language plpgsql security definer set search_path = public as $$
+language plpgsql security definer set search_path = public, extensions as $$
 declare
   v_prev public.assessment_runs; v_version int; v_cert text; v_now timestamptz := now();
   v_diff jsonb; v_payload jsonb; v_text text; v_run public.assessment_runs;
@@ -369,7 +369,7 @@ begin
 end $$;
 
 create or replace function ingqiqo_private.run_json(r public.assessment_runs) returns jsonb
-language sql stable as $$
+language sql stable set search_path = public as $$
   select jsonb_build_object('cert_id', r.cert_id, 'version', r.version, 'issued_at', r.issued_at,
     'payload', r.payload_text, 'sha256', r.payload_sha256, 'signature', r.signature)
 $$;
@@ -379,7 +379,7 @@ $$;
 --     "decision": "label", "answers": {...}, "context": {"page","referrer","utm_source","utm_medium","utm_campaign","ua"},
 --     "hp": ""}
 create or replace function public.submit_self_check(p jsonb) returns jsonb
-language plpgsql security definer set search_path = public as $$
+language plpgsql security definer set search_path = public, extensions as $$
 declare
   v_email text := lower(btrim(p -> 'contact' ->> 'email'));
   v_name text := left(btrim(p -> 'contact' ->> 'name'), 120);
@@ -450,7 +450,7 @@ begin
 end $$;
 
 create or replace function public.get_assessment_series(p_key text) returns jsonb
-language plpgsql stable security definer set search_path = public as $$
+language plpgsql stable security definer set search_path = public, extensions as $$
 declare v_series public.assessment_series; v_runs jsonb;
 begin
   select * into v_series from public.assessment_series
@@ -463,7 +463,7 @@ begin
 end $$;
 
 create or replace function public.verify_certificate(p_cert_id text) returns jsonb
-language plpgsql stable security definer set search_path = public as $$
+language plpgsql stable security definer set search_path = public, extensions as $$
 declare v_id text := upper(btrim(coalesce(p_cert_id, ''))); r public.assessment_runs; w public.certificate_withdrawals; v_latest text;
 begin
   select * into r from public.assessment_runs where cert_id = v_id;
@@ -496,7 +496,7 @@ end $$;
 --     "engagement": "label", "period": "...", "decisions_sampled": n, "assessor": "...",
 --     "answers": [workbook rows], "scores": {"criteria": {...}, "stages": {...}, "weakest": [...], "profile": "..."}}
 create or replace function public.issue_engagement_certificate(p jsonb) returns jsonb
-language plpgsql security definer set search_path = public as $$
+language plpgsql security definer set search_path = public, extensions as $$
 declare v_series public.assessment_series; v_run public.assessment_runs; v_lead uuid; v_key text;
 begin
   -- Only the service-role key (certify.py) or the database itself may certify an engagement.
