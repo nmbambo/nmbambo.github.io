@@ -192,6 +192,90 @@
   "url": "/architecture/#hero"
  },
  {
+  "id": "assessment/report#as-actions",
+  "section": "Keep, share or rerun",
+  "source": "assessment/report/index.html",
+  "tags": [
+   "page"
+  ],
+  "text": "Keep, share or rerun Save as PDF or print Download the certified file Rerun from these answers → The certified file is what the verify page checks: it carries the exact content that was fingerprinted and signed. Share the certificate ID with anyone who needs to confirm the report is genuine. Keep this page's link private. Anyone with it can read every version of this report and add a new one. Your browser also remembers it on this device.",
+  "title": "Certified report",
+  "type": "page",
+  "url": "/assessment/report/#as-actions"
+ },
+ {
+  "id": "assessment/report#hero",
+  "section": "Certified report",
+  "source": "assessment/report/index.html",
+  "tags": [
+   "page"
+  ],
+  "text": "Loading your report…",
+  "title": "Certified report",
+  "type": "page",
+  "url": "/assessment/report/#hero"
+ },
+ {
+  "id": "assessment/self-check#eg",
+  "section": "Want the evidence examined, not reported?",
+  "source": "assessment/self-check/index.html",
+  "tags": [
+   "page"
+  ],
+  "text": "Want the evidence examined, not reported? The Decision Maturity Assessment examines four to six decisions against their records, over two to four weeks, and tells you where decision integrity holds and where it depends on memory. About the assessment →or book a time →",
+  "title": "Decision Maturity Self-Check",
+  "type": "page",
+  "url": "/assessment/self-check/#eg"
+ },
+ {
+  "id": "assessment/self-check#hero",
+  "section": "Decision Maturity Self-Check",
+  "source": "assessment/self-check/index.html",
+  "tags": [
+   "page"
+  ],
+  "text": "Nkosinathi Mbambo Decision Maturity Assessment · Free self-check Decision Maturity Self-Check Fifteen questions about one important decision. A certified report you can verify, and a record of what changes each time you run it again. Time About ten minutes About One decision from the last year You receive A certified report, as PDF and as a verifiable file Reruns Kept as versions, never overwritten",
+  "title": "Decision Maturity Self-Check",
+  "type": "page",
+  "url": "/assessment/self-check/#hero"
+ },
+ {
+  "id": "assessment/self-check#s-decision",
+  "section": "The decision",
+  "source": "assessment/self-check/index.html",
+  "tags": [
+   "page"
+  ],
+  "text": "The decision Name the decision A few words you will recognise later, for example \"2026 credit limit policy change\". It appears on your certificate, so leave out anything confidential.",
+  "title": "Decision Maturity Self-Check",
+  "type": "page",
+  "url": "/assessment/self-check/#s-decision"
+ },
+ {
+  "id": "assessment/self-check#s-how",
+  "section": "How it works",
+  "source": "assessment/self-check/index.html",
+  "tags": [
+   "page"
+  ],
+  "text": "How it works Choose one important decision your organisation made in the last year, and name it. For each of fifteen criteria, say what happened for that decision and what you could actually show for it. A record from the decision counts fully; a rule that requires it counts up to 2; what people would say counts up to 1. This is the rubric used in the full assessment. If you do not know, say so. An unknown is recorded as a limitation, not as a failure. You receive a report with a certificate ID that anyone can check at nmbambo.github.io/verify. Run it again later and the new version shows what changed in your answers and what each change implies. A self-check is your own account of one decision. It is not the Decision Maturity Assessment, in which the evidence is examined across four to six decisions.",
+  "title": "Decision Maturity Self-Check",
+  "type": "page",
+  "url": "/assessment/self-check/#s-how"
+ },
+ {
+  "id": "assessment/self-check#s-you",
+  "section": "Your details",
+  "source": "assessment/self-check/index.html",
+  "tags": [
+   "page"
+  ],
+  "text": "Your details Your report is issued to you and stored by Ingqiqo Executables so it can be verified and rerun. Your name and email do not appear on the certificate; your organisation and the decision name do. Name Work email Organisation Role (optional) Leave this empty Consent under POPIA Process my answers and issue my report (required) Ingqiqo Executables may store my details and answers to score them, issue and keep my certified report and its later versions, and let anyone I give the certificate ID to verify it. Contact me about my results (optional) Ingqiqo Executables may contact me about my results and related services. I can withdraw this at any time. Responsible party: Ingqiqo Executables (Pty) Ltd, South Africa. Data is held with Supabase in the EU (Frankfurt). To see, correct or erase your data, write to nmbambo@ingqiqo-executables.run. Erased certificates show as withdrawn on the verify page. Score and issue my report",
+  "title": "Decision Maturity Self-Check",
+  "type": "page",
+  "url": "/assessment/self-check/#s-you"
+ },
+ {
   "id": "book#b-call",
   "section": "The call",
   "source": "book/index.html",
@@ -1995,6 +2079,42 @@
   "url": "/resources/#r4"
  },
  {
+  "id": "verify#hero",
+  "section": "Verify a certificate",
+  "source": "verify/index.html",
+  "tags": [
+   "page"
+  ],
+  "text": "Nkosinathi Mbambo Ingqiqo Executables · Register of certificates Verify a certificate Check that a report is genuine, whether it is the latest version, and, with its certified file, that nothing in it was changed.",
+  "title": "Verify a certificate",
+  "type": "page",
+  "url": "/verify/#hero"
+ },
+ {
+  "id": "verify#v-check",
+  "section": "Check",
+  "source": "verify/index.html",
+  "tags": [
+   "page"
+  ],
+  "text": "Check Certificate ID For example IQX-DMSC-7K3M9QPA-V2. It is printed on every page of the report. Certified file (optional) The .ingqiqo.json file downloaded with the report. It is checked in your browser and is not uploaded. Verify",
+  "title": "Verify a certificate",
+  "type": "page",
+  "url": "/verify/#v-check"
+ },
+ {
+  "id": "verify#v-what",
+  "section": "What a valid result means",
+  "source": "verify/index.html",
+  "tags": [
+   "page"
+  ],
+  "text": "What a valid result means The certificate ID is in Ingqiqo's register, and the register's copy still carries a signature only Ingqiqo can produce. With the file: the content you hold is byte for byte the content that was certified. It does not mean Ingqiqo has verified the answers in a self-check. Each report states its basis: self-reported, or scored by an assessor from evidence. A certificate whose holder asked for their data to be erased shows as withdrawn.",
+  "title": "Verify a certificate",
+  "type": "page",
+  "url": "/verify/#v-what"
+ },
+ {
   "id": "work/cdc-head-to-head#eg",
   "section": "Want this working in your organisation?",
   "source": "work/cdc-head-to-head/index.html",
@@ -2571,7 +2691,7 @@
   "tags": [
    "work"
   ],
-  "text": "Start the conversation You do not need to have your decision-governance problem fully articulated before making contact. Tell Ingqiqo what you are trying to establish: whether your decisions are traceable, whether your evidence supports your judgement, or whether strategic intent survives execution. Together we can determine whether a Decision Maturity Assessment is the right starting point. Discuss an assessment →or write to me → Ingqiqo Executables · Decisions that can show their working.",
+  "text": "Start the conversation You do not need to have your decision-governance problem fully articulated before making contact. Tell Ingqiqo what you are trying to establish: whether your decisions are traceable, whether your evidence supports your judgement, or whether strategic intent survives execution. Together we can determine whether a Decision Maturity Assessment is the right starting point. Discuss an assessment →or write to me → Not ready to talk? The free self-check scores one decision against the same rubric and gives you a certified report you can rerun. Ingqiqo Executables · Decisions that can show their working.",
   "title": "Decision Maturity Assessment",
   "type": "work",
   "url": "/work/decision-maturity-assessment/#eg"
@@ -2583,7 +2703,7 @@
   "tags": [
    "work"
   ],
-  "text": "Nkosinathi Mbambo Where to start · Decision Maturity Assessment Can your organisation show the working of its important decisions? Ingqiqo helps organisations make important decisions traceable, from strategic intent and evidence through authority, execution and review. Start with a Decision Maturity Assessment: a bounded, evidence-based examination of how your organisation frames, records, executes and reviews important decisions. Request a Decision Maturity AssessmentView a worked decision record → For Governance, risk, data, transformation and architecture leaders Duration Typically two to four calendar weeks Inputs Four to six decisions · three to six people · existing documents Commitment Stands alone; no follow-on required",
+  "text": "Nkosinathi Mbambo Where to start · Decision Maturity Assessment Can your organisation show the working of its important decisions? Ingqiqo helps organisations make important decisions traceable, from strategic intent and evidence through authority, execution and review. Start with a Decision Maturity Assessment: a bounded, evidence-based examination of how your organisation frames, records, executes and reviews important decisions. Request a Decision Maturity AssessmentTake the free self-check first →View a worked decision record → For Governance, risk, data, transformation and architecture leaders Duration Typically two to four calendar weeks Inputs Four to six decisions · three to six people · existing documents Commitment Stands alone; no follow-on required",
   "title": "Decision Maturity Assessment",
   "type": "work",
   "url": "/work/decision-maturity-assessment/#hero"
