@@ -422,7 +422,7 @@
       <thead><tr><th scope="col">Link</th><th scope="col">What it records</th><th scope="col">Where the Spine holds it</th></tr></thead>
       <tbody>
         <tr><td>Meaning defect</td><td>The type (a definition in conflict, a proxy drifted from its intent, a premise that no longer holds) and the evidence for it</td><td>L3 Meaning, against the versioned definitions</td></tr>
-        <tr><td>Mechanism</td><td>How the defect turns into cost: reconciliation, rework, waiting, a decision reversed, an audit reconstructed</td><td>L1 Evidence, from time samples and system extracts</td></tr>
+        <tr><td>Mechanism</td><td>How the defect turns into cost: reconciliation, rework, waiting, a decision reversed, an audit reconstructed</td><td>L1 Evidence and L2 Identity, from time samples and system extracts</td></tr>
         <tr><td>Business measure</td><td>The measure that moves, its unit and grain, the intent it stands for, and a paired check that would fall if it were gamed</td><td>L0 Strategy Intent for the intent; L3 Meaning for the definition</td></tr>
         <tr><td>Figure on record</td><td>Baseline fixed before any change, expected effect as a range, pedigree on every figure, an attribution grade and a review date</td><td>L5 Judgement: an <code>impact_chain</code> block in the Decision IR</td></tr>
         <tr><td>Review</td><td>Measured value, the paired check and the grade, beside the expected range; misses reported beside hits</td><td>L7 Execution &amp; Feedback: the hash-chained decision ledger</td></tr>
@@ -441,7 +441,7 @@
       </tbody>
     </table>
     </div>
-    <p class="body note">The Intent &#8596; Proxy relation is one of the two coherence relations Phase 1 implements, so the test is part of the build, not an add-on. If hours fall while the paired check worsens, the result is reported as a proxy failure, not a saving. Where a defect cannot be tied to a measure the client already tracks, the chain stops at the mechanism and says so. The <code>impact_chain</code> block and its validation rule are specified, not yet built.</p>
+    <p class="body note">The Intent &#8596; Proxy relation is one of the two coherence relations specified for Phase 1, so the test belongs to the core build, not an add-on. If hours fall while the paired check worsens, the result is reported as a proxy failure, not a saving. Where a defect cannot be tied to a measure the client already tracks, the chain stops at the mechanism and says so. The <code>impact_chain</code> block and its validation rule are specified, not yet built.</p>
   </section>
 
   <section aria-labelledby="a10">
