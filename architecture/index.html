@@ -64,7 +64,7 @@
         <text x="480" y="128" class="k">JUDGEMENT</text>
         <text x="480" y="152" class="t">Sovereign Logic Engine on the Decision IR · GoRules · weighted MaxSMT (Z3)</text>
         <!-- Estimators side box -->
-        <rect x="844" y="104" width="100" height="172" class="box"/>
+        <rect x="844" y="104" width="100" height="166" class="box"/>
         <text x="894" y="126" class="k">ESTIMATORS</text>
         <text x="894" y="146" class="s" style="font-size:11px">TabDPT-Turbo</text>
         <text x="894" y="161" class="s" style="font-size:11px">TabICLv2</text>
@@ -74,7 +74,7 @@
         <text x="894" y="221" class="s" style="font-size:11px">GP · MAPIE</text>
         <text x="894" y="236" class="s" style="font-size:11px">Bayes · PID</text>
         <text x="894" y="251" class="s" style="font-size:11px">MLflow switch</text>
-        <text x="894" y="269" class="s i" style="font-size:11px">propose only</text>
+        <text x="894" y="265" class="s i" style="font-size:11px">propose only</text>
         <line x1="844" y1="136" x2="824" y2="136" class="ln" marker-end="url(#ar)"/>
         <!-- Semantic layer -->
         <rect x="140" y="188" width="680" height="64" class="box"/>
@@ -283,7 +283,7 @@
     <p class="body note">What is known, and what is not. The reference recipe is open: a joint-embedding energy trained on partly filled solutions and read out by Langevin dynamics. An open replication of Logical Intelligence&rsquo;s Kona reached 96.6% puzzle accuracy on Sudoku, against 96.2% reported for Kona on hard puzzles, on different evaluation sets. That shows the method learns constraint structure. It does not show it works on a client&rsquo;s data. Kona is proprietary and is a reference, not a dependency. This estimator is designed and bound in the Abstraction Model Layer but not yet built. Its first gate is plain: on the client-zero allocation case it must reach a feasible plan faster than the solver alone, or it does not ship.</p>
     <h3 class="sub">Other proposers, one rule</h3>
     <p class="body">Two more kinds of model generate a whole candidate and can revise it as a whole: next-concept models, which build a plan coarse to fine, and diffusion language models, which draft and fill in text in any order. They share the energy model&rsquo;s admission rule at Explore. A proposal must replay from pinned settings, may not assert a constraint, a weight, a decision or evidence, and keeps every field the caller gave exactly as given. Drafts and filled-in text are never made eligible by the solver, because it cannot verify prose; a person reads them. None of these is built. The admission contract is, and each family must earn its place on its own trials.</p>
-    <p class="body">Agents that reason partly in latent space and partly in words are admitted on one condition: nothing leaves the latent state except as text a person can read. A thought that is not written down is not a record. Such runs are called mixed-mode here, because &ldquo;hybrid&rdquo; already names the middle of the human, AI and hybrid axis.</p>
+    <p class="body">Agents that reason partly in latent space and partly in words are admitted on one condition: nothing leaves the latent state except as text a person can read. A thought that is not written down is not a record. Such runs are called mixed-mode here, and the hybrid agents in the stack below are held to this rule. On its own, &ldquo;hybrid&rdquo; keeps naming the middle of the human, AI and hybrid axis.</p>
     <p class="body">A bounded PID controller, the dull workhorse of process control, is built for one loop only: it widens or narrows an estimate&rsquo;s interval to hold its observed coverage near the level promised. It is tuned from the fitting data, replayed over the held-out window as a closed loop, and checked by the gate. It does not repair a biased model. If it has to hold the interval wide, the report says the model needs a missing driver, and the gate still withholds the warranty when coverage falls short. It has no place in a decision, a weight or a meaning, where there is no error signal to correct.</p>
 
     <h3 class="sub">The stack, and the switch</h3>
@@ -296,7 +296,7 @@
         <tr><td>TabICLv2</td><td>Estimates from small tables in context, so a first engagement is not told to come back with more data</td><td>L4 Adaptation: estimates</td></tr>
         <tr><td>EBM, with Laya and Kev</td><td>Scores a whole candidate and flags what lies outside support. Laya sets the range and refuses; Kev holds the client&rsquo;s terms to the definitions</td><td>L4 proposals and support check; L5 warm starts</td></tr>
         <tr><td>NCM (next-concept models)</td><td>Propose a whole plan, coarse to fine, under the admission rule above</td><td>L4 Adaptation: proposals</td></tr>
-        <tr><td>Hybrid agents</td><td>Sequence the instruments for a case, handing over only text a person can read (the mixed-mode rule above)</td><td>L4 Adaptation: orchestration</td></tr>
+        <tr><td>Hybrid agents</td><td>Sequence the instruments for a case; mixed-mode runs, so they hand over only text a person can read</td><td>L4 Adaptation: orchestration</td></tr>
         <tr><td>DoWhy</td><td>Identifies and estimates a causal effect and runs refutation tests; the causal support a binding needs</td><td>L4 estimates; L5 binding check</td></tr>
         <tr><td>PyMC</td><td>Bayesian models with full posteriors, including full Bayes over Gaussian-process hyperparameters</td><td>L4 Adaptation: estimates</td></tr>
         <tr><td>Bayesian confirmations</td><td>A claim stands only when its posterior clears a bar declared in advance</td><td>L5 Judgement; L7 ledger</td></tr>
@@ -470,7 +470,7 @@
       </tbody>
     </table>
     </div>
-    <p class="body note">The Intent &#8596; Proxy relation is one of the two coherence relations specified for Phase 1, so the test belongs to the core build, not an add-on. If hours fall while the paired check worsens, the result is reported as a proxy failure, not a saving. Grades A and B are estimated with DoWhy and stand only if its refutation tests pass. Expected effects come as PyMC posteriors or MAPIE intervals. A figure goes on record only after Bayesian confirmation, and MLflow logs the run that produced it. Where a defect cannot be tied to a measure the client already tracks, the chain stops at the mechanism and says so. The <code>impact_chain</code> block and its validation rule are specified, not yet built.</p>
+    <p class="body note">The Intent &#8596; Proxy relation is one of the two coherence relations specified for Phase 1, so the test belongs to the core build, not an add-on. If hours fall while the paired check worsens, the result is reported as a proxy failure, not a saving. Grades A and B are estimated with DoWhy and stand only if its refutation tests pass. Expected effects come as Gaussian-process or PyMC posteriors, or as MAPIE intervals. A figure goes on record only after Bayesian confirmation, and MLflow logs the run that produced it. Where a defect cannot be tied to a measure the client already tracks, the chain stops at the mechanism and says so. The <code>impact_chain</code> block and its validation rule are specified, not yet built.</p>
   </section>
 
   <section aria-labelledby="a10">
