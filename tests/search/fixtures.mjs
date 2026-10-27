@@ -1,7 +1,7 @@
 // Small hand-copied fixture corpus (paraphrased from the site's own pages) for the search tests.
 // Public-safe: no prices, amounts, client data or [confirm] markers.
 export const FIXTURE_DOCS = [
-  { id: 'home#e1', url: '/', title: 'Ingqiqo Executables', section: 'Meaning Coherence Assurer', type: 'page', source: 'site', tags: ['coherence', 'practice'],
+  { id: 'home#e1', url: '/', title: 'Ingqiqo Executables', section: 'Principal Meaning & Coherence Engineer', type: 'page', source: 'site', tags: ['coherence', 'practice'],
     text: 'I make what an organisation knows, measures and decides mean the same thing everywhere, so its decisions can be trusted, checked and repeated.' },
   { id: 'home#e2', url: '/', title: 'The cost no one counts', section: 'Why decisions cost twice', type: 'page', source: 'site', tags: ['decision', 'cost'],
     text: 'Every organisation pays for its decisions twice: once when they are made, and again, quietly, when they are made badly, made twice, or never finished. Meaning drifts when finance, operations and the board each define a term differently.' },
